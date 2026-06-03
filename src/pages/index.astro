@@ -33,10 +33,47 @@ const homepageScreenshotSrc = `${baseUrl}assets/homepage-screenshot.png`;
     ctaHref={site.appStoreUrl}
   >
     <figure class="app-screenshot-frame">
-      <img src={homepageScreenshotSrc} alt="Homestead Keeper app home screen screenshot showing chores, field log shortcuts, reminders, and supply actions." />
+      <a class="screenshot-preview" href={homepageScreenshotSrc} target="_blank" rel="noopener" data-open-homepage-screenshot aria-label="Open full-size Homestead Keeper home screen screenshot">
+        <img src={homepageScreenshotSrc} alt="Homestead Keeper app home screen screenshot showing chores, field log shortcuts, reminders, and supply actions." />
+      </a>
       <figcaption>Home screen on iPad</figcaption>
     </figure>
   </Hero>
+
+  <dialog class="screenshot-dialog" data-homepage-screenshot-dialog aria-label="Full-size Homestead Keeper home screen screenshot">
+    <div class="screenshot-dialog-header">
+      <p>Home screen on iPad</p>
+      <button type="button" data-close-homepage-screenshot aria-label="Close full-size screenshot">Close</button>
+    </div>
+    <div class="screenshot-dialog-scroll">
+      <img src={homepageScreenshotSrc} alt="Full-size Homestead Keeper app home screen screenshot showing chores, field log shortcuts, reminders, and supply actions." width="2048" height="2732" />
+    </div>
+  </dialog>
+
+  <script>
+    const openButton = document.querySelector('[data-open-homepage-screenshot]');
+    const dialog = document.querySelector('[data-homepage-screenshot-dialog]');
+    const closeButton = document.querySelector('[data-close-homepage-screenshot]');
+
+    if (openButton instanceof HTMLAnchorElement && dialog instanceof HTMLDialogElement && typeof dialog.showModal === 'function') {
+      openButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        dialog.showModal();
+      });
+    }
+
+    if (closeButton instanceof HTMLButtonElement && dialog instanceof HTMLDialogElement) {
+      closeButton.addEventListener('click', () => dialog.close());
+    }
+
+    if (dialog instanceof HTMLDialogElement) {
+      dialog.addEventListener('click', (event) => {
+        if (event.target === dialog) {
+          dialog.close();
+        }
+      });
+    }
+  </script>
 
   <PlatformBadges />
 
