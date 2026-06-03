@@ -1,4 +1,6 @@
 ---
+import { sitePath } from '../utils/paths';
+
 interface Props {
   eyebrow?: string;
   title: string;
@@ -17,7 +19,7 @@ const { eyebrow, title, text, ctaLabel = 'Download on the App Store', ctaHref = 
     <p class="lede">{text}</p>
     <div class="hero-actions">
       <a class="button primary" href={ctaHref}>{ctaLabel}</a>
-      <a class="button secondary" href="/features">Explore features</a>
+      <a class="button secondary" href={sitePath('/features')}>Explore features</a>
     </div>
     <div class="platform-badges" aria-label="Supported platforms">
       <span>iPhone</span>

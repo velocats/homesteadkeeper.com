@@ -1,4 +1,6 @@
 ---
+import { sitePath } from '../utils/paths';
+
 interface LinkCard {
   title: string;
   href: string;
@@ -14,7 +16,7 @@ const { links } = Astro.props;
 
 <div class="link-grid">
   {links.map((link) => (
-    <a class="link-card" href={link.href}>
+    <a class="link-card" href={sitePath(link.href)}>
       <span>{link.title}</span>
       <p>{link.summary}</p>
     </a>

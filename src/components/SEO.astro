@@ -11,9 +11,8 @@ interface Props {
 
 const { title, description, path = '/', image = 'assets/homestead-keeper-logo.png', jsonLd } = Astro.props;
 const imagePath = image.startsWith('/') ? image.slice(1) : image;
-const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 const canonical = new URL(path, site.url).toString();
-const imageUrl = new URL(`${baseUrl}${imagePath}`, Astro.site ?? site.url).toString();
+const imageUrl = new URL(imagePath, `${site.url}/`).toString();
 ---
 
 <title>{title}</title>

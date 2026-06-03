@@ -1,5 +1,6 @@
 ---
 import { featureLinks, site } from '../data/site';
+import { sitePath } from '../utils/paths';
 
 const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 const logoSrc = `${baseUrl}assets/homestead-keeper-logo.png`;
@@ -8,7 +9,7 @@ const logoSrc = `${baseUrl}assets/homestead-keeper-logo.png`;
 <footer class="site-footer">
   <div class="footer-grid">
     <div>
-      <a class="brand footer-brand" href="/">
+      <a class="brand footer-brand" href={sitePath('/')}>
         <img src={logoSrc} alt="Homestead Keeper logo" width="38" height="38" />
         <span>{site.name}</span>
       </a>
@@ -17,14 +18,14 @@ const logoSrc = `${baseUrl}assets/homestead-keeper-logo.png`;
     </div>
     <div>
       <h2>Features</h2>
-      {featureLinks.map((item) => <a href={item.href}>{item.title}</a>)}
+      {featureLinks.map((item) => <a href={sitePath(item.href)}>{item.title}</a>)}
     </div>
     <div>
       <h2>Company</h2>
-      <a href="/pricing">Pricing</a>
-      <a href="/playbook">Playbook</a>
-      <a href="/support">Support</a>
-      <a href="/privacy">Privacy</a>
+      <a href={sitePath('/pricing')}>Pricing</a>
+      <a href={sitePath('/playbook')}>Playbook</a>
+      <a href={sitePath('/support')}>Support</a>
+      <a href={sitePath('/privacy')}>Privacy</a>
     </div>
     <div>
       <h2>Social</h2>
