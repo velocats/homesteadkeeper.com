@@ -1,0 +1,32 @@
+---
+import { proFeatures } from '../data/site';
+---
+
+<div class="pricing-grid">
+  <article class="pricing-card">
+    <p class="eyebrow">Free</p>
+    <h3>Limited but useful</h3>
+    <p class="price">$0</p>
+    <p>A great way to try Homestead Keeper with real records.</p>
+    <ul>
+      <li>Up to 5 real assets</li>
+      <li>Unlimited logbook entries and reminders</li>
+      <li>Full calendar and reports read-only</li>
+      <li>Cedar Ridge demo data</li>
+      <li>QR code viewing, no printing</li>
+    </ul>
+  </article>
+  <article class="pricing-card featured">
+    <p class="eyebrow">Pro</p>
+    <h3>All features</h3>
+    <div class="price-stack">
+      <p><strong>$1.99</strong><span>/month</span></p>
+      <p><strong>$14.99</strong><span>/year</span></p>
+      <p><strong>$29.99</strong><span>lifetime</span></p>
+    </div>
+    <p>Monthly, yearly, or one-time lifetime access.</p>
+    <ul>
+      {proFeatures.map((feature) => <li>{feature}</li>)}
+    </ul>
+  </article>
+</div>

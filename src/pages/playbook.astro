@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTA from '../components/CTA.astro';
+import InternalLinkCards from '../components/InternalLinkCards.astro';
+
+const sections = [
+  {
+    title: 'How Homestead Keeper Is Organized',
+    body: 'Homestead Keeper starts with a simple idea: your homestead is made of places, assets, supplies, reminders, and logs. Places are the areas or systems of the property. Assets are the things you care for. Logs are the record of what happened. Reports help you review the pattern over time.',
+  },
+  {
+    title: 'Your First Setup',
+    body: 'Begin with the few records that give you the most relief. Add the chicken coop, raised beds, well pump, mower, feed storage, orchard, greenhouse, or any item you maintain often. Free supports up to 5 real assets, which is enough to try the workflow with actual homestead records.',
+  },
+  {
+    title: 'Places vs Assets',
+    body: 'A place is a useful grouping, like Animals, Garden, Barn, Orchard, Equipment, Utilities, or House. An asset is a specific thing inside that place, like Laying Hens, Raised Bed 1, Well Pump, North Fence, Garden Gate, or Generator. This structure keeps a rural property management app from turning into one long flat list.',
+  },
+  {
+    title: 'Assign Assets to Places',
+    body: 'Assign each asset to the place where you naturally think about it. If you would walk to the barn to inspect it, put it under Barn. If it belongs to garden work, put it under Garden. Good organization makes the app easier to scan when chores are waiting.',
+  },
+  {
+    title: 'Track Supplies',
+    body: 'Add supplies you routinely buy or run out of: feed, bedding, seeds, fuel, filters, animal health supplies, treatments, and spare parts. Low-stock thresholds are helpful for anything that would cause stress if it ran out at the wrong time.',
+  },
+  {
+    title: 'Reminders and Logs',
+    body: 'Use reminders for work that should come back around: filter changes, coop cleaning, vaccination checks, equipment service, pruning, irrigation inspections, and seasonal chores. Use logs to capture what happened, what it cost, and what you noticed.',
+  },
+  {
+    title: 'History and Reports',
+    body: 'Reports are where small records become useful. A homestead logbook app is valuable because it remembers the quiet details: what was planted, when a pump failed, how many eggs the flock produced, what feed cost, and which seasonal chores are coming due.',
+  },
+  {
+    title: 'QR Codes & Labels',
+    body: 'QR codes are best for assets you physically visit. Put a label near the coop, well pump, gate, hive, raised bed, or piece of equipment. When you scan it, Homestead Keeper opens the matching record, even offline.',
+  },
+];
+---
+
+<Layout title="Playbook | Homestead Keeper" description="A practical guide to organizing Homestead Keeper with places, assets, supplies, reminders, logs, reports, QR codes, and labels." path="/playbook">
+  <section class="page-hero">
+    <p class="eyebrow">Playbook</p>
+    <h1>A practical starting guide for your homestead records</h1>
+    <p class="lede">Use this guide to decide what to add first, how to organize places and assets, and how to turn daily chores into useful long-term records.</p>
+  </section>
+
+  <section class="split-section">
+    <div>
+      {sections.map((section) => (
+        <article class="copy-block">
+          <h2>{section.title}</h2>
+          <p>{section.body}</p>
+        </article>
+      ))}
+    </div>
+    <aside class="sidebar-stack">
+      <article class="info-card">
+        <p class="eyebrow">Starter rhythm</p>
+        <h3>Start small</h3>
+        <p>Add the five assets you most often maintain, then let the logbook teach you what should come next.</p>
+      </article>
+      <article class="info-card">
+        <p class="eyebrow">Local-first</p>
+        <h3>Works offline</h3>
+        <p>No account or cloud service is required to get started.</p>
+      </article>
+    </aside>
+  </section>
+
+  <section class="section">
+    <p class="eyebrow">Next steps</p>
+    <h2>Explore related workflows</h2>
+    <InternalLinkCards links={[
+      { title: 'Track animals', href: '/features/animals', summary: 'Profiles, flock checks, egg counts, weight history, and animal care reports.' },
+      { title: 'Track supplies', href: '/features/supplies', summary: 'Low-stock thresholds, categories, places, inventory value, and expiring items.' },
+      { title: 'Use QR labels', href: '/features/qr-codes', summary: 'Scan coops, gates, hives, equipment, pumps, and raised beds from the field.' },
+    ]} />
+  </section>
+
+  <CTA />
+</Layout>

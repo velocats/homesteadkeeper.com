@@ -1,0 +1,33 @@
+---
+const rows = [
+  ['No account required', 'Yes', 'Yes', 'Often no'],
+  ['Works offline', 'Yes', 'Yes', 'Often limited'],
+  ['Local-first privacy', 'Yes', 'Yes', 'Often cloud-based'],
+  ['Real assets', 'Up to 5', 'Unlimited', 'Varies'],
+  ['Logbook entries', 'Unlimited', 'Unlimited', 'Varies'],
+  ['PDF and CSV exports', 'No', 'Yes', 'Often paid'],
+  ['QR label printing', 'No', 'Yes', 'Rare'],
+  ['Lifetime option', 'No', 'Yes', 'Uncommon'],
+];
+---
+
+<div class="table-wrap">
+  <table>
+    <caption>Homestead Keeper Free vs Pro vs typical farm software</caption>
+    <thead>
+      <tr>
+        <th>Capability</th>
+        <th>Free</th>
+        <th>Pro</th>
+        <th>Typical farm software</th>
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((row) => (
+        <tr>
+          {row.map((cell, index) => index === 0 ? <th scope="row">{cell}</th> : <td>{cell}</td>)}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

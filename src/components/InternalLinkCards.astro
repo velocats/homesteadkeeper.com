@@ -1,0 +1,22 @@
+---
+interface LinkCard {
+  title: string;
+  href: string;
+  summary: string;
+}
+
+interface Props {
+  links: LinkCard[];
+}
+
+const { links } = Astro.props;
+---
+
+<div class="link-grid">
+  {links.map((link) => (
+    <a class="link-card" href={link.href}>
+      <span>{link.title}</span>
+      <p>{link.summary}</p>
+    </a>
+  ))}
+</div>

@@ -1,0 +1,45 @@
+---
+import FeaturePage from '../../components/FeaturePage.astro';
+
+const sections = [
+  {
+    title: 'Reports for the whole homestead',
+    body: [
+      'Homestead Keeper reports turn daily records into summaries you can actually use. The Homestead Summary brings major activity together across animals, garden, supplies, reminders, costs, and assets. The Logbook report gives a searchable record of completed work and observations.',
+      'Because the app is local-first, reports are built from records stored on your device. That makes them useful even without a connection and keeps private homestead details away from a required cloud platform.'
+    ],
+  },
+  {
+    title: 'Garden, animal, cost, and inventory views',
+    body: [
+      'The Garden Season Report summarizes plantings, harvests, crop totals, treatments, soil work, costs, and year-over-year patterns. The Animal Care Report brings together flock checks, health entries, egg counts, weights, vaccinations, worming, breeding, and other animal work.',
+      'Cost Summary and Supplies & Inventory Report views help connect practical work to money and stocked materials. Inventory value, expiring items, and supply levels can make planning clearer before the next feed run, planting season, or storm window.'
+    ],
+  },
+  {
+    title: 'Seasonal chores and comparisons',
+    body: [
+      'Upcoming Seasonal Chores gives overdue and future work a dedicated place. That helps when the app is used for rural property management across many assets: gates, pumps, vehicles, gardens, coops, barns, tools, and utilities.',
+      'Year-over-year comparisons help longer-term records pay off. Homesteads are seasonal, so seeing this year next to last year can be more useful than a single static list.'
+    ],
+  },
+  {
+    title: 'Exports and demo filtering',
+    body: [
+      'Pro unlocks PDF and CSV export so reports can become printable records, tax prep notes, insurance documentation, or shared files. CSV exports also make it possible to move data into spreadsheets when a user wants deeper analysis.',
+      'Filtering real data vs Cedar Ridge demo data keeps exploration clean. Users can learn the app with examples, then focus reports on their own homestead records when it matters.'
+    ],
+  },
+];
+---
+
+<FeaturePage
+  title="Reports & Exports | Homestead Keeper"
+  description="Use Homestead Keeper reports for homestead summary, logbook, garden season, animal care, cost summary, supplies inventory, seasonal chores, PDF exports, and CSV exports."
+  path="/features/reports"
+  eyebrow="Reports"
+  h1="Turn everyday records into useful summaries"
+  intro="Review homestead activity with summary, logbook, garden, animal care, cost, supplies, seasonal chore, export, and comparison reports."
+  sections={sections}
+  screenshots={['Homestead Summary report', 'Garden Season Report', 'Animal Care Report', 'Cost Summary report', 'Supplies & Inventory Report', 'Upcoming Seasonal Chores']}
+/>

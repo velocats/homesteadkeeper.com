@@ -1,0 +1,45 @@
+---
+import FeaturePage from '../../components/FeaturePage.astro';
+
+const sections = [
+  {
+    title: 'Individual animal profiles',
+    body: [
+      'Homestead Keeper works as a livestock tracking app for small herds, backyard animals, and chicken flock management app workflows. Each animal profile can hold the practical details homesteaders reach for often: breed, sex, date of birth, dam, sire, ear tag, and notes. That makes a profile useful whether you are tracking goats, sheep, pigs, rabbits, cattle, laying hens, or a mixed homestead flock.',
+      'Age is auto-calculated from date of birth, so a profile stays useful as seasons pass. Instead of doing date math when planning care, breeding, butcher dates, or health checks, you can keep the basic facts close to the animal logbook.'
+    ],
+  },
+  {
+    title: 'Weight trends and health care',
+    body: [
+      'Weight history keeps growth and condition notes connected to the rest of the animal record. The goal is not to replace professional veterinary care, but to make everyday observations easier to compare over time. If an animal is growing slowly, losing condition, or recovering from treatment, repeated weight entries help create a clearer story.',
+      'Health check notifications at 150- and 180-day thresholds keep routine review visible. Vaccination, worming, breeding, treatment, and checkup entry types give the logbook enough structure to find important care events later.'
+    ],
+  },
+  {
+    title: 'Flock checks and egg counts',
+    body: [
+      'For poultry keepers, a Flock Check form brings common chicken coop observations into one place. You can log bird counts, behavior notes, water, feed, bedding, predator concerns, and general flock condition without building a custom entry from scratch each time.',
+      'Egg count tracking helps turn daily or weekly collection notes into a useful record. Over time, those entries make it easier to see seasonal changes, compare laying patterns, and understand whether flock health, daylight, feed, or weather may be affecting production.'
+    ],
+  },
+  {
+    title: 'Animal care reports',
+    body: [
+      'The Animal Care Report pulls care records into a readable summary for the season or year. That matters when a homestead has several animals and many small entries spread across months. Reports help you step back from the day-to-day work and see what has actually happened.',
+      'Year-over-year comparison gives the animal records more value as the app fills up. You can compare care patterns, costs, egg counts, treatments, and other animal activity without digging through every single logbook entry.'
+    ],
+  },
+];
+---
+
+<FeaturePage
+  title="Animal Tracking | Homestead Keeper"
+  description="Track animal profiles, flock checks, egg counts, weight history, health logs, vaccination, worming, breeding records, and animal care reports in Homestead Keeper."
+  path="/features/animals"
+  eyebrow="Animals"
+  h1="Animal records that keep care practical"
+  intro="Homestead Keeper gives homesteaders a local-first animal care record system for individual profiles, flock checks, weights, egg counts, health logs, and reports."
+  sections={sections}
+  screenshots={['Animal profile on iPhone', 'Flock Check form', 'Animal Care Report']}
+/>

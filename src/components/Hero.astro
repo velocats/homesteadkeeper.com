@@ -1,0 +1,31 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  text: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+
+const { eyebrow, title, text, ctaLabel = 'Download on the App Store', ctaHref = '#' } = Astro.props;
+---
+
+<section class="hero">
+  <div class="hero-copy">
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+    <h1>{title}</h1>
+    <p class="lede">{text}</p>
+    <div class="hero-actions">
+      <a class="button primary" href={ctaHref}>{ctaLabel}</a>
+      <a class="button secondary" href="/features">Explore features</a>
+    </div>
+    <div class="platform-badges" aria-label="Supported platforms">
+      <span>iPhone</span>
+      <span>iPad</span>
+      <span>Mac</span>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <slot />
+  </div>
+</section>

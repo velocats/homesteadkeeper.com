@@ -1,0 +1,21 @@
+---
+import { site } from '../data/site';
+
+interface Props {
+  title?: string;
+  text?: string;
+}
+
+const {
+  title = 'Ready to get organized?',
+  text = 'Download Free, try it with your real homestead records, and upgrade when you are ready.',
+} = Astro.props;
+---
+
+<section class="cta-band">
+  <div>
+    <h2>{title}</h2>
+    <p>{text}</p>
+  </div>
+  <a class="button primary" href={site.appStoreUrl}>Download on the App Store</a>
+</section>

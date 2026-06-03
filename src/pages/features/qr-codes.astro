@@ -1,0 +1,45 @@
+---
+import FeaturePage from '../../components/FeaturePage.astro';
+
+const sections = [
+  {
+    title: 'A QR code for every asset',
+    body: [
+      'Every asset in Homestead Keeper gets a unique QR code. That means a chicken coop, well pump, gate, generator, hive, raised bed, water tank, tool cabinet, mower, or fence line can point directly to the record that matters.',
+      'QR codes make the app feel less like office software and more like a field tool. Instead of searching for a record while standing at the pump or coop, scan and open the right asset.'
+    ],
+  },
+  {
+    title: 'Print labels with Pro',
+    body: [
+      'Pro unlocks printable QR label sheets from Settings. Labels can be attached where they make sense: inside a coop door, near a well control, on a gate post, in a greenhouse, on equipment, or beside a storage shelf.',
+      'Printed labels are especially useful when multiple people help with chores. A scan can bring up notes, reminders, documents, and log history without needing to explain where a record lives.'
+    ],
+  },
+  {
+    title: 'Scan from Home or Assets',
+    body: [
+      'Scanning is available from the Home screen or Assets area, so QR workflows are easy to reach. The flow is meant for everyday use, not a buried utility.',
+      'Because Homestead Keeper works offline, QR scanning is useful in the places homesteads actually have weak signal: barns, fields, outbuildings, basements, cellars, wooded fence lines, and remote pump houses.'
+    ],
+  },
+  {
+    title: 'Codes survive backup and restore',
+    body: [
+      'QR codes are tied to asset records, so they are designed to survive backup and restore. That matters because labels may be physically attached to equipment or structures for years.',
+      'Use cases are broad: open a pump maintenance history, check a gate repair log, scan a hive before an inspection, review chicken coop notes, or pull up a raised bed history before planting.'
+    ],
+  },
+];
+---
+
+<FeaturePage
+  title="QR Codes & Labels | Homestead Keeper"
+  description="Use QR codes and printable labels to open Homestead Keeper asset records for coops, pumps, gates, equipment, hives, raised beds, and rural property systems."
+  path="/features/qr-codes"
+  eyebrow="QR Codes"
+  h1="Open the right record from the field"
+  intro="Give every asset a unique QR code, scan from Home or Assets, print labels with Pro, and keep records reachable offline."
+  sections={sections}
+  screenshots={['QR code on asset detail', 'Label sheet', 'Scanning in field']}
+/>

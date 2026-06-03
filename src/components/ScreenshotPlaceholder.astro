@@ -1,0 +1,16 @@
+---
+interface Props {
+  label: string;
+  aspect?: string;
+}
+
+const { label, aspect = '4 / 3' } = Astro.props;
+---
+
+<figure class="screenshot-placeholder" style={`--aspect:${aspect}`}>
+  <div role="img" aria-label={`Screenshot placeholder: ${label}`}>
+    <span>{label}</span>
+    <small>Screenshot placeholder</small>
+  </div>
+  <figcaption>{label}</figcaption>
+</figure>

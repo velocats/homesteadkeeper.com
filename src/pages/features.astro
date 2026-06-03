@@ -1,0 +1,65 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTA from '../components/CTA.astro';
+import FeatureCards from '../components/FeatureCards.astro';
+import InternalLinkCards from '../components/InternalLinkCards.astro';
+import { featureLinks } from '../data/site';
+
+const sections = [
+  ['Places & Assets', 'Organize your homestead into places such as Garden, Animals, Equipment, Orchard, Barn, Utilities, or any structure that matches your property. Assets are the actual things you care for: coops, raised beds, fruit trees, pumps, gates, vehicles, hives, tools, tanks, and household systems.'],
+  ['Asset types', 'Use purpose-built fields for animals, garden beds, equipment, systems, and rural property records without forcing every item into the same shape. Homestead Keeper works as backyard homestead app, rural property management app, and small farm record keeping tool.'],
+  ['Supplies & Inventory', 'Track feed, bedding, seeds, fuel, filters, medications, treatments, and other supplies with categories, places, quantities, low-stock thresholds, expiration dates, and inventory value.'],
+  ['Maintenance Logbook', 'Keep a chronological homestead logbook app record of repairs, harvests, treatments, inspections, purchases, chores, notes, costs, photos, and structured templates.'],
+  ['Animal Profile Fields', 'Store breed, sex, date of birth, dam, sire, ear tag, and care notes for each animal. Age can be calculated from date of birth so your records stay current.'],
+  ['Weight Tracking', 'Record weights over time, watch trends, and keep animal growth or health observations close to the rest of the animal profile.'],
+  ['Flock Check', 'Use flock checks for chicken flock management app workflows: count birds, eggs, feed, water, bedding, behavior, and health observations in one practical entry.'],
+  ['Harvest Tracking', 'Record crop, quantity, unit, date, location, and notes so your garden harvest tracking app data can roll up into seasonal totals.'],
+  ['Planting Records', 'Track what was planted, where it went, dates, varieties, and notes for garden beds, orchards, greenhouse trays, or seasonal plots.'],
+  ['Templates & Checklists', 'Start with structured templates for common homestead work, then customize checklists so repeated chores are easier to log.'],
+  ['Reminders', 'Set recurring reminders for daily, weekly, bi-weekly, monthly, quarterly, and yearly chores across assets and places.'],
+  ['Calendar View', 'See a monthly grid and agenda view for upcoming work, overdue chores, and seasonal reminders.'],
+  ['Reports', 'Review homestead summary, logbook, garden season, animal care, cost summary, supplies inventory, and upcoming seasonal chores.'],
+  ['QR Codes & Labels', 'Every asset gets a QR code. Scan from the field, print labels with Pro, and open the right record without searching.'],
+  ['Exports', 'Pro unlocks PDF and CSV exports for records you want to keep, share, print, or use during tax and insurance prep.'],
+  ['Backup & Restore', 'Pro includes backup and restore tools so you can move or protect data using storage you choose.'],
+  ['Health Check Notifications', 'Animal care workflows can surface 150- and 180-day health check thresholds, keeping routine care visible.'],
+  ['Demo Data', 'Cedar Ridge demo data gives you a sample homestead to explore before you add your own records.'],
+];
+---
+
+<Layout title="Features | Homestead Keeper" description="Explore Homestead Keeper features for animals, gardens, supplies, reminders, reports, QR codes, exports, backups, and local-first homestead record keeping." path="/features">
+  <section class="page-hero">
+    <p class="eyebrow">Feature overview</p>
+    <h1>A complete homestead record keeping software toolkit</h1>
+    <p class="lede">Homestead Keeper helps homesteaders, hobby farmers, and rural property owners keep practical records across the whole place without needing an account, cloud service, or constant connection.</p>
+  </section>
+
+  <section class="section">
+    <FeatureCards cards={featureLinks} />
+  </section>
+
+  <section class="section rich-copy">
+    <p class="eyebrow">Detailed feature list</p>
+    <h2>What is included</h2>
+    <div class="report-grid">
+      {sections.map(([title, body]) => (
+        <article class="report-card">
+          <h3>{title}</h3>
+          <p>{body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="eyebrow">Common workflows</p>
+    <h2>Start where you work most</h2>
+    <InternalLinkCards links={[
+      { title: 'Animal care records', href: '/features/animals', summary: 'Profiles, health logs, flock checks, egg counts, and year-over-year care reports.' },
+      { title: 'Garden records', href: '/features/garden', summary: 'Planting, harvest, pest treatment, soil amendments, crop totals, and seasonal comparison.' },
+      { title: 'Reports and exports', href: '/features/reports', summary: 'Turn day-to-day logbook work into readable summaries, PDFs, and CSVs with Pro.' },
+    ]} />
+  </section>
+
+  <CTA />
+</Layout>

@@ -1,0 +1,45 @@
+---
+import FeaturePage from '../../components/FeaturePage.astro';
+
+const sections = [
+  {
+    title: 'Garden beds, orchards, and hives',
+    body: [
+      'Homestead Keeper treats garden spaces as assets you can return to season after season. Raised beds, greenhouse benches, orchard rows, berry patches, hives, and irrigation zones can each have their own records, reminders, photos, costs, and notes. That makes the app useful as a garden harvest tracking app and as broader rural property management software.',
+      'Keeping the bed or orchard record separate from general notes gives you a clearer history. You can see what was planted where, what soil work was done, what pests showed up, and what you harvested from that specific place.'
+    ],
+  },
+  {
+    title: 'Planting and harvest records',
+    body: [
+      'Structured planting records help capture crop, variety, date, location, and notes. That is the kind of small detail that is easy to forget by August but valuable when planning the next spring. Planting history also helps when rotating crops or remembering which bed got which experiment.',
+      'Structured harvest records capture crop, quantity, unit, date, and related notes. Yield totals by crop make the harvest log more than a notebook. It becomes a practical way to compare what worked, what underperformed, and what is worth repeating.'
+    ],
+  },
+  {
+    title: 'Currently planted and seasonal work',
+    body: [
+      'A Currently Planted view helps show what is in the ground right now. That is useful during busy seasons when a homestead might have seed trays, raised beds, orchard maintenance, pasture projects, and harvest storage all happening at once.',
+      'Seasonal reminder suggestions help bring recurring garden work forward: seed starting, hardening off, irrigation checks, pest scouting, orchard pruning, hive checks, and bed cleanup. The goal is to reduce the number of things living only in your head.'
+    ],
+  },
+  {
+    title: 'Garden season report',
+    body: [
+      'The Garden Season Report pulls planting, harvest, soil amendment, pest or disease, treatment, cost, and yield records into a readable summary. It helps answer the questions homesteaders ask after a season: what did we grow, what did it produce, what did it cost, and what should change next year?',
+      'Year-over-year harvest and cost comparison becomes more valuable the longer you use the app. A simple local-first record can slowly turn into a planning tool for seed orders, bed rotation, preservation goals, and market or household food planning.'
+    ],
+  },
+];
+---
+
+<FeaturePage
+  title="Garden & Harvest Tracking | Homestead Keeper"
+  description="Track garden beds, orchard assets, planting records, harvest totals, soil amendments, treatments, currently planted crops, and garden season reports."
+  path="/features/garden"
+  eyebrow="Garden & Harvest"
+  h1="Garden records that survive the season"
+  intro="Keep planting, harvest, soil, pest, treatment, and yield records organized across raised beds, orchards, hives, and seasonal garden work."
+  sections={sections}
+  screenshots={['Raised bed asset detail', 'Garden Season Report', 'Harvest entry form']}
+/>

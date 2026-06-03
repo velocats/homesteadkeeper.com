@@ -1,0 +1,45 @@
+---
+import FeaturePage from '../../components/FeaturePage.astro';
+
+const sections = [
+  {
+    title: 'Reminders on any asset',
+    body: [
+      'Homestead work is repetitive, seasonal, and easy to lose track of when everything is competing for attention. Homestead Keeper lets reminders live on the asset they belong to: a coop cleaning reminder on the coop, a filter reminder on the water system, a pruning reminder on the orchard, or a service reminder on a mower.',
+      'That asset connection keeps reminders grounded. When a reminder comes due, it is tied to the same logbook, documents, costs, QR code, and report history as the thing being maintained.'
+    ],
+  },
+  {
+    title: 'Recurring schedules',
+    body: [
+      'Recurring schedules support daily, weekly, bi-weekly, monthly, quarterly, and yearly rhythms. That covers a wide range of rural property management app needs: feeding checks, bedding refreshes, equipment service, seasonal inspections, orchard pruning, filter changes, and garden prep.',
+      'Advanced recurrence helps Pro users track longer rhythms without recreating the same reminder repeatedly. The app is meant to reduce mental load, not add another chore.'
+    ],
+  },
+  {
+    title: 'Calendar view and agenda',
+    body: [
+      'The calendar gives a monthly grid and agenda view for upcoming chores, overdue work, and seasonal jobs. That makes Homestead Keeper useful not only as a homestead logbook app, but also as a planning surface for the week ahead.',
+      'Overdue alerts make missed work visible. Swipe to snooze helps when a chore is still valid but the weather, daylight, parts, or timing are wrong. Apple Calendar export gives another option for users who want chore visibility outside the app.'
+    ],
+  },
+  {
+    title: 'Seasonal chore report',
+    body: [
+      'The Upcoming Seasonal Chores report helps collect the next wave of work before the season sneaks up. Homesteads rarely fail because of one giant task; they get stressful when many small tasks are invisible until they are overdue.',
+      'By tying reminders, logs, calendar events, and assets together, Homestead Keeper helps turn repeated work into a record instead of a memory test.'
+    ],
+  },
+];
+---
+
+<FeaturePage
+  title="Reminders & Calendar | Homestead Keeper"
+  description="Create reminders on any asset, use recurring schedules, see a monthly calendar and agenda, snooze overdue chores, and export to Apple Calendar."
+  path="/features/reminders"
+  eyebrow="Reminders & Calendar"
+  h1="Put seasonal chores where you can see them"
+  intro="Track recurring homestead work with asset-based reminders, overdue alerts, calendar views, snoozing, seasonal reports, and Apple Calendar export."
+  sections={sections}
+  screenshots={['Calendar view', 'Reminder form']}
+/>

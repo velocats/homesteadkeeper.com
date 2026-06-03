@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTA from '../components/CTA.astro';
+import { site } from '../data/site';
+
+const faqs = [
+  ['Does it work without internet?', 'Yes. Homestead Keeper is local-first and works offline for day-to-day record keeping, reminders, QR scanning, reports, and logbook review.'],
+  ['Where is my data stored?', 'Your app data is stored locally on your device. No Homestead Keeper account or cloud service is required.'],
+  ['Can I use it on multiple devices?', 'Homestead Keeper is designed for iPhone, iPad, and Mac. Availability and syncing behavior depend on Apple platform support and your backup or transfer choices.'],
+  ['What happens if I delete the app?', 'Deleting the app can remove local data. Make a backup before deleting the app, replacing a device, or wiping a device.'],
+  ['How do I transfer to a new device?', 'Use device backup tools or Homestead Keeper Pro backup and restore tools available in your version of the app.'],
+];
+---
+
+<Layout title="Support | Homestead Keeper" description="Get Homestead Keeper support, send bug reports, request features, and read answers about offline use, local data, backups, and device transfers." path="/support">
+  <section class="page-hero">
+    <p class="eyebrow">Support</p>
+    <h1>Need help with Homestead Keeper?</h1>
+    <p class="lede">Feature requests, bug reports, and general questions are welcome. The fastest path is email.</p>
+    <p><a class="button primary" href={`mailto:${site.supportEmail}`}>Email {site.supportEmail}</a></p>
+  </section>
+
+  <section class="section">
+    <p class="eyebrow">Contact placeholder</p>
+    <h2>Optional contact form</h2>
+    <p class="section-intro">This form is a placeholder for a future static-site form provider. For now, use the email link above.</p>
+    <form class="contact-form" action={`mailto:${site.supportEmail}`} method="post" enctype="text/plain">
+      <label>Name<input name="name" autocomplete="name" /></label>
+      <label>Email<input name="email" type="email" autocomplete="email" /></label>
+      <label>Message type<select name="type"><option>Bug Report</option><option>Feature Request</option><option>General Question</option></select></label>
+      <label>Message<textarea name="message"></textarea></label>
+      <button class="button secondary" type="submit">Open email draft</button>
+    </form>
+  </section>
+
+  <section class="section">
+    <p class="eyebrow">FAQ</p>
+    <h2>Common questions</h2>
+    <div class="report-grid">
+      {faqs.map(([question, answer]) => (
+        <article class="report-card">
+          <h3>{question}</h3>
+          <p>{answer}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <CTA />
+</Layout>

@@ -1,0 +1,38 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const promises = [
+  ['No account required', 'Homestead Keeper does not require a login or hosted account to keep records.'],
+  ['No cloud service required', 'The app is designed for local-first use. Your records are stored locally on your device.'],
+  ['No analytics tracking', 'No analytics tracking is included unless privacy-respecting analytics are explicitly added and disclosed later.'],
+  ['No third-party trackers', 'The app is not designed around ad networks, third-party trackers, or behavioral profiles.'],
+  ['No sale of user data', 'Homestead Keeper does not sell user data.'],
+  ['User-controlled backups', 'Backups are controlled by the user through Apple tools or storage destinations the user chooses.'],
+];
+---
+
+<Layout title="Privacy | Homestead Keeper" description="Homestead Keeper is local-first: no account required, no cloud service required, no third-party trackers, no sale of user data, and user-controlled backups." path="/privacy">
+  <section class="page-hero">
+    <p class="eyebrow">Privacy</p>
+    <h1>Local-first by design</h1>
+    <p class="lede">Homestead Keeper is built for people who want useful homestead records without turning their animals, garden, repairs, and rural property notes into cloud account data.</p>
+  </section>
+
+  <section class="section">
+    <div class="privacy-grid">
+      {promises.map(([title, body]) => (
+        <article class="privacy-card">
+          <h2>{title}</h2>
+          <p>{body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section rich-copy">
+    <p class="eyebrow">Plain language</p>
+    <h2>What this means</h2>
+    <p>Homestead Keeper app data is stored locally on the user's device. The app does not require a Homestead Keeper cloud service, web account, or hosted database for normal record keeping.</p>
+    <p>If privacy-respecting analytics are ever added, they should be disclosed clearly before they are used. If backup tools are used, the user chooses where backups go and is responsible for keeping those backup destinations safe.</p>
+  </section>
+</Layout>

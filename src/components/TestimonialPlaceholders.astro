@@ -1,0 +1,17 @@
+---
+const quotes = [
+  ['Placeholder quote', '“It finally gave our chores, animals, garden notes, and repairs one home.”', 'Fictional homesteader placeholder'],
+  ['Placeholder quote', '“I like that our records stay on the device and still work when the internet is out.”', 'Fictional hobby farmer placeholder'],
+  ['Placeholder quote', '“The QR labels would make it easy to pull up notes right at the coop or pump.”', 'Fictional rural property owner placeholder'],
+];
+---
+
+<div class="testimonial-grid">
+  {quotes.map(([label, quote, byline]) => (
+    <figure class="testimonial-card">
+      <p class="eyebrow">{label}</p>
+      <blockquote>{quote}</blockquote>
+      <figcaption>{byline}</figcaption>
+    </figure>
+  ))}
+</div>

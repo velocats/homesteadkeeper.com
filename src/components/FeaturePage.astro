@@ -1,0 +1,51 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ScreenshotPlaceholder from './ScreenshotPlaceholder.astro';
+import CTA from './CTA.astro';
+import InternalLinkCards from './InternalLinkCards.astro';
+import { featureLinks } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  eyebrow: string;
+  h1: string;
+  intro: string;
+  sections: { title: string; body: string[] }[];
+  screenshots: string[];
+}
+
+const { title, description, path, eyebrow, h1, intro, sections, screenshots } = Astro.props;
+const related = featureLinks.filter((feature) => feature.href !== path).slice(0, 3);
+---
+
+<Layout title={title} description={description} path={path}>
+  <section class="page-hero narrow">
+    <p class="eyebrow">{eyebrow}</p>
+    <h1>{h1}</h1>
+    <p class="lede">{intro}</p>
+  </section>
+
+  <section class="split-section">
+    <div>
+      {sections.map((section) => (
+        <article class="copy-block">
+          <h2>{section.title}</h2>
+          {section.body.map((paragraph) => <p>{paragraph}</p>)}
+        </article>
+      ))}
+    </div>
+    <aside class="sidebar-stack">
+      {screenshots.map((shot) => <ScreenshotPlaceholder label={shot} />)}
+    </aside>
+  </section>
+
+  <section class="section">
+    <p class="eyebrow">Related tools</p>
+    <h2>Keep exploring</h2>
+    <InternalLinkCards links={related} />
+  </section>
+
+  <CTA />
+</Layout>

@@ -1,0 +1,13 @@
+---
+import { navItems, site } from '../data/site';
+---
+
+<header class="site-header">
+  <a class="brand" href="/" aria-label="Homestead Keeper home">
+    <img src="/assets/homestead-keeper-logo.png" alt="Homestead Keeper logo" width="44" height="44" />
+    <span>{site.name}</span>
+  </a>
+  <nav aria-label="Main navigation">
+    {navItems.map((item) => <a href={item.href}>{item.label}</a>)}
+  </nav>
+</header>
