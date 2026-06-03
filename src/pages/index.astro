@@ -21,6 +21,8 @@ const jsonLd = {
   description,
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
 };
+const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const homepageScreenshotSrc = `${baseUrl}assets/homepage-screenshot.png`;
 ---
 
 <Layout title={title} description={description} path="/" jsonLd={jsonLd}>
@@ -31,7 +33,7 @@ const jsonLd = {
     ctaHref={site.appStoreUrl}
   >
     <figure class="app-screenshot-frame">
-      <img src="/assets/homepage-screenshot-clean.png" alt="Homestead Keeper home screen on iPad showing chores, field log shortcuts, reminders, and supply actions." />
+      <img src={homepageScreenshotSrc} alt="Homestead Keeper app home screen screenshot showing chores, field log shortcuts, reminders, and supply actions." />
       <figcaption>Home screen on iPad</figcaption>
     </figure>
   </Hero>
