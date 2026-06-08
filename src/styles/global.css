@@ -340,11 +340,11 @@ nav a {
   text-decoration: none;
 }
 
-.screenshot-placeholder {
+.screenshot-frame {
   margin: 0;
 }
 
-.screenshot-placeholder > div {
+.screenshot-frame > div {
   aspect-ratio: var(--aspect, 4 / 3);
   display: grid;
   place-items: center;
@@ -361,7 +361,7 @@ nav a {
   padding: 1.25rem;
 }
 
-.screenshot-placeholder > img {
+.screenshot-frame > img {
   aspect-ratio: var(--aspect, 4 / 3);
   width: 100%;
   min-height: 220px;
@@ -372,12 +372,12 @@ nav a {
   box-shadow: 0 12px 28px rgba(38, 48, 38, 0.1);
 }
 
-.screenshot-placeholder span {
+.screenshot-frame span {
   color: var(--green);
   font-weight: 900;
 }
 
-.screenshot-placeholder figcaption {
+.screenshot-frame figcaption {
   margin-top: 0.55rem;
   color: var(--muted);
   font-size: 0.9rem;
@@ -426,12 +426,12 @@ nav a {
   text-align: center;
 }
 
-.hero-visual .screenshot-placeholder > div {
+.hero-visual .screenshot-frame > div {
   min-height: 420px;
   border-radius: 28px;
 }
 
-.hero-visual .screenshot-placeholder > img {
+.hero-visual .screenshot-frame > img {
   min-height: 420px;
   border-radius: 28px;
 }
@@ -794,11 +794,11 @@ textarea {
     flex-direction: column;
   }
 
-  .hero-visual .screenshot-placeholder > div {
+  .hero-visual .screenshot-frame > div {
     min-height: 300px;
   }
 
-  .hero-visual .screenshot-placeholder > img {
+  .hero-visual .screenshot-frame > img {
     min-height: 300px;
   }
 

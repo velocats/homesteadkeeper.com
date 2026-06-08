@@ -10,7 +10,7 @@ import { site } from '../data/site';
 
 const title = 'Homestead Keeper | Local-First Homestead Management App';
 const description =
-  'Keep your homestead running with local-first records, reminders, inventory, reports, animal care, garden harvest tracking, and rural property management for iPhone, iPad, and Mac.';
+  'Keep your homestead running with a local-first homestead management app for animals, gardens, bees, orchards, equipment, inventory, reminders, reports, and rural property care.';
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
@@ -22,16 +22,27 @@ const jsonLd = {
 };
 
 const managementCards = [
-  { title: 'Animals', href: '/features/animals', summary: 'Profiles, groups, care reminders, weights, medical records, breeding, pedigree, and production.' },
-  { title: 'Garden & Orchard', href: '/features/garden', summary: 'Planting, harvests, crop notes, seasonal reminders, orchard work, and garden season reports.' },
-  { title: 'Inventory', href: '/features/inventory', summary: 'Feed, hay, bedding, medications, seeds, fuel, low-stock alerts, expirations, and storage locations.' },
-  { title: 'Care Reminders', href: '/features/reminders', summary: 'Recurring chores, custom schedules, overdue work, snoozing, and completion history.' },
-  { title: 'Medical Records', href: '/features/animals', summary: 'Vaccination, treatment, deworming, vet visit, lab, and health certificate record keeping.' },
-  { title: 'Breeding & Pedigree', href: '/features/animals', summary: 'Breeding records, due dates, hatch or birth completion, offspring creation, and pedigree links.' },
-  { title: 'Production', href: '/features/reports', summary: 'Eggs, milk, honey, fiber, meat, wax, custom products, destinations, sales, and CSV exports.' },
-  { title: 'Equipment & Property', href: '/features', summary: 'Maintenance logs for tools, pumps, gates, vehicles, buildings, systems, and rural property care.' },
-  { title: 'Finances', href: '/features', summary: 'Simple income and expense records with categories, vendors, customers, summaries, and exports.' },
-  { title: 'Reports & Exports', href: '/features/reports', summary: 'Homestead summaries, handoff reports, PDF exports, CSV files, calendar exports, and QR labels.' },
+  { title: 'Animals', href: '/features/animals', summary: 'Profiles, care reminders, health records, breeding, pedigree, production, weight history, photos, and documents.' },
+  { title: 'Garden & Harvest', href: '/features/garden', summary: 'Track beds, plantings, varieties, watering, fertilizing, pest notes, harvests, and seasonal garden history.' },
+  { title: 'Bees & Hives', href: '/features/garden', summary: 'Record hive inspections, feeding, treatments, queen checks, splits, swarms, and honey harvests.' },
+  { title: 'Orchard & Perennials', href: '/features/garden', summary: 'Track fruit trees, berry patches, grapevines, pruning, spraying, fertilizing, harvests, and seasonal care.' },
+  { title: 'Equipment & Workshop', href: '/features', summary: 'Keep repair logs, service reminders, manuals, parts, warranty notes, fuel, filters, and maintenance history.' },
+  { title: 'Property, Fences & Water', href: '/features', summary: 'Track gates, fences, wells, pumps, irrigation, buildings, storm damage, roads, and property repairs.' },
+  { title: 'Inventory', href: '/features/inventory', summary: 'Watch feed, hay, bedding, seeds, medicine, vaccines, canning supplies, fuel, parts, and emergency supplies.' },
+  { title: 'Food Preservation', href: '/features', summary: 'Keep notes for canning, freezing, dehydrating, fermenting, pantry storage, batch dates, and supplies.' },
+  { title: 'Off-grid Systems', href: '/features', summary: 'Track generators, solar, batteries, propane, water systems, backup power, and seasonal checks.' },
+  { title: 'Emergency Prep', href: '/features', summary: 'Track stored water, food, fuel, first aid, generator readiness, documents, and expiration dates.' },
+  { title: 'Calendar & Reminders', href: '/features/reminders', summary: 'See overdue work, upcoming chores, breeding dates, production entries, inventory dates, and seasonal tasks.' },
+  { title: 'Reports & Exports', href: '/features/reports', summary: 'Review homestead summaries, animal care, production, inventory, garden season, property handoff, and CSV/PDF exports.' },
+];
+
+const homesteadExamples = [
+  { title: 'Backyard chickens + garden', summary: 'Track egg counts, coop cleaning, feed inventory, raised beds, watering, plantings, and harvests.' },
+  { title: 'Rabbitry + small livestock', summary: 'Track breeding, litters, weights, treatments, pedigrees, feed, cages, and care reminders.' },
+  { title: 'Bees + orchard', summary: 'Track hive inspections, queen checks, treatments, honey harvests, fruit tree pruning, sprays, and seasonal care.' },
+  { title: 'Rural property care', summary: 'Track fences, gates, pumps, irrigation, buildings, equipment, repairs, and storm damage.' },
+  { title: 'Food preservation + pantry', summary: 'Track harvest notes, canning batches, freezer inventory, jars, lids, and storage supplies.' },
+  { title: 'Off-grid / emergency prep', summary: 'Track generators, batteries, propane, water, first aid, fuel, backup plans, and expiration checks.' },
 ];
 
 const screenshotPaths = {
@@ -48,12 +59,12 @@ const screenshotPaths = {
   <Hero
     eyebrow="Local-first homestead logbook"
     title="Keep your homestead running."
-    text="Track animals, chores, inventory, production, medical records, breeding, expenses, and rural property care in one local-first app for iPhone, iPad, and Mac."
+    text="Track animals, gardens, bees, orchards, equipment, inventory, chores, production, medical records, expenses, and rural property care in one local-first app for iPhone, iPad, and Mac."
     ctaLabel="Try Homestead Keeper"
     ctaHref={site.appStoreUrl}
   >
     <!-- TODO: Replace with /public/assets/screenshots/home-dashboard.png when the final Home screenshot is ready. -->
-    <ScreenshotPlaceholder label="Home dashboard" src={screenshotPaths.home} aspect="4 / 3" />
+      <ScreenshotPlaceholder label="Home Dashboard" src={screenshotPaths.home} aspect="4 / 3" />
   </Hero>
 
   <PlatformBadges />
@@ -68,18 +79,32 @@ const screenshotPaths = {
   </section>
 
   <section class="section">
-    <p class="eyebrow">Practical homestead management</p>
-    <h2>What Homestead Keeper helps you manage</h2>
+    <p class="eyebrow">Whole-homestead management</p>
+    <h2>What you can manage</h2>
     <p class="section-intro">
       Homestead Keeper is the practical operating logbook for a real homestead: fast enough for daily capture, detailed enough for long-term records, and calm enough to use from the barn, garden, shop, field, or kitchen table.
     </p>
     <FeatureCards cards={managementCards} />
   </section>
 
+  <section class="split-section">
+    <div>
+      <p class="eyebrow">Built for the whole homestead</p>
+      <h2>Mixed, real-world records without the clutter</h2>
+      <p class="section-intro">Homestead Keeper is designed for mixed, real-world homesteads: chickens and rabbits, gardens and orchards, hives and equipment, fences and water systems, freezers and feed bins. Start with the areas you manage today, then add more as your homestead grows.</p>
+    </div>
+    <aside class="sidebar-stack">
+      <article class="info-card"><h3>Enable only the areas you use</h3><p>Keep the Homestead Hub focused on what you manage right now.</p></article>
+      <article class="info-card"><h3>Hide areas without deleting records</h3><p>Quiet down unused areas while keeping history available.</p></article>
+      <article class="info-card"><h3>Keep quick notes now</h3><p>Capture the moment first, then add details, photos, documents, and costs later.</p></article>
+      <article class="info-card"><h3>Review history by context</h3><p>Look back by season, animal, place, or report when the bigger picture matters.</p></article>
+    </aside>
+  </section>
+
   <section class="section">
     <p class="eyebrow">Daily workflow</p>
-    <h2>Built around the daily homestead workflow</h2>
-    <p class="section-intro">Open Home to see what needs attention, complete or snooze chores, quick-log what happened, track production, watch inventory alerts, then review Calendar and Reports when planning the week.</p>
+    <h2>Move from today’s chores to useful history</h2>
+    <p class="section-intro">Open Home to see what needs attention, complete or snooze chores, quick-log what happened, check the calendar for upcoming work, and use reports when you want the bigger picture.</p>
     <div class="workflow-row" aria-label="Homestead Keeper workflow">
       <span>Home</span>
       <span>Complete chores</span>
@@ -87,6 +112,12 @@ const screenshotPaths = {
       <span>Calendar</span>
       <span>Reports</span>
     </div>
+  </section>
+
+  <section class="section">
+    <p class="eyebrow">Examples by homestead type</p>
+    <h2>Useful whether your place is small, mixed, or growing</h2>
+    <FeatureCards cards={homesteadExamples} />
   </section>
 
   <section class="split-section">
@@ -141,11 +172,12 @@ const screenshotPaths = {
 
   <section class="section">
     <p class="eyebrow">More screens</p>
-    <h2>Ready for real screenshots</h2>
+    <h2>Screen previews</h2>
     <div class="card-grid">
       <!-- TODO: Replace with /public/assets/screenshots/calendar.png. -->
       <ScreenshotPlaceholder label="Calendar" src={screenshotPaths.calendar} />
-      <ScreenshotPlaceholder label="Care Reminders" />
+      <ScreenshotPlaceholder label="Homestead Hub" />
+      <ScreenshotPlaceholder label="Garden Hub" />
       <!-- TODO: Replace with /public/assets/screenshots/settings.png. -->
       <ScreenshotPlaceholder label="Settings" src={screenshotPaths.settings} />
     </div>

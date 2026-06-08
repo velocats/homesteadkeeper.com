@@ -6,63 +6,91 @@ import InternalLinkCards from '../components/InternalLinkCards.astro';
 const featureGroups = [
   {
     title: 'Home & Daily Chores',
-    items: ['Home dashboard', 'Overdue, due today, and upcoming work', 'Recurring care reminders', 'Custom recurrence', 'Snooze', 'Completion history', 'Quick logging'],
+    items: ['Home dashboard for overdue, due today, and upcoming work', 'Recurring care reminders and custom recurrence', 'Snooze and completion history', 'Quick Log for notes, chores, production, repairs, expenses, and unusual events'],
   },
   {
     title: 'Homestead Hub',
-    items: ['Animals', 'Garden', 'Property', 'Equipment', 'Orchard', 'Bees', 'Food Preservation', 'Off-grid', 'Weather & Seasons', 'Wildlife & Pests', 'Forestry', 'Emergency Prep', 'Projects', 'Family & Education', 'Farm Business', 'Inventory'],
+    items: ['Animals', 'Garden', 'Bees', 'Orchard', 'Property', 'Equipment', 'Food Preservation', 'Off-grid', 'Weather & Seasons', 'Wildlife & Pests', 'Forestry', 'Emergency Prep', 'Projects', 'Family & Education', 'Farm Business', 'Inventory'],
     note: 'Enable the areas you use and hide areas you do not need without deleting records.',
   },
   {
     title: 'Animals',
-    items: ['Individual animals', 'Flocks, herds, and groups', 'Species and breed fields', 'Photos', 'Records timeline', 'Care reminders', 'Medical', 'Weight', 'Production', 'Breeding', 'Pedigree'],
+    items: ['Individual animals, flocks, herds, and groups', 'Species, breed, age, identification, photos, and documents', 'Care reminders, records timeline, medical records, weight history, production, breeding, and pedigree'],
   },
   {
-    title: 'Medical / Treatment Records',
-    items: ['Vaccination', 'Medication', 'Treatment', 'Deworming', 'Illness or injury', 'Vet visit', 'Lab test', 'Health certificate', 'Next-due reminders', 'Withdrawal tracking and warnings'],
+    title: 'Garden & Harvest',
+    items: ['Garden beds and growing areas', 'Crops, varieties, and planting dates', 'Watering, fertilizing, pest, and treatment notes', 'Harvest logs and seasonal reminders', 'Garden Season report for year-end review'],
+  },
+  {
+    title: 'Bees & Hives',
+    items: ['Hive profiles and inspection records', 'Feeding, treatments, and queen checks', 'Split, swarm, and requeening notes', 'Honey harvest logs and hive-specific reminders'],
+  },
+  {
+    title: 'Orchard & Perennials',
+    items: ['Fruit trees, berry patches, grapevines, and perennial plantings', 'Pruning, spraying, treatment, and fertilizing notes', 'Harvest logs by tree, patch, or variety', 'Seasonal care reminders for dormant, bloom, harvest, and cleanup windows'],
+  },
+  {
+    title: 'Equipment & Workshop',
+    items: ['Tractors, mowers, tools, generators, pumps, and shop equipment', 'Repair logs and maintenance reminders', 'Manuals, documents, warranty notes, and serial details', 'Parts, fuel, and filter inventory connections', 'Operations Maintenance report'],
+  },
+  {
+    title: 'Property, Fences & Water',
+    items: ['Fences, gates, barns, sheds, roads, and outbuildings', 'Wells, pumps, irrigation, tanks, and water systems', 'Storm damage and property repair logs', 'Property Handoff report for caretakers and seasonal context'],
+  },
+  {
+    title: 'Inventory',
+    items: ['Feed, hay, bedding, seeds, garden materials, medicine, vaccines, canning supplies, fuel, propane, tools, parts, building materials, and emergency supplies', 'Low stock, out of stock, expired, and expiring-soon visibility', 'Storage locations, quantities, units, costs, vendors, and Home alerts'],
+  },
+  {
+    title: 'Food Preservation',
+    items: ['Canning, freezing, dehydrating, fermenting, pantry, and freezer notes', 'Batch dates, harvest source notes, jars, lids, and storage details', 'Inventory tie-ins for preservation materials and stored goods'],
+  },
+  {
+    title: 'Off-grid & Emergency Prep',
+    items: ['Generators, solar, batteries, propane, backup water, fuel, first aid, documents, and readiness checks', 'Expiration checks for stored water, food, fuel, medications, and emergency supplies', 'Seasonal readiness reminders before storms, wildfire season, winter, travel, or power outages'],
+  },
+  {
+    title: 'Medical Records',
+    items: ['Vaccination, medication, treatment, deworming, illness or injury, vet visit, lab test, and health certificate records', 'Next-due reminders and withdrawal tracking or warnings when applicable'],
     note: 'Homestead Keeper keeps records. It does not provide veterinary advice.',
   },
   {
     title: 'Breeding & Pedigree',
-    items: ['Breeding records', 'Due dates', 'Incubation and lockdown', 'Breeding groups', 'Additional dams or hens', 'Birth or hatch completion', 'Offspring creation', 'Sire and dam links', 'Three-generation pedigree', 'Tattoo and registration fields', 'Off-farm parent names'],
+    items: ['Breeding records, due dates, incubation, lockdown, breeding groups, and additional dams or hens', 'Birth or hatch completion and offspring creation', 'Sire and dam links, three-generation pedigree, tattoo, registration, and off-farm parent names'],
   },
   {
     title: 'Production',
-    items: ['Eggs', 'Milk', 'Honey', 'Wool and fiber', 'Meat', 'Wax', 'Custom products', 'Stored, sold, used, fed, or discarded destinations', 'Sale amount and buyer', 'Inventory link', 'Photo attachment', 'Production reports', 'CSV export', 'Withdrawal warning when applicable'],
-  },
-  {
-    title: 'Inventory',
-    items: ['Feed, hay, and bedding', 'Animal health items', 'Seeds and garden materials', 'Canning supplies', 'Fuel and propane', 'Emergency supplies', 'Tools and parts', 'Building materials', 'Quantity and unit', 'Low-stock thresholds', 'Expiration dates', 'Storage locations', 'Purchase, cost, and vendor notes', 'Home alerts'],
+    items: ['Eggs, milk, honey, wool and fiber, meat, wax, and custom products', 'Stored, sold, used, fed, or discarded destinations', 'Sale amount, buyer, inventory link, photo attachment, withdrawal warnings, reports, and CSV export'],
   },
   {
     title: 'Financial Records',
-    items: ['Income', 'Expenses', 'Categories', 'Vendor or customer', 'Linked animal, item, or project when applicable', 'Simple monthly and yearly summaries', 'CSV export'],
+    items: ['Income, expenses, categories, vendors, and customers', 'Links to animals, inventory items, equipment, or projects when applicable', 'Simple monthly and yearly summaries plus CSV export'],
     note: 'Useful for homestead records, but not a full accounting or tax software replacement.',
   },
   {
     title: 'Calendar',
-    items: ['All', 'Care', 'Animals', 'Breeding', 'Production', 'Garden', 'Equipment', 'Inventory', 'Medical reminders through care', 'Day and week views', 'Context titles'],
+    items: ['All, Care, Animals, Breeding, Production, Garden, Equipment, Inventory, and seasonal views', 'Medical reminders through care records', 'Day and week views with context titles for the work ahead'],
   },
   {
     title: 'Reports & Exports',
-    items: ['In-app reports', 'PDF reports', 'CSV exports', 'Apple Calendar export', 'QR labels', 'Property Handoff', 'Garden Season', 'Animal Care', 'Inventory', 'Production', 'Financial and cost summaries'],
+    items: ['Homestead Summary, Logbook / History, Garden Season, Animal Care, Inventory, Production, Financial / Cost, Operations Maintenance, and Property Handoff reports', 'PDF reports, CSV exports, Apple Calendar export where supported, and QR labels with Pro'],
   },
   {
     title: 'Data, Backup & Privacy',
-    items: ['Local-first records', 'Backup and restore with Pro', 'User-controlled backups', 'No account required', 'No cloud required for day-to-day use'],
+    items: ['Local-first records and offline daily use', 'No account required and no Homestead Keeper cloud required for day-to-day work', 'Backup and restore with Pro using user-controlled backup destinations'],
   },
 ];
 ---
 
 <Layout
-  title="Features | Homestead Keeper"
-  description="Explore Homestead Keeper features for daily chores, animals, medical records, breeding, pedigree, production, inventory, finances, calendar, reports, exports, backups, and local-first privacy."
+  title="Features | Homestead Keeper Whole-Homestead Management App"
+  description="Explore Homestead Keeper features for animals, garden harvest tracking, beekeeping records, orchard care tracking, farm inventory, equipment maintenance, property records, food preservation, emergency prep, calendar, reports, and local-first privacy."
   path="/features"
 >
   <section class="page-hero">
     <p class="eyebrow">Feature overview</p>
-    <h1>A practical homestead record keeping app</h1>
-    <p class="lede">Homestead Keeper helps serious backyard homesteaders, hobby farmers, rural property owners, and small mixed-animal operations keep local-first records without turning the homestead into enterprise farm software.</p>
+    <h1>A practical whole-homestead management app</h1>
+    <p class="lede">Homestead Keeper helps backyard farms, hobby farms, mixed homesteads, and rural properties keep local-first records across animals, gardens, bees, orchards, equipment, inventory, preservation, emergency prep, calendar work, and reports.</p>
   </section>
 
   <section class="section">
@@ -84,7 +112,7 @@ const featureGroups = [
     <h2>Explore core workflows</h2>
     <InternalLinkCards links={[
       { title: 'Animals', href: '/features/animals', summary: 'Animal profiles, care, medical records, breeding, pedigree, production, documents, and reports.' },
-      { title: 'Inventory', href: '/features/inventory', summary: 'Low-stock alerts, expiration dates, storage locations, vendor notes, and Home alerts.' },
+      { title: 'Inventory', href: '/features/inventory', summary: 'Low-stock alerts, expiration dates, storage locations, costs, vendors, and Home alerts.' },
       { title: 'Reports', href: '/features/reports', summary: 'Homestead Summary, Logbook, Property Handoff, PDF reports, CSV exports, and QR labels.' },
     ]} />
   </section>

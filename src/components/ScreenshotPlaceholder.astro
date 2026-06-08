@@ -15,14 +15,14 @@ const publicFile = src ? fileURLToPath(new URL(`../../public/${src.replace(/^\//
 const hasImage = Boolean(publicFile && existsSync(publicFile));
 ---
 
-<figure class="screenshot-placeholder" style={`--aspect:${aspect}`}>
+<figure class="screenshot-frame" style={`--aspect:${aspect}`}>
   {
     hasImage && assetSrc ? (
       <img src={assetSrc} alt={`${label} screenshot`} loading="lazy" />
     ) : (
-      <div role="img" aria-label={`Screenshot placeholder: ${label}`}>
+      <div role="img" aria-label={`Planned app screen: ${label}`}>
         <span>{label}</span>
-        <small>Screenshot placeholder</small>
+        <small>Screen preview coming soon</small>
       </div>
     )
   }

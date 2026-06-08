@@ -5,9 +5,9 @@ export const site = {
   supportEmail: 'support@homesteadkeeper.com',
   appStoreLabel: 'Coming soon to the App Store',
   // TODO: Replace with final App Store URL once the listing is live.
-  appStoreUrl: 'https://apps.apple.com/app/homestead-keeper-placeholder',
+  appStoreUrl: '#app-store-coming-soon',
   description:
-    'A local-first homestead record keeping app for animals, gardens, inventory, reminders, reports, and rural property care on iPhone, iPad, and Mac.',
+    'A local-first homestead management app for animals, gardens, bees, orchards, equipment, inventory, reminders, reports, and rural property care on iPhone, iPad, and Mac.',
 };
 
 export const navItems = [
@@ -25,9 +25,19 @@ export const featureLinks = [
     summary: 'Profiles, flock checks, egg counts, health logs, weight trends, and animal care reports.',
   },
   {
-    title: 'Garden & Orchard',
+    title: 'Garden',
     href: '/features/garden',
-    summary: 'Planting records, harvest totals, crop notes, seasonal reminders, and garden reports.',
+    summary: 'Beds, crops, varieties, planting dates, watering, pest notes, harvest logs, and garden reports.',
+  },
+  {
+    title: 'Bees & Orchard',
+    href: '/features/garden',
+    summary: 'Hive inspections, queen checks, honey harvests, fruit trees, berry patches, pruning, and seasonal care.',
+  },
+  {
+    title: 'Equipment & Property',
+    href: '/features',
+    summary: 'Repair logs, service reminders, manuals, parts, fences, wells, pumps, water systems, and property repairs.',
   },
   {
     title: 'Inventory',
@@ -53,10 +63,11 @@ export const featureLinks = [
 
 export const footerFeatureLinks = [
   { title: 'Animals', href: '/features/animals' },
+  { title: 'Garden', href: '/features/garden' },
+  { title: 'Bees & Orchard', href: '/features/garden' },
+  { title: 'Equipment & Property', href: '/features' },
   { title: 'Inventory', href: '/features/inventory' },
-  { title: 'Reminders & Calendar', href: '/features/reminders' },
   { title: 'Reports', href: '/features/reports' },
-  { title: 'QR Codes', href: '/features/qr-codes' },
 ];
 
 export const proFeatures = [
