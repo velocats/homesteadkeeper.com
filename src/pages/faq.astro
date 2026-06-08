@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTA from '../components/CTA.astro';
+import FAQItem from '../components/FAQItem.astro';
+import { faqs, site } from '../data/site';
+
+const title = 'FAQ | Homestead Keeper';
+const description = 'Answers about Homestead Keeper, including local-first records, iPhone/iPad/Mac support, chickens, egg counts, gardens, planting schedules, equipment maintenance, inventory, reports, demo data, and farm fit.';
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(([question, answer]) => ({
+    '@type': 'Question',
+    name: question,
+    acceptedAnswer: { '@type': 'Answer', text: answer },
+  })),
+};
+---
+
+<Layout title={title} description={description} path="/faq" jsonLd={jsonLd}>
+  <section class="page-hero narrow">
+    <p class="eyebrow">FAQ</p>
+    <h1>Common questions about Homestead Keeper.</h1>
+    <p class="lede">A plain-language guide to what the app is for, what it tracks, and what it is not trying to become.</p>
+  </section>
+
+  <section class="section faq-list" aria-label="Frequently asked questions">
+    {faqs.map(([question, answer]) => <FAQItem question={question} answer={answer} />)}
+  </section>
+
+  <CTA title="Still have a question?" body="Send a practical workflow question, bug report, or feature request and include the homestead record you are trying to keep." primaryLabel={`Email ${site.supportEmail}`} primaryHref={`mailto:${site.supportEmail}`} secondaryLabel="View features" secondaryHref="/features" />
+</Layout>

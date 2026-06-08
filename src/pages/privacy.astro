@@ -1,38 +1,44 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import CTA from '../components/CTA.astro';
 
-const promises = [
-  ['No account required', 'Homestead Keeper does not require a hosted login to keep homestead records.'],
-  ['Local device storage', 'Day-to-day app data is stored locally on your device.'],
-  ['No sale of user data', 'Homestead Keeper does not sell user data.'],
-  ['No third-party ad tracking', 'The app is not designed around ad networks, behavioral profiles, or third-party advertising trackers.'],
-  ['User-controlled backups', 'Backup and restore tools are controlled by the user, and backup destinations should be chosen and protected by the user.'],
-  ['Clear analytics disclosure', 'If analytics are ever added, they should be disclosed clearly before they are used.'],
+const title = 'Privacy and Local-First Design | Homestead Keeper';
+const description = 'Homestead Keeper is designed as a local-first homestead app with no required web dashboard, no required hosted account for day-to-day records, user-owned records, and no unnecessary cloud complexity.';
+const principles = [
+  ['Local-first records', 'Day-to-day homestead records are designed to live on your Apple device instead of depending on a required Homestead Keeper cloud dashboard.'],
+  ['No required web account', 'The app is intended to be useful without forcing a hosted login for normal record keeping.'],
+  ['User-owned records', 'Your animal, garden, equipment, inventory, property, and report history should stay under your control.'],
+  ['No unnecessary cloud complexity', 'The product direction favors practical local records, backups, and exports over heavy cloud administration.'],
+  ['No sale of user data', 'Homestead Keeper is not designed around selling user data or behavioral ad profiles.'],
+  ['No invented sync promises', 'Any future sync, sharing, or cloud behavior should be described only when it actually exists in the released app.'],
 ];
 ---
 
-<Layout title="Privacy | Homestead Keeper" description="Homestead Keeper is a local-first homestead app with no account required, local device storage, no sale of user data, no third-party ad tracking, and user-controlled backups." path="/privacy">
-  <section class="page-hero">
+<Layout title={title} description={description} path="/privacy">
+  <section class="page-hero narrow">
     <p class="eyebrow">Privacy</p>
-    <h1>Local-first by design</h1>
-    <p class="lede">Homestead Keeper is built for people who want useful animal, garden, inventory, property, and rural care records without a required cloud account.</p>
+    <h1>Local-first by design.</h1>
+    <p class="lede">Homestead Keeper is built for people who want useful animal, garden, inventory, equipment, property, and seasonal records without a required cloud dashboard.</p>
   </section>
 
   <section class="section">
-    <div class="privacy-grid">
-      {promises.map(([title, body]) => (
-        <article class="privacy-card">
-          <h2>{title}</h2>
-          <p>{body}</p>
-        </article>
-      ))}
+    <div class="card-grid">
+      {principles.map(([title, body]) => <article class="card"><h3>{title}</h3><p>{body}</p></article>)}
     </div>
   </section>
 
-  <section class="section rich-copy">
-    <p class="eyebrow">Plain language</p>
-    <h2>What this means</h2>
-    <p>Your records should remain useful in barns, gardens, shops, fields, and other places where signal is weak. Homestead Keeper does not require a Homestead Keeper cloud service for normal day-to-day record keeping.</p>
-    <p>Local-first does not mean nothing can ever go wrong. Protect your device, make backups before deleting the app or replacing a device, and keep backup files in storage you trust.</p>
+  <section class="split-section soft-panel">
+    <div>
+      <p class="eyebrow">Plain language</p>
+      <h2>Your records should still be useful where signal is weak.</h2>
+      <p>Homesteads include barns, shops, gardens, fields, pump houses, sheds, and rural corners where internet service is not always reliable. Homestead Keeper is designed around practical record keeping first.</p>
+      <p>Local-first does not mean backups are optional. Before deleting the app, wiping a device, or replacing hardware, make sure you have a backup or export path that matches your app version.</p>
+    </div>
+    <div class="callout-card">
+      <h3>About family sync</h3>
+      <p>Do not assume shared family sync is available unless your installed version specifically says it is. The website should avoid promising cloud behavior that has not shipped.</p>
+    </div>
   </section>
+
+  <CTA primaryLabel="Read FAQ" primaryHref="/faq" secondaryLabel="View features" secondaryHref="/features" />
 </Layout>

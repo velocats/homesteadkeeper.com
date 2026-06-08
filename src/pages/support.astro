@@ -3,48 +3,25 @@ import Layout from '../layouts/Layout.astro';
 import CTA from '../components/CTA.astro';
 import { site } from '../data/site';
 
-const faqs = [
-  ['Does it work offline?', 'Yes. Homestead Keeper is local-first and works offline for day-to-day records, reminders, QR scanning, calendar review, and reports.'],
-  ['Where is my data stored?', 'Your records are stored locally on your device. No Homestead Keeper account or cloud service is required for normal use.'],
-  ['Do I need an account?', 'No. Homestead Keeper is designed so you can start keeping records without creating an account.'],
-  ['Can I use it on iPhone, iPad, and Mac?', 'Homestead Keeper is built for iPhone, iPad, and Mac. Availability may depend on App Store release status and Apple platform support.'],
-  ['What happens if I delete the app?', 'Deleting the app can remove local data. Make a backup before deleting the app, replacing a device, or wiping a device.'],
-  ['How do I transfer data?', 'Use Apple device backup tools or Homestead Keeper Pro backup and restore tools available in your version of the app.'],
-  ['Does it sync between family members?', 'Do not assume shared sync is available. For now, plan around local records, backups, and transfer tools unless sync is confirmed in your app version.'],
-];
+const title = 'Support | Homestead Keeper';
+const description = 'Contact Homestead Keeper support for help, bug reports, feature requests, backup questions, and local-first homestead app questions.';
 ---
 
-<Layout title="Support | Homestead Keeper" description="Email Homestead Keeper support for help, bug reports, feature requests, backup and restore questions, and answers about offline local-first records." path="/support">
-  <section class="page-hero">
+<Layout title={title} description={description} path="/support">
+  <section class="page-hero narrow">
     <p class="eyebrow">Support</p>
     <h1>Need help with Homestead Keeper?</h1>
-    <p class="lede">For support, bug reports, feature requests, backup help, or questions about local-first records, email the support address below.</p>
+    <p class="lede">For support, bug reports, feature requests, backup questions, or practical workflow feedback, email the support address below.</p>
     <p><a class="button primary" href={`mailto:${site.supportEmail}`}>Email {site.supportEmail}</a></p>
   </section>
 
   <section class="section">
-    <p class="eyebrow">How to reach us</p>
-    <h2>Send the details that help</h2>
-    <div class="report-grid">
-      <article class="report-card"><h3>Email support</h3><p>Use <a href={`mailto:${site.supportEmail}`}>{site.supportEmail}</a> for app questions and account-free setup help.</p></article>
-      <article class="report-card"><h3>Bug reports</h3><p>Include your device, app version, what you expected, and what happened.</p></article>
-      <article class="report-card"><h3>Feature requests</h3><p>Describe the homestead workflow you are trying to support and what record you need to keep.</p></article>
-      <article class="report-card"><h3>Backup and restore help</h3><p>Ask before deleting the app, wiping a device, or moving important records.</p></article>
+    <div class="card-grid">
+      <article class="card"><h3>Bug reports</h3><p>Include your device, app version, what you expected, and what happened.</p></article>
+      <article class="card"><h3>Feature requests</h3><p>Describe the homestead workflow you are trying to support and the record you need to keep.</p></article>
+      <article class="card"><h3>Backup help</h3><p>Ask before deleting the app, wiping a device, or moving important local records.</p></article>
     </div>
   </section>
 
-  <section class="section">
-    <p class="eyebrow">FAQ</p>
-    <h2>Common questions</h2>
-    <div class="report-grid">
-      {faqs.map(([question, answer]) => (
-        <article class="report-card">
-          <h3>{question}</h3>
-          <p>{answer}</p>
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <CTA primaryLabel="Email support" primaryHref={`mailto:${site.supportEmail}`} secondaryLabel="View pricing" secondaryHref="/pricing" />
+  <CTA primaryLabel="Read FAQ" primaryHref="/faq" secondaryLabel="View features" secondaryHref="/features" />
 </Layout>

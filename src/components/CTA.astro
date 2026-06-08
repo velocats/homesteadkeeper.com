@@ -1,33 +1,23 @@
 ---
-import { site } from '../data/site';
 import { sitePath } from '../utils/paths';
-
-interface Props {
-  title?: string;
-  text?: string;
-  primaryLabel?: string;
-  primaryHref?: string;
-  secondaryLabel?: string;
-  secondaryHref?: string;
-}
-
+interface Props { title?: string; body?: string; primaryLabel?: string; primaryHref?: string; secondaryLabel?: string; secondaryHref?: string; }
 const {
-  title = 'Ready to get organized?',
-  text = 'Try the Free plan with real records, then upgrade when your homestead needs the long-term toolkit.',
-  primaryLabel = 'Try Homestead Keeper',
-  primaryHref = site.appStoreUrl,
-  secondaryLabel = 'View pricing',
+  title = 'Ready to bring your records together?',
+  body = 'Homestead Keeper is being built for people who need calm, practical records for animals, gardens, equipment, inventory, property systems, and seasonal work.',
+  primaryLabel = 'View features',
+  primaryHref = '/features',
+  secondaryLabel = 'See pricing',
   secondaryHref = '/pricing',
 } = Astro.props;
 ---
-
-<section class="cta-band">
+<section class="cta-band" aria-labelledby="cta-title">
   <div>
-    <h2>{title}</h2>
-    <p>{text}</p>
+    <p class="eyebrow">Homestead Keeper</p>
+    <h2 id="cta-title">{title}</h2>
+    <p>{body}</p>
   </div>
   <div class="button-row">
-    <a class="button primary" href={primaryHref}>{primaryLabel}</a>
+    <a class="button primary" href={sitePath(primaryHref)}>{primaryLabel}</a>
     <a class="button secondary" href={sitePath(secondaryHref)}>{secondaryLabel}</a>
   </div>
 </section>

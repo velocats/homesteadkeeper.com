@@ -1,0 +1,12 @@
+---
+interface Props { name: string; price: string; note: string; features: readonly string[]; highlighted?: boolean; }
+const { name, price, note, features, highlighted = false } = Astro.props;
+---
+<article class:list={["pricing-card", highlighted && "highlighted"]}>
+  <p class="plan-name">{name}</p>
+  <h2>{price}</h2>
+  <p>{note}</p>
+  <ul class="check-list">
+    {features.map((feature) => <li>{feature}</li>)}
+  </ul>
+</article>

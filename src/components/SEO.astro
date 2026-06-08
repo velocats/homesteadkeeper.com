@@ -9,10 +9,9 @@ interface Props {
   jsonLd?: Record<string, unknown>;
 }
 
-const { title, description, path = '/', image = 'assets/homestead-keeper-logo.png', jsonLd } = Astro.props;
-const imagePath = image.startsWith('/') ? image.slice(1) : image;
+const { title, description, path = '/', image = '/assets/homestead-keeper-logo.png', jsonLd } = Astro.props;
 const canonical = new URL(path, site.url).toString();
-const imageUrl = new URL(imagePath, `${site.url}/`).toString();
+const imageUrl = new URL(image.startsWith('/') ? image.slice(1) : image, `${site.url}/`).toString();
 ---
 
 <title>{title}</title>

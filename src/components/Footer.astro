@@ -1,36 +1,40 @@
 ---
-import { footerFeatureLinks, site } from '../data/site';
-import { sitePath } from '../utils/paths';
+import { site } from '../data/site';
+import { assetPath, sitePath } from '../utils/paths';
 
-const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
-const logoSrc = `${baseUrl}assets/homestead-keeper-logo.png`;
+const footerLinks = [
+  ['Features', '/features'],
+  ['Pricing', '/pricing'],
+  ['FAQ', '/faq'],
+  ['Privacy', '/privacy'],
+  ['Support', '/support'],
+];
+const featureLinks = ['Animals', 'Garden', 'Inventory', 'Equipment', 'Reports', 'Places'];
 ---
 
 <footer class="site-footer">
   <div class="footer-grid">
-    <div>
+    <section aria-label="About Homestead Keeper">
       <a class="brand footer-brand" href={sitePath('/')}>
-        <img src={logoSrc} alt="Homestead Keeper logo" width="38" height="38" />
+        <img src={assetPath('assets/homestead-keeper-logo.png')} alt="" width="40" height="40" />
         <span>{site.name}</span>
       </a>
       <p>{site.tagline}</p>
-      <p>Local-first. No account. No subscription required to get started.</p>
-    </div>
-    <div>
-      <h2>Features</h2>
-      {footerFeatureLinks.map((item) => <a href={sitePath(item.href)}>{item.title}</a>)}
-    </div>
-    <div>
-      <h2>Company</h2>
-      <a href={sitePath('/pricing')}>Pricing</a>
-      <a href={sitePath('/playbook')}>Playbook</a>
-      <a href={sitePath('/support')}>Support</a>
-      <a href={sitePath('/privacy')}>Privacy</a>
-    </div>
-    <div>
+      <p>A local-first homestead tracker for Apple devices — practical records without a required cloud dashboard.</p>
+    </section>
+    <section>
+      <h2>Product</h2>
+      {footerLinks.map(([label, href]) => <a href={sitePath(href)}>{label}</a>)}
+    </section>
+    <section>
+      <h2>Tracks</h2>
+      {featureLinks.map((label) => <a href={sitePath('/features')}>{label}</a>)}
+    </section>
+    <section>
       <h2>Contact</h2>
       <a href={`mailto:${site.supportEmail}`}>{site.supportEmail}</a>
-    </div>
+      <p class="fine-print">App Store listing and final pricing are still in progress.</p>
+    </section>
   </div>
   <p class="copyright">© {new Date().getFullYear()} Homestead Keeper. All rights reserved.</p>
 </footer>

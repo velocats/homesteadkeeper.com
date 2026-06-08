@@ -1,0 +1,11 @@
+---
+import { assetPath } from '../utils/paths';
+interface Props { src?: string; alt?: string; caption?: string; }
+const { src = 'assets/homepage-screenshot-clean.png', alt = 'Homestead Keeper dashboard showing chores, egg count, inventory actions, and items needing attention.', caption = 'Dashboard, quick logs, reminders, and records in one calm place.' } = Astro.props;
+---
+<figure class="screenshot-frame">
+  <div class="device-shell">
+    <img src={assetPath(src)} alt={alt} loading="lazy" />
+  </div>
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>

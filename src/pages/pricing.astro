@@ -1,52 +1,38 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import PricingCards from '../components/PricingCards.astro';
-import ComparisonTable from '../components/ComparisonTable.astro';
 import CTA from '../components/CTA.astro';
-import { site } from '../data/site';
+import PricingCard from '../components/PricingCard.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import { pricingTiers } from '../data/site';
 
-const description = 'Homestead Keeper pricing: Free for up to 5 real assets, with planned/current Pro monthly, yearly, and lifetime options for unlimited assets, exports, backups, QR labels, documents, and advanced schedules.';
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'SoftwareApplication',
-  name: site.name,
-  applicationCategory: 'LifestyleApplication',
-  operatingSystem: 'iOS, iPadOS, macOS',
-  offers: [
-    { '@type': 'Offer', name: 'Free', price: '0', priceCurrency: 'USD' },
-    { '@type': 'Offer', name: 'Pro Monthly', price: '1.99', priceCurrency: 'USD' },
-    { '@type': 'Offer', name: 'Pro Yearly', price: '14.99', priceCurrency: 'USD' },
-    { '@type': 'Offer', name: 'Pro Lifetime', price: '29.99', priceCurrency: 'USD' },
-  ],
-};
+const title = 'Pricing | Homestead Keeper';
+const description = 'Homestead Keeper pricing will be simple and honest, with a free starter option and a full unlock for whole-homestead records. Final App Store pricing is still being finalized.';
 ---
 
-<Layout title="Pricing | Homestead Keeper" description={description} path="/pricing" jsonLd={jsonLd}>
-  <section class="page-hero">
+<Layout title={title} description={description} path="/pricing">
+  <section class="page-hero narrow">
     <p class="eyebrow">Pricing</p>
-    <h1>Free to try, Pro for long-term records</h1>
-    <p class="lede">Free is for trying Homestead Keeper with real records. Pro is for long-term homestead record keeping across unlimited animals, inventory, property, reports, exports, backups, documents, QR labels, and advanced schedules.</p>
+    <h1>Simple pricing for practical homestead records.</h1>
+    <p class="lede">Final App Store pricing is not locked yet. This page keeps the structure clear without inventing prices before launch.</p>
   </section>
 
   <section class="section">
-    <PricingCards />
-    <p class="pricing-note">Prices shown are planned/current and may vary by App Store region.</p>
-  </section>
-
-  <section class="section rich-copy">
-    <p class="eyebrow">Choosing a plan</p>
-    <h2>Pick the way you prefer to keep records</h2>
-    <div class="report-grid">
-      <article class="report-card"><h3>Free</h3><p>Best for testing the app with up to 5 real assets, unlimited logbook entries and reminders, calendar and report viewing, Cedar Ridge demo data, and QR code viewing.</p></article>
-      <article class="report-card"><h3>Pro Monthly</h3><p>Good when you want the full toolkit without a long commitment.</p></article>
-      <article class="report-card"><h3>Pro Yearly</h3><p>Good for ongoing homestead records at the lowest subscription price.</p></article>
-      <article class="report-card"><h3>Pro Lifetime</h3><p>Good for people who prefer a one-time purchase for a long-lived homestead logbook.</p></article>
+    <div class="pricing-grid">
+      {pricingTiers.map((tier) => <PricingCard {...tier} />)}
     </div>
   </section>
 
-  <section class="section">
-    <ComparisonTable />
+  <section class="split-section soft-panel">
+    <div>
+      <p class="eyebrow">Honest scope</p>
+      <h2>Pay for useful records, not cloud overhead.</h2>
+      <p>Homestead Keeper is not being positioned as a farm ERP suite, enterprise dashboard, or accounting system. It is a local-first app for keeping better records of the work already happening around a homestead.</p>
+    </div>
+    <div class="callout-card">
+      <h3>Before launch</h3>
+      <p>Replace the placeholder pricing with exact App Store pricing only when the product decision is final. Avoid promising sync, cloud sharing, or business features unless they exist in the released app.</p>
+    </div>
   </section>
 
-  <CTA />
+  <CTA primaryLabel="Compare features" primaryHref="/features" secondaryLabel="Read FAQ" secondaryHref="/faq" />
 </Layout>
