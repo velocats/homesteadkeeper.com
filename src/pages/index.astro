@@ -4,14 +4,13 @@ import Hero from '../components/Hero.astro';
 import CTA from '../components/CTA.astro';
 import FeatureCards from '../components/FeatureCards.astro';
 import ScreenshotPlaceholder from '../components/ScreenshotPlaceholder.astro';
-import TestimonialPlaceholders from '../components/TestimonialPlaceholders.astro';
 import PlatformBadges from '../components/PlatformBadges.astro';
 import InternalLinkCards from '../components/InternalLinkCards.astro';
-import { featureLinks, site } from '../data/site';
+import { site } from '../data/site';
 
 const title = 'Homestead Keeper | Local-First Homestead Management App';
 const description =
-  'Track animals, harvests, repairs, supplies, reminders, reports, and QR labels with Homestead Keeper, a local-first homesteading app for iPhone, iPad, and Mac.';
+  'Keep your homestead running with local-first records, reminders, inventory, reports, animal care, garden harvest tracking, and rural property management for iPhone, iPad, and Mac.';
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
@@ -21,123 +20,135 @@ const jsonLd = {
   description,
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
 };
-const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
-const homepageScreenshotSrc = `${baseUrl}assets/homepage-screenshot.png`;
+
+const managementCards = [
+  { title: 'Animals', href: '/features/animals', summary: 'Profiles, groups, care reminders, weights, medical records, breeding, pedigree, and production.' },
+  { title: 'Garden & Orchard', href: '/features/garden', summary: 'Planting, harvests, crop notes, seasonal reminders, orchard work, and garden season reports.' },
+  { title: 'Inventory', href: '/features/inventory', summary: 'Feed, hay, bedding, medications, seeds, fuel, low-stock alerts, expirations, and storage locations.' },
+  { title: 'Care Reminders', href: '/features/reminders', summary: 'Recurring chores, custom schedules, overdue work, snoozing, and completion history.' },
+  { title: 'Medical Records', href: '/features/animals', summary: 'Vaccination, treatment, deworming, vet visit, lab, and health certificate record keeping.' },
+  { title: 'Breeding & Pedigree', href: '/features/animals', summary: 'Breeding records, due dates, hatch or birth completion, offspring creation, and pedigree links.' },
+  { title: 'Production', href: '/features/reports', summary: 'Eggs, milk, honey, fiber, meat, wax, custom products, destinations, sales, and CSV exports.' },
+  { title: 'Equipment & Property', href: '/features', summary: 'Maintenance logs for tools, pumps, gates, vehicles, buildings, systems, and rural property care.' },
+  { title: 'Finances', href: '/features', summary: 'Simple income and expense records with categories, vendors, customers, summaries, and exports.' },
+  { title: 'Reports & Exports', href: '/features/reports', summary: 'Homestead summaries, handoff reports, PDF exports, CSV files, calendar exports, and QR labels.' },
+];
+
+const screenshotPaths = {
+  home: 'assets/screenshots/home-dashboard.png',
+  animal: 'assets/screenshots/animal-detail.png',
+  inventory: 'assets/screenshots/inventory.png',
+  reports: 'assets/screenshots/reports.png',
+  calendar: 'assets/screenshots/calendar.png',
+  settings: 'assets/screenshots/settings.png',
+};
 ---
 
 <Layout title={title} description={description} path="/" jsonLd={jsonLd}>
   <Hero
-    eyebrow={site.tagline}
-    title="Track every animal, harvest, and repair in one place."
-    text="Homestead Keeper is a local-first record-keeping app for homesteaders, hobby farmers, and rural property owners. No account. No cloud. Your data stays on your device."
+    eyebrow="Local-first homestead logbook"
+    title="Keep your homestead running."
+    text="Track animals, chores, inventory, production, medical records, breeding, expenses, and rural property care in one local-first app for iPhone, iPad, and Mac."
+    ctaLabel="Try Homestead Keeper"
     ctaHref={site.appStoreUrl}
   >
-    <figure class="app-screenshot-frame">
-      <a class="screenshot-preview" href={homepageScreenshotSrc} target="_blank" rel="noopener" data-open-homepage-screenshot aria-label="Open full-size Homestead Keeper home screen screenshot">
-        <img src={homepageScreenshotSrc} alt="Homestead Keeper app home screen screenshot showing chores, field log shortcuts, reminders, and supply actions." />
-      </a>
-      <figcaption>Home screen on iPad</figcaption>
-    </figure>
+    <!-- TODO: Replace with /public/assets/screenshots/home-dashboard.png when the final Home screenshot is ready. -->
+    <ScreenshotPlaceholder label="Home dashboard" src={screenshotPaths.home} aspect="4 / 3" />
   </Hero>
-
-  <dialog class="screenshot-dialog" data-homepage-screenshot-dialog aria-label="Full-size Homestead Keeper home screen screenshot">
-    <div class="screenshot-dialog-header">
-      <p>Home screen on iPad</p>
-      <button type="button" data-close-homepage-screenshot aria-label="Close full-size screenshot">Close</button>
-    </div>
-    <div class="screenshot-dialog-scroll">
-      <img src={homepageScreenshotSrc} alt="Full-size Homestead Keeper app home screen screenshot showing chores, field log shortcuts, reminders, and supply actions." width="2048" height="2732" />
-    </div>
-  </dialog>
-
-  <script>
-    const openButton = document.querySelector('[data-open-homepage-screenshot]');
-    const dialog = document.querySelector('[data-homepage-screenshot-dialog]');
-    const closeButton = document.querySelector('[data-close-homepage-screenshot]');
-
-    if (openButton instanceof HTMLAnchorElement && dialog instanceof HTMLDialogElement && typeof dialog.showModal === 'function') {
-      openButton.addEventListener('click', (event) => {
-        event.preventDefault();
-        dialog.showModal();
-      });
-    }
-
-    if (closeButton instanceof HTMLButtonElement && dialog instanceof HTMLDialogElement) {
-      closeButton.addEventListener('click', () => dialog.close());
-    }
-
-    if (dialog instanceof HTMLDialogElement) {
-      dialog.addEventListener('click', (event) => {
-        if (event.target === dialog) {
-          dialog.close();
-        }
-      });
-    }
-  </script>
 
   <PlatformBadges />
 
   <section class="section">
-    <p class="eyebrow">Homestead management app</p>
-    <h2>Everything that keeps the place running</h2>
+    <div class="trust-row" aria-label="Product principles">
+      <span>No account required</span>
+      <span>Works offline</span>
+      <span>Local-first records</span>
+      <span>iPhone, iPad, and Mac</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="eyebrow">Practical homestead management</p>
+    <h2>What Homestead Keeper helps you manage</h2>
     <p class="section-intro">
-      Homestead Keeper brings animals, garden beds, orchard notes, supplies, repairs, seasonal chores, and rural property records into one practical homestead logbook app. It is built for real use: quick to open, easy to scan, and useful even when the internet is down.
+      Homestead Keeper is the practical operating logbook for a real homestead: fast enough for daily capture, detailed enough for long-term records, and calm enough to use from the barn, garden, shop, field, or kitchen table.
     </p>
-    <FeatureCards cards={featureLinks} />
+    <FeatureCards cards={managementCards} />
   </section>
 
   <section class="section">
-    <p class="eyebrow">Privacy promise</p>
-    <h2>Your data never leaves your device</h2>
-    <div class="privacy-grid">
-      <article class="privacy-card"><h3>No account required</h3><p>Start keeping records without creating a login, joining a cloud platform, or handing over farm details.</p></article>
-      <article class="privacy-card"><h3>No cloud service required</h3><p>Homestead Keeper is an offline farm app with no cloud dependency for day-to-day use.</p></article>
-      <article class="privacy-card"><h3>User-controlled backups</h3><p>Back up to iCloud, AirDrop, external storage, or any storage you choose.</p></article>
-      <article class="privacy-card"><h3>Works completely offline</h3><p>Open records in the barn, garden, coop, shop, or field, even without a signal.</p></article>
+    <p class="eyebrow">Daily workflow</p>
+    <h2>Built around the daily homestead workflow</h2>
+    <p class="section-intro">Open Home to see what needs attention, complete or snooze chores, quick-log what happened, track production, watch inventory alerts, then review Calendar and Reports when planning the week.</p>
+    <div class="workflow-row" aria-label="Homestead Keeper workflow">
+      <span>Home</span>
+      <span>Complete chores</span>
+      <span>Quick Log</span>
+      <span>Calendar</span>
+      <span>Reports</span>
     </div>
   </section>
 
-  <section class="section">
-    <p class="eyebrow">Device previews</p>
-    <h2>Made for the way you work</h2>
-    <div class="card-grid">
-      <ScreenshotPlaceholder label="iPhone Home screen" aspect="9 / 16" />
-      <ScreenshotPlaceholder label="iPad reports view" aspect="4 / 3" />
-      <ScreenshotPlaceholder label="Mac calendar and logbook" aspect="16 / 10" />
+  <section class="split-section">
+    <div>
+      <article class="copy-block">
+        <p class="eyebrow">Animals</p>
+        <h2>Animals are more than a list</h2>
+        <p>Use animal profiles for species and breed details, care reminders, weight history, medical records, vaccination and treatment records, withdrawal warnings, breeding records, offspring creation, pedigree, production entries, photos, and documents.</p>
+      </article>
+      <article class="copy-block">
+        <p class="eyebrow">Inventory</p>
+        <h2>Inventory that actually helps</h2>
+        <p>Track feed, hay, bedding, medications, vaccines, seeds, canning supplies, fuel, emergency supplies, tools, parts, storage locations, cost and vendor notes, low-stock thresholds, and expiration dates.</p>
+      </article>
+      <article class="copy-block">
+        <p class="eyebrow">Reports</p>
+        <h2>Reports for the records you already keep</h2>
+        <p>Review Homestead Summary, Logbook, Garden Season, Animal Care, Inventory, Production, Cost Summary, Operations Maintenance, and Property Handoff reports. Pro adds PDF exports, CSV exports, QR label printing, and Apple Calendar export where supported.</p>
+      </article>
     </div>
+    <aside class="sidebar-stack">
+      <!-- TODO: Replace with /public/assets/screenshots/animal-detail.png. -->
+      <ScreenshotPlaceholder label="Animal Detail" src={screenshotPaths.animal} />
+      <!-- TODO: Replace with /public/assets/screenshots/inventory.png. -->
+      <ScreenshotPlaceholder label="Inventory" src={screenshotPaths.inventory} />
+      <!-- TODO: Replace with /public/assets/screenshots/reports.png. -->
+      <ScreenshotPlaceholder label="Reports" src={screenshotPaths.reports} />
+    </aside>
   </section>
 
   <section class="section">
-    <p class="eyebrow">Placeholder testimonials</p>
-    <h2>Early quote placeholders</h2>
-    <TestimonialPlaceholders />
-  </section>
-
-  <section class="section rich-copy">
-    <p class="eyebrow">Why local-first?</p>
+    <p class="eyebrow">Local-first by design</p>
     <h2>Records should work where the work happens</h2>
-    <p>
-      Rural property management app tools often assume a reliable connection and a cloud account. Homestead Keeper is different. Your flock notes, well pump repairs, planting records, seed inventory, and small farm record keeping live locally, so the app remains useful in a shop, a greenhouse, a field, or a cellar.
-    </p>
-    <p>
-      Local-first also keeps the app calm. There is no dashboard account to manage, no backend to depend on, and no cloud service required to get started. You can still make backups, export records with Pro, and keep a record trail for taxes, insurance, seasonal planning, or your own memory.
-    </p>
+    <div class="privacy-grid">
+      <article class="privacy-card"><h3>No account required</h3><p>Start keeping records without creating a Homestead Keeper login.</p></article>
+      <article class="privacy-card"><h3>No cloud required</h3><p>Day-to-day records, reminders, and reports work without a Homestead Keeper cloud service.</p></article>
+      <article class="privacy-card"><h3>Works offline</h3><p>Use the app in barns, gardens, shops, fields, and rural areas with weak signal.</p></article>
+      <article class="privacy-card"><h3>User-controlled backups</h3><p>Pro backup and restore tools help you protect or move records using storage you choose.</p></article>
+    </div>
   </section>
 
   <section class="section">
-    <p class="eyebrow">Built for real homesteaders</p>
-    <h2>Useful across animals, gardens, systems, and seasons</h2>
+    <p class="eyebrow">Start simple, grow later</p>
+    <h2>Use only the areas you need</h2>
+    <p class="section-intro">Enable the parts of the Homestead Hub you manage and hide areas you do not need without deleting records. Explore Cedar Ridge demo data first, try real records with Free, then use Pro when your homestead needs unlimited assets, exports, backups, QR labels, documents, and advanced schedules.</p>
     <InternalLinkCards links={[
-      { title: 'Livestock and flock care', href: '/features/animals', summary: 'A livestock tracking app for animal profiles, flock checks, health logs, and egg counts.' },
-      { title: 'Garden harvest tracking', href: '/features/garden', summary: 'Track plantings, harvests, crops, soil work, and year-over-year garden results.' },
-      { title: 'Supplies and inventory', href: '/features/supplies', summary: 'Keep feed, bedding, seeds, fuel, filters, and medications stocked.' },
+      { title: 'Explore features', href: '/features', summary: 'See the full feature index for animals, inventory, reports, calendar, finance, production, and property care.' },
+      { title: 'Read the setup playbook', href: '/playbook', summary: 'A practical guide for starting small and building useful records over time.' },
+      { title: 'Compare Free and Pro', href: '/pricing', summary: 'Review the planned/current pricing model and what Pro unlocks.' },
     ]} />
   </section>
 
   <section class="section">
-    <p class="eyebrow">From the Homestead</p>
-    <h2>Blog coming soon</h2>
-    <p class="section-intro">Placeholder for future practical posts about seasonal records, chicken flock management, garden harvest tracking, and offline farm record keeping.</p>
+    <p class="eyebrow">More screens</p>
+    <h2>Ready for real screenshots</h2>
+    <div class="card-grid">
+      <!-- TODO: Replace with /public/assets/screenshots/calendar.png. -->
+      <ScreenshotPlaceholder label="Calendar" src={screenshotPaths.calendar} />
+      <ScreenshotPlaceholder label="Care Reminders" />
+      <!-- TODO: Replace with /public/assets/screenshots/settings.png. -->
+      <ScreenshotPlaceholder label="Settings" src={screenshotPaths.settings} />
+    </div>
   </section>
 
   <CTA />

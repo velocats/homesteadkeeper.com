@@ -1,5 +1,5 @@
 ---
-import { featureLinks, site } from '../data/site';
+import { footerFeatureLinks, site } from '../data/site';
 import { sitePath } from '../utils/paths';
 
 const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
@@ -18,7 +18,7 @@ const logoSrc = `${baseUrl}assets/homestead-keeper-logo.png`;
     </div>
     <div>
       <h2>Features</h2>
-      {featureLinks.map((item) => <a href={sitePath(item.href)}>{item.title}</a>)}
+      {footerFeatureLinks.map((item) => <a href={sitePath(item.href)}>{item.title}</a>)}
     </div>
     <div>
       <h2>Company</h2>
@@ -28,9 +28,7 @@ const logoSrc = `${baseUrl}assets/homestead-keeper-logo.png`;
       <a href={sitePath('/privacy')}>Privacy</a>
     </div>
     <div>
-      <h2>Social</h2>
-      <a href="https://instagram.com/homesteadkeeper" aria-label="Instagram placeholder">Instagram placeholder</a>
-      <a href="https://youtube.com/@homesteadkeeper" aria-label="YouTube placeholder">YouTube placeholder</a>
+      <h2>Contact</h2>
       <a href={`mailto:${site.supportEmail}`}>{site.supportEmail}</a>
     </div>
   </div>

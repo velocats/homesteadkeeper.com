@@ -1,16 +1,30 @@
 ---
+import { existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+
 interface Props {
   label: string;
   aspect?: string;
+  src?: string;
 }
 
-const { label, aspect = '4 / 3' } = Astro.props;
+const { label, aspect = '4 / 3', src } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const assetSrc = src ? `${baseUrl}${src.replace(/^\//, '')}` : undefined;
+const publicFile = src ? fileURLToPath(new URL(`../../public/${src.replace(/^\//, '')}`, import.meta.url)) : undefined;
+const hasImage = Boolean(publicFile && existsSync(publicFile));
 ---
 
 <figure class="screenshot-placeholder" style={`--aspect:${aspect}`}>
-  <div role="img" aria-label={`Screenshot placeholder: ${label}`}>
-    <span>{label}</span>
-    <small>Screenshot placeholder</small>
-  </div>
+  {
+    hasImage && assetSrc ? (
+      <img src={assetSrc} alt={`${label} screenshot`} loading="lazy" />
+    ) : (
+      <div role="img" aria-label={`Screenshot placeholder: ${label}`}>
+        <span>{label}</span>
+        <small>Screenshot placeholder</small>
+      </div>
+    )
+  }
   <figcaption>{label}</figcaption>
 </figure>

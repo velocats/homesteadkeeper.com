@@ -1,14 +1,23 @@
 ---
 import { site } from '../data/site';
+import { sitePath } from '../utils/paths';
 
 interface Props {
   title?: string;
   text?: string;
+  primaryLabel?: string;
+  primaryHref?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
 }
 
 const {
   title = 'Ready to get organized?',
-  text = 'Download Free, try it with your real homestead records, and upgrade when you are ready.',
+  text = 'Try the Free plan with real records, then upgrade when your homestead needs the long-term toolkit.',
+  primaryLabel = 'Try Homestead Keeper',
+  primaryHref = site.appStoreUrl,
+  secondaryLabel = 'View pricing',
+  secondaryHref = '/pricing',
 } = Astro.props;
 ---
 
@@ -17,5 +26,8 @@ const {
     <h2>{title}</h2>
     <p>{text}</p>
   </div>
-  <a class="button primary" href={site.appStoreUrl}>Download on the App Store</a>
+  <div class="button-row">
+    <a class="button primary" href={primaryHref}>{primaryLabel}</a>
+    <a class="button secondary" href={sitePath(secondaryHref)}>{secondaryLabel}</a>
+  </div>
 </section>

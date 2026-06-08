@@ -3,9 +3,11 @@ export const site = {
   tagline: 'Keep your homestead running.',
   url: 'https://homesteadkeeper.com',
   supportEmail: 'support@homesteadkeeper.com',
+  appStoreLabel: 'Coming soon to the App Store',
+  // TODO: Replace with final App Store URL once the listing is live.
   appStoreUrl: 'https://apps.apple.com/app/homestead-keeper-placeholder',
   description:
-    'A local-first homestead record keeping app for animals, gardens, supplies, reminders, reports, and QR labels on iPhone, iPad, and Mac.',
+    'A local-first homestead record keeping app for animals, gardens, inventory, reminders, reports, and rural property care on iPhone, iPad, and Mac.',
 };
 
 export const navItems = [
@@ -23,14 +25,14 @@ export const featureLinks = [
     summary: 'Profiles, flock checks, egg counts, health logs, weight trends, and animal care reports.',
   },
   {
-    title: 'Garden & Harvest',
+    title: 'Garden & Orchard',
     href: '/features/garden',
     summary: 'Planting records, harvest totals, crop notes, seasonal reminders, and garden reports.',
   },
   {
-    title: 'Supplies',
-    href: '/features/supplies',
-    summary: 'Track feed, bedding, seeds, fuel, filters, medications, thresholds, and inventory value.',
+    title: 'Inventory',
+    href: '/features/inventory',
+    summary: 'Track feed, hay, bedding, medications, seeds, fuel, storage locations, thresholds, and expiration dates.',
   },
   {
     title: 'Reminders & Calendar',
@@ -47,6 +49,14 @@ export const featureLinks = [
     href: '/features/qr-codes',
     summary: 'Open records from coops, gates, equipment, hives, raised beds, pumps, and more.',
   },
+];
+
+export const footerFeatureLinks = [
+  { title: 'Animals', href: '/features/animals' },
+  { title: 'Inventory', href: '/features/inventory' },
+  { title: 'Reminders & Calendar', href: '/features/reminders' },
+  { title: 'Reports', href: '/features/reports' },
+  { title: 'QR Codes', href: '/features/qr-codes' },
 ];
 
 export const proFeatures = [

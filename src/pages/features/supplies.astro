@@ -1,45 +1,18 @@
 ---
-import FeaturePage from '../../components/FeaturePage.astro';
+import { sitePath } from '../../utils/paths';
 
-const sections = [
-  {
-    title: 'Supplies for the whole homestead',
-    body: [
-      'Homestead Keeper includes supplies and inventory tools for the consumables homesteads actually depend on: feed, bedding, seeds, filters, fuel, medications, treatments, household supplies, and equipment parts. It is built for the practical question that comes up before chores, storms, kidding season, harvest, or winter: do we have enough?',
-      'Supplies can be organized by category and place, so a bag of chick starter, a generator fuel can, seed packets, water filters, and animal health supplies do not all become one messy list. The structure stays light, but the record is specific enough to be useful.'
-    ],
-  },
-  {
-    title: 'Low-stock thresholds',
-    body: [
-      'Low-stock threshold alerts help catch shortages before they turn into errands at the worst possible time. A homestead can run smoothly when feed, bedding, filters, and fuel are visible before they run out.',
-      'Thresholds also make inventory useful for shared work. If more than one person helps around the homestead, the app can show what is low without relying on memory, sticky notes, or a conversation that happened three days ago.'
-    ],
-  },
-  {
-    title: 'Inventory value and expiration',
-    body: [
-      'The Supplies & Inventory Report can show inventory value and expiring items. That matters for budgeting and for safety. Medications, treatments, seeds, filters, and stored feed can all lose value or usefulness over time.',
-      'Keeping cost and expiration details close to quantities turns supply tracking into more than a shopping list. It supports small farm record keeping, preparedness planning, and a clearer sense of what is sitting on the shelves.'
-    ],
-  },
-  {
-    title: 'Demo supply examples',
-    body: [
-      'Cedar Ridge demo data includes sample supplies so new users can see what a stocked homestead record might look like. Demo records are clearly separate from real records, which makes it easier to explore before committing to your own setup.',
-      'Because supply records can connect with reports, Homestead Keeper can show more than current quantity. It can help reveal inventory patterns over time, giving a useful picture of stocked items across previous seasons.'
-    ],
-  },
-];
+const target = sitePath('/features/inventory');
 ---
 
-<FeaturePage
-  title="Supplies & Inventory | Homestead Keeper"
-  description="Track homestead supplies including feed, bedding, seeds, filters, fuel, medications, low-stock thresholds, inventory value, expiration dates, and reports."
-  path="/features/supplies"
-  eyebrow="Supplies & Inventory"
-  h1="Know what is on hand before you need it"
-  intro="Track feed, bedding, seeds, filters, fuel, medications, categories, places, thresholds, inventory value, and expiring items in one local-first app."
-  sections={sections}
-  screenshots={['Supplies list', 'Supplies report']}
-/>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <title>Inventory | Homestead Keeper</title>
+    <link rel="canonical" href={target} />
+  </head>
+  <body>
+    <p><a href={target}>Continue to Inventory.</a></p>
+  </body>
+</html>

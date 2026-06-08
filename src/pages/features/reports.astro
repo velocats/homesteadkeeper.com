@@ -3,31 +3,37 @@ import FeaturePage from '../../components/FeaturePage.astro';
 
 const sections = [
   {
-    title: 'Reports for the whole homestead',
+    title: 'Why reports matter',
     body: [
-      'Homestead Keeper reports turn daily records into summaries you can actually use. The Homestead Summary brings major activity together across animals, garden, supplies, reminders, costs, and assets. The Logbook report gives a searchable record of completed work and observations.',
-      'Because the app is local-first, reports are built from records stored on your device. That makes them useful even without a connection and keeps private homestead details away from a required cloud platform.'
+      'Homestead reports make the records you already keep easier to use. Instead of digging through every logbook entry, you can review patterns across animals, garden, inventory, production, costs, maintenance, and seasonal chores.',
+      'Reports are especially useful for handoffs, planning, insurance conversations, seasonal reviews, and the simple question: what actually happened this month or this season?',
     ],
   },
   {
-    title: 'Garden, animal, cost, and inventory views',
+    title: 'Report list',
     body: [
-      'The Garden Season Report summarizes plantings, harvests, crop totals, treatments, soil work, costs, and year-over-year patterns. The Animal Care Report brings together flock checks, health entries, egg counts, weights, vaccinations, worming, breeding, and other animal work.',
-      'Cost Summary and Supplies & Inventory Report views help connect practical work to money and stocked materials. Inventory value, expiring items, and supply levels can make planning clearer before the next feed run, planting season, or storm window.'
+      'Homestead Keeper includes Homestead Summary, Logbook / History, Garden Season, Animal Care, Inventory, Production, Cost / Financial Summary, Operations Maintenance, and Property Handoff report areas.',
+      'Reports are built from local records on your device, so they remain useful without a required cloud dashboard.',
     ],
   },
   {
-    title: 'Seasonal chores and comparisons',
+    title: 'Exports',
     body: [
-      'Upcoming Seasonal Chores gives overdue and future work a dedicated place. That helps when the app is used for rural property management across many assets: gates, pumps, vehicles, gardens, coops, barns, tools, and utilities.',
-      'Year-over-year comparisons help longer-term records pay off. Homesteads are seasonal, so seeing this year next to last year can be more useful than a single static list.'
+      'Pro unlocks PDF reports and CSV exports for records you want to print, keep outside the app, share with a helper, or analyze in a spreadsheet. Apple Calendar export can help show chores outside the app where supported.',
+      'QR labels help connect physical places and equipment back to the right record.',
     ],
   },
   {
-    title: 'Exports and demo filtering',
+    title: 'Property handoff',
     body: [
-      'Pro unlocks PDF and CSV export so reports can become printable records, tax prep notes, insurance documentation, or shared files. CSV exports also make it possible to move data into spreadsheets when a user wants deeper analysis.',
-      'Filtering real data vs Cedar Ridge demo data keeps exploration clean. Users can learn the app with examples, then focus reports on their own homestead records when it matters.'
+      'Property Handoff can collect practical details for someone caring for the place while you are away: animals, routines, maintenance notes, inventory, and important context.',
+    ],
+  },
+  {
+    title: 'Animal care, garden, inventory, production, and financial summaries',
+    body: [
+      'Animal Care reports help review reminders, treatments, flock checks, weights, breeding, and production. Garden Season reports summarize planting, harvests, soil work, treatments, costs, and results.',
+      'Inventory, Production, and Financial/Cost reports help connect daily records to what was used, produced, sold, stored, spent, or earned. Financial records are simple summaries, not full accounting or tax software.',
     ],
   },
 ];
@@ -35,11 +41,11 @@ const sections = [
 
 <FeaturePage
   title="Reports & Exports | Homestead Keeper"
-  description="Use Homestead Keeper reports for homestead summary, logbook, garden season, animal care, cost summary, supplies inventory, seasonal chores, PDF exports, and CSV exports."
+  description="Use Homestead Keeper reports for Homestead Summary, Logbook, Garden Season, Animal Care, Inventory, Production, Cost Summary, Operations Maintenance, Property Handoff, PDF exports, CSV exports, Apple Calendar export, and QR labels."
   path="/features/reports"
   eyebrow="Reports"
   h1="Turn everyday records into useful summaries"
-  intro="Review homestead activity with summary, logbook, garden, animal care, cost, supplies, seasonal chore, export, and comparison reports."
+  intro="Review homestead activity with local-first reports, PDF and CSV exports, property handoff records, animal care summaries, garden season records, inventory reports, production reports, cost summaries, Apple Calendar export, and QR labels."
   sections={sections}
-  screenshots={['Homestead Summary report', 'Garden Season Report', 'Animal Care Report', 'Cost Summary report', 'Supplies & Inventory Report', 'Upcoming Seasonal Chores']}
+  screenshots={['Reports', 'Property Handoff', 'CSV Export'] }
 />

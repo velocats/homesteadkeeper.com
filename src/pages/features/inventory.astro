@@ -1,0 +1,50 @@
+---
+import FeaturePage from '../../components/FeaturePage.astro';
+
+const sections = [
+  {
+    title: 'What to track',
+    body: [
+      'Inventory covers the practical things homesteads run through: feed, hay, bedding, animal health items, medications, vaccines, seeds, garden materials, canning supplies, fuel, propane, emergency supplies, tools, parts, and building materials.',
+      'Each item can carry quantity, unit, storage location, purchase notes, cost, vendor, expiration date, and the context you need before the next storm, kidding season, planting push, or feed run.',
+    ],
+  },
+  {
+    title: 'Low-stock and expiration alerts',
+    body: [
+      'Low-stock thresholds help Homestead Keeper surface items that need attention before they run out. Expiration dates are useful for medications, vaccines, seeds, stored feed, filters, and emergency supplies.',
+      'Home alerts make inventory part of the daily rhythm instead of a separate list you forget to check.',
+    ],
+  },
+  {
+    title: 'Storage locations',
+    body: [
+      'Track where items actually live: barn shelf, feed room, pump house, freezer, pantry, shop cabinet, trailer, garden shed, greenhouse, or emergency bin. This is especially helpful when more than one person helps with chores.',
+    ],
+  },
+  {
+    title: 'Purchase, cost, and vendor notes',
+    body: [
+      'Keep purchase dates, costs, vendors, and notes close to the item. Those details help with budgeting, replacement planning, and understanding what the homestead uses over time.',
+    ],
+  },
+  {
+    title: 'How inventory connects later',
+    body: [
+      'Inventory can support production, medical, and reporting workflows over time. A production entry can relate to stored output, while medical and treatment records can make health inventory easier to review.',
+      'Inventory reports and CSV exports help turn stocked items into useful planning records instead of scattered receipts and memory.',
+    ],
+  },
+];
+---
+
+<FeaturePage
+  title="Inventory Tracking | Homestead Keeper"
+  description="Track farm inventory with feed, hay, bedding, medications, vaccines, seeds, canning supplies, fuel, storage locations, low-stock alerts, expiration dates, costs, vendors, Home alerts, and reports."
+  path="/features/inventory"
+  eyebrow="Inventory"
+  h1="Know what is on hand before you need it"
+  intro="Homestead Keeper gives homesteaders a calm farm inventory tracking system for stocked items, low-stock alerts, expiration dates, storage locations, purchase notes, Home alerts, reports, and exports."
+  sections={sections}
+  screenshots={['Inventory', 'Home alerts', 'Inventory Report'] }
+/>

@@ -5,7 +5,7 @@ import ComparisonTable from '../components/ComparisonTable.astro';
 import CTA from '../components/CTA.astro';
 import { site } from '../data/site';
 
-const description = 'Homestead Keeper pricing: Free for up to 5 real assets, with Pro monthly, yearly, and lifetime options for unlimited assets, exports, backups, QR label printing, documents, and advanced schedules.';
+const description = 'Homestead Keeper pricing: Free for up to 5 real assets, with planned/current Pro monthly, yearly, and lifetime options for unlimited assets, exports, backups, QR labels, documents, and advanced schedules.';
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
@@ -24,19 +24,24 @@ const jsonLd = {
 <Layout title="Pricing | Homestead Keeper" description={description} path="/pricing" jsonLd={jsonLd}>
   <section class="page-hero">
     <p class="eyebrow">Pricing</p>
-    <h1>Free to start, Pro when you need the full toolkit</h1>
-    <p class="lede">Homestead Keeper is a farm management app with no subscription required to get started. Use Free for a small set of real assets, then choose monthly, yearly, or lifetime Pro access when your records grow.</p>
+    <h1>Free to try, Pro for long-term records</h1>
+    <p class="lede">Free is for trying Homestead Keeper with real records. Pro is for long-term homestead record keeping across unlimited animals, inventory, property, reports, exports, backups, documents, QR labels, and advanced schedules.</p>
   </section>
 
   <section class="section">
     <PricingCards />
+    <p class="pricing-note">Prices shown are planned/current and may vary by App Store region.</p>
   </section>
 
   <section class="section rich-copy">
-    <p class="eyebrow">What Pro unlocks</p>
-    <h2>Built for long-term records</h2>
-    <p class="section-intro">Pro unlocks unlimited assets, PDF and CSV exports, backup and restore, QR label printing, document attachments, and advanced recurring schedules. Lifetime gives users a one-time purchase option with no ongoing cost required.</p>
-    <a class="button primary" href={site.appStoreUrl}>Download Free → Try it first, upgrade when ready</a>
+    <p class="eyebrow">Choosing a plan</p>
+    <h2>Pick the way you prefer to keep records</h2>
+    <div class="report-grid">
+      <article class="report-card"><h3>Free</h3><p>Best for testing the app with up to 5 real assets, unlimited logbook entries and reminders, calendar and report viewing, Cedar Ridge demo data, and QR code viewing.</p></article>
+      <article class="report-card"><h3>Pro Monthly</h3><p>Good when you want the full toolkit without a long commitment.</p></article>
+      <article class="report-card"><h3>Pro Yearly</h3><p>Good for ongoing homestead records at the lowest subscription price.</p></article>
+      <article class="report-card"><h3>Pro Lifetime</h3><p>Good for people who prefer a one-time purchase for a long-lived homestead logbook.</p></article>
+    </div>
   </section>
 
   <section class="section">

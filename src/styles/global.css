@@ -361,6 +361,17 @@ nav a {
   padding: 1.25rem;
 }
 
+.screenshot-placeholder > img {
+  aspect-ratio: var(--aspect, 4 / 3);
+  width: 100%;
+  min-height: 220px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+  object-fit: cover;
+  box-shadow: 0 12px 28px rgba(38, 48, 38, 0.1);
+}
+
 .screenshot-placeholder span {
   color: var(--green);
   font-weight: 900;
@@ -416,6 +427,11 @@ nav a {
 }
 
 .hero-visual .screenshot-placeholder > div {
+  min-height: 420px;
+  border-radius: 28px;
+}
+
+.hero-visual .screenshot-placeholder > img {
   min-height: 420px;
   border-radius: 28px;
 }
@@ -539,6 +555,57 @@ nav a {
   gap: 1rem;
   text-align: center;
   padding-block: clamp(1.4rem, 4vw, 2.4rem);
+}
+
+.trust-row,
+.workflow-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.trust-row {
+  justify-content: center;
+  margin-top: -2rem;
+}
+
+.trust-row span,
+.workflow-row span {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 250, 240, 0.86);
+  color: var(--green);
+  font-weight: 850;
+  padding: 0.62rem 0.9rem;
+  box-shadow: 0 8px 20px rgba(38, 48, 38, 0.07);
+}
+
+.workflow-row span {
+  position: relative;
+}
+
+.workflow-row span + span::before {
+  content: ">";
+  color: var(--red-dark);
+  font-weight: 900;
+  margin-right: 0.75rem;
+}
+
+.feature-index-card {
+  display: grid;
+  gap: 0.75rem;
+  align-content: start;
+}
+
+.feature-index-card h2 {
+  font-size: 1.5rem;
+}
+
+.pricing-note {
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 0.95rem;
 }
 
 .pricing-grid {
@@ -729,5 +796,19 @@ textarea {
 
   .hero-visual .screenshot-placeholder > div {
     min-height: 300px;
+  }
+
+  .hero-visual .screenshot-placeholder > img {
+    min-height: 300px;
+  }
+
+  .workflow-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .workflow-row span + span::before {
+    content: "";
+    margin: 0;
   }
 }

@@ -4,78 +4,60 @@ import CTA from '../components/CTA.astro';
 import InternalLinkCards from '../components/InternalLinkCards.astro';
 
 const sections = [
-  {
-    title: 'How Homestead Keeper Is Organized',
-    body: 'Homestead Keeper starts with a simple idea: your homestead is made of places, assets, supplies, reminders, and logs. Places are the areas or systems of the property. Assets are the things you care for. Logs are the record of what happened. Reports help you review the pattern over time.',
-  },
-  {
-    title: 'Your First Setup',
-    body: 'Begin with the few records that give you the most relief. Add the chicken coop, raised beds, well pump, mower, feed storage, orchard, greenhouse, or any item you maintain often. Free supports up to 5 real assets, which is enough to try the workflow with actual homestead records.',
-  },
-  {
-    title: 'Places vs Assets',
-    body: 'A place is a useful grouping, like Animals, Garden, Barn, Orchard, Equipment, Utilities, or House. An asset is a specific thing inside that place, like Laying Hens, Raised Bed 1, Well Pump, North Fence, Garden Gate, or Generator. This structure keeps a rural property management app from turning into one long flat list.',
-  },
-  {
-    title: 'Assign Assets to Places',
-    body: 'Assign each asset to the place where you naturally think about it. If you would walk to the barn to inspect it, put it under Barn. If it belongs to garden work, put it under Garden. Good organization makes the app easier to scan when chores are waiting.',
-  },
-  {
-    title: 'Track Supplies',
-    body: 'Add supplies you routinely buy or run out of: feed, bedding, seeds, fuel, filters, animal health supplies, treatments, and spare parts. Low-stock thresholds are helpful for anything that would cause stress if it ran out at the wrong time.',
-  },
-  {
-    title: 'Reminders and Logs',
-    body: 'Use reminders for work that should come back around: filter changes, coop cleaning, vaccination checks, equipment service, pruning, irrigation inspections, and seasonal chores. Use logs to capture what happened, what it cost, and what you noticed.',
-  },
-  {
-    title: 'History and Reports',
-    body: 'Reports are where small records become useful. A homestead logbook app is valuable because it remembers the quiet details: what was planted, when a pump failed, how many eggs the flock produced, what feed cost, and which seasonal chores are coming due.',
-  },
-  {
-    title: 'QR Codes & Labels',
-    body: 'QR codes are best for assets you physically visit. Put a label near the coop, well pump, gate, hive, raised bed, or piece of equipment. When you scan it, Homestead Keeper opens the matching record, even offline.',
-  },
+  ['Start with what needs attention every week', 'Begin with the chores and records that already live in your head: feeding, watering, hoof trims, coop cleaning, medication follow-ups, equipment checks, harvest notes, and seasonal property work.'],
+  ['Add your main areas', 'Turn on the Homestead Hub areas you use now, such as Animals, Garden, Equipment, Orchard, Bees, Food Preservation, Off-grid, Emergency Prep, Projects, Farm Business, and Inventory. Hide the rest until you need them.'],
+  ['Add animals and groups', 'Start with the animals you handle most often: a chicken flock, rabbit breeding pair, goat herd, sheep group, bees, or individual animals with medical, breeding, weight, production, and care records.'],
+  ['Add inventory items that can run out', 'Track feed, hay, bedding, medications, vaccines, seeds, canning supplies, fuel, filters, emergency supplies, tools, parts, and other items that create stress when they are missing.'],
+  ['Add recurring care reminders', 'Use reminders for repeated work: goat hoof trims, deworming follow-ups, coop cleaning, rabbit nest box checks, equipment service, orchard pruning, irrigation checks, and seasonal prep.'],
+  ['Use Quick Log for anything unusual', 'Capture what happened while it is fresh: a treatment, broken gate, low feed bin, odd behavior, first egg, milk change, harvest note, expense, or repair. Rich detail can come later.'],
+  ['Review Calendar weekly', 'Use Calendar to see what is overdue, what is due today, and what is coming up across care, animals, breeding, production, garden, equipment, and inventory.'],
+  ['Review Reports monthly or seasonally', 'Reports turn small records into useful summaries: Homestead Summary, Animal Care, Garden Season, Inventory, Production, Financial/Cost, Operations Maintenance, and Property Handoff.'],
+  ['Try Cedar Ridge demo first if unsure', 'Cedar Ridge demo data gives you a safe sample homestead to explore before adding your own records. Free also supports trying a small set of real assets.'],
 ];
 ---
 
-<Layout title="Playbook | Homestead Keeper" description="A practical guide to organizing Homestead Keeper with places, assets, supplies, reminders, logs, reports, QR codes, and labels." path="/playbook">
+<Layout
+  title="Playbook | Homestead Keeper"
+  description="Start simple with Homestead Keeper: add main areas, animals, inventory, recurring reminders, Quick Log entries, Calendar reviews, Reports, and Cedar Ridge demo data."
+  path="/playbook"
+>
   <section class="page-hero">
     <p class="eyebrow">Playbook</p>
-    <h1>A practical starting guide for your homestead records</h1>
-    <p class="lede">Use this guide to decide what to add first, how to organize places and assets, and how to turn daily chores into useful long-term records.</p>
+    <h1>Start simple: a practical Homestead Keeper setup guide</h1>
+    <p class="lede">Homestead Keeper works best when you begin with the records that reduce stress right away, then add detail as your homestead grows.</p>
   </section>
 
   <section class="split-section">
     <div>
-      {sections.map((section) => (
+      {sections.map(([title, body], index) => (
         <article class="copy-block">
-          <h2>{section.title}</h2>
-          <p>{section.body}</p>
+          <p class="eyebrow">Step {index + 1}</p>
+          <h2>{title}</h2>
+          <p>{body}</p>
         </article>
       ))}
     </div>
     <aside class="sidebar-stack">
       <article class="info-card">
-        <p class="eyebrow">Starter rhythm</p>
-        <h3>Start small</h3>
-        <p>Add the five assets you most often maintain, then let the logbook teach you what should come next.</p>
+        <p class="eyebrow">Best first move</p>
+        <h3>Pick five real records</h3>
+        <p>Free supports up to 5 real assets, which is enough to test the daily rhythm before committing your whole homestead.</p>
       </article>
       <article class="info-card">
-        <p class="eyebrow">Local-first</p>
-        <h3>Works offline</h3>
-        <p>No account or cloud service is required to get started.</p>
+        <p class="eyebrow">Working style</p>
+        <h3>Fast capture first</h3>
+        <p>Use quick entries during chores, then add documents, photos, costs, and structured details when you have more time.</p>
       </article>
     </aside>
   </section>
 
   <section class="section">
     <p class="eyebrow">Next steps</p>
-    <h2>Explore related workflows</h2>
+    <h2>Build from the records you already keep</h2>
     <InternalLinkCards links={[
-      { title: 'Track animals', href: '/features/animals', summary: 'Profiles, flock checks, egg counts, weight history, and animal care reports.' },
-      { title: 'Track supplies', href: '/features/supplies', summary: 'Low-stock thresholds, categories, places, inventory value, and expiring items.' },
-      { title: 'Use QR labels', href: '/features/qr-codes', summary: 'Scan coops, gates, hives, equipment, pumps, and raised beds from the field.' },
+      { title: 'Animal records', href: '/features/animals', summary: 'Profiles, care reminders, medical records, breeding, pedigree, production, and reports.' },
+      { title: 'Inventory alerts', href: '/features/inventory', summary: 'Track what is on hand, where it is stored, what is low, and what expires soon.' },
+      { title: 'Reports and exports', href: '/features/reports', summary: 'Review seasonal patterns and export PDF or CSV records with Pro.' },
     ]} />
   </section>
 
