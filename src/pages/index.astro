@@ -62,11 +62,6 @@ const focusCards = [
     ))}
   </section>
 
-  <section class="section" aria-labelledby="screens-title">
-    <SectionHeader eyebrow="Product tour" title="See the app before you install it." body="Every screenshot opens larger in the browser so you can inspect the layout, records, reports, and calendar views." />
-    <ScreenshotGallery shots={homepageScreenshots} />
-  </section>
-
   <section class="section" aria-labelledby="focus-title">
     <SectionHeader eyebrow="Why it is different" title="Built for the whole homestead, not just one chore." body="Homestead Keeper combines local records, Apple-device sync, garden planning, calendar reminders, production tracking, and reports for the mixed work that actually happens around a homestead." />
     <div class="card-grid compact">
@@ -84,6 +79,11 @@ const focusCards = [
     <div>
       <AppScreenshot {...gardenScreenshots[0]} />
     </div>
+  </section>
+
+  <section class="section" aria-labelledby="screens-title">
+    <SectionHeader eyebrow="Product tour" title="See the app before you install it." body="Every screenshot opens larger in the browser so you can inspect the layout, records, reports, and calendar views." />
+    <ScreenshotGallery shots={homepageScreenshots} />
   </section>
 
   <section class="section" aria-labelledby="manage-title">

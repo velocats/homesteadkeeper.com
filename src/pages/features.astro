@@ -50,11 +50,6 @@ const groups = [
     </div>
   </section>
 
-  <section class="section" aria-labelledby="tour-title">
-    <SectionHeader eyebrow="Screenshots" title="A tour through the real app." body="Click any screenshot to open it larger in your browser. These images show layouts, calendar views, animal records, equipment service, inventory, reports, and production tracking." />
-    <ScreenshotGallery shots={productTourScreenshots} />
-  </section>
-
   <section class="split-section soft-panel">
     <div>
       <p class="eyebrow">Garden bed layouts</p>
@@ -64,6 +59,11 @@ const groups = [
     <div class="split-screenshot-grid">
       {gardenScreenshots.map((shot) => <AppScreenshot {...shot} />)}
     </div>
+  </section>
+
+  <section class="section" aria-labelledby="tour-title">
+    <SectionHeader eyebrow="Screenshots" title="A tour through the real app." body="Click any screenshot to open it larger in your browser. These images show layouts, calendar views, animal records, equipment service, inventory, reports, and production tracking." />
+    <ScreenshotGallery shots={productTourScreenshots} />
   </section>
 
   <section class="section">

@@ -5,8 +5,15 @@ const { src = 'assets/screenshots/homestead-hub.webp', alt = 'Homestead Keeper H
 const imageUrl = assetPath(src);
 ---
 <figure class="screenshot-frame">
-  <a class="device-shell" href={imageUrl} target="_blank" rel="noopener" aria-label={`Open larger screenshot: ${alt}`}>
+  <button
+    class="device-shell screenshot-trigger"
+    type="button"
+    data-lightbox-src={imageUrl}
+    data-lightbox-alt={alt}
+    data-lightbox-title={caption ?? alt}
+    aria-label={`Expand screenshot: ${caption ?? alt}`}
+  >
     <img src={imageUrl} alt={alt} loading={loading} />
-  </a>
+  </button>
   {caption && <figcaption>{caption} <span>Click to expand.</span></figcaption>}
 </figure>

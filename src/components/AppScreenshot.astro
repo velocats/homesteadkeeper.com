@@ -15,9 +15,16 @@ const imageUrl = assetPath(src);
 ---
 
 <figure class:list={['app-screenshot', className]}>
-  <a href={imageUrl} target="_blank" rel="noopener" aria-label={`Open larger screenshot: ${alt}`}>
+  <button
+    class="screenshot-trigger"
+    type="button"
+    data-lightbox-src={imageUrl}
+    data-lightbox-alt={alt}
+    data-lightbox-title={title ?? alt}
+    aria-label={`Expand screenshot: ${title ?? alt}`}
+  >
     <img src={imageUrl} alt={alt} loading={loading} />
-  </a>
+  </button>
   {(title || body) && (
     <figcaption>
       {title && <strong>{title}</strong>}
