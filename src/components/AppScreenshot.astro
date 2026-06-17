@@ -1,0 +1,28 @@
+---
+import { assetPath } from '../utils/paths';
+
+interface Props {
+  src: string;
+  alt: string;
+  title?: string;
+  body?: string;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const { src, alt, title, body, class: className = '', loading = 'lazy' } = Astro.props;
+const imageUrl = assetPath(src);
+---
+
+<figure class:list={['app-screenshot', className]}>
+  <a href={imageUrl} target="_blank" rel="noopener" aria-label={`Open larger screenshot: ${alt}`}>
+    <img src={imageUrl} alt={alt} loading={loading} />
+  </a>
+  {(title || body) && (
+    <figcaption>
+      {title && <strong>{title}</strong>}
+      {body && <span>{body}</span>}
+      <em>Click to expand</em>
+    </figcaption>
+  )}
+</figure>

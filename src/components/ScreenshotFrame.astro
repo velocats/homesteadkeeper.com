@@ -1,11 +1,12 @@
 ---
 import { assetPath } from '../utils/paths';
-interface Props { src?: string; alt?: string; caption?: string; }
-const { src = 'assets/homepage-screenshot-clean.png', alt = 'Homestead Keeper dashboard showing chores, egg count, inventory actions, and items needing attention.', caption = 'Dashboard, Field Log actions, reminders, and records in one calm place.' } = Astro.props;
+interface Props { src?: string; alt?: string; caption?: string; loading?: 'lazy' | 'eager'; }
+const { src = 'assets/screenshots/homestead-hub.webp', alt = 'Homestead Keeper Homestead Hub showing featured garden, animals, property, inventory, and other homestead areas.', caption = 'Homestead Hub, the home base for your garden, animals, property, inventory, and records.', loading = 'lazy' } = Astro.props;
+const imageUrl = assetPath(src);
 ---
 <figure class="screenshot-frame">
-  <div class="device-shell">
-    <img src={assetPath(src)} alt={alt} loading="lazy" />
-  </div>
-  {caption && <figcaption>{caption}</figcaption>}
+  <a class="device-shell" href={imageUrl} target="_blank" rel="noopener" aria-label={`Open larger screenshot: ${alt}`}>
+    <img src={imageUrl} alt={alt} loading={loading} />
+  </a>
+  {caption && <figcaption>{caption} <span>Click to expand.</span></figcaption>}
 </figure>

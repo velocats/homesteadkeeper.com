@@ -3,8 +3,10 @@ import Layout from '../layouts/Layout.astro';
 import CTA from '../components/CTA.astro';
 import FeatureCard from '../components/FeatureCard.astro';
 import ScreenshotFrame from '../components/ScreenshotFrame.astro';
+import AppScreenshot from '../components/AppScreenshot.astro';
+import ScreenshotGallery from '../components/ScreenshotGallery.astro';
 import SectionHeader from '../components/SectionHeader.astro';
-import { coreFeatures, managementAreas } from '../data/site';
+import { animalScreenshots, calendarScreenshots, coreFeatures, equipmentScreenshots, gardenScreenshots, inventoryScreenshots, managementAreas, productTourScreenshots, reportScreenshots } from '../data/site';
 
 const title = 'Features | Homestead Keeper';
 const description = 'Explore Homestead Keeper features for whole-homestead records, garden bed layouts, animals, orchards, bees, equipment, property, off-grid systems, Food & Pantry, inventory, calendar reminders, reports, exports, and Apple device sync.';
@@ -24,7 +26,7 @@ const groups = [
 ];
 ---
 
-<Layout title={title} description={description} path="/features" image="/assets/homepage-screenshot-clean.png">
+<Layout title={title} description={description} path="/features" image="/assets/screenshots/homestead-hub.webp">
   <section class="page-hero">
     <p class="eyebrow">Features</p>
     <h1>A whole-homestead app, not another single-purpose tracker.</h1>
@@ -38,7 +40,7 @@ const groups = [
       <p>Use Homestead Keeper to capture records in the moment, organize them by place or item, and review the history later through calendar views, reports, summaries, and exports.</p>
       <p>No Homestead Keeper login is required. Records live on your Apple devices and can sync across iPhone, iPad, and Mac through iCloud when enabled.</p>
     </div>
-    <ScreenshotFrame />
+    <ScreenshotFrame src="assets/screenshots/homestead-hub.webp" alt="Homestead Keeper Homestead Hub showing the major areas of the app." caption="The Homestead Hub keeps the mixed work of a homestead organized." />
   </section>
 
   <section class="section">
@@ -48,17 +50,19 @@ const groups = [
     </div>
   </section>
 
+  <section class="section" aria-labelledby="tour-title">
+    <SectionHeader eyebrow="Screenshots" title="A tour through the real app." body="Click any screenshot to open it larger in your browser. These images show layouts, calendar views, animal records, equipment service, inventory, reports, and production tracking." />
+    <ScreenshotGallery shots={productTourScreenshots} />
+  </section>
+
   <section class="split-section soft-panel">
     <div>
       <p class="eyebrow">Garden bed layouts</p>
       <h2>Make the garden visual.</h2>
       <p>Plan beds and plots, place crops into layouts, and track what was planted in each season. Then connect the plan to planting dates, harvests, reminders, and production history.</p>
     </div>
-    <div class="stacked-cards">
-      <FeatureCard title="Bed maps" body="Represent raised beds, plots, rows, and growing areas without needing a complex design tool." />
-      <FeatureCard title="Season planning" body="Keep spring, summer, fall, and future-season layouts separate and useful." />
-      <FeatureCard title="Crop records" body="Link layout cells to crop records, harvest logs, treatments, and seasonal notes." />
-      <FeatureCard title="Reports" body="Review crop timing, harvests, and garden season history from the records you kept." />
+    <div class="split-screenshot-grid">
+      {gardenScreenshots.map((shot) => <AppScreenshot {...shot} />)}
     </div>
   </section>
 
@@ -67,6 +71,33 @@ const groups = [
     <div class="card-grid compact">
       {managementAreas.map(([title, body]) => <FeatureCard title={title} body={body} />)}
     </div>
+  </section>
+
+  <section class="split-section" aria-labelledby="calendar-screen-title">
+    <div>
+      <p class="eyebrow">Calendar and timelines</p>
+      <h2 id="calendar-screen-title">Plan around seasons, chores, and animal milestones.</h2>
+      <p>Calendar and timeline views make future work easier to see: breeding milestones, garden timing, harvest windows, frost dates, and recurring chores.</p>
+    </div>
+    <div class="split-screenshot-grid">
+      {calendarScreenshots.map((shot) => <AppScreenshot {...shot} />)}
+    </div>
+  </section>
+
+  <section class="split-section soft-panel" aria-labelledby="records-screen-title">
+    <div>
+      <p class="eyebrow">Animals, equipment, and inventory</p>
+      <h2 id="records-screen-title">Records stay attached to the things you manage.</h2>
+      <p>Each animal, piece of equipment, and supply can carry its own history, production, care, status, and Field Log entries.</p>
+    </div>
+    <div class="split-screenshot-grid">
+      {[...animalScreenshots, ...equipmentScreenshots, ...inventoryScreenshots].map((shot) => <AppScreenshot {...shot} />)}
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="reports-screen-title">
+    <SectionHeader eyebrow="Reports" title="See the story your records are telling." body="Homestead Keeper turns routine logs into summaries for health, costs, maintenance, warranties, inventory, and production." />
+    <ScreenshotGallery shots={reportScreenshots} />
   </section>
 
   <section class="section">

@@ -1,0 +1,19 @@
+---
+import AppScreenshot from './AppScreenshot.astro';
+
+interface Shot {
+  src: string;
+  alt: string;
+  title: string;
+  body: string;
+}
+interface Props {
+  shots: Shot[];
+  compact?: boolean;
+}
+const { shots, compact = false } = Astro.props;
+---
+
+<div class:list={["screenshot-gallery", compact && "compact-gallery"]}>
+  {shots.map((shot) => <AppScreenshot {...shot} />)}
+</div>

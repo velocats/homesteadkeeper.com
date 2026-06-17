@@ -115,3 +115,235 @@ export const proFeatures = [
   'QR label printing/export',
   'Documents and advanced recurring schedules where supported',
 ];
+
+export const homepageScreenshots = [
+  {
+    src: 'assets/screenshots/homestead-hub.webp',
+    title: 'Homestead Hub',
+    body: 'Featured areas and everything else you manage in one calm overview.',
+    alt: 'Homestead Keeper Homestead Hub showing Garden, Animals, Property, Inventory, and More to Manage cards.',
+  },
+  {
+    src: 'assets/screenshots/garden-bed-layout.webp',
+    title: 'Garden bed layouts',
+    body: 'Map what is planted where by bed, crop, and season.',
+    alt: 'Garden bed layout showing a raised bed with beets, bell peppers, paths, Swiss chard, and radicchio.',
+  },
+  {
+    src: 'assets/screenshots/calendar-week.webp',
+    title: 'Calendar week view',
+    body: 'See upcoming animal care, breeding milestones, chores, and seasonal work.',
+    alt: 'Homestead Keeper calendar week view showing breeding calendar events and milestones.',
+  },
+  {
+    src: 'assets/screenshots/report-production.webp',
+    title: 'Homestead production',
+    body: 'Review eggs, milk, honey, garden harvests, and trends over time.',
+    alt: 'Homestead production report showing totals and trend charts for eggs, milk, honey, and garden harvests.',
+  },
+] as const;
+
+export const gardenScreenshots = [
+  {
+    src: 'assets/screenshots/garden-bed-layout.webp',
+    title: 'Bed layout planning',
+    body: 'Plan raised beds and crop placement before planting day.',
+    alt: 'Garden bed layout with crops assigned to a grid and a prompt to log the layout as planting.',
+  },
+  {
+    src: 'assets/screenshots/garden-timeline.webp',
+    title: 'Garden timeline',
+    body: 'Track seed starts, growing windows, harvest windows, frost dates, and seasonal timing.',
+    alt: 'Garden timeline showing crops across months with seed start, growing, harvest window, frost date, and today markers.',
+  },
+] as const;
+
+export const calendarScreenshots = [
+  {
+    src: 'assets/screenshots/calendar-week.webp',
+    title: 'Week calendar',
+    body: 'Day, week, and month views for chores, milestones, and care.',
+    alt: 'Calendar week view showing breeding calendar events and a month grid.',
+  },
+  {
+    src: 'assets/screenshots/breeding-timeline.webp',
+    title: 'Timeline view',
+    body: 'Milestone timelines help make longer seasonal and animal workflows easier to read.',
+    alt: 'Breeding calendar timeline showing active windows, completed items, birth or hatch, weaning, lockdown, and today markers.',
+  },
+] as const;
+
+export const animalScreenshots = [
+  {
+    src: 'assets/screenshots/animal-summary.webp',
+    title: 'Animal records',
+    body: 'Profiles, records, production, care, photos, pedigree, and breeding in one place.',
+    alt: 'Animal detail screen for laying hens with summary, records, production, photos, care, pedigree, and breeding tabs.',
+  },
+  {
+    src: 'assets/screenshots/animal-production.webp',
+    title: 'Production history',
+    body: 'Track eggs and other production with totals, trends, uses, sales, and history.',
+    alt: 'Animal production tab showing egg totals, a 14 day bar chart, and production history rows.',
+  },
+] as const;
+
+export const equipmentScreenshots = [
+  {
+    src: 'assets/screenshots/equipment-detail.webp',
+    title: 'Equipment records',
+    body: 'Keep service, repair, inspection, fuel, cost, and photo records with each item.',
+    alt: 'Equipment detail screen for a riding mower with Field Log service entry fields.',
+  },
+] as const;
+
+export const inventoryScreenshots = [
+  {
+    src: 'assets/screenshots/inventory-list.webp',
+    title: 'Inventory table',
+    body: 'Track feed, seeds, soil amendments, medicine, fuel, pantry supplies, status, and expirations.',
+    alt: 'Inventory list table showing item, category, quantity, location, status, and expiration columns.',
+  },
+  {
+    src: 'assets/screenshots/report-inventory.webp',
+    title: 'Inventory report',
+    body: 'Review low stock, expiring supplies, categories, places, and supply trends.',
+    alt: 'Inventory report showing overview counts, supply levels over time, low stock, expiring soon, and categories.',
+  },
+] as const;
+
+export const reportScreenshots = [
+  {
+    src: 'assets/screenshots/report-homestead-summary.webp',
+    title: 'Homestead summary',
+    body: 'A top-level view of records, logbook activity, reminders, costs, and homestead health.',
+    alt: 'Homestead Summary report showing health score, overview metrics, and activity by type.',
+  },
+  {
+    src: 'assets/screenshots/report-cost-summary.webp',
+    title: 'Cost summary',
+    body: 'Track income, expenses, repairs, replacement costs, spending trends, and cost breakdowns.',
+    alt: 'Cost Summary report showing total income, expenses, net, repairs, tracked item value, replacement cost, and charts.',
+  },
+  {
+    src: 'assets/screenshots/report-production.webp',
+    title: 'Production report',
+    body: 'Compare eggs, milk, honey, and harvests across days and seasons.',
+    alt: 'Homestead Production report showing totals and charts for eggs, honey, milk, and garden harvests.',
+  },
+  {
+    src: 'assets/screenshots/report-maintenance.webp',
+    title: 'Maintenance overview',
+    body: 'Review completed work, overdue reminders, service costs, vendors, trends, and watchlists.',
+    alt: 'Maintenance Overview report showing health score, overview metrics, trend chart, upcoming care, and watchlist.',
+  },
+  {
+    src: 'assets/screenshots/report-warranty.webp',
+    title: 'Warranty countdown',
+    body: 'See expired, upcoming, and later warranty deadlines for equipment and supplies.',
+    alt: 'Warranty Countdown report showing expired warranties, 90 day warranties, and later warranty items.',
+  },
+] as const;
+
+export const allProductScreenshots = [
+  ...homepageScreenshots,
+  ...animalScreenshots,
+  ...equipmentScreenshots,
+  ...inventoryScreenshots,
+  ...reportScreenshots,
+  ...calendarScreenshots,
+  ...gardenScreenshots,
+] as const;
+
+export const productTourScreenshots = [
+  {
+    src: 'assets/screenshots/homestead-hub.webp',
+    title: 'Homestead Hub',
+    body: 'Featured areas and the rest of the homestead in one overview.',
+    alt: 'Homestead Hub showing featured Garden, Animals, Property, Inventory, and More to Manage cards.',
+  },
+  {
+    src: 'assets/screenshots/garden-bed-layout.webp',
+    title: 'Garden bed layout',
+    body: 'Visual crop placement by raised bed, path, crop, and season.',
+    alt: 'Raised bed layout showing crop cells, paths, season controls, and a log planting prompt.',
+  },
+  {
+    src: 'assets/screenshots/garden-timeline.webp',
+    title: 'Garden timeline',
+    body: 'Seed starts, growing windows, harvest windows, frost dates, and today markers.',
+    alt: 'Garden timeline showing crop rows across May, June, July, and August with planting and harvest windows.',
+  },
+  {
+    src: 'assets/screenshots/calendar-week.webp',
+    title: 'Calendar week',
+    body: 'Calendar views for upcoming chores, care reminders, and milestones.',
+    alt: 'Calendar week view with a month grid, week event list, and breeding calendar milestones.',
+  },
+  {
+    src: 'assets/screenshots/breeding-timeline.webp',
+    title: 'Breeding timeline',
+    body: 'Timeline mode for longer animal workflows and seasonal windows.',
+    alt: 'Breeding timeline with active windows, completed items, lockdown, weaning, and today marker.',
+  },
+  {
+    src: 'assets/screenshots/animal-summary.webp',
+    title: 'Animal summary',
+    body: 'Profiles, records, production, photos, care, pedigree, and breeding tabs.',
+    alt: 'Laying Hens animal summary showing profile, weight, recent records, and action buttons.',
+  },
+  {
+    src: 'assets/screenshots/animal-production.webp',
+    title: 'Animal production',
+    body: 'Egg counts, trends, sales, use, storage, and production history.',
+    alt: 'Animal production tab showing egg totals, a 14 day chart, and production history.',
+  },
+  {
+    src: 'assets/screenshots/equipment-detail.webp',
+    title: 'Equipment service',
+    body: 'Log service, repairs, inspections, fuel, cost, vendors, and time spent.',
+    alt: 'Riding mower equipment screen with a Field Log service form.',
+  },
+  {
+    src: 'assets/screenshots/inventory-list.webp',
+    title: 'Inventory list',
+    body: 'Track item category, quantity, location, status, and expiration dates.',
+    alt: 'Inventory table with rows for seeds, animal health, soil amendments, and dehydrated food.',
+  },
+  {
+    src: 'assets/screenshots/report-homestead-summary.webp',
+    title: 'Homestead summary report',
+    body: 'Health score, activity by type, total records, reminders, costs, and logbook counts.',
+    alt: 'Homestead Summary report with health score and overview metrics.',
+  },
+  {
+    src: 'assets/screenshots/report-cost-summary.webp',
+    title: 'Cost report',
+    body: 'Income, expenses, repairs, replacement cost, and spending charts.',
+    alt: 'Cost Summary report with metric cards and spending charts.',
+  },
+  {
+    src: 'assets/screenshots/report-inventory.webp',
+    title: 'Inventory report',
+    body: 'Low stock, expiring supplies, categories, places, value, and supply trends.',
+    alt: 'Inventory Report showing overview metrics, supply levels chart, low stock, and expiring soon.',
+  },
+  {
+    src: 'assets/screenshots/report-production.webp',
+    title: 'Production report',
+    body: 'Eggs, milk, honey, garden harvest totals, and production trends.',
+    alt: 'Homestead Production report with totals and trends for eggs, milk, honey, and harvests.',
+  },
+  {
+    src: 'assets/screenshots/report-maintenance.webp',
+    title: 'Maintenance report',
+    body: 'Completed work, overdue reminders, costs, service trends, and watchlists.',
+    alt: 'Maintenance Overview report with health score, metrics, logbook trend, and watchlist.',
+  },
+  {
+    src: 'assets/screenshots/report-warranty.webp',
+    title: 'Warranty countdown',
+    body: 'Expired, upcoming, and later warranty windows for equipment and supplies.',
+    alt: 'Warranty Countdown report with expired and upcoming warranty items.',
+  },
+] as const;
