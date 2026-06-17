@@ -6,14 +6,22 @@ import SectionHeader from '../components/SectionHeader.astro';
 import { pricingTiers } from '../data/site';
 
 const title = 'Pricing | Homestead Keeper';
-const description = 'Homestead Keeper pricing will be simple and honest, with a free starter option and a full unlock for whole-homestead records. Final App Store pricing is still being finalized.';
+const description = 'Homestead Keeper pricing: Free includes up to 20 items. Pro is $2.99/month, $19.99/year, or $39.99 lifetime and unlocks unlimited items, PDF/CSV exports, backups, QR labels, documents, and advanced tools.';
+const paidFeatures = [
+  ['Unlimited items', 'Add the animals, crops, garden beds, equipment, inventory, places, systems, and records your homestead needs.'],
+  ['PDF and CSV exports', 'Create useful reports, summaries, logbooks, and raw data exports when you need records outside the app.'],
+  ['Backup and restore/import', 'Export backups and restore/import records with Pro tools where supported.'],
+  ['QR label printing/export', 'Print or export labels for items and supplies where QR labels are supported.'],
+  ['Documents and advanced schedules', 'Use document attachments and advanced recurring schedules where supported by the app version.'],
+  ['Safe lapse behavior', 'If a subscription lapses, existing data is not deleted or hidden. New paid actions require Pro again.'],
+];
 ---
 
 <Layout title={title} description={description} path="/pricing">
   <section class="page-hero narrow">
     <p class="eyebrow">Pricing</p>
     <h1>Simple pricing for practical homestead records.</h1>
-    <p class="lede">Final App Store pricing is not locked yet. This page keeps the structure clear without inventing prices before launch.</p>
+    <p class="lede">Start free with up to 20 total items. Upgrade to Pro when your homestead records grow.</p>
   </section>
 
   <section class="section">
@@ -22,17 +30,25 @@ const description = 'Homestead Keeper pricing will be simple and honest, with a 
     </div>
   </section>
 
-  <section class="split-section soft-panel">
-    <div>
-      <p class="eyebrow">Honest scope</p>
-      <h2>Pay for useful records, not cloud overhead.</h2>
-      <p>Homestead Keeper is not being positioned as a farm ERP suite, enterprise dashboard, or accounting system. It is a local-first app for keeping better records of the work already happening around a homestead.</p>
-    </div>
-    <div class="callout-card">
-      <h3>Before launch</h3>
-      <p>Replace the placeholder pricing with exact App Store pricing only when the product decision is final. Avoid promising sync, cloud sharing, or business features unless they exist in the released app.</p>
+  <section class="section">
+    <SectionHeader eyebrow="Pro unlocks" title="Every paid plan unlocks the same full app." body="Monthly, yearly, and lifetime are different ways to pay for the same Pro feature set. There are no reduced paid tiers." />
+    <div class="card-grid">
+      {paidFeatures.map(([title, body]) => <article class="card"><h3>{title}</h3><p>{body}</p></article>)}
     </div>
   </section>
 
-  <CTA primaryLabel="Compare features" primaryHref="/features" secondaryLabel="Read FAQ" secondaryHref="/faq" />
+  <section class="split-section soft-panel">
+    <div>
+      <p class="eyebrow">Free tier</p>
+      <h2>Twenty items is enough to try it with real records.</h2>
+      <p>Free includes up to 20 total items, so you can test a real garden bed, chicken flock, equipment item, inventory supply, project, or property record before committing the whole homestead.</p>
+      <p>Places, logs, reminders, photos, and documents are handled according to the app’s feature rules and do not change the 20-item headline.</p>
+    </div>
+    <div class="callout-card">
+      <h3>Data stays safe.</h3>
+      <p>If a subscription lapses, Homestead Keeper does not delete or hide your existing records. Paid actions such as additional items over the Free limit, exports, backups, QR labels, and imports require Pro again.</p>
+    </div>
+  </section>
+
+  <CTA primaryLabel="View features" primaryHref="/features" secondaryLabel="Read FAQ" secondaryHref="/faq" />
 </Layout>

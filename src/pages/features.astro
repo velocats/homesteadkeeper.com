@@ -7,20 +7,20 @@ import SectionHeader from '../components/SectionHeader.astro';
 import { coreFeatures, managementAreas } from '../data/site';
 
 const title = 'Features | Homestead Keeper';
-const description = 'Explore Homestead Keeper features for animals, gardens, orchards, bees, equipment maintenance, property systems, inventory, calendar reminders, reports, exports, and local-first homestead records.';
+const description = 'Explore Homestead Keeper features for whole-homestead records, garden bed layouts, animals, orchards, bees, equipment, property, off-grid systems, Food & Pantry, inventory, calendar reminders, reports, exports, and Apple device sync.';
 const groups = [
-  ['Animals', ['Animal profiles', 'Care reminders', 'Health notes', 'Breeding and pedigree', 'Production records', 'Weights, photos, and documents']],
-  ['Garden, crops, and seeds', ['Beds and planting areas', 'Crops and varieties', 'Seed starts and planting dates', 'Watering and pest notes', 'Harvest logs', 'Planting schedules and seasonal timing']],
-  ['Orchard', ['Fruit trees and berries', 'Pruning and spray notes', 'Fertilizing reminders', 'Harvest history', 'Seasonal care', 'Long-term perennial records']],
-  ['Bees', ['Hive inspections', 'Queen notes', 'Feeding and treatments', 'Splits and swarms', 'Honey harvests', 'Hive equipment records']],
+  ['Garden beds, crops, and seeds', ['Visual bed and plot layouts', 'Seasonal crop placement', 'Crops and varieties', 'Seed starts and planting dates', 'Harvest logs and yields', 'Planting schedules and seasonal timing']],
+  ['Animals', ['Animal profiles and groups', 'Care reminders', 'Health notes', 'Breeding and pedigree', 'Production records', 'Weights, photos, and documents']],
+  ['Calendar and reminders', ['Day, week, and month views', 'Overdue work', 'Recurring chores', 'Seasonal tasks', 'Animal care follow-ups', 'Maintenance and harvest windows']],
   ['Equipment and maintenance', ['Repairs', 'Service reminders', 'Parts and filters', 'Fuel notes', 'Manuals and warranties', 'Maintenance history']],
   ['Property systems', ['Places', 'Fences and gates', 'Wells and pumps', 'Irrigation and water systems', 'Buildings and storage', 'Storm damage and repairs']],
-  ['Off-grid systems', ['Solar and batteries', 'Generators', 'Propane', 'Water storage', 'Backup power', 'Seasonal checks']],
+  ['Food & Pantry', ['Canned goods', 'Frozen food', 'Dehydrated food', 'Fermented batches', 'Pantry items', 'Root cellar storage']],
   ['Inventory', ['Feed and hay', 'Medicine and vaccines', 'Seeds and soil inputs', 'Fuel and filters', 'Pantry and preservation supplies', 'Thresholds and expiration dates']],
-  ['Calendar', ['Today view', 'Overdue work', 'Recurring chores', 'Seasonal tasks', 'Animal care follow-ups', 'Maintenance reminders']],
+  ['Orchard', ['Fruit trees and berries', 'Pruning and spray notes', 'Fertilizing reminders', 'Harvest history', 'Seasonal care', 'Long-term perennial records']],
+  ['Bees', ['Hive inspections', 'Queen notes', 'Feeding and treatments', 'Splits and swarms', 'Honey harvests', 'Hive equipment records']],
+  ['Off-grid systems', ['Solar and batteries', 'Generators', 'Propane', 'Water storage', 'Backup power', 'Seasonal checks']],
   ['Reports and exports', ['Homestead summary', 'Cost summary', 'Logbook', 'Animal care history', 'Inventory report', 'Property handoff report']],
-  ['Demo homestead', ['Cedar Ridge demo data', 'Example animals and places', 'Sample garden records', 'Sample reminders', 'Sample reports', 'A safe way to explore before setup']],
-  ['Apple device support', ['iPhone', 'iPad', 'Mac', 'Local-first design', 'No required web dashboard', 'Practical offline-friendly workflows']],
+  ['Apple device support', ['iPhone', 'iPad', 'Mac', 'No Homestead Keeper login', 'iCloud sync across Apple devices', 'Offline-friendly workflows']],
 ];
 ---
 
@@ -28,14 +28,15 @@ const groups = [
   <section class="page-hero">
     <p class="eyebrow">Features</p>
     <h1>A whole-homestead app, not another single-purpose tracker.</h1>
-    <p class="lede">Homestead Keeper brings animals, gardens, orchards, bees, equipment, inventory, places, reminders, reports, and rural property care into one practical Apple app.</p>
+    <p class="lede">Homestead Keeper brings animals, garden bed layouts, crops, orchards, bees, equipment, inventory, Food & Pantry, places, reminders, reports, and rural property care into one practical Apple app.</p>
   </section>
 
   <section class="split-section">
     <div>
       <p class="eyebrow">Core workflow</p>
       <h2>Track what happened, what it cost, and what is coming up next.</h2>
-      <p>Use Homestead Keeper to capture records in the moment, organize them by place or asset, and review the history later through reports and summaries.</p>
+      <p>Use Homestead Keeper to capture records in the moment, organize them by place or item, and review the history later through calendar views, reports, summaries, and exports.</p>
+      <p>No Homestead Keeper login is required. Records live on your Apple devices and can sync across iPhone, iPad, and Mac through iCloud when enabled.</p>
     </div>
     <ScreenshotFrame />
   </section>
@@ -47,15 +48,29 @@ const groups = [
     </div>
   </section>
 
+  <section class="split-section soft-panel">
+    <div>
+      <p class="eyebrow">Garden bed layouts</p>
+      <h2>Make the garden visual.</h2>
+      <p>Plan beds and plots, place crops into layouts, and track what was planted in each season. Then connect the plan to planting dates, harvests, reminders, and production history.</p>
+    </div>
+    <div class="stacked-cards">
+      <FeatureCard title="Bed maps" body="Represent raised beds, plots, rows, and growing areas without needing a complex design tool." />
+      <FeatureCard title="Season planning" body="Keep spring, summer, fall, and future-season layouts separate and useful." />
+      <FeatureCard title="Crop records" body="Link layout cells to crop records, harvest logs, treatments, and seasonal notes." />
+      <FeatureCard title="Reports" body="Review crop timing, harvests, and garden season history from the records you kept." />
+    </div>
+  </section>
+
   <section class="section">
-    <SectionHeader eyebrow="Complete overview" title="What Homestead Keeper is designed to cover" body="The website should present the app as a whole-homestead management tool, including less-obvious areas like forestry, emergency prep, weather, projects, and food preservation." />
+    <SectionHeader eyebrow="Complete overview" title="What Homestead Keeper is designed to cover" body="The app is meant to cover the whole mixed homestead, including less-obvious areas like forestry, emergency prep, off-grid systems, projects, and Food & Pantry." />
     <div class="card-grid compact">
       {managementAreas.map(([title, body]) => <FeatureCard title={title} body={body} />)}
     </div>
   </section>
 
   <section class="section">
-    <SectionHeader eyebrow="Detailed feature map" title="Records by area" body="A practical view of the records and workflows planned or represented in the product direction." />
+    <SectionHeader eyebrow="Detailed feature map" title="Records by area" body="A practical view of the records and workflows represented in the product direction." />
     <div class="feature-map">
       {groups.map(([title, items]) => (
         <article class="map-card">
@@ -68,5 +83,5 @@ const groups = [
     </div>
   </section>
 
-  <CTA title="Want the simple version?" body="Start with the Home dashboard, Places, Animals, Garden, Inventory, Calendar, and Reports — then grow into the deeper areas as your homestead records mature." />
+  <CTA title="Want the simple version?" body="Start with Home, Places, Garden, Animals, Inventory, Calendar, and Reports — then grow into the deeper areas as your homestead records mature." />
 </Layout>

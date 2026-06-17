@@ -1,24 +1,25 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import CTA from '../components/CTA.astro';
+import SectionHeader from '../components/SectionHeader.astro';
 
-const title = 'Privacy and Local-First Design | Homestead Keeper';
-const description = 'Homestead Keeper is designed as a local-first homestead app with no required web dashboard, no required hosted account for day-to-day records, user-owned records, and no unnecessary cloud complexity.';
+const title = 'Privacy and Data | Homestead Keeper';
+const description = 'Homestead Keeper is designed with no Homestead Keeper login, data on your Apple devices, optional iCloud sync across iPhone, iPad, and Mac, offline-friendly records, and no sale of user data.';
 const principles = [
-  ['Local-first records', 'Day-to-day homestead records are designed to live on your Apple device instead of depending on a required Homestead Keeper cloud dashboard.'],
-  ['No required web account', 'The app is intended to be useful without forcing a hosted login for normal record keeping.'],
-  ['User-owned records', 'Your animal, garden, equipment, inventory, property, and report history should stay under your control.'],
-  ['No unnecessary cloud complexity', 'The product direction favors practical local records, backups, and exports over heavy cloud administration.'],
+  ['No Homestead Keeper login', 'Use the app without creating a Homestead Keeper web account or managing a separate web dashboard.'],
+  ['Data on your Apple devices', 'Your working homestead records are stored on your iPhone, iPad, and Mac rather than inside a Homestead Keeper-hosted web account.'],
+  ['iCloud sync when enabled', 'When sync is enabled, Apple iCloud keeps your records up to date across your Apple devices using your Apple ID.'],
+  ['Offline-friendly records', 'The app is designed for barns, gardens, sheds, shops, and rural spaces where internet service can be unreliable.'],
+  ['User-controlled exports and backups', 'Pro tools support exports, backups, imports, QR labels, and reports where available, so you can keep copies outside the app when needed.'],
   ['No sale of user data', 'Homestead Keeper is not designed around selling user data or behavioral ad profiles.'],
-  ['No invented sync promises', 'Any future sync, sharing, or cloud behavior should be described only when it actually exists in the released app.'],
 ];
 ---
 
 <Layout title={title} description={description} path="/privacy">
   <section class="page-hero narrow">
     <p class="eyebrow">Privacy</p>
-    <h1>Local-first by design.</h1>
-    <p class="lede">Homestead Keeper is built for people who want useful animal, garden, inventory, equipment, property, and seasonal records without a required cloud dashboard.</p>
+    <h1>No login. Data on your Apple devices.</h1>
+    <p class="lede">Homestead Keeper is built for practical animal, garden, inventory, equipment, property, Food & Pantry, calendar, and report records without a Homestead Keeper web dashboard.</p>
   </section>
 
   <section class="section">
@@ -30,14 +31,18 @@ const principles = [
   <section class="split-section soft-panel">
     <div>
       <p class="eyebrow">Plain language</p>
-      <h2>Your records should still be useful where signal is weak.</h2>
-      <p>Homesteads include barns, shops, gardens, fields, pump houses, sheds, and rural corners where internet service is not always reliable. Homestead Keeper is designed around practical record keeping first.</p>
-      <p>Local-first does not mean backups are optional. Before deleting the app, wiping a device, or replacing hardware, make sure you have a backup or export path that matches your app version.</p>
+      <h2>Local records and Apple sync are not the same as a web account.</h2>
+      <p>Homestead Keeper does not require a Homestead Keeper login for normal use. Your records live on your Apple devices. If iCloud sync is enabled, Apple syncs your app data between your iPhone, iPad, and Mac using your Apple ID.</p>
+      <p>That means you can keep working where signal is weak, then let Apple-device sync catch up later.</p>
     </div>
     <div class="callout-card">
-      <h3>About family sync</h3>
-      <p>Do not assume shared family sync is available unless your installed version specifically says it is. The website should avoid promising cloud behavior that has not shipped.</p>
+      <h3>Before changing devices</h3>
+      <p>Before deleting the app, wiping a device, replacing hardware, or changing Apple IDs, make sure your records are synced, backed up, or exported in a way that matches your app version and plan.</p>
     </div>
+  </section>
+
+  <section class="section">
+    <SectionHeader eyebrow="Data safety" title="A subscription lapse should never be a delete button." body="If a subscription lapses, existing data should remain visible and safe. Paid actions such as adding beyond the Free limit, exports, backups, imports, QR labels, and advanced tools require Pro again." />
   </section>
 
   <CTA primaryLabel="Read FAQ" primaryHref="/faq" secondaryLabel="View features" secondaryHref="/features" />

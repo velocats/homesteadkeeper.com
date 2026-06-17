@@ -4,21 +4,22 @@ import CTA from '../components/CTA.astro';
 import InternalLinkCards from '../components/InternalLinkCards.astro';
 
 const sections = [
-  ['Start with what needs attention every week', 'Begin with the chores and records that already live in your head: feeding, watering, hoof trims, coop cleaning, medication follow-ups, equipment checks, harvest notes, and seasonal property work.'],
-  ['Add your main areas', 'Turn on the Homestead Hub areas you use now, such as Animals, Garden, Equipment, Orchard, Bees, Food Preservation, Off-grid, Emergency Prep, Projects, Farm Business, and Inventory. Hide the rest until you need them.'],
+  ['Start with what needs attention every week', 'Begin with the chores and records that already live in your head: feeding, watering, coop cleaning, equipment checks, harvest notes, medication follow-ups, and seasonal property work.'],
+  ['Name your homestead and add places', 'Rename “My Homestead,” then add real places such as Barn, Chicken Coop, Garden Beds, Apiary, Workshop, Pantry, Equipment Shed, and Pasture.'],
+  ['Turn on your main areas', 'Start with the Homestead Hub areas you use now, such as Animals, Garden, Equipment, Orchard, Bees, Food & Pantry, Off-grid, Emergency Prep, Projects, Farm Business, and Inventory. Hide the rest until you need them.'],
+  ['Map garden beds and crops', 'Create garden bed layouts, choose crops, and connect planting records, care notes, and harvest history to the places where things are actually growing.'],
   ['Add animals and groups', 'Start with the animals you handle most often: a chicken flock, rabbit breeding pair, goat herd, sheep group, bees, or individual animals with medical, breeding, weight, production, and care records.'],
   ['Add inventory items that can run out', 'Track feed, hay, bedding, medications, vaccines, seeds, canning supplies, fuel, filters, emergency supplies, tools, parts, and other items that create stress when they are missing.'],
-  ['Add recurring care reminders', 'Use reminders for repeated work: goat hoof trims, deworming follow-ups, coop cleaning, rabbit nest box checks, equipment service, orchard pruning, irrigation checks, and seasonal prep.'],
-  ['Use Quick Log for anything unusual', 'Capture what happened while it is fresh: a treatment, broken gate, low feed bin, odd behavior, first egg, milk change, harvest note, expense, or repair. Rich detail can come later.'],
+  ['Use Field Log for anything unusual', 'Capture what happened while it is fresh: a treatment, broken gate, low feed bin, odd behavior, first egg, milk change, harvest note, expense, or repair. Rich detail can come later.'],
   ['Review Calendar weekly', 'Use Calendar to see what is overdue, what is due today, and what is coming up across care, animals, breeding, production, garden, equipment, and inventory.'],
-  ['Review Reports monthly or seasonally', 'Reports turn small records into useful summaries: Homestead Summary, Animal Care, Garden Season, Inventory, Production, Financial/Cost, Operations Maintenance, and Property Handoff.'],
-  ['Try Cedar Ridge demo first if unsure', 'Cedar Ridge demo data gives you a safe sample homestead to explore before adding your own records. Free also supports trying a small set of real assets.'],
+  ['Review Reports monthly or seasonally', 'Reports turn small records into useful summaries: Homestead Summary, Animal Care, Garden Season, Inventory, Production, Cost, Operations Maintenance, and Property Handoff.'],
+  ['Try Cedar Ridge demo first if unsure', 'Cedar Ridge demo data gives you a safe sample homestead to explore before adding your own records. Free also supports up to 20 total items.'],
 ];
 ---
 
 <Layout
   title="Playbook | Homestead Keeper"
-  description="Start simple with Homestead Keeper: add main areas, animals, inventory, recurring reminders, Quick Log entries, Calendar reviews, Reports, and Cedar Ridge demo data."
+  description="Start simple with Homestead Keeper: name your homestead, add places, map garden beds, add animals and inventory, use Field Log entries, Calendar reviews, Reports, and Cedar Ridge demo data."
   path="/playbook"
 >
   <section class="page-hero">
@@ -40,13 +41,18 @@ const sections = [
     <aside class="sidebar-stack">
       <article class="info-card">
         <p class="eyebrow">Best first move</p>
-        <h3>Pick five real records</h3>
-        <p>Free supports up to 5 real assets, which is enough to test the daily rhythm before committing your whole homestead.</p>
+        <h3>Pick twenty real items or fewer</h3>
+        <p>Free supports up to 20 total items, which is enough to test the daily rhythm before committing your whole homestead.</p>
       </article>
       <article class="info-card">
         <p class="eyebrow">Working style</p>
         <h3>Fast capture first</h3>
-        <p>Use quick entries during chores, then add documents, photos, costs, and structured details when you have more time.</p>
+        <p>Use Field Log entries during chores, then add documents, photos, costs, and structured details when you have more time.</p>
+      </article>
+      <article class="info-card">
+        <p class="eyebrow">Apple devices</p>
+        <h3>Start on iPhone, review on Mac</h3>
+        <p>Use iCloud sync to keep records current across your iPhone, iPad, MacBook, Mac mini, and other Macs when enabled.</p>
       </article>
     </aside>
   </section>
@@ -56,7 +62,7 @@ const sections = [
     <h2>Build from the records you already keep</h2>
     <InternalLinkCards links={[
       { title: 'Animal records', href: '/features/animals', summary: 'Profiles, care reminders, medical records, breeding, pedigree, production, and reports.' },
-      { title: 'Inventory alerts', href: '/features/inventory', summary: 'Track what is on hand, where it is stored, what is low, and what expires soon.' },
+      { title: 'Garden bed layouts', href: '/features/garden', summary: 'Map beds, crops, seasonal plans, planting records, and harvest history.' },
       { title: 'Reports and exports', href: '/features/reports', summary: 'Review seasonal patterns and export PDF or CSV records with Pro.' },
     ]} />
   </section>

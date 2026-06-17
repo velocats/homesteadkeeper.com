@@ -9,7 +9,7 @@ const footerLinks = [
   ['Privacy', '/privacy'],
   ['Support', '/support'],
 ];
-const featureLinks = ['Animals', 'Garden', 'Inventory', 'Equipment', 'Reports', 'Places'];
+const featureLinks = ['Garden Beds', 'Animals', 'Calendar', 'Inventory', 'Food & Pantry', 'Reports'];
 ---
 
 <footer class="site-footer">
@@ -20,7 +20,7 @@ const featureLinks = ['Animals', 'Garden', 'Inventory', 'Equipment', 'Reports', 
         <span>{site.name}</span>
       </a>
       <p>{site.tagline}</p>
-      <p>A local-first homestead tracker for Apple devices — practical records without a required cloud dashboard.</p>
+      <p>No Homestead Keeper login. Data on your Apple devices. Optional iCloud sync across iPhone, iPad, and Mac.</p>
     </section>
     <section>
       <h2>Product</h2>
@@ -33,7 +33,7 @@ const featureLinks = ['Animals', 'Garden', 'Inventory', 'Equipment', 'Reports', 
     <section>
       <h2>Contact</h2>
       <a href={`mailto:${site.supportEmail}`}>{site.supportEmail}</a>
-      <p class="fine-print">App Store listing and final pricing are still in progress.</p>
+      <p class="fine-print">App Store listing is in progress. Pricing shown on this site reflects the current launch plan.</p>
     </section>
   </div>
   <p class="copyright">© {new Date().getFullYear()} Homestead Keeper. All rights reserved.</p>
