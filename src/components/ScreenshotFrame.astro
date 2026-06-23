@@ -3,6 +3,7 @@ import { assetPath } from '../utils/paths';
 interface Props { src?: string; alt?: string; caption?: string; loading?: 'lazy' | 'eager'; }
 const { src = 'assets/screenshots/homestead-hub.webp', alt = 'Homestead Keeper Homestead Hub showing featured garden, animals, property, inventory, and other homestead areas.', caption = 'Homestead Hub, the home base for your garden, animals, property, inventory, and records.', loading = 'lazy' } = Astro.props;
 const imageUrl = assetPath(src);
+const actionLabel = `Expand screenshot: ${caption ?? alt}`;
 ---
 <figure class="screenshot-frame">
   <button
@@ -11,9 +12,9 @@ const imageUrl = assetPath(src);
     data-lightbox-src={imageUrl}
     data-lightbox-alt={alt}
     data-lightbox-title={caption ?? alt}
-    aria-label={`Expand screenshot: ${caption ?? alt}`}
+    aria-label={actionLabel}
   >
     <img src={imageUrl} alt={alt} loading={loading} />
   </button>
-  {caption && <figcaption>{caption} <span>Click to expand.</span></figcaption>}
+  {caption && <figcaption>{caption} <span aria-hidden="true">Click to expand.</span></figcaption>}
 </figure>

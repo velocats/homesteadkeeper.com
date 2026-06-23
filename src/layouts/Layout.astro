@@ -34,10 +34,10 @@ const { title, description, path = '/', image, jsonLd } = Astro.props;
     <Footer />
     <div class="screenshot-lightbox" data-lightbox hidden aria-hidden="true">
       <button class="lightbox-backdrop" type="button" data-lightbox-close aria-label="Close expanded screenshot"></button>
-      <div class="lightbox-panel" role="dialog" aria-modal="true" aria-label="Expanded screenshot">
+      <div class="lightbox-panel" role="dialog" aria-modal="true" aria-label="Expanded screenshot" aria-describedby="lightbox-caption">
         <button class="lightbox-close" type="button" data-lightbox-close aria-label="Close expanded screenshot">×</button>
         <img data-lightbox-image src="" alt="" />
-        <p data-lightbox-caption></p>
+        <p id="lightbox-caption" data-lightbox-caption></p>
       </div>
     </div>
     <script is:inline>
@@ -48,6 +48,14 @@ const { title, description, path = '/', image, jsonLd } = Astro.props;
         if (!lightbox || !image || !caption) return;
 
         let lastTrigger = null;
+        const focusableSelector = [
+          'a[href]',
+          'button:not([disabled])',
+          'textarea:not([disabled])',
+          'input:not([disabled])',
+          'select:not([disabled])',
+          '[tabindex]:not([tabindex="-1"])',
+        ].join(',');
 
         const openLightbox = (trigger) => {
           lastTrigger = trigger;
@@ -62,9 +70,12 @@ const { title, description, path = '/', image, jsonLd } = Astro.props;
         };
 
         const closeLightbox = () => {
+          if (lightbox.hidden) return;
           lightbox.hidden = true;
           lightbox.setAttribute('aria-hidden', 'true');
           image.src = '';
+          image.alt = '';
+          caption.textContent = '';
           document.documentElement.classList.remove('lightbox-open');
           lastTrigger?.focus();
         };
@@ -82,7 +93,28 @@ const { title, description, path = '/', image, jsonLd } = Astro.props;
         });
 
         document.addEventListener('keydown', (event) => {
-          if (event.key === 'Escape' && !lightbox.hidden) closeLightbox();
+          if (lightbox.hidden) return;
+
+          if (event.key === 'Escape') {
+            closeLightbox();
+            return;
+          }
+
+          if (event.key !== 'Tab') return;
+
+          const focusable = [...lightbox.querySelectorAll(focusableSelector)]
+            .filter((element) => element.offsetParent !== null);
+          if (!focusable.length) return;
+
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+          }
         });
       })();
     </script>

@@ -5,5 +5,5 @@ const { title, body, href } = Astro.props;
 <article class="card feature-card">
   <h3>{title}</h3>
   <p>{body}</p>
-  {href && <a class="text-link" href={href}>Learn more</a>}
+  {href && <a class="text-link" href={href} aria-label={`Learn more about ${title}`}>Learn more</a>}
 </article>

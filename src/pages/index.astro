@@ -63,7 +63,7 @@ const focusCards = [
   </section>
 
   <section class="section" aria-labelledby="focus-title">
-    <SectionHeader eyebrow="Why it is different" title="Built for the whole homestead, not just one chore." body="Homestead Keeper combines local records, Apple-device sync, garden planning, calendar reminders, production tracking, and reports for the mixed work that actually happens around a homestead." />
+    <SectionHeader headingId="focus-title" eyebrow="Why it is different" title="Built for the whole homestead, not just one chore." body="Homestead Keeper combines local records, Apple-device sync, garden planning, calendar reminders, production tracking, and reports for the mixed work that actually happens around a homestead." />
     <div class="card-grid compact">
       {focusCards.map(([title, body]) => <FeatureCard title={title} body={body} />)}
     </div>
@@ -82,12 +82,12 @@ const focusCards = [
   </section>
 
   <section class="section" aria-labelledby="screens-title">
-    <SectionHeader eyebrow="Product tour" title="See the app before you install it." body="Every screenshot opens larger in the browser so you can inspect the layout, records, reports, and calendar views." />
+    <SectionHeader headingId="screens-title" eyebrow="Product tour" title="See the app before you install it." body="Every screenshot opens larger in the browser so you can inspect the layout, records, reports, and calendar views." />
     <ScreenshotGallery shots={homepageScreenshots} />
   </section>
 
   <section class="section" aria-labelledby="manage-title">
-    <SectionHeader eyebrow="Entire homestead records" title="One record system for everything you manage." body="Start simple with the areas you use today, then add more as your homestead records mature." />
+    <SectionHeader headingId="manage-title" eyebrow="Entire homestead records" title="One record system for everything you manage." body="Start simple with the areas you use today, then add more as your homestead records mature." />
     <div class="card-grid compact">
       {managementAreas.map(([title, body]) => <FeatureCard title={title} body={body} />)}
     </div>
@@ -119,19 +119,19 @@ const focusCards = [
   </section>
 
   <section class="section" aria-labelledby="reports-title">
-    <SectionHeader eyebrow="Reports" title="Turn everyday records into useful summaries." body="Review health, costs, production, inventory, maintenance, warranties, and handoff information without rebuilding the story from scattered notes." />
+    <SectionHeader headingId="reports-title" eyebrow="Reports" title="Turn everyday records into useful summaries." body="Review health, costs, production, inventory, maintenance, warranties, and handoff information without rebuilding the story from scattered notes." />
     <ScreenshotGallery shots={reportScreenshots} />
   </section>
 
   <section class="section" aria-labelledby="day-title">
-    <SectionHeader eyebrow="Daily workflow" title="From morning chores to end-of-day notes." body="Use it as a Field Log, calendar, inventory tracker, production record, and handoff history without turning your homestead into a spreadsheet project." />
+    <SectionHeader headingId="day-title" eyebrow="Daily workflow" title="From morning chores to end-of-day notes." body="Use it as a Field Log, calendar, inventory tracker, production record, and handoff history without turning your homestead into a spreadsheet project." />
     <ol class="timeline">
       {workflow.map((item) => <li>{item}</li>)}
     </ol>
   </section>
 
   <section class="section" aria-labelledby="pricing-title">
-    <SectionHeader eyebrow="Pricing" title="Try it free. Upgrade when your records grow." body="Free includes up to 20 total items. Pro unlocks unlimited items plus exports, backups, QR labels, and advanced tools." />
+    <SectionHeader headingId="pricing-title" eyebrow="Pricing" title="Try it free. Upgrade when your records grow." body="Free includes up to 20 total items. Pro unlocks unlimited items plus exports, backups, QR labels, and advanced tools." />
     <div class="pricing-grid">
       {pricingTiers.map((tier) => <PricingCard {...tier} />)}
     </div>

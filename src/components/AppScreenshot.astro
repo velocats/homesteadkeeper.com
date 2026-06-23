@@ -12,6 +12,7 @@ interface Props {
 
 const { src, alt, title, body, class: className = '', loading = 'lazy' } = Astro.props;
 const imageUrl = assetPath(src);
+const actionLabel = `Expand screenshot: ${title ?? alt}`;
 ---
 
 <figure class:list={['app-screenshot', className]}>
@@ -21,7 +22,7 @@ const imageUrl = assetPath(src);
     data-lightbox-src={imageUrl}
     data-lightbox-alt={alt}
     data-lightbox-title={title ?? alt}
-    aria-label={`Expand screenshot: ${title ?? alt}`}
+    aria-label={actionLabel}
   >
     <img src={imageUrl} alt={alt} loading={loading} />
   </button>
@@ -29,7 +30,7 @@ const imageUrl = assetPath(src);
     <figcaption>
       {title && <strong>{title}</strong>}
       {body && <span>{body}</span>}
-      <em>Click to expand</em>
+      <em aria-hidden="true">Click to expand</em>
     </figcaption>
   )}
 </figure>
