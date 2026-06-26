@@ -11,7 +11,15 @@ const footerLinks = [
   ['Privacy', '/privacy'],
   ['Support', '/support'],
 ];
-const featureLinks = ['Garden Beds', 'Animals', 'Calendar', 'Inventory', 'Food & Pantry', 'Reports'];
+const featureLinks = [
+  ['Garden Beds', '/features'],
+  ['Animals', '/features/animals'],
+  ['Calendar', '/features'],
+  ['Inventory', '/features/inventory'],
+  ['Food & Pantry', '/features'],
+  ['Reports', '/features/reports'],
+  ['Mac App', '/features/macos'],
+];
 ---
 
 <footer class="site-footer">
@@ -33,7 +41,7 @@ const featureLinks = ['Garden Beds', 'Animals', 'Calendar', 'Inventory', 'Food &
     <nav aria-labelledby="footer-tracks-title">
       <h2 id="footer-tracks-title">Tracks</h2>
       <div class="footer-link-list">
-        {featureLinks.map((label) => <a href={sitePath('/features')}>{label}</a>)}
+        {featureLinks.map(([label, href]) => <a href={sitePath(href)}>{label}</a>)}
       </div>
     </nav>
     <section aria-labelledby="footer-contact-title">

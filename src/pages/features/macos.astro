@@ -1,0 +1,94 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CTA from '../../components/CTA.astro';
+import AppScreenshot from '../../components/AppScreenshot.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+
+const title = 'macOS Screenshots | Homestead Keeper';
+const description = 'View Homestead Keeper macOS screenshots for reports, records, calendars, inventory, production, and homestead management on Mac.';
+
+const macScreenshots = [
+  {
+    src: 'assets/screenshots/macOS/ChatGPT Image Jun 26, 2026, 03_09_56 PM (1).png',
+    title: 'Warranty countdown',
+    body: 'Review expired, upcoming, and later warranty dates from the Mac app.',
+    alt: 'Homestead Keeper macOS screenshot showing warranty countdown records.',
+  },
+  {
+    src: 'assets/screenshots/macOS/ChatGPT Image Jun 26, 2026, 03_09_57 PM (2).png',
+    title: 'Homestead records',
+    body: 'Browse records with a larger desktop layout for planning and review.',
+    alt: 'Homestead Keeper macOS screenshot showing homestead record details.',
+  },
+  {
+    src: 'assets/screenshots/macOS/ChatGPT Image Jun 26, 2026, 03_09_57 PM (3).png',
+    title: 'Calendar planning',
+    body: 'Use the Mac display to review scheduled work and seasonal timing.',
+    alt: 'Homestead Keeper macOS screenshot showing calendar planning.',
+  },
+  {
+    src: 'assets/screenshots/macOS/ChatGPT Image Jun 26, 2026, 03_09_57 PM (4).png',
+    title: 'Reports overview',
+    body: 'Scan reports and summaries with more room for charts and tables.',
+    alt: 'Homestead Keeper macOS screenshot showing reports overview.',
+  },
+  {
+    src: 'assets/screenshots/macOS/ChatGPT Image Jun 26, 2026, 03_09_57 PM (5).png',
+    title: 'Inventory review',
+    body: 'Review supplies, categories, quantities, and status from a desktop view.',
+    alt: 'Homestead Keeper macOS screenshot showing inventory review.',
+  },
+  {
+    src: 'assets/screenshots/macOS/ChatGPT Image Jun 26, 2026, 03_09_57 PM (6).png',
+    title: 'Animal records',
+    body: 'Review animal records, production, care, and related history on Mac.',
+    alt: 'Homestead Keeper macOS screenshot showing animal records.',
+  },
+  {
+    src: 'assets/screenshots/macOS/ChatGPT Image Jun 26, 2026, 03_09_58 PM (7).png',
+    title: 'Garden and orchard work',
+    body: 'Use the wider screen for planting, harvest, and seasonal record review.',
+    alt: 'Homestead Keeper macOS screenshot showing garden or orchard records.',
+  },
+  {
+    src: 'assets/screenshots/macOS/ChatGPT Image Jun 26, 2026, 03_09_59 PM (8).png',
+    title: 'Production history',
+    body: 'Review production trends, harvests, and totals with desktop breathing room.',
+    alt: 'Homestead Keeper macOS screenshot showing production history.',
+  },
+  {
+    src: 'assets/screenshots/macOS/ChatGPT Image Jun 26, 2026, 03_10_00 PM (9).png',
+    title: 'Property management',
+    body: 'Keep property, places, equipment, and maintenance context organized.',
+    alt: 'Homestead Keeper macOS screenshot showing property management records.',
+  },
+  {
+    src: 'assets/screenshots/macOS/ChatGPT Image Jun 26, 2026, 03_10_00 PM (10).png',
+    title: 'Mac workflow',
+    body: 'Use Homestead Keeper across iPhone, iPad, and Mac with optional iCloud sync.',
+    alt: 'Homestead Keeper macOS screenshot showing a Mac workflow.',
+  },
+];
+---
+
+<Layout title={title} description={description} path="/features/macos" image="/assets/screenshots/macOS/ChatGPT Image Jun 26, 2026, 03_09_56 PM (1).png">
+  <section class="page-hero">
+    <p class="eyebrow">macOS screenshots</p>
+    <h1>Homestead Keeper on Mac.</h1>
+    <p class="lede">A larger screen for reviewing records, reports, calendars, inventory, production, and property work when you want more room than a phone or tablet.</p>
+  </section>
+
+  <section class="section" aria-labelledby="macos-gallery-title">
+    <SectionHeader
+      headingId="macos-gallery-title"
+      eyebrow="Mac app gallery"
+      title="Desktop views for deeper review."
+      body="Click any screenshot to open the full-resolution image on the page."
+    />
+    <div class="screenshot-gallery macos-gallery">
+      {macScreenshots.map((shot) => <AppScreenshot {...shot} />)}
+    </div>
+  </section>
+
+  <CTA title="Explore the full feature set" body="Homestead Keeper is designed for iPhone, iPad, and Mac, with local-first records and optional iCloud sync across Apple devices." primaryLabel="View all features" primaryHref="/features" secondaryLabel="See workflows" secondaryHref="/workflows" />
+</Layout>

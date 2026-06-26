@@ -7,6 +7,7 @@ import AppScreenshot from '../components/AppScreenshot.astro';
 import ScreenshotGallery from '../components/ScreenshotGallery.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import { animalScreenshots, calendarScreenshots, coreFeatures, equipmentScreenshots, gardenScreenshots, inventoryScreenshots, managementAreas, productTourScreenshots, reportScreenshots } from '../data/site';
+import { sitePath } from '../utils/paths';
 
 const title = 'Features | Homestead Keeper';
 const description = 'Explore Homestead Keeper features for whole-homestead records, garden bed layouts, animals, orchards, bees, equipment, property, off-grid systems, Food & Pantry, inventory, calendar reminders, reports, exports, and Apple device sync.';
@@ -64,6 +65,21 @@ const groups = [
   <section class="section" aria-labelledby="tour-title">
     <SectionHeader headingId="tour-title" eyebrow="Screenshots" title="A tour through the real app." body="Click any screenshot to open it larger in your browser. These images show layouts, calendar views, animal records, equipment service, inventory, reports, and production tracking." />
     <ScreenshotGallery shots={productTourScreenshots} />
+  </section>
+
+  <section class="split-section soft-panel">
+    <div>
+      <p class="eyebrow">Mac app</p>
+      <h2>More room for review, reports, and planning.</h2>
+      <p>Homestead Keeper is designed for iPhone, iPad, and Mac. The Mac view gives larger screenshots, wider records, and more room to review reports, calendars, inventory, production, and property work.</p>
+      <p><a class="button secondary" href={sitePath('/features/macos')}>View macOS screenshots</a></p>
+    </div>
+    <AppScreenshot
+      src="assets/screenshots/macOS/ChatGPT Image Jun 26, 2026, 03_09_56 PM (1).png"
+      title="Homestead Keeper on Mac"
+      body="Click to expand the full-size macOS screenshot."
+      alt="Homestead Keeper macOS screenshot showing warranty countdown records."
+    />
   </section>
 
   <section class="section">
