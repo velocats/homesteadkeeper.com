@@ -12,6 +12,7 @@ export const site = {
 export const navItems = [
   { href: '/', label: 'Home' },
   { href: '/features', label: 'Features' },
+  { href: '/workflows', label: 'Workflows' },
   { href: '/pricing', label: 'Pricing' },
   { href: '/faq', label: 'FAQ' },
   { href: '/privacy', label: 'Privacy' },
@@ -38,8 +39,6 @@ export const managementAreas = [
   ['Off-grid Systems', 'Track solar, batteries, generators, propane, water storage, backup power, filters, and seasonal checks.'],
   ['Forestry', 'Track tree work, fire mitigation, wood lots, brush clearing, storm cleanup, and property access tasks.'],
   ['Emergency Prep', 'Track stored water, food, first aid, generator readiness, batteries, documents, and expiration dates.'],
-  ['Projects', 'Keep repair projects, garden builds, coop upgrades, fencing jobs, and seasonal improvements organized.'],
-  ['Farm Business', 'Keep practical business-adjacent records without turning the app into enterprise farm ERP or accounting software.'],
   ['Places', 'Organize work by coops, barns, gardens, sheds, pastures, apiaries, pump houses, pantries, and other real locations.'],
   ['Reports & Exports', 'Review homestead summaries, cost summaries, logbooks, animal care, production, inventory, maintenance, and handoff reports.'],
 ] as const;

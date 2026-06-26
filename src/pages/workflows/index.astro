@@ -1,0 +1,73 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CTA from '../../components/CTA.astro';
+import AppScreenshot from '../../components/AppScreenshot.astro';
+import ScreenshotGallery from '../../components/ScreenshotGallery.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import { workflowOverviewShots, workflows, plannedWorkflows } from '../../data/workflows';
+import { sitePath } from '../../utils/paths';
+
+const title = 'Workflows | Homestead Keeper';
+const description = 'Learn Homestead Keeper through practical workflows for adding items, garden layouts, orchard plantings, animal breeding, checklists, maps, reports, calendar review, Today, animal production, and plant harvests.';
+const categories = ['Start Here', 'Plan and Grow', 'Manage Animals', 'Operate and Review'] as const;
+---
+
+<Layout title={title} description={description} path="/workflows" image="/assets/workflows/global/Simulator Screenshot - iPad Air 13-inch (M3) - 2026-06-24 at 14.44.32.png">
+  <section class="page-hero">
+    <p class="eyebrow">Workflows</p>
+    <h1>Learn Homestead Keeper by doing real homestead work.</h1>
+    <p class="lede">Use these visual walkthroughs to see how records move through the app: from hubs and daily review to maps, calendars, reports, breeding, production, and harvest history.</p>
+    <div class="button-row">
+      <a class="button primary" href={sitePath('/workflows/today-screen-review')}>Start with Today</a>
+      <a class="button secondary" href={sitePath('/workflows/adding-items-to-hubs')}>Add your first item</a>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="workflow-overview-title">
+    <SectionHeader headingId="workflow-overview-title" eyebrow="Guided tour" title="The main screens working together." body="Click any screenshot to inspect the demo data full size." />
+    <ScreenshotGallery shots={workflowOverviewShots} compact />
+  </section>
+
+  {categories.map((category) => {
+    const categoryWorkflows = workflows.filter((workflow) => workflow.category === category);
+    return (
+      <section class="section workflow-band" aria-labelledby={`workflow-${category.toLowerCase().replaceAll(' ', '-')}`}>
+        <div class="section-header">
+          <p class="eyebrow">{category}</p>
+          <h2 id={`workflow-${category.toLowerCase().replaceAll(' ', '-')}`}>{category === 'Start Here' ? 'Begin with the everyday rhythm.' : category === 'Plan and Grow' ? 'Plan growing seasons and harvests.' : category === 'Manage Animals' ? 'Keep animal records connected.' : 'Review, schedule, and operate.'}</h2>
+        </div>
+        <div class="workflow-card-grid">
+          {categoryWorkflows.map((workflow) => (
+            <a class="workflow-card" href={sitePath(`/workflows/${workflow.slug}`)}>
+              <img src={sitePath(workflow.hero.src)} alt="" loading="lazy" />
+              <span class="workflow-card-copy">
+                <span class="plan-name">{workflow.difficulty}</span>
+                <strong>{workflow.title}</strong>
+                <span>{workflow.summary}</span>
+              </span>
+            </a>
+          ))}
+        </div>
+      </section>
+    );
+  })}
+
+  <section class="split-section soft-panel" aria-labelledby="planned-workflows-title">
+    <div>
+      <p class="eyebrow">Coming next</p>
+      <h2 id="planned-workflows-title">One workflow still needs screenshots.</h2>
+      <p>Importing spreadsheet data deserves its own guide once the demo screenshots are available. The page can show file selection, preview, mapping, validation, and imported records.</p>
+    </div>
+    <div class="stacked-cards">
+      {plannedWorkflows.map((workflow) => (
+        <article class="callout-card">
+          <h3>{workflow.title}</h3>
+          <p>{workflow.summary}</p>
+          <a class="text-link" href={sitePath(`/workflows/${workflow.slug}`)}>View planned workflow</a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <CTA title="Want to see the full feature set?" body="Workflows show how Homestead Keeper feels in practice. The feature pages show the broader toolset by area." primaryLabel="View features" primaryHref="/features" secondaryLabel="See pricing" secondaryHref="/pricing" />
+</Layout>

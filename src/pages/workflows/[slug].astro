@@ -1,0 +1,76 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CTA from '../../components/CTA.astro';
+import AppScreenshot from '../../components/AppScreenshot.astro';
+import InternalLinkCards from '../../components/InternalLinkCards.astro';
+import { workflows } from '../../data/workflows';
+import { sitePath } from '../../utils/paths';
+
+export function getStaticPaths() {
+  return workflows.map((workflow) => ({
+    params: { slug: workflow.slug },
+    props: { workflow },
+  }));
+}
+
+const { workflow } = Astro.props;
+const related = workflows
+  .filter((item) => item.slug !== workflow.slug && (item.category === workflow.category || item.category === 'Start Here'))
+  .slice(0, 3)
+  .map((item) => ({
+    title: item.title,
+    href: `/workflows/${item.slug}`,
+    summary: item.summary,
+  }));
+---
+
+<Layout title={`${workflow.title} | Workflows | Homestead Keeper`} description={workflow.summary} path={`/workflows/${workflow.slug}`} image={`/${workflow.hero.src}`}>
+  <section class="page-hero workflow-detail-hero">
+    <p class="eyebrow">Workflow</p>
+    <h1>{workflow.title}</h1>
+    <p class="lede">{workflow.outcome}</p>
+    <div class="workflow-meta" aria-label="Workflow details">
+      <span>{workflow.category}</span>
+      <span>{workflow.difficulty}</span>
+      <span>{workflow.steps.length} steps</span>
+    </div>
+  </section>
+
+  <section class="split-section soft-panel">
+    <div>
+      <p class="eyebrow">Outcome</p>
+      <h2>What this walkthrough shows</h2>
+      <p>{workflow.summary}</p>
+      <ul class="check-list">
+        {workflow.unlocks.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+    <AppScreenshot {...workflow.hero} loading="eager" />
+  </section>
+
+  <section class="section workflow-steps" aria-labelledby="steps-title">
+    <div class="section-header">
+      <p class="eyebrow">Step by step</p>
+      <h2 id="steps-title">Follow the workflow in the demo homestead.</h2>
+      <p class="lede">Each screenshot opens full size in the same page.</p>
+    </div>
+    {workflow.steps.map((step, index) => (
+      <article class="workflow-step">
+        <div class="workflow-step-copy">
+          <p class="eyebrow">Step {index + 1}</p>
+          <h3>{step.title}</h3>
+          <p>{step.body}</p>
+        </div>
+        {step.shot && <AppScreenshot {...step.shot} />}
+      </article>
+    ))}
+  </section>
+
+  <section class="section" aria-labelledby="related-workflows-title">
+    <p class="eyebrow">Related workflows</p>
+    <h2 id="related-workflows-title">Keep exploring</h2>
+    <InternalLinkCards links={related} />
+  </section>
+
+  <CTA title="Ready for the broader app tour?" body="The feature pages explain the full set of records, reports, and tools behind these workflows." primaryLabel="View all workflows" primaryHref="/workflows" secondaryLabel="Explore features" secondaryHref="/features" />
+</Layout>

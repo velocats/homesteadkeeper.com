@@ -1,0 +1,58 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CTA from '../../components/CTA.astro';
+import InternalLinkCards from '../../components/InternalLinkCards.astro';
+
+const neededScreenshots = [
+  'Import entry point',
+  'File selection for Excel or CSV',
+  'Spreadsheet preview',
+  'Column mapping',
+  'Validation and review',
+  'Successful import result',
+  'Imported records in the matching hub',
+];
+---
+
+<Layout
+  title="Import Excel and CSV Data | Workflows | Homestead Keeper"
+  description="A planned Homestead Keeper workflow for importing existing Excel or CSV records into the app."
+  path="/workflows/import-excel-csv"
+>
+  <section class="page-hero workflow-detail-hero">
+    <p class="eyebrow">Planned workflow</p>
+    <h1>Import Data From Excel/CSV</h1>
+    <p class="lede">This guide is ready for screenshots once the import demo flow is captured. It will show how existing spreadsheet records become usable Homestead Keeper records.</p>
+    <div class="workflow-meta" aria-label="Workflow details">
+      <span>Operate and Review</span>
+      <span>Advanced</span>
+      <span>Needs screenshots</span>
+    </div>
+  </section>
+
+  <section class="split-section soft-panel">
+    <div>
+      <p class="eyebrow">What this page will show</p>
+      <h2>Bring existing records into the app.</h2>
+      <p>The finished walkthrough should explain file selection, previewing rows, mapping spreadsheet columns, reviewing validation, importing records, and confirming the results in the right hub.</p>
+    </div>
+    <article class="callout-card">
+      <h3>Screenshots needed</h3>
+      <ul class="check-list">
+        {neededScreenshots.map((item) => <li>{item}</li>)}
+      </ul>
+    </article>
+  </section>
+
+  <section class="section" aria-labelledby="related-workflows-title">
+    <p class="eyebrow">Related workflows</p>
+    <h2 id="related-workflows-title">Useful context before importing</h2>
+    <InternalLinkCards links={[
+      { title: 'Adding Items to Hubs', href: '/workflows/adding-items-to-hubs', summary: 'See how records are created and where imported records should land.' },
+      { title: 'Reports Demonstration', href: '/workflows/reports-demonstration', summary: 'See how structured records become useful summaries.' },
+      { title: 'Today Screen Review', href: '/workflows/today-screen-review', summary: 'See how records surface in daily review once they are active.' },
+    ]} />
+  </section>
+
+  <CTA title="Ready to explore the available guides?" body="The current workflow library covers setup, planning, daily review, maps, reports, breeding, production, and harvests." primaryLabel="View all workflows" primaryHref="/workflows" secondaryLabel="Explore features" secondaryHref="/features" />
+</Layout>

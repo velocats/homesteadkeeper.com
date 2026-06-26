@@ -33,8 +33,34 @@ const focusCards = [
   ['Data on your devices', 'Your working homestead records live on your Apple devices, with exports and backups under your control.'],
   ['Sync across Apple devices', 'Keep iPhone, iPad, MacBook, Mac mini, and other Macs up to date through Apple iCloud when enabled.'],
   ['Garden bed layouts', 'Plan raised beds, plots, rows, and crop placement by season, then connect layouts to planting and harvest records.'],
-  ['Entire homestead records', 'Bring animals, garden, orchard, bees, equipment, property, off-grid, inventory, Food & Pantry, projects, and reports together.'],
+  ['Entire homestead records', 'Bring animals, garden, orchard, bees, equipment, property, off-grid, inventory, Food & Pantry, places, and reports together.'],
   ['Calendar built for chores', 'See harvest windows, animal care, maintenance, warranties, planting dates, overdue work, and seasonal reminders.'],
+];
+const workflowPreviewScreenshots = [
+  {
+    src: 'assets/workflows/map/Simulator Screenshot - iPad Air 13-inch (M3) - 2026-06-25 at 13.20.20.png',
+    title: 'Map the homestead',
+    body: 'See real places, systems, fields, buildings, and records in spatial context.',
+    alt: 'Homestead Keeper map showing a satellite view of a homestead with labeled places and colored record markers.',
+  },
+  {
+    src: 'assets/workflows/today/Simulator Screenshot - iPad Air 13-inch (M3) - 2026-06-26 at 10.25.12.png',
+    title: 'Review today',
+    body: 'Check overdue work, today’s chores, recent activity, and what needs attention next.',
+    alt: 'Homestead Keeper Today screen showing overdue tasks, today chores, field log shortcuts, recent reminders, and inventory alerts.',
+  },
+  {
+    src: 'assets/workflows/garden-layout-plantings/Simulator Screenshot - iPad Air 13-inch (M3) - 2026-06-24 at 15.45.13.png',
+    title: 'Plan garden layouts',
+    body: 'Place crops visually, connect layouts to planting records, and keep seasonal plans readable.',
+    alt: 'Homestead Keeper garden layout screen showing crop placements in a raised bed grid.',
+  },
+  {
+    src: 'assets/workflows/reports/Simulator Screenshot - iPad Air 13-inch (M3) - 2026-06-26 at 10.08.32.png',
+    title: 'Run reports',
+    body: 'Turn everyday records into summaries for health, costs, production, inventory, and maintenance.',
+    alt: 'Homestead Keeper Homestead Summary report showing health score, floor plan metrics, and activity by type.',
+  },
 ];
 ---
 
@@ -67,6 +93,11 @@ const focusCards = [
     <div class="card-grid compact">
       {focusCards.map(([title, body]) => <FeatureCard title={title} body={body} />)}
     </div>
+  </section>
+
+  <section class="section" aria-labelledby="workflow-preview-title">
+    <SectionHeader headingId="workflow-preview-title" eyebrow="Workflow previews" title="See how the app helps with real homestead work." body="These demo screens show how daily chores, maps, garden planning, and reports fit together. Click any screenshot to inspect it full size." />
+    <ScreenshotGallery shots={workflowPreviewScreenshots} compact />
   </section>
 
   <section class="split-section soft-panel" aria-labelledby="beds-title">

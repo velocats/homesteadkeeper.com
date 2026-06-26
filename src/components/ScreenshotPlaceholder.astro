@@ -18,7 +18,16 @@ const hasImage = Boolean(publicFile && existsSync(publicFile));
 <figure class="screenshot-frame" style={`--aspect:${aspect}`}>
   {
     hasImage && assetSrc ? (
-      <img src={assetSrc} alt={`${label} screenshot`} loading="lazy" />
+      <button
+        class="device-shell screenshot-trigger"
+        type="button"
+        data-lightbox-src={assetSrc}
+        data-lightbox-alt={`${label} screenshot`}
+        data-lightbox-title={label}
+        aria-label={`Expand screenshot: ${label}`}
+      >
+        <img src={assetSrc} alt={`${label} screenshot`} loading="lazy" />
+      </button>
     ) : (
       <div role="img" aria-label={`Planned app screen: ${label}`}>
         <span>{label}</span>
