@@ -132,7 +132,7 @@ export const homepageScreenshots = [
     src: 'assets/screenshots/calendar-week.webp',
     title: 'Calendar week view',
     body: 'See upcoming animal care, breeding milestones, chores, and seasonal work.',
-    alt: 'Homestead Keeper calendar week view showing breeding calendar events and milestones.',
+    alt: 'Homestead Keeper calendar week view showing upcoming chores, seasonal reminders, and a month grid.',
   },
   {
     src: 'assets/screenshots/report-production.webp',

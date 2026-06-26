@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import CTA from '../../components/CTA.astro';
 import AppScreenshot from '../../components/AppScreenshot.astro';
+import ScreenshotFrame from '../../components/ScreenshotFrame.astro';
 import SectionHeader from '../../components/SectionHeader.astro';
 import { sitePath } from '../../utils/paths';
 
@@ -81,21 +82,19 @@ const macScreenshots = [
 
   <section class="split-section">
     <div>
+      <p class="eyebrow">One app. Three screens.</p>
       <h2>More room for the records that matter.</h2>
       <p>The Mac app gives you a wider view for browsing inventory, scanning reports, reading timelines, and reviewing production history without scrolling through a phone screen.</p>
       <ul class="check-list">
         <li>More room for reports and review</li>
         <li>Easier browsing of inventory, records, and timelines</li>
         <li>Useful for planning, reviewing, and organizing homestead information</li>
-        <li>Works as part of the same iPhone, iPad, and Mac Apple-device app</li>
+        <li>Works as part of the same iPhone, iPad, and Mac app</li>
       </ul>
-      <p>No separate Mac login or sync setup. Enable iCloud in your Apple settings and records stay consistent across devices.</p>
-    </div>
-    <div>
-      <p class="eyebrow">One app. Three screens.</p>
       <p>No Homestead Keeper login. Records on your Apple devices. Optional iCloud sync across iPhone, iPad, and Mac.</p>
       <p><a class="button secondary" href={sitePath('/pricing')}>View Pricing</a></p>
     </div>
+    <ScreenshotFrame src="assets/screenshots/homestead-hub.webp" alt="Homestead Keeper Homestead Hub showing the major areas of the app." caption="The full homestead in a wider desktop view." />
   </section>
 
   <section class="section" aria-labelledby="macos-gallery-title">
