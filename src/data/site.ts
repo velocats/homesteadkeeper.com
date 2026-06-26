@@ -3,8 +3,8 @@ export const site = {
   tagline: 'Whole-homestead records on your Apple devices.',
   url: 'https://homesteadkeeper.com',
   supportEmail: 'support@homesteadkeeper.com',
-  appStoreLabel: 'App Store coming soon',
-  appStoreUrl: '#app-store-coming-soon',
+  appStoreLabel: 'Download on the App Store',
+  appStoreUrl: '/#app-store-coming-soon',
   description:
     'A calm homestead management app for animals, gardens, garden bed layouts, orchards, bees, equipment, inventory, food and pantry records, reminders, reports, and rural property care on iPhone, iPad, and Mac.',
 };

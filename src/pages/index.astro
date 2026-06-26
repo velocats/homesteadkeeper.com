@@ -7,7 +7,8 @@ import ScreenshotFrame from '../components/ScreenshotFrame.astro';
 import AppScreenshot from '../components/AppScreenshot.astro';
 import ScreenshotGallery from '../components/ScreenshotGallery.astro';
 import SectionHeader from '../components/SectionHeader.astro';
-import { calendarScreenshots, coreFeatures, gardenScreenshots, homepageScreenshots, inventoryScreenshots, managementAreas, pricingTiers, reportScreenshots, site, trustPoints } from '../data/site';
+import ComparisonTable from '../components/ComparisonTable.astro';
+import { calendarScreenshots, gardenScreenshots, homepageScreenshots, inventoryScreenshots, pricingTiers, reportScreenshots, site, trustPoints } from '../data/site';
 import { sitePath } from '../utils/paths';
 
 const title = 'Homestead Keeper | Homestead Records for iPhone, iPad, and Mac';
@@ -29,12 +30,65 @@ const workflow = [
   'Export reports, backups, QR labels, and CSV data with Pro when you need records outside the app.',
 ];
 const focusCards = [
-  ['No login', 'Use Homestead Keeper without creating a Homestead Keeper web account or managing a separate web dashboard.'],
-  ['Data on your devices', 'Your working homestead records live on your Apple devices, with exports and backups under your control.'],
-  ['Sync across Apple devices', 'Keep iPhone, iPad, MacBook, Mac mini, and other Macs up to date through Apple iCloud when enabled.'],
+  ['No account required', 'Use Homestead Keeper without creating a Homestead Keeper web account or managing a separate web dashboard.'],
+  ['Local-first records', 'Your working homestead records live on your Apple devices, with exports and backups under your control.'],
+  ['iPhone, iPad, and Mac', 'Keep iPhone, iPad, MacBook, Mac mini, and other Macs up to date through Apple iCloud when enabled.'],
   ['Garden bed layouts', 'Plan raised beds, plots, rows, and crop placement by season, then connect layouts to planting and harvest records.'],
-  ['Entire homestead records', 'Bring animals, garden, orchard, bees, equipment, property, off-grid, inventory, Food & Pantry, places, and reports together.'],
+  ['Small-property record keeping', 'Bring animals, garden, orchard, bees, equipment, property, off-grid, inventory, Food & Pantry, places, and reports together.'],
   ['Calendar built for chores', 'See harvest windows, animal care, maintenance, warranties, planting dates, overdue work, and seasonal reminders.'],
+];
+const featureGroups = [
+  {
+    title: 'Animals',
+    items: [
+      ['Chickens', 'Care reminders, egg counts, health notes, and flock records.'],
+      ['Livestock', 'Profiles, care, breeding, weights, production, and history.'],
+      ['Bees', 'Hive inspections, queen notes, feeding, treatments, and honey harvests.'],
+    ],
+  },
+  {
+    title: 'Growing',
+    items: [
+      ['Garden', 'Planting records, crop notes, care, pest notes, and harvest history.'],
+      ['Orchard', 'Fruit trees, berries, pruning, sprays, seasonal care, and yields.'],
+      ['Garden bed layouts', 'Visual bed plans connected to crops, seasons, and planting logs.'],
+    ],
+  },
+  {
+    title: 'Property',
+    items: [
+      ['Equipment', 'Repairs, service reminders, parts, fuel, manuals, and warranties.'],
+      ['Buildings', 'Barns, coops, sheds, gates, fences, wells, pumps, and storage areas.'],
+      ['Off-grid', 'Solar, batteries, generators, propane, water storage, and backup systems.'],
+      ['Forestry', 'Tree work, fire mitigation, storm cleanup, and woodlot records.'],
+    ],
+  },
+  {
+    title: 'Home',
+    items: [
+      ['Inventory', 'Feed, medicine, seeds, filters, fuel, tools, parts, and low-stock alerts.'],
+      ['Food & Pantry', 'Canned goods, freezer food, preserved harvests, and storage notes.'],
+      ['Emergency Prep', 'Stored water, first aid, supplies, documents, and expiration dates.'],
+    ],
+  },
+  {
+    title: 'Planning',
+    items: [
+      ['Calendar', 'Daily, weekly, monthly, recurring, and seasonal work in one place.'],
+      ['Reports', 'Summaries for health, production, cost, inventory, maintenance, and warranties.'],
+      ['Places & Map', 'Organize records by real locations and view them spatially.'],
+    ],
+  },
+];
+const audience = [
+  'Backyard homesteads',
+  'Hobby farms',
+  'Chicken keepers',
+  'Gardeners',
+  'Orchard owners',
+  'Rural homeowners',
+  'Off-grid properties',
+  'Small acreage properties',
 ];
 const workflowPreviewScreenshots = [
   {
@@ -67,14 +121,14 @@ const workflowPreviewScreenshots = [
 <Layout title={title} description={description} path="/" image="/assets/screenshots/homestead-hub.webp" jsonLd={jsonLd}>
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero-copy">
-      <p class="eyebrow">Whole-homestead records for Apple devices</p>
-      <h1 id="hero-title">Run your homestead from your iPhone, iPad, and Mac.</h1>
-      <p class="hero-lede">Homestead Keeper helps you track animals, garden beds, crops, equipment, inventory, Food & Pantry, reminders, calendar work, reports, and property records — without a Homestead Keeper login.</p>
+      <p class="eyebrow">Homestead records for Apple devices</p>
+      <h1 id="hero-title">Spend less time organizing records and more time managing the work.</h1>
+      <p class="hero-lede">Homestead Keeper helps you track animals, garden beds, crops, equipment, inventory, Food & Pantry, reminders, calendar work, reports, and property records without a Homestead Keeper account.</p>
       <div class="button-row">
         <a class="button primary" href={sitePath('/features')}>Explore features</a>
-        <a class="button secondary" href={sitePath('/pricing')}>See pricing</a>
+        <a class="button secondary" href={sitePath('/workflows')}>View workflows</a>
       </div>
-      <p class="microcopy">No Homestead Keeper account. Data on your Apple devices. Optional iCloud sync across iPhone, iPad, and Mac.</p>
+      <p class="microcopy">No account required. Local-first. Works across iPhone, iPad, and Mac with optional iCloud sync.</p>
     </div>
     <ScreenshotFrame src="assets/screenshots/homestead-hub.webp" alt="Homestead Keeper Homestead Hub showing Garden, Animals, Property, Inventory, and More to Manage cards." caption="The Homestead Hub brings the major parts of your homestead into one calm place." loading="eager" />
   </section>
@@ -89,9 +143,16 @@ const workflowPreviewScreenshots = [
   </section>
 
   <section class="section" aria-labelledby="focus-title">
-    <SectionHeader headingId="focus-title" eyebrow="Why it is different" title="Built for the whole homestead, not just one chore." body="Homestead Keeper combines local records, Apple-device sync, garden planning, calendar reminders, production tracking, and reports for the mixed work that actually happens around a homestead." />
+    <SectionHeader headingId="focus-title" eyebrow="Why it is different" title="Everything you manage on your homestead, in one place." body="Homestead Keeper combines local-first records, Apple-device sync, garden planning, calendar reminders, production tracking, and reports for the mixed work that happens around a homestead or rural property." />
     <div class="card-grid compact">
       {focusCards.map(([title, body]) => <FeatureCard title={title} body={body} />)}
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="audience-title">
+    <SectionHeader headingId="audience-title" eyebrow="Who it is for" title="Built for the way small homesteads are managed" body="Homestead Keeper is designed for people who manage animals, gardens, equipment, property systems, food storage, and seasonal work without needing complicated farm business software." />
+    <div class="audience-grid">
+      {audience.map((item) => <span>{item}</span>)}
     </div>
   </section>
 
@@ -118,10 +179,27 @@ const workflowPreviewScreenshots = [
   </section>
 
   <section class="section" aria-labelledby="manage-title">
-    <SectionHeader headingId="manage-title" eyebrow="Entire homestead records" title="One record system for everything you manage." body="Start simple with the areas you use today, then add more as your homestead records mature." />
-    <div class="card-grid compact">
-      {managementAreas.map(([title, body]) => <FeatureCard title={title} body={body} />)}
+    <SectionHeader headingId="manage-title" eyebrow="Feature map" title="Records grouped around the work you actually do." body="Start with the areas you use today, then add more as your homestead or property records mature." />
+    <div class="feature-group-grid">
+      {featureGroups.map((group) => (
+        <article class="feature-group">
+          <h3>{group.title}</h3>
+          <ul>
+            {group.items.map(([title, body]) => (
+              <li>
+                <strong>{title}</strong>
+                <span>{body}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
     </div>
+  </section>
+
+  <section class="section" aria-labelledby="comparison-title">
+    <SectionHeader headingId="comparison-title" eyebrow="Comparison" title="Homestead records without farm software complexity" body="Homestead Keeper is designed for homestead and small-property record keeping. It is not trying to replace specialized farm business, payroll, tax, or enterprise production systems." />
+    <ComparisonTable />
   </section>
 
   <section class="split-section" aria-labelledby="calendar-title">
@@ -168,5 +246,14 @@ const workflowPreviewScreenshots = [
     </div>
   </section>
 
-  <CTA title="Ready to bring your homestead records together?" body="Track the animals, beds, equipment, supplies, places, calendar work, and reports that keep your homestead running." primaryLabel="Explore features" primaryHref="/features" secondaryLabel="Read FAQ" secondaryHref="/faq" />
+  <section id="app-store-coming-soon" class="section app-store-band" aria-labelledby="app-store-title">
+    <div>
+      <p class="eyebrow">App Store</p>
+      <h2 id="app-store-title">App Store download coming soon.</h2>
+      <p class="lede">The App Store listing is in progress. This placeholder will be replaced with the live download link when Homestead Keeper is ready.</p>
+    </div>
+    <a class="button primary" href={sitePath('/support')}>Contact support</a>
+  </section>
+
+  <CTA title="Spend less time organizing records and more time managing the work." body="Track the animals, beds, equipment, supplies, places, calendar work, and reports that keep your homestead or rural property running." primaryLabel="Explore features" primaryHref="/features" secondaryLabel="Read FAQ" secondaryHref="/faq" />
 </Layout>

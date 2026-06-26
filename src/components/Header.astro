@@ -30,4 +30,5 @@ const currentPath = Astro.url.pathname.replace(import.meta.env.BASE_URL, '/') ||
       })}
     </ul>
   </nav>
+  <a class="nav-appstore" href={sitePath(site.appStoreUrl)}>{site.appStoreLabel}</a>
 </header>

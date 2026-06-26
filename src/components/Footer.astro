@@ -3,6 +3,7 @@ import { site } from '../data/site';
 import { assetPath, sitePath } from '../utils/paths';
 
 const footerLinks = [
+  [site.appStoreLabel, site.appStoreUrl],
   ['Features', '/features'],
   ['Workflows', '/workflows'],
   ['Pricing', '/pricing'],
@@ -37,6 +38,7 @@ const featureLinks = ['Garden Beds', 'Animals', 'Calendar', 'Inventory', 'Food &
     </nav>
     <section aria-labelledby="footer-contact-title">
       <h2 id="footer-contact-title">Contact</h2>
+      <a href={sitePath(site.appStoreUrl)}>{site.appStoreLabel}</a>
       <a href={`mailto:${site.supportEmail}`}>{site.supportEmail}</a>
       <p class="fine-print">App Store listing is in progress. Pricing shown on this site reflects the current launch plan.</p>
     </section>
