@@ -1,0 +1,76 @@
+---
+import { site } from '../data/site';
+
+interface Props {
+  heading?: string;
+  intro?: string;
+}
+
+const {
+  heading = 'Contact Homestead Keeper support',
+  intro = 'Use the form for support questions, bug reports, feature requests, backup help, or workflow feedback.',
+} = Astro.props;
+const formAction = `https://formsubmit.co/${site.supportEmail}`;
+const nextUrl = `${site.url}/support/thanks`;
+---
+
+<section class="section contact-section" aria-labelledby="support-form-title">
+  <div class="contact-panel">
+    <div class="contact-copy">
+      <p class="eyebrow">Support</p>
+      <h2 id="support-form-title">{heading}</h2>
+      <p>{intro}</p>
+      <p>Email is still welcome: <a class="text-link" href={`mailto:${site.supportEmail}`}>{site.supportEmail}</a></p>
+    </div>
+    <form class="support-form" action={formAction} method="POST">
+      <input type="hidden" name="_subject" value="Homestead Keeper support request" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_next" value={nextUrl} />
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="form-honey" aria-hidden="true" />
+
+      <div class="form-grid">
+        <label>
+          <span>Name</span>
+          <input name="name" type="text" autocomplete="name" required />
+        </label>
+        <label>
+          <span>Email</span>
+          <input name="email" type="email" autocomplete="email" required />
+        </label>
+      </div>
+
+      <label>
+        <span>What can we help with?</span>
+        <select name="topic" required>
+          <option value="">Choose a topic</option>
+          <option>Support question</option>
+          <option>Bug report</option>
+          <option>Feature request</option>
+          <option>Backup or restore help</option>
+          <option>Workflow feedback</option>
+          <option>Other</option>
+        </select>
+      </label>
+
+      <div class="form-grid">
+        <label>
+          <span>Device optional</span>
+          <input name="device" type="text" autocomplete="off" placeholder="iPhone, iPad, or Mac" />
+        </label>
+        <label>
+          <span>App version optional</span>
+          <input name="app_version" type="text" autocomplete="off" />
+        </label>
+      </div>
+
+      <label>
+        <span>Message</span>
+        <textarea name="message" rows="7" required placeholder="Tell us what happened, what you expected, or what workflow you are trying to support."></textarea>
+      </label>
+
+      <p class="fine-print">This form sends your message to {site.supportEmail}. Do not include passwords, payment details, or private records you do not want to share.</p>
+      <button class="button primary" type="submit">Send message</button>
+    </form>
+  </div>
+</section>

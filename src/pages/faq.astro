@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import CTA from '../components/CTA.astro';
 import FAQItem from '../components/FAQItem.astro';
+import SupportForm from '../components/SupportForm.astro';
 import { faqs, site } from '../data/site';
 
 const title = 'FAQ | Homestead Keeper';
@@ -27,6 +28,8 @@ const jsonLd = {
   <section class="section faq-list" aria-label="Frequently asked questions">
     {faqs.map(([question, answer]) => <FAQItem question={question} answer={answer} />)}
   </section>
+
+  <SupportForm heading="Still have a question?" intro="Send a practical workflow question, bug report, or feature request and include the homestead record you are trying to keep." />
 
   <CTA title="Still have a question?" body="Send a practical workflow question, bug report, or feature request and include the homestead record you are trying to keep." primaryLabel={`Email ${site.supportEmail}`} primaryHref={`mailto:${site.supportEmail}`} secondaryLabel="View features" secondaryHref="/features" />
 </Layout>
