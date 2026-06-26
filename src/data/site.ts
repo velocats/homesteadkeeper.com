@@ -12,10 +12,10 @@ export const site = {
 export const navItems = [
   { href: '/', label: 'Home' },
   { href: '/features', label: 'Features' },
+  { href: '/features/macos', label: 'Mac' },
   { href: '/workflows', label: 'Workflows' },
   { href: '/pricing', label: 'Pricing' },
   { href: '/faq', label: 'FAQ' },
-  { href: '/privacy', label: 'Privacy' },
   { href: '/support', label: 'Support' },
 ];
 
@@ -167,8 +167,8 @@ export const calendarScreenshots = [
   {
     src: 'assets/screenshots/breeding-timeline.webp',
     title: 'Timeline view',
-    body: 'Milestone timelines help make longer seasonal and animal workflows easier to read.',
-    alt: 'Breeding calendar timeline showing active windows, completed items, birth or hatch, weaning, lockdown, and today markers.',
+    body: 'Timeline mode for planting windows, harvest dates, frost markers, seasonal chores, and care milestones.',
+    alt: 'Calendar timeline showing active windows, completed items, planting, harvest, and today markers.',
   },
 ] as const;
 
@@ -281,9 +281,9 @@ export const productTourScreenshots = [
   },
   {
     src: 'assets/screenshots/breeding-timeline.webp',
-    title: 'Breeding timeline',
-    body: 'Timeline mode for longer animal workflows and seasonal windows.',
-    alt: 'Breeding timeline with active windows, completed items, lockdown, weaning, and today marker.',
+    title: 'Garden timeline',
+    body: 'Planting windows, growing periods, harvest dates, frost markers, and seasonal care.',
+    alt: 'Calendar timeline showing planting, growing, harvest windows, frost dates, and today marker.',
   },
   {
     src: 'assets/screenshots/animal-summary.webp',

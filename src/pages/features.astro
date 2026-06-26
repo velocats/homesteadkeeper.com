@@ -6,11 +6,45 @@ import ScreenshotFrame from '../components/ScreenshotFrame.astro';
 import AppScreenshot from '../components/AppScreenshot.astro';
 import ScreenshotGallery from '../components/ScreenshotGallery.astro';
 import SectionHeader from '../components/SectionHeader.astro';
-import { animalScreenshots, calendarScreenshots, coreFeatures, equipmentScreenshots, gardenScreenshots, inventoryScreenshots, managementAreas, productTourScreenshots, reportScreenshots } from '../data/site';
+import { coreFeatures, managementAreas, reportScreenshots, gardenScreenshots } from '../data/site';
 import { sitePath } from '../utils/paths';
 
 const title = 'Features | Homestead Keeper';
-const description = 'Explore Homestead Keeper features for whole-homestead records, garden bed layouts, animals, orchards, bees, equipment, property, off-grid systems, Food & Pantry, inventory, calendar reminders, reports, exports, and Apple device sync.';
+const description = 'Homestead Keeper features for whole-homestead records on iPhone, iPad, and Mac. Garden, animals, inventory, equipment, property, calendar, reports, and more.';
+
+const curatedScreenshots = [
+  {
+    src: 'assets/screenshots/homestead-hub.webp',
+    title: 'Homestead Hub',
+    body: 'Featured areas and the rest of the homestead in one overview.',
+    alt: 'Homestead Hub showing Garden, Animals, Property, Inventory, and More to Manage cards.',
+  },
+  {
+    src: 'assets/screenshots/garden-bed-layout.webp',
+    title: 'Garden bed layout',
+    body: 'Visual crop placement by raised bed, path, crop, and season.',
+    alt: 'Raised bed layout showing crop cells, paths, season controls, and a log planting prompt.',
+  },
+  {
+    src: 'assets/screenshots/garden-timeline.webp',
+    title: 'Garden timeline',
+    body: 'Planting windows, growing periods, harvest dates, and frost markers.',
+    alt: 'Garden timeline showing crop rows with planting, growing, and harvest windows.',
+  },
+  {
+    src: 'assets/screenshots/calendar-week.webp',
+    title: 'Calendar',
+    body: 'Day, week, and month views for chores, care, reminders, and seasonal work.',
+    alt: 'Calendar week view with upcoming events and a month grid.',
+  },
+  {
+    src: 'assets/screenshots/inventory-list.webp',
+    title: 'Inventory',
+    body: 'Track feed, seeds, medicine, status, quantities, and expiration dates.',
+    alt: 'Inventory table with rows for seeds, animal health supplies, and soil amendments.',
+  },
+];
+
 const groups = [
   ['Garden beds, crops, and seeds', ['Visual bed and plot layouts', 'Seasonal crop placement', 'Crops and varieties', 'Seed starts and planting dates', 'Harvest logs and yields', 'Planting schedules and seasonal timing']],
   ['Animals', ['Animal profiles and groups', 'Care reminders', 'Health notes', 'Breeding and pedigree', 'Production records', 'Weights, photos, and documents']],
@@ -31,21 +65,11 @@ const groups = [
   <section class="page-hero">
     <p class="eyebrow">Features</p>
     <h1>A whole-homestead app, not another single-purpose tracker.</h1>
-    <p class="lede">Homestead Keeper brings animals, garden bed layouts, crops, orchards, bees, equipment, inventory, Food & Pantry, places, reminders, reports, and rural property care into one practical Apple app.</p>
-  </section>
-
-  <section class="split-section">
-    <div>
-      <p class="eyebrow">Core workflow</p>
-      <h2>Track what happened, what it cost, and what is coming up next.</h2>
-      <p>Use Homestead Keeper to capture records in the moment, organize them by place or item, and review the history later through calendar views, reports, summaries, and exports.</p>
-      <p>No Homestead Keeper login is required. Records live on your Apple devices and can sync across iPhone, iPad, and Mac through iCloud when enabled.</p>
-    </div>
-    <ScreenshotFrame src="assets/screenshots/homestead-hub.webp" alt="Homestead Keeper Homestead Hub showing the major areas of the app." caption="The Homestead Hub keeps the mixed work of a homestead organized." />
+    <p class="lede">Homestead Keeper brings garden, animals, property, inventory, chores, calendar, and reports together in one local-first Apple app.</p>
   </section>
 
   <section class="section">
-    <SectionHeader eyebrow="Foundation" title="Core app areas" body="These are the building blocks that make the app useful across mixed homestead responsibilities." />
+    <SectionHeader eyebrow="What it tracks" title="Eight core areas, one app." body="Homestead Keeper is built around the practical mix of work that comes with running a homestead or small property." />
     <div class="card-grid">
       {coreFeatures.map(([title, body]) => <FeatureCard title={title} body={body} />)}
     </div>
@@ -53,82 +77,126 @@ const groups = [
 
   <section class="split-section soft-panel">
     <div>
-      <p class="eyebrow">Garden bed layouts</p>
-      <h2>Make the garden visual.</h2>
-      <p>Plan beds and plots, place crops into layouts, and track what was planted in each season. Then connect the plan to planting dates, harvests, reminders, and production history.</p>
+      <p class="eyebrow">Built for Apple devices</p>
+      <h2>Local-first records on iPhone, iPad, and Mac.</h2>
+      <p>Homestead Keeper is designed around your Apple devices, not a web account you need to manage.</p>
+      <ul class="check-list">
+        <li>No Homestead Keeper login</li>
+        <li>Records live on your Apple devices</li>
+        <li>Optional iCloud sync across iPhone, iPad, and Mac</li>
+      </ul>
     </div>
-    <div class="split-screenshot-grid">
-      {gardenScreenshots.map((shot) => <AppScreenshot {...shot} />)}
-    </div>
+    <ScreenshotFrame src="assets/screenshots/homestead-hub.webp" alt="Homestead Keeper Homestead Hub showing the major areas of the app." caption="The Homestead Hub keeps the mixed work of a homestead organized." />
   </section>
 
-  <section class="section" aria-labelledby="tour-title">
-    <SectionHeader headingId="tour-title" eyebrow="Screenshots" title="A tour through the real app." body="Click any screenshot to open it larger in your browser. These images show layouts, calendar views, animal records, equipment service, inventory, reports, and production tracking." />
-    <ScreenshotGallery shots={productTourScreenshots} />
+  <section class="section" aria-labelledby="screenshots-title">
+    <SectionHeader headingId="screenshots-title" eyebrow="Screenshots" title="A look at the real app." body="Click any screenshot to expand it. These show bed layouts, calendar views, garden timelines, inventory, and more." />
+    <ScreenshotGallery shots={curatedScreenshots} />
+    <p style="margin-top: var(--space-4); text-align: center;">
+      <a class="button secondary" href={sitePath('/features/macos')}>View Mac screenshots</a>
+    </p>
   </section>
 
-  <section class="split-section soft-panel">
+  <section class="section" aria-labelledby="reports-screen-title">
+    <SectionHeader headingId="reports-screen-title" eyebrow="Reports and review" title="See the story your records are telling." body="Production trends, inventory reports, animal feed costs, warranty countdown, and maintenance history — all generated from the records you keep." />
+    <ScreenshotGallery shots={reportScreenshots} />
+  </section>
+
+  <section class="split-section">
     <div>
       <p class="eyebrow">Mac app</p>
       <h2>More room for review, reports, and planning.</h2>
-      <p>Homestead Keeper is designed for iPhone, iPad, and Mac. The Mac view gives larger screenshots, wider records, and more room to review reports, calendars, inventory, production, and property work.</p>
-      <p><a class="button secondary" href={sitePath('/features/macos')}>View macOS screenshots</a></p>
+      <p>The Mac view gives wider records, more room to read reports, and a better overview of calendars, inventory, production, and property work.</p>
+      <p><a class="button secondary" href={sitePath('/features/macos')}>View Mac screenshots</a></p>
     </div>
     <AppScreenshot
-      src="assets/screenshots/macOS/ChatGPT Image Jun 26, 2026, 03_09_56 PM (1).png"
+      src="assets/screenshots/macOS/mac-homestead-hub.png"
       title="Homestead Keeper on Mac"
       body="Click to expand the full-size macOS screenshot."
-      alt="Homestead Keeper macOS screenshot showing warranty countdown records."
+      alt="Homestead Keeper for Mac showing the Homestead Hub in a desktop layout."
     />
   </section>
 
   <section class="section">
-    <SectionHeader eyebrow="Complete overview" title="What Homestead Keeper is designed to cover" body="The app is meant to cover the whole mixed homestead, including less-obvious areas like forestry, emergency prep, off-grid systems, places, and Food & Pantry." />
-    <div class="card-grid compact">
-      {managementAreas.map(([title, body]) => <FeatureCard title={title} body={body} />)}
-    </div>
-  </section>
-
-  <section class="split-section" aria-labelledby="calendar-screen-title">
-    <div>
-      <p class="eyebrow">Calendar and timelines</p>
-      <h2 id="calendar-screen-title">Plan around seasons, chores, and animal milestones.</h2>
-      <p>Calendar and timeline views make future work easier to see: breeding milestones, garden timing, harvest windows, frost dates, and recurring chores.</p>
-    </div>
-    <div class="split-screenshot-grid">
-      {calendarScreenshots.map((shot) => <AppScreenshot {...shot} />)}
-    </div>
-  </section>
-
-  <section class="split-section soft-panel" aria-labelledby="records-screen-title">
-    <div>
-      <p class="eyebrow">Animals, equipment, and inventory</p>
-      <h2 id="records-screen-title">Records stay attached to the things you manage.</h2>
-      <p>Each animal, piece of equipment, and supply can carry its own history, production, care, status, and Field Log entries.</p>
-    </div>
-    <div class="split-screenshot-grid">
-      {[...animalScreenshots, ...equipmentScreenshots, ...inventoryScreenshots].map((shot) => <AppScreenshot {...shot} />)}
-    </div>
-  </section>
-
-  <section class="section" aria-labelledby="reports-screen-title">
-    <SectionHeader headingId="reports-screen-title" eyebrow="Reports" title="See the story your records are telling." body="Homestead Keeper turns routine logs into summaries for health, costs, maintenance, warranties, inventory, and production." />
-    <ScreenshotGallery shots={reportScreenshots} />
-  </section>
-
-  <section class="section">
-    <SectionHeader eyebrow="Detailed feature map" title="Records by area" body="A practical view of the records and workflows represented in the product direction." />
-    <div class="feature-map">
-      {groups.map(([title, items]) => (
-        <article class="map-card">
-          <h3>{title}</h3>
-          <ul class="check-list">
-            {(items as string[]).map((item) => <li>{item}</li>)}
-          </ul>
-        </article>
-      ))}
-    </div>
+    <details class="feature-details">
+      <summary>
+        <span class="feature-details-label">All tracked areas</span>
+        <span class="feature-details-toggle" aria-hidden="true"></span>
+      </summary>
+      <div class="feature-details-body">
+        <p class="feature-details-intro">The full range of records and workflows Homestead Keeper is designed to cover, including less-common areas like forestry, emergency prep, off-grid systems, and Food &amp; Pantry.</p>
+        <div class="card-grid compact">
+          {managementAreas.map(([title, body]) => <FeatureCard title={title} body={body} />)}
+        </div>
+        <div class="feature-map" style="margin-top: var(--space-6);">
+          {groups.map(([title, items]) => (
+            <article class="map-card">
+              <h3>{title}</h3>
+              <ul class="check-list">
+                {(items as string[]).map((item) => <li>{item}</li>)}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+    </details>
   </section>
 
   <CTA title="Want the simple version?" body="Start with Home, Places, Garden, Animals, Inventory, Calendar, and Reports — then grow into the deeper areas as your homestead records mature." />
 </Layout>
+
+<style>
+  .feature-details {
+    border: 1px solid var(--color-border, #e2e8f0);
+    border-radius: var(--radius-md, 8px);
+    overflow: hidden;
+  }
+  .feature-details summary {
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3, 0.75rem);
+    padding: var(--space-4, 1.5rem);
+    background: var(--color-surface-alt, #f8fafc);
+    user-select: none;
+  }
+  .feature-details summary::-webkit-details-marker {
+    display: none;
+  }
+  .feature-details summary:hover {
+    background: var(--color-surface-hover, #f1f5f9);
+  }
+  .feature-details-label {
+    font-size: var(--text-xl, 1.25rem);
+    font-weight: 600;
+    color: var(--color-heading, inherit);
+  }
+  .feature-details-toggle {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 1px solid var(--color-border, #e2e8f0);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: var(--color-muted, #64748b);
+    background: white;
+  }
+  .feature-details-toggle::after {
+    content: '▸';
+  }
+  .feature-details[open] .feature-details-toggle::after {
+    content: '▾';
+  }
+  .feature-details-body {
+    padding: var(--space-4, 1.5rem);
+  }
+  .feature-details-intro {
+    color: var(--color-muted, #64748b);
+    margin-bottom: var(--space-4);
+  }
+</style>

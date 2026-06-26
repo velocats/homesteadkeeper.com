@@ -1,6 +1,5 @@
 ---
 import { navItems, site } from '../data/site';
-import { workflowNavItems } from '../data/workflows';
 import { assetPath, sitePath } from '../utils/paths';
 const currentPath = Astro.url.pathname.replace(import.meta.env.BASE_URL, '/') || '/';
 ---
@@ -14,18 +13,6 @@ const currentPath = Astro.url.pathname.replace(import.meta.env.BASE_URL, '/') ||
     <ul>
       {navItems.map((item) => {
         const active = item.href === '/' ? currentPath === '/' : currentPath.startsWith(item.href);
-        if (item.href === '/workflows') {
-          return (
-            <li class="nav-dropdown">
-              <a aria-current={active ? 'page' : undefined} aria-haspopup="true" href={sitePath(item.href)}>{item.label}</a>
-              <div class="nav-dropdown-menu" aria-label="Workflow pages">
-                {workflowNavItems.map((workflow) => (
-                  <a href={sitePath(workflow.href)}>{workflow.label}</a>
-                ))}
-              </div>
-            </li>
-          );
-        }
         return <li><a aria-current={active ? 'page' : undefined} href={sitePath(item.href)}>{item.label}</a></li>;
       })}
     </ul>

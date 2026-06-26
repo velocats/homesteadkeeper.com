@@ -3,79 +3,99 @@ import Layout from '../../layouts/Layout.astro';
 import CTA from '../../components/CTA.astro';
 import AppScreenshot from '../../components/AppScreenshot.astro';
 import SectionHeader from '../../components/SectionHeader.astro';
+import { sitePath } from '../../utils/paths';
 
-const title = 'macOS Screenshots | Homestead Keeper';
-const description = 'View Homestead Keeper macOS screenshots for reports, records, calendars, inventory, production, and homestead management on Mac.';
+const title = 'Homestead Keeper for Mac';
+const description = 'Homestead Keeper for Mac gives you more room to review records, reports, calendars, inventory, production, and property work on a larger screen.';
 
 const macScreenshots = [
   {
-    src: 'assets/screenshots/macOS/ChatGPT Image Jun 26, 2026, 03_09_56 PM (1).png',
-    title: 'Warranty countdown',
-    body: 'Review expired, upcoming, and later warranty dates from the Mac app.',
-    alt: 'Homestead Keeper macOS screenshot showing warranty countdown records.',
+    src: 'assets/screenshots/macOS/mac-homestead-hub.png',
+    title: 'Homestead Hub',
+    body: 'Garden, animals, property, inventory, and more in one desktop view.',
+    alt: 'Homestead Keeper for Mac showing the Homestead Hub with garden, animals, property, and inventory areas.',
   },
   {
-    src: 'assets/screenshots/macOS/ChatGPT Image Jun 26, 2026, 03_09_57 PM (2).png',
-    title: 'Homestead records',
-    body: 'Browse records with a larger desktop layout for planning and review.',
-    alt: 'Homestead Keeper macOS screenshot showing homestead record details.',
+    src: 'assets/screenshots/macOS/mac-today-screen.png',
+    title: 'Today Screen',
+    body: 'Chores, overdue work, quick field logs, and needs-attention items.',
+    alt: 'Homestead Keeper for Mac Today Screen showing chores, overdue tasks, and needs-attention items.',
   },
   {
-    src: 'assets/screenshots/macOS/ChatGPT Image Jun 26, 2026, 03_09_57 PM (3).png',
-    title: 'Calendar planning',
-    body: 'Use the Mac display to review scheduled work and seasonal timing.',
-    alt: 'Homestead Keeper macOS screenshot showing calendar planning.',
+    src: 'assets/screenshots/macOS/mac-garden-bed-layout.png',
+    title: 'Garden Bed Layout',
+    body: 'Visual crop placement by bed, row, season, and planting log.',
+    alt: 'Homestead Keeper for Mac garden bed layout showing crop placement by bed and season.',
   },
   {
-    src: 'assets/screenshots/macOS/ChatGPT Image Jun 26, 2026, 03_09_57 PM (4).png',
-    title: 'Reports overview',
-    body: 'Scan reports and summaries with more room for charts and tables.',
-    alt: 'Homestead Keeper macOS screenshot showing reports overview.',
+    src: 'assets/screenshots/macOS/mac-calendar.png',
+    title: 'Calendar',
+    body: 'Month view for chores, crop dates, animal care, reminders, and seasonal work.',
+    alt: 'Homestead Keeper for Mac calendar month view with chores, crop dates, and seasonal reminders.',
   },
   {
-    src: 'assets/screenshots/macOS/ChatGPT Image Jun 26, 2026, 03_09_57 PM (5).png',
-    title: 'Inventory review',
-    body: 'Review supplies, categories, quantities, and status from a desktop view.',
-    alt: 'Homestead Keeper macOS screenshot showing inventory review.',
+    src: 'assets/screenshots/macOS/mac-garden-timeline.png',
+    title: 'Garden Timeline',
+    body: 'Planting, growing, harvest windows, frost dates, and today markers.',
+    alt: 'Homestead Keeper for Mac garden timeline showing planting, growing, and harvest windows with frost dates.',
   },
   {
-    src: 'assets/screenshots/macOS/ChatGPT Image Jun 26, 2026, 03_09_57 PM (6).png',
-    title: 'Animal records',
-    body: 'Review animal records, production, care, and related history on Mac.',
-    alt: 'Homestead Keeper macOS screenshot showing animal records.',
+    src: 'assets/screenshots/macOS/mac-inventory.png',
+    title: 'Inventory',
+    body: 'Supplies, feed, seeds, medicine, low stock, locations, and expirations.',
+    alt: 'Homestead Keeper for Mac inventory view showing supplies, feed, seeds, and expiration dates.',
   },
   {
-    src: 'assets/screenshots/macOS/ChatGPT Image Jun 26, 2026, 03_09_58 PM (7).png',
-    title: 'Garden and orchard work',
-    body: 'Use the wider screen for planting, harvest, and seasonal record review.',
-    alt: 'Homestead Keeper macOS screenshot showing garden or orchard records.',
+    src: 'assets/screenshots/macOS/mac-production-trends.png',
+    title: 'Production Trends',
+    body: 'Eggs, milk, honey, harvest totals, and production charts.',
+    alt: 'Homestead Keeper for Mac production trends showing egg, milk, honey, and harvest totals with charts.',
   },
   {
-    src: 'assets/screenshots/macOS/ChatGPT Image Jun 26, 2026, 03_09_59 PM (8).png',
-    title: 'Production history',
-    body: 'Review production trends, harvests, and totals with desktop breathing room.',
-    alt: 'Homestead Keeper macOS screenshot showing production history.',
+    src: 'assets/screenshots/macOS/mac-animal-feed-costs.png',
+    title: 'Animal Feed Costs',
+    body: 'Feed spending, quantities, events, and costs grouped by animal.',
+    alt: 'Homestead Keeper for Mac animal feed costs showing feed spending and quantities grouped by animal.',
   },
   {
-    src: 'assets/screenshots/macOS/ChatGPT Image Jun 26, 2026, 03_10_00 PM (9).png',
-    title: 'Property management',
-    body: 'Keep property, places, equipment, and maintenance context organized.',
-    alt: 'Homestead Keeper macOS screenshot showing property management records.',
+    src: 'assets/screenshots/macOS/mac-equipment-records.png',
+    title: 'Equipment Records',
+    body: 'Service history, repairs, inspections, costs, vendors, and notes.',
+    alt: 'Homestead Keeper for Mac equipment records showing service history, repairs, and inspection notes.',
   },
   {
-    src: 'assets/screenshots/macOS/ChatGPT Image Jun 26, 2026, 03_10_00 PM (10).png',
-    title: 'Mac workflow',
-    body: 'Use Homestead Keeper across iPhone, iPad, and Mac with optional iCloud sync.',
-    alt: 'Homestead Keeper macOS screenshot showing a Mac workflow.',
+    src: 'assets/screenshots/macOS/mac-warranty-countdown.png',
+    title: 'Warranty Countdown',
+    body: 'Expired, upcoming, and later warranty or readiness dates.',
+    alt: 'Homestead Keeper for Mac warranty countdown showing expired, upcoming, and later warranty dates.',
   },
 ];
 ---
 
-<Layout title={title} description={description} path="/features/macos" image="/assets/screenshots/macOS/ChatGPT Image Jun 26, 2026, 03_09_56 PM (1).png">
+<Layout title={title} description={description} path="/features/macos" image="/assets/screenshots/macOS/mac-homestead-hub.png">
   <section class="page-hero">
-    <p class="eyebrow">macOS screenshots</p>
-    <h1>Homestead Keeper on Mac.</h1>
-    <p class="lede">A larger screen for reviewing records, reports, calendars, inventory, production, and property work when you want more room than a phone or tablet.</p>
+    <p class="eyebrow">Mac app</p>
+    <h1>Homestead Keeper for Mac.</h1>
+    <p class="lede">Use the larger screen to review records, reports, calendars, inventory, production, and property work.</p>
+  </section>
+
+  <section class="split-section">
+    <div>
+      <h2>More room for the records that matter.</h2>
+      <p>The Mac app gives you a wider view for browsing inventory, scanning reports, reading timelines, and reviewing production history without scrolling through a phone screen.</p>
+      <ul class="check-list">
+        <li>More room for reports and review</li>
+        <li>Easier browsing of inventory, records, and timelines</li>
+        <li>Useful for planning, reviewing, and organizing homestead information</li>
+        <li>Works as part of the same iPhone, iPad, and Mac Apple-device app</li>
+      </ul>
+      <p>No separate Mac login or sync setup. Enable iCloud in your Apple settings and records stay consistent across devices.</p>
+    </div>
+    <div>
+      <p class="eyebrow">One app. Three screens.</p>
+      <p>No Homestead Keeper login. Records on your Apple devices. Optional iCloud sync across iPhone, iPad, and Mac.</p>
+      <p><a class="button secondary" href={sitePath('/pricing')}>View Pricing</a></p>
+    </div>
   </section>
 
   <section class="section" aria-labelledby="macos-gallery-title">
@@ -90,5 +110,5 @@ const macScreenshots = [
     </div>
   </section>
 
-  <CTA title="Explore the full feature set" body="Homestead Keeper is designed for iPhone, iPad, and Mac, with local-first records and optional iCloud sync across Apple devices." primaryLabel="View all features" primaryHref="/features" secondaryLabel="See workflows" secondaryHref="/workflows" />
+  <CTA title="A whole-homestead app for Apple devices." body="Homestead Keeper is designed for iPhone, iPad, and Mac, with local-first records and optional iCloud sync." primaryLabel="View all features" primaryHref="/features" secondaryLabel="See workflows" secondaryHref="/workflows" />
 </Layout>
