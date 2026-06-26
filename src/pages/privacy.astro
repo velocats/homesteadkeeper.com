@@ -2,38 +2,61 @@
 import Layout from '../layouts/Layout.astro';
 import CTA from '../components/CTA.astro';
 import SectionHeader from '../components/SectionHeader.astro';
+import { site } from '../data/site';
 
-const title = 'Privacy and Data | Homestead Keeper';
-const description = 'Homestead Keeper is designed with no Homestead Keeper login, data on your Apple devices, optional iCloud sync across iPhone, iPad, and Mac, offline-friendly records, and no sale of user data.';
-const principles = [
-  ['No Homestead Keeper login', 'Use the app without creating a Homestead Keeper web account or managing a separate web dashboard.'],
-  ['Data on your Apple devices', 'Your working homestead records are stored on your iPhone, iPad, and Mac rather than inside a Homestead Keeper-hosted web account.'],
-  ['iCloud sync when enabled', 'When sync is enabled, Apple iCloud keeps your records up to date across your Apple devices using your Apple ID.'],
-  ['Offline-friendly records', 'The app is designed for barns, gardens, sheds, shops, and rural spaces where internet service can be unreliable.'],
-  ['User-controlled exports and backups', 'Pro tools support exports, backups, imports, QR labels, and reports where available, so you can keep copies outside the app when needed.'],
-  ['No sale of user data', 'Homestead Keeper is not designed around selling user data or behavioral ad profiles.'],
+const title = 'Privacy Policy | Homestead Keeper';
+const description = 'Privacy policy for Homestead Keeper, including local-first app records, optional iCloud sync, App Store purchases, support requests, retention, deletion, and third-party services.';
+
+const lastUpdated = 'June 26, 2026';
+
+const summaryCards = [
+  ['No Homestead Keeper login', 'The app is designed for normal use without creating a Homestead Keeper web account.'],
+  ['Local-first records', 'Your working homestead records are stored on your Apple devices.'],
+  ['Optional iCloud sync', 'If enabled, Apple iCloud syncs app data across your Apple devices using your Apple ID.'],
+  ['No sale of personal data', 'Homestead Keeper is not designed around selling user data or building advertising profiles.'],
+  ['Support is optional', 'If you contact support, we use the information you provide to answer and troubleshoot.'],
+  ['User-controlled exports', 'Exports, reports, backups, and shared files are controlled by you.'],
+];
+
+const appDataRows = [
+  ['Homestead records', 'Animals, plants, gardens, orchards, equipment, places, inventory, pantry, calendar items, reminders, notes, reports, production, harvest, breeding, maintenance, and related records you enter in the app.', 'Stored locally on your Apple devices. If iCloud sync is enabled, Apple may sync this data through iCloud for your Apple ID.'],
+  ['Photos, documents, and attachments', 'Images, documents, receipts, manuals, labels, or other files you choose to attach where supported by your app version.', 'Stored with app data on your device and, if enabled, synced by Apple iCloud.'],
+  ['Imports, exports, reports, and backups', 'CSV/PDF exports, backup files, imported files, QR labels, and reports you create or select.', 'Created, stored, shared, deleted, or backed up by you using the app, device, and services you choose.'],
+  ['Purchase status', 'Information needed to unlock paid features, restore purchases, or confirm subscription/lifetime access.', 'Handled through Apple App Store systems. Homestead Keeper does not receive your full payment card details.'],
+];
+
+const websiteDataRows = [
+  ['Support form and email', 'Name, email address, topic, device/app details if provided, screenshots or files you choose to send, and the message content.', 'Used to respond to support requests, troubleshoot problems, and improve documentation or product quality.'],
+  ['Website hosting and basic logs', 'Standard technical information such as IP address, browser type, requested page, and time of request may be processed by hosting or security providers.', 'Used to operate, secure, and troubleshoot the website.'],
+];
+
+const thirdParties = [
+  ['Apple', 'Provides iCloud sync, App Store purchases, subscriptions, restore purchases, and device-level services under your Apple ID and Apple privacy terms.'],
+  ['FormSubmit', 'Processes support form submissions from the website and forwards them to Homestead Keeper support email.'],
+  ['Website hosting and email providers', 'Help deliver the website, receive support messages, protect the site, and operate normal email support.'],
 ];
 ---
 
 <Layout title={title} description={description} path="/privacy">
   <section class="page-hero narrow">
-    <p class="eyebrow">Privacy</p>
+    <p class="eyebrow">Privacy Policy</p>
     <h1>No login. Data on your Apple devices.</h1>
-    <p class="lede">Homestead Keeper is built for practical animal, garden, inventory, equipment, property, Food & Pantry, calendar, and report records without a Homestead Keeper web dashboard.</p>
+    <p class="lede">Homestead Keeper is designed for practical homestead and small-property records without a Homestead Keeper web account or browser dashboard.</p>
+    <p class="fine-print">Last updated: {lastUpdated}</p>
   </section>
 
   <section class="section">
     <div class="card-grid">
-      {principles.map(([title, body]) => <article class="card"><h3>{title}</h3><p>{body}</p></article>)}
+      {summaryCards.map(([cardTitle, body]) => <article class="card"><h3>{cardTitle}</h3><p>{body}</p></article>)}
     </div>
   </section>
 
   <section class="split-section soft-panel">
     <div>
       <p class="eyebrow">Plain language</p>
-      <h2>Local records and Apple sync are not the same as a web account.</h2>
-      <p>Homestead Keeper does not require a Homestead Keeper login for normal use. Your records live on your Apple devices. If iCloud sync is enabled, Apple syncs your app data between your iPhone, iPad, and Mac using your Apple ID.</p>
-      <p>That means you can keep working where signal is weak, then let Apple-device sync catch up later.</p>
+      <h2>Local records and Apple sync are not the same as a Homestead Keeper web account.</h2>
+      <p>Homestead Keeper does not require a Homestead Keeper login for normal app use. Your working records live on your Apple devices. If you enable iCloud sync, Apple syncs your app data between your iPhone, iPad, and Mac using your Apple ID.</p>
+      <p>Homestead Keeper does not operate a separate cloud dashboard where you sign in to manage your homestead records.</p>
     </div>
     <div class="callout-card">
       <h3>Before changing devices</h3>
@@ -42,8 +65,124 @@ const principles = [
   </section>
 
   <section class="section">
+    <SectionHeader eyebrow="App data" title="Information used by the app" body="The app can contain the records you choose to create. Most day-to-day records are designed to stay on your devices unless you enable Apple sync, export a file, share a report, or contact support." />
+
+    <div class="table-wrap">
+      <table>
+        <caption>App data categories</caption>
+        <thead>
+          <tr>
+            <th scope="col">Category</th>
+            <th scope="col">Examples</th>
+            <th scope="col">Where it goes</th>
+          </tr>
+        </thead>
+        <tbody>
+          {appDataRows.map(([category, examples, handling]) => (
+            <tr>
+              <th scope="row">{category}</th>
+              <td>{examples}</td>
+              <td>{handling}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section">
+    <SectionHeader eyebrow="Website and support" title="Information collected when you contact support" body="Support is optional. If you email support or use the website form, you choose what to send." />
+
+    <div class="table-wrap">
+      <table>
+        <caption>Website and support data categories</caption>
+        <thead>
+          <tr>
+            <th scope="col">Category</th>
+            <th scope="col">Examples</th>
+            <th scope="col">How it is used</th>
+          </tr>
+        </thead>
+        <tbody>
+          {websiteDataRows.map(([category, examples, use]) => (
+            <tr>
+              <th scope="row">{category}</th>
+              <td>{examples}</td>
+              <td>{use}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="split-section">
+    <div class="copy-block">
+      <p class="eyebrow">How data is used</p>
+      <h2>We use information to provide the app and respond to requests.</h2>
+      <p>Homestead Keeper uses app data to show your records, reminders, calendar items, reports, exports, layouts, maps, and other app features. Purchase status is used to unlock paid features and restore purchases. Support messages are used to respond to your request, troubleshoot issues, and improve product documentation.</p>
+      <p>Homestead Keeper is not designed to sell personal data, run third-party advertising profiles, or require a Homestead Keeper account for normal app use.</p>
+    </div>
+
+    <div class="copy-block">
+      <p class="eyebrow">Third parties</p>
+      <h2>Some services may process data to operate the app, store, and website.</h2>
+      <ul class="check-list">
+        {thirdParties.map(([name, body]) => <li><strong>{name}:</strong> {body}</li>)}
+      </ul>
+      <p>When you use Apple services, Apple handles that data under Apple's privacy terms and your Apple ID settings. When you submit a website support form, FormSubmit processes the message so it can be delivered to support.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <SectionHeader eyebrow="Retention and deletion" title="You control app records on your devices." body="Because Homestead Keeper is local-first, most app records are kept until you edit or delete them in the app, remove the app, delete local files, change iCloud settings, or delete related iCloud data through Apple." />
+
+    <div class="card-grid">
+      <article class="card">
+        <h3>App records</h3>
+        <p>Records stored in the app remain on your Apple devices and, if enabled, in iCloud until you delete them or manage them through your device and Apple account settings.</p>
+      </article>
+      <article class="card">
+        <h3>Exports and backups</h3>
+        <p>Files you export, share, print, email, save, or back up are controlled by you and by the apps or services where you place them.</p>
+      </article>
+      <article class="card">
+        <h3>Support messages</h3>
+        <p>Support emails and form submissions may be kept as long as needed to respond, troubleshoot, keep business records, and improve support. You can ask for support messages connected to your email address to be deleted.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="soft-panel">
+      <p class="eyebrow">Consent and requests</p>
+      <h2>How to ask questions, request deletion, or revoke access</h2>
+      <p>You can stop using optional iCloud sync through your Apple device and iCloud settings. You can delete app records in the app or manage app/iCloud data through Apple settings. You can also contact Homestead Keeper support to ask privacy questions or request deletion of support messages associated with your email address.</p>
+      <p>Email: <a class="text-link" href={`mailto:${site.supportEmail}`}>{site.supportEmail}</a></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <SectionHeader eyebrow="App Store privacy details" title="Privacy labels should match the current app build." body="App Store Connect privacy answers should be kept consistent with this policy and with the exact app version being submitted." />
+    <div class="card-grid">
+      <article class="card">
+        <h3>On-device data</h3>
+        <p>Records that stay only on the user's device generally should be treated differently from data transmitted off the device. If iCloud sync is enabled, Apple is the sync provider.</p>
+      </article>
+      <article class="card">
+        <h3>Support data</h3>
+        <p>If users send support emails, forms, screenshots, or files, disclose the data types that are collected for support.</p>
+      </article>
+      <article class="card">
+        <h3>Future services</h3>
+        <p>If analytics, crash reporting, account features, or other services are added later, update both this policy and App Store Connect privacy details before release.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
     <SectionHeader eyebrow="Data safety" title="A subscription lapse should never be a delete button." body="If a subscription lapses, existing data should remain visible and safe. Paid actions such as adding beyond the Free limit, exports, backups, imports, QR labels, and advanced tools require Pro again." />
   </section>
 
-  <CTA primaryLabel="Read FAQ" primaryHref="/faq" secondaryLabel="View features" secondaryHref="/features" />
+  <CTA primaryLabel="Contact support" primaryHref="/support" secondaryLabel="Read FAQ" secondaryHref="/faq" />
 </Layout>
