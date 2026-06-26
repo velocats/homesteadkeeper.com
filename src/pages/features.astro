@@ -3,22 +3,15 @@ import Layout from '../layouts/Layout.astro';
 import CTA from '../components/CTA.astro';
 import FeatureCard from '../components/FeatureCard.astro';
 import ScreenshotFrame from '../components/ScreenshotFrame.astro';
-import AppScreenshot from '../components/AppScreenshot.astro';
 import ScreenshotGallery from '../components/ScreenshotGallery.astro';
 import SectionHeader from '../components/SectionHeader.astro';
-import { coreFeatures, managementAreas, reportScreenshots, gardenScreenshots } from '../data/site';
+import { coreFeatures, managementAreas } from '../data/site';
 import { sitePath } from '../utils/paths';
 
 const title = 'Features | Homestead Keeper';
 const description = 'Homestead Keeper features for whole-homestead records on iPhone, iPad, and Mac. Garden, animals, inventory, equipment, property, calendar, reports, and more.';
 
 const curatedScreenshots = [
-  {
-    src: 'assets/screenshots/homestead-hub.webp',
-    title: 'Homestead Hub',
-    body: 'Featured areas and the rest of the homestead in one overview.',
-    alt: 'Homestead Hub showing Garden, Animals, Property, Inventory, and More to Manage cards.',
-  },
   {
     src: 'assets/screenshots/garden-bed-layout.webp',
     title: 'Garden bed layout',
@@ -28,20 +21,26 @@ const curatedScreenshots = [
   {
     src: 'assets/screenshots/garden-timeline.webp',
     title: 'Garden timeline',
-    body: 'Planting windows, growing periods, harvest dates, and frost markers.',
-    alt: 'Garden timeline showing crop rows with planting, growing, and harvest windows.',
+    body: 'Planting, growing, harvest windows, frost dates, and today markers by crop.',
+    alt: 'Garden timeline showing crops like Pea, Lettuce, and Broccoli with seed start, growing, and harvest windows.',
   },
   {
     src: 'assets/screenshots/calendar-week.webp',
-    title: 'Calendar',
-    body: 'Day, week, and month views for chores, care, reminders, and seasonal work.',
-    alt: 'Calendar week view with upcoming events and a month grid.',
+    title: 'Breeding calendar',
+    body: 'Calendar month view for breeding milestones, follow-ups, and animal care events.',
+    alt: 'Breeding calendar month view showing pregnancy checks, lockdown, and follow-up milestones.',
   },
   {
     src: 'assets/screenshots/inventory-list.webp',
     title: 'Inventory',
     body: 'Track feed, seeds, medicine, status, quantities, and expiration dates.',
     alt: 'Inventory table with rows for seeds, animal health supplies, and soil amendments.',
+  },
+  {
+    src: 'assets/screenshots/report-production.webp',
+    title: 'Production report',
+    body: 'Eggs, milk, honey, garden harvest totals, and production trends.',
+    alt: 'Homestead Production report with totals and trends for eggs, milk, honey, and harvests.',
   },
 ];
 
@@ -95,26 +94,6 @@ const groups = [
     <p style="margin-top: var(--space-4); text-align: center;">
       <a class="button secondary" href={sitePath('/features/macos')}>View Mac screenshots</a>
     </p>
-  </section>
-
-  <section class="section" aria-labelledby="reports-screen-title">
-    <SectionHeader headingId="reports-screen-title" eyebrow="Reports and review" title="See the story your records are telling." body="Production trends, inventory reports, animal feed costs, warranty countdown, and maintenance history — all generated from the records you keep." />
-    <ScreenshotGallery shots={reportScreenshots} />
-  </section>
-
-  <section class="split-section">
-    <div>
-      <p class="eyebrow">Mac app</p>
-      <h2>More room for review, reports, and planning.</h2>
-      <p>The Mac view gives wider records, more room to read reports, and a better overview of calendars, inventory, production, and property work.</p>
-      <p><a class="button secondary" href={sitePath('/features/macos')}>View Mac screenshots</a></p>
-    </div>
-    <AppScreenshot
-      src="assets/screenshots/homestead-hub.webp"
-      title="Homestead Keeper on Mac"
-      body="Click to expand the full-size screenshot."
-      alt="Homestead Keeper Homestead Hub showing the major areas of the app."
-    />
   </section>
 
   <section class="section">

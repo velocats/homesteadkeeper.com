@@ -130,9 +130,9 @@ export const homepageScreenshots = [
   },
   {
     src: 'assets/screenshots/calendar-week.webp',
-    title: 'Calendar week view',
-    body: 'See upcoming animal care, breeding milestones, chores, and seasonal work.',
-    alt: 'Homestead Keeper calendar week view showing upcoming chores, seasonal reminders, and a month grid.',
+    title: 'Breeding calendar',
+    body: 'See breeding milestones, animal care follow-ups, and upcoming events by month.',
+    alt: 'Breeding calendar month view showing pregnancy checks, lockdown, and follow-up milestones.',
   },
   {
     src: 'assets/screenshots/report-production.webp',
@@ -152,23 +152,23 @@ export const gardenScreenshots = [
   {
     src: 'assets/screenshots/garden-timeline.webp',
     title: 'Garden timeline',
-    body: 'Track seed starts, growing windows, harvest windows, frost dates, and seasonal timing.',
-    alt: 'Garden timeline showing crops across months with seed start, growing, harvest window, frost date, and today markers.',
+    body: 'Planting, growing, harvest windows, frost dates, and today markers by crop.',
+    alt: 'Garden timeline showing crops like Pea, Lettuce, and Broccoli with seed start, growing, and harvest windows.',
   },
 ] as const;
 
 export const calendarScreenshots = [
   {
     src: 'assets/screenshots/calendar-week.webp',
-    title: 'Week calendar',
-    body: 'Day, week, and month views for chores, milestones, and care.',
-    alt: 'Calendar week view showing breeding calendar events and a month grid.',
+    title: 'Breeding calendar',
+    body: 'Calendar month view showing breeding milestones, follow-ups, and animal care events.',
+    alt: 'Breeding calendar month view showing pregnancy checks, lockdown, and follow-up milestones for June 2026.',
   },
   {
     src: 'assets/screenshots/breeding-timeline.webp',
-    title: 'Timeline view',
-    body: 'Timeline mode for planting windows, harvest dates, frost markers, seasonal chores, and care milestones.',
-    alt: 'Calendar timeline showing active windows, completed items, planting, harvest, and today markers.',
+    title: 'Breeding timeline',
+    body: 'Timeline gantt for active breeding windows, milestones, lockdown, and weaning.',
+    alt: 'Breeding calendar timeline showing Meat Rabbits, Laying Hens, and Clover breeding windows and milestones.',
   },
 ] as const;
 
@@ -270,20 +270,20 @@ export const productTourScreenshots = [
   {
     src: 'assets/screenshots/garden-timeline.webp',
     title: 'Garden timeline',
-    body: 'Seed starts, growing windows, harvest windows, frost dates, and today markers.',
-    alt: 'Garden timeline showing crop rows across May, June, July, and August with planting and harvest windows.',
+    body: 'Planting, growing, harvest windows, frost dates, and today markers by crop.',
+    alt: 'Garden timeline showing crops like Pea, Lettuce, and Broccoli with seed start, growing, and harvest windows.',
   },
   {
     src: 'assets/screenshots/calendar-week.webp',
-    title: 'Calendar week',
-    body: 'Calendar views for upcoming chores, care reminders, and milestones.',
-    alt: 'Calendar week view with a month grid, week event list, and breeding calendar milestones.',
+    title: 'Breeding calendar',
+    body: 'Calendar month view for breeding milestones, follow-ups, and animal care events.',
+    alt: 'Breeding calendar month view showing pregnancy checks, lockdown, and follow-up milestones.',
   },
   {
     src: 'assets/screenshots/breeding-timeline.webp',
-    title: 'Garden timeline',
-    body: 'Planting windows, growing periods, harvest dates, frost markers, and seasonal care.',
-    alt: 'Calendar timeline showing planting, growing, harvest windows, frost dates, and today marker.',
+    title: 'Breeding timeline',
+    body: 'Timeline gantt for active breeding windows, milestones, lockdown, and weaning.',
+    alt: 'Breeding calendar timeline showing Meat Rabbits, Laying Hens, and Clover breeding windows and milestones.',
   },
   {
     src: 'assets/screenshots/animal-summary.webp',
