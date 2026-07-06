@@ -3,5 +3,10 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://homesteadkeeper.com',
-  integrations: [sitemap()],
+  trailingSlash: 'always',
+  integrations: [
+    sitemap({
+      filter: (page) => !page.endsWith('/features/supplies/'),
+    }),
+  ],
 });

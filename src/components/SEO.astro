@@ -10,7 +10,8 @@ interface Props {
 }
 
 const { title, description, path = '/', image = '/assets/homestead-keeper-logo.png', jsonLd } = Astro.props;
-const canonical = new URL(path, site.url).toString();
+const normalizedPath = path === '/' || /\.[^/]+$/.test(path) || path.endsWith('/') ? path : `${path}/`;
+const canonical = new URL(normalizedPath, site.url).toString();
 const imageUrl = new URL(image.startsWith('/') ? image.slice(1) : image, `${site.url}/`).toString();
 ---
 
