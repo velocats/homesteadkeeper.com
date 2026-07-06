@@ -4,7 +4,7 @@ export const site = {
   url: 'https://homesteadkeeper.com',
   supportEmail: 'support@homesteadkeeper.com',
   appStoreLabel: 'Download on the App Store',
-  appStoreUrl: '/#app-store-coming-soon',
+  appStoreUrl: 'https://apps.apple.com/us/app/homestead-keeper-planner/id6778182157',
   description:
     'A calm homestead management app for animals, gardens, garden bed layouts, orchards, bees, equipment, inventory, food and pantry records, reminders, reports, and rural property care on iPhone, iPad, and Mac.',
 };
