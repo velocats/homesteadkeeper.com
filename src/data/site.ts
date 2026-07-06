@@ -12,6 +12,7 @@ export const site = {
 export const navItems = [
   { href: '/', label: 'Home' },
   { href: '/features', label: 'Features' },
+  { href: '/use-cases', label: 'Use Cases' },
   { href: '/features/macos', label: 'Mac' },
   { href: '/workflows', label: 'Workflows' },
   { href: '/pricing', label: 'Pricing' },

@@ -8,17 +8,26 @@ import AppScreenshot from '../components/AppScreenshot.astro';
 import ScreenshotGallery from '../components/ScreenshotGallery.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import ComparisonTable from '../components/ComparisonTable.astro';
+import InternalLinkCards from '../components/InternalLinkCards.astro';
 import { calendarScreenshots, gardenScreenshots, homepageScreenshots, inventoryScreenshots, pricingTiers, reportScreenshots, site, trustPoints } from '../data/site';
+import { useCases } from '../data/useCases';
 import { sitePath } from '../utils/paths';
 
-const title = 'Homestead Keeper | Homestead Records for iPhone, iPad, and Mac';
-const description = 'Homestead Keeper is a whole-homestead records app for animals, gardens, garden bed layouts, equipment, inventory, food and pantry, calendar reminders, reports, and rural property care on Apple devices.';
+const title = 'Homestead Keeper | Homestead Management App for iPhone, iPad, and Mac';
+const description = 'Homestead Keeper is a homestead management and record keeping app for animals, chicken flocks, garden beds, equipment, inventory, pantry records, reminders, reports, and rural property care.';
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
   name: site.name,
+  url: site.url,
+  downloadUrl: site.appStoreUrl,
   applicationCategory: 'LifestyleApplication',
   operatingSystem: 'iOS, iPadOS, macOS',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
   description,
 };
 const workflow = [
@@ -116,6 +125,11 @@ const workflowPreviewScreenshots = [
     alt: 'Homestead Keeper Homestead Summary report showing health score, floor plan metrics, and activity by type.',
   },
 ];
+const homepageUseCases = useCases.slice(0, 4).map((useCase) => ({
+  title: useCase.eyebrow,
+  href: `/use-cases/${useCase.slug}`,
+  summary: useCase.intro,
+}));
 ---
 
 <Layout title={title} description={description} path="/" image="/assets/screenshots/homestead-hub.webp" jsonLd={jsonLd}>
@@ -154,6 +168,16 @@ const workflowPreviewScreenshots = [
     <div class="audience-grid">
       {audience.map((item) => <span>{item}</span>)}
     </div>
+  </section>
+
+  <section class="section" aria-labelledby="use-cases-title">
+    <SectionHeader
+      headingId="use-cases-title"
+      eyebrow="Use cases"
+      title="Find the record keeping you came here for."
+      body="Start with a focused use case, then follow the related features and workflows into the full app."
+    />
+    <InternalLinkCards links={homepageUseCases} />
   </section>
 
   <section class="section" aria-labelledby="workflow-preview-title">

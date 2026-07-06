@@ -1,0 +1,91 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CTA from '../../components/CTA.astro';
+import InternalLinkCards from '../../components/InternalLinkCards.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import { useCases } from '../../data/useCases';
+import { site } from '../../data/site';
+
+export function getStaticPaths() {
+  return useCases.map((useCase) => ({
+    params: { slug: useCase.slug },
+    props: { useCase },
+  }));
+}
+
+const { useCase } = Astro.props;
+const relatedUseCases = useCases
+  .filter((item) => item.slug !== useCase.slug)
+  .slice(0, 3)
+  .map((item) => ({
+    title: item.eyebrow,
+    href: `/use-cases/${item.slug}`,
+    summary: item.intro,
+  }));
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: useCase.h1,
+  description: useCase.description,
+  url: `${site.url}/use-cases/${useCase.slug}/`,
+  about: useCase.keywords,
+};
+---
+
+<Layout title={useCase.title} description={useCase.description} path={`/use-cases/${useCase.slug}`} jsonLd={jsonLd}>
+  <section class="page-hero">
+    <p class="eyebrow">{useCase.eyebrow}</p>
+    <h1>{useCase.h1}</h1>
+    <p class="lede">{useCase.intro}</p>
+  </section>
+
+  <section class="section" aria-labelledby="audience-title">
+    <SectionHeader
+      headingId="audience-title"
+      eyebrow="Who it helps"
+      title="A practical fit for small-property record keeping"
+      body="Homestead Keeper is designed for real mixed-use homestead work, where animals, gardens, inventory, property, reminders, and reports often overlap."
+    />
+    <div class="audience-grid">
+      {useCase.audience.map((item) => <span>{item}</span>)}
+    </div>
+  </section>
+
+  <section class="split-section">
+    <div>
+      {useCase.sections.map((section) => (
+        <article class="copy-block">
+          <h2>{section.title}</h2>
+          {section.body.map((paragraph) => <p>{paragraph}</p>)}
+        </article>
+      ))}
+    </div>
+    <aside class="sidebar-stack">
+      <article class="info-card">
+        <p class="eyebrow">Search fit</p>
+        <h3>Useful for searches like</h3>
+        <ul class="check-list">
+          {useCase.keywords.map((keyword) => <li>{keyword}</li>)}
+        </ul>
+      </article>
+      <article class="info-card">
+        <p class="eyebrow">Apple devices</p>
+        <h3>iPhone, iPad, and Mac</h3>
+        <p>Use Homestead Keeper without a Homestead Keeper web account, with local-first records and optional iCloud sync across Apple devices.</p>
+      </article>
+    </aside>
+  </section>
+
+  <section class="section" aria-labelledby="related-features-title">
+    <SectionHeader headingId="related-features-title" eyebrow="Related features" title="Explore the tools behind this use case" />
+    <InternalLinkCards links={useCase.relatedFeatures} />
+  </section>
+
+  <section class="section" aria-labelledby="related-use-cases-title">
+    <SectionHeader headingId="related-use-cases-title" eyebrow="Related use cases" title="Other ways to use Homestead Keeper" />
+    <InternalLinkCards links={relatedUseCases} />
+  </section>
+
+  <CTA title="Ready to try it with real records?" body="Start free with practical records, then upgrade when your homestead, garden, flock, property, or inventory records grow." primaryLabel={site.appStoreLabel} primaryHref={site.appStoreUrl} secondaryLabel="View pricing" secondaryHref="/pricing" />
+</Layout>

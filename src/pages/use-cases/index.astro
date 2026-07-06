@@ -1,0 +1,60 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CTA from '../../components/CTA.astro';
+import InternalLinkCards from '../../components/InternalLinkCards.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import { useCases } from '../../data/useCases';
+
+const title = 'Use Cases | Homestead Keeper';
+const description =
+  'Explore Homestead Keeper use cases for chicken keepers, gardeners, hobby farms, rural property owners, pantry inventory, and homestead record keeping.';
+
+const links = useCases.map((useCase) => ({
+  title: useCase.eyebrow,
+  href: `/use-cases/${useCase.slug}`,
+  summary: useCase.description,
+}));
+---
+
+<Layout title={title} description={description} path="/use-cases">
+  <section class="page-hero">
+    <p class="eyebrow">Use cases</p>
+    <h1>Homestead records for the way your place actually works.</h1>
+    <p class="lede">Homestead Keeper helps with animals, gardens, inventory, equipment, property systems, reports, and seasonal work without turning a small homestead into a complicated software project.</p>
+  </section>
+
+  <section class="section" aria-labelledby="use-case-list-title">
+    <SectionHeader
+      headingId="use-case-list-title"
+      eyebrow="Find your fit"
+      title="Common ways people use Homestead Keeper"
+      body="Start with the use case closest to your work, then explore the features and workflows behind it."
+    />
+    <InternalLinkCards links={links} />
+  </section>
+
+  <section class="section" aria-labelledby="searches-title">
+    <SectionHeader
+      headingId="searches-title"
+      eyebrow="Practical searches"
+      title="Built around real homestead record-keeping needs"
+      body="These pages cover the kinds of problems people search for: chicken flock records, garden planning, hobby farm management, rural property maintenance, pantry inventory, and small-acreage organization."
+    />
+    <div class="card-grid">
+      <article class="card">
+        <h3>Animals and production</h3>
+        <p>Track chicken flocks, egg counts, health notes, care reminders, breeding, photos, production, and animal reports.</p>
+      </article>
+      <article class="card">
+        <h3>Gardens and harvests</h3>
+        <p>Plan garden bed layouts, record plantings, review harvest totals, and connect seasonal work to reminders.</p>
+      </article>
+      <article class="card">
+        <h3>Property and inventory</h3>
+        <p>Keep records for rural property systems, equipment maintenance, pantry goods, feed, supplies, low stock, and reports.</p>
+      </article>
+    </div>
+  </section>
+
+  <CTA title="Want the full product view?" body="Use cases show the problem areas. The features page shows the full set of tools available across the app." primaryLabel="Explore features" primaryHref="/features" secondaryLabel="View workflows" secondaryHref="/workflows" />
+</Layout>

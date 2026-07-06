@@ -6,13 +6,80 @@ interface Props {
   description: string;
   path?: string;
   image?: string;
-  jsonLd?: Record<string, unknown>;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const { title, description, path = '/', image = '/assets/homestead-keeper-logo.png', jsonLd } = Astro.props;
 const normalizedPath = path === '/' || /\.[^/]+$/.test(path) || path.endsWith('/') ? path : `${path}/`;
 const canonical = new URL(normalizedPath, site.url).toString();
 const imageUrl = new URL(image.startsWith('/') ? image.slice(1) : image, `${site.url}/`).toString();
+
+const labelMap: Record<string, string> = {
+  faq: 'FAQ',
+  features: 'Features',
+  macos: 'Mac App',
+  pricing: 'Pricing',
+  privacy: 'Privacy',
+  support: 'Support',
+  thanks: 'Thanks',
+  workflows: 'Workflows',
+  'use-cases': 'Use Cases',
+  'chicken-keepers': 'Chicken Keepers',
+  gardeners: 'Gardeners',
+  'hobby-farms': 'Hobby Farms',
+  'rural-property-owners': 'Rural Property Owners',
+  'pantry-inventory': 'Pantry Inventory',
+  animals: 'Animals',
+  garden: 'Garden',
+  inventory: 'Inventory',
+  reports: 'Reports',
+  reminders: 'Reminders',
+  'qr-codes': 'QR Codes',
+  supplies: 'Supplies',
+  'adding-items-to-hubs': 'Adding Items to Hubs',
+  'garden-layout-plantings': 'Garden Layout and Plantings',
+  'orchard-layout-plantings': 'Orchard Layout and Plantings',
+  'animal-breeding': 'Animal Breeding',
+  'checklists-for-items': 'Checklists for Items',
+  'map-usage': 'Map Usage',
+  'reports-demonstration': 'Reports Demonstration',
+  'calendar-demonstration': 'Calendar Demonstration',
+  'today-screen-review': 'Today Screen Review',
+  'animal-production': 'Animal Production',
+  'plant-harvests': 'Plant Harvests',
+  'import-excel-csv': 'Import Excel or CSV',
+};
+
+const segments = normalizedPath.split('/').filter(Boolean);
+const breadcrumbLd =
+  segments.length > 0
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: `${site.url}/`,
+          },
+          ...segments.map((segment, index) => {
+            const href = `/${segments.slice(0, index + 1).join('/')}/`;
+            return {
+              '@type': 'ListItem',
+              position: index + 2,
+              name: labelMap[segment] ?? segment.replaceAll('-', ' '),
+              item: new URL(href, site.url).toString(),
+            };
+          }),
+        ],
+      }
+    : undefined;
+
+const jsonLdItems = [
+  ...(Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : []),
+  ...(breadcrumbLd ? [breadcrumbLd] : []),
+];
 ---
 
 <title>{title}</title>
@@ -28,4 +95,4 @@ const imageUrl = new URL(image.startsWith('/') ? image.slice(1) : image, `${site
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={imageUrl} />
-{jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+{jsonLdItems.length > 0 && <script type="application/ld+json" set:html={JSON.stringify(jsonLdItems.length === 1 ? jsonLdItems[0] : jsonLdItems)} />}

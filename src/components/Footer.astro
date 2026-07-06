@@ -5,6 +5,7 @@ import { assetPath, sitePath } from '../utils/paths';
 const footerLinks = [
   [site.appStoreLabel, site.appStoreUrl],
   ['Features', '/features'],
+  ['Use Cases', '/use-cases'],
   ['Workflows', '/workflows'],
   ['Pricing', '/pricing'],
   ['FAQ', '/faq'],
@@ -12,12 +13,14 @@ const footerLinks = [
   ['Support', '/support'],
 ];
 const featureLinks = [
+  ['Chicken Keepers', '/use-cases/chicken-keepers'],
+  ['Gardeners', '/use-cases/gardeners'],
+  ['Hobby Farms', '/use-cases/hobby-farms'],
+  ['Rural Property', '/use-cases/rural-property-owners'],
+  ['Pantry Inventory', '/use-cases/pantry-inventory'],
   ['Garden Beds', '/features/garden'],
   ['Animals', '/features/animals'],
-  ['Calendar', '/features'],
   ['Inventory', '/features/inventory'],
-  ['Food & Pantry', '/features'],
-  ['Reports', '/features/reports'],
   ['Mac App', '/features/macos'],
 ];
 ---
@@ -39,7 +42,7 @@ const featureLinks = [
       </div>
     </nav>
     <nav aria-labelledby="footer-tracks-title">
-      <h2 id="footer-tracks-title">Tracks</h2>
+      <h2 id="footer-tracks-title">Use cases</h2>
       <div class="footer-link-list">
         {featureLinks.map(([label, href]) => <a href={sitePath(href)}>{label}</a>)}
       </div>
