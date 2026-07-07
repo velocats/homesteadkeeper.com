@@ -20,6 +20,46 @@ export interface UseCase {
 
 export const useCases: UseCase[] = [
   {
+    slug: 'homestead-management-app',
+    title: 'Homestead Management App for iPhone, iPad, and Mac | Homestead Keeper',
+    eyebrow: 'Homestead management',
+    h1: 'A homestead management app for animals, gardens, inventory, property, and seasonal work.',
+    description:
+      'Homestead Keeper is a homestead management app for tracking animals, gardens, inventory, equipment, property records, reminders, reports, and small-acreage work.',
+    intro:
+      'Homestead Keeper helps bring the daily pieces of a homestead together: animal care, garden beds, orchard work, equipment maintenance, pantry inventory, property places, reminders, reports, and exports.',
+    audience: ['Backyard homesteads', 'Small acreage properties', 'Hobby farms', 'Rural homeowners managing mixed records'],
+    keywords: ['homestead management app', 'homestead record keeping app', 'homestead planner app', 'small acreage management app'],
+    sections: [
+      {
+        title: 'Keep mixed homestead records in one app',
+        body: [
+          'Most small homesteads are not only gardens, only livestock, or only inventory. The work overlaps across animals, crops, equipment, buildings, food storage, reminders, and property systems.',
+          'Homestead Keeper is built around that mixed reality, so records can stay connected to the item, place, animal, bed, building, or system they belong to.',
+        ],
+      },
+      {
+        title: 'Plan, log, and review the work over time',
+        body: [
+          'Use the app to plan seasonal work, log daily activity, track production, keep maintenance notes, review inventory, and export reports when you need a clearer view.',
+          'That gives you a practical history of what happened without forcing your homestead into complicated farm business software.',
+        ],
+      },
+      {
+        title: 'Use it across Apple devices',
+        body: [
+          'Homestead Keeper works on iPhone, iPad, and Mac, with local-first records and optional iCloud sync.',
+          'It is designed for people who want useful homestead records without creating another web account or maintaining a browser-first dashboard.',
+        ],
+      },
+    ],
+    relatedFeatures: [
+      { title: 'Features overview', href: '/features', summary: 'See animals, growing, property, home, planning, reports, and exports.' },
+      { title: 'Workflows', href: '/workflows', summary: 'Walk through common map, garden, animal, report, calendar, and import tasks.' },
+      { title: 'Hobby farms', href: '/use-cases/hobby-farms', summary: 'See how Homestead Keeper fits mixed hobby farm and small-acreage records.' },
+    ],
+  },
+  {
     slug: 'chicken-keepers',
     title: 'Chicken Flock Record Keeping App | Homestead Keeper',
     eyebrow: 'Chicken keepers',
