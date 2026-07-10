@@ -16,6 +16,12 @@ export interface UseCase {
     summary: string;
   }>;
   keywords: string[];
+  screenshots?: Array<{
+    src: string;
+    title: string;
+    body: string;
+    alt: string;
+  }>;
 }
 
 export const useCases: UseCase[] = [
@@ -70,6 +76,20 @@ export const useCases: UseCase[] = [
       'Homestead Keeper helps chicken keepers keep flock records, egg production, care reminders, coop maintenance, feed notes, and health history together on iPhone, iPad, and Mac.',
     audience: ['Backyard chicken keepers', 'Small flock owners', 'Egg producers', 'Homesteads with mixed animals'],
     keywords: ['chicken flock record keeping app', 'egg production tracker', 'chicken care reminders', 'backyard chicken app'],
+    screenshots: [
+      {
+        src: 'assets/screenshots/animal-summary.webp',
+        title: 'Chicken and animal records',
+        body: 'Keep flock profiles, care, production, health notes, photos, and history together.',
+        alt: 'Homestead Keeper animal record screen with summary, records, production, photos, care, pedigree, and breeding tabs.',
+      },
+      {
+        src: 'assets/screenshots/animal-production.webp',
+        title: 'Egg production history',
+        body: 'Track egg counts and other production with totals, charts, and history.',
+        alt: 'Homestead Keeper animal production screen showing egg totals, a bar chart, and production history rows.',
+      },
+    ],
     sections: [
       {
         title: 'Track egg production and flock activity',
@@ -110,6 +130,20 @@ export const useCases: UseCase[] = [
       'Homestead Keeper helps gardeners track raised beds, crop placement, planting dates, pest notes, soil work, harvests, reminders, and seasonal garden records.',
     audience: ['Backyard gardeners', 'Raised bed gardeners', 'Homestead gardeners', 'Orchard and berry growers'],
     keywords: ['garden planning app', 'garden bed layout app', 'garden harvest tracker', 'planting record app'],
+    screenshots: [
+      {
+        src: 'assets/screenshots/garden-bed-layout.webp',
+        title: 'Garden bed layout',
+        body: 'Map raised beds and crop placement by bed, crop, and season.',
+        alt: 'Homestead Keeper garden bed layout showing crops assigned to a raised bed grid.',
+      },
+      {
+        src: 'assets/screenshots/garden-timeline.webp',
+        title: 'Garden timeline',
+        body: 'Review planting, growing, harvest windows, frost dates, and seasonal work.',
+        alt: 'Homestead Keeper garden timeline showing crop schedules with seed start, growing, and harvest windows.',
+      },
+    ],
     sections: [
       {
         title: 'Make garden plans visual',
@@ -230,6 +264,20 @@ export const useCases: UseCase[] = [
       'Homestead Keeper helps track the supplies that matter around a homestead: feed, medicine, seeds, fuel, filters, pantry goods, canning supplies, emergency prep, and spare parts.',
     audience: ['Pantry managers', 'Food preservation households', 'Chicken and livestock keepers', 'Prepared rural homes'],
     keywords: ['pantry inventory app', 'homestead inventory app', 'feed inventory tracker', 'emergency supplies tracker'],
+    screenshots: [
+      {
+        src: 'assets/screenshots/inventory-list.webp',
+        title: 'Inventory list',
+        body: 'Track quantities, categories, storage places, status, and expiration dates.',
+        alt: 'Homestead Keeper inventory table showing item, category, quantity, location, status, and expiration columns.',
+      },
+      {
+        src: 'assets/screenshots/report-inventory.webp',
+        title: 'Inventory report',
+        body: 'Review low stock, expiring supplies, categories, places, and supply trends.',
+        alt: 'Homestead Keeper inventory report showing low stock, expiring soon, categories, and supply trends.',
+      },
+    ],
     sections: [
       {
         title: 'Track supplies by category and place',
@@ -257,6 +305,228 @@ export const useCases: UseCase[] = [
       { title: 'Inventory features', href: '/features/inventory', summary: 'Inventory lists, low stock, expirations, categories, places, and reports.' },
       { title: 'Reports', href: '/features/reports', summary: 'Review inventory, production, cost, maintenance, and homestead summaries.' },
       { title: 'Today workflow', href: '/workflows/today-screen-review', summary: 'See how inventory alerts surface during daily review.' },
+    ],
+  },
+  {
+    slug: 'homestead-task-tracker',
+    title: 'Homestead Task Tracker and Chore App | Homestead Keeper',
+    eyebrow: 'Task tracker',
+    h1: 'A homestead task tracker for chores, reminders, maintenance, and seasonal work.',
+    description:
+      'Use Homestead Keeper as a homestead task tracker for chores, recurring reminders, animal care, garden work, equipment maintenance, inventory alerts, and seasonal property tasks.',
+    intro:
+      'Homestead Keeper keeps daily chores, overdue reminders, seasonal jobs, maintenance tasks, and inventory alerts visible beside the records they belong to.',
+    audience: ['Homesteaders with recurring chores', 'Chicken keepers and animal owners', 'Gardeners with seasonal tasks', 'Rural properties with maintenance work'],
+    keywords: ['homestead task tracker', 'homestead chore app', 'homestead chores tracker', 'homestead reminder app', 'farm chore tracker'],
+    screenshots: [
+      {
+        src: 'assets/workflows/today/Simulator Screenshot - iPad Air 13-inch (M3) - 2026-06-26 at 10.25.12.png',
+        title: 'Today task list',
+        body: 'Review overdue chores, today’s work, field log actions, and inventory alerts.',
+        alt: 'Homestead Keeper Today screen showing overdue tasks, today chores, field log shortcuts, recent reminders, and inventory alerts.',
+      },
+      {
+        src: 'assets/workflows/calendar/Simulator Screenshot - iPad Air 13-inch (M3) - 2026-06-26 at 10.21.42.png',
+        title: 'Homestead calendar',
+        body: 'See upcoming and overdue homestead tasks in calendar context.',
+        alt: 'Homestead Keeper calendar month view showing upcoming and overdue homestead tasks.',
+      },
+    ],
+    sections: [
+      {
+        title: 'Track chores where the work happens',
+        body: [
+          'Homestead tasks are easier to manage when they stay connected to the coop, garden bed, mower, pump, pantry shelf, animal group, or place that needs attention.',
+          'Homestead Keeper lets chores and reminders sit beside the records, logs, documents, costs, and history for the thing being managed.',
+        ],
+      },
+      {
+        title: 'Use Today as a daily homestead checklist',
+        body: [
+          'The Today view surfaces overdue work, chores due now, recent reminders, Field Log shortcuts, and inventory alerts so the day starts with a practical work list.',
+          'That makes it useful for feeding checks, egg collection, watering, garden scouting, supply review, equipment work, and other repeated homestead tasks.',
+        ],
+      },
+      {
+        title: 'Plan recurring and seasonal work',
+        body: [
+          'Recurring reminders help with daily, weekly, monthly, quarterly, yearly, and seasonal rhythms without rebuilding the same task over and over.',
+          'Calendar and timeline views help longer work stay visible, from breeding milestones and planting windows to maintenance checks and harvest timing.',
+        ],
+      },
+    ],
+    relatedFeatures: [
+      { title: 'Reminders and calendar', href: '/features/reminders', summary: 'Track recurring chores, overdue work, seasonal tasks, and calendar views.' },
+      { title: 'Today workflow', href: '/workflows/today-screen-review', summary: 'See how Today becomes a daily operating checklist.' },
+      { title: 'Calendar workflow', href: '/workflows/calendar-demonstration', summary: 'Review homestead tasks across month, week, timeline, and detail views.' },
+    ],
+  },
+  {
+    slug: 'homestead-maintenance-app',
+    title: 'Homestead Maintenance App for Equipment and Property | Homestead Keeper',
+    eyebrow: 'Maintenance',
+    h1: 'Homestead maintenance records for equipment, property systems, coops, wells, and seasonal chores.',
+    description:
+      'Track homestead maintenance for equipment, coops, fences, gates, wells, pumps, buildings, tools, warranties, service history, reminders, costs, and reports.',
+    intro:
+      'Homestead Keeper helps rural property owners keep maintenance reminders, repairs, service logs, warranties, costs, documents, and property history connected to the equipment, buildings, and systems they belong to.',
+    audience: ['Rural homeowners', 'Small acreage owners', 'Homesteads with equipment', 'Properties with wells, pumps, fences, buildings, and coops'],
+    keywords: ['homestead maintenance app', 'homestead maintenance tracker', 'rural property maintenance app', 'equipment maintenance tracker', 'property maintenance records'],
+    screenshots: [
+      {
+        src: 'assets/screenshots/equipment-detail.webp',
+        title: 'Equipment service records',
+        body: 'Keep repairs, service, inspection, fuel, costs, photos, and notes on each item.',
+        alt: 'Homestead Keeper equipment detail screen for a riding mower with service and repair record fields.',
+      },
+      {
+        src: 'assets/screenshots/report-maintenance.webp',
+        title: 'Maintenance overview',
+        body: 'Review completed work, overdue reminders, service costs, vendors, trends, and watchlists.',
+        alt: 'Homestead Keeper Maintenance Overview report showing health score, upcoming care, watchlist, and maintenance trend chart.',
+      },
+      {
+        src: 'assets/screenshots/report-warranty.webp',
+        title: 'Warranty countdown',
+        body: 'See expired, upcoming, and later warranty deadlines for equipment and supplies.',
+        alt: 'Homestead Keeper Warranty Countdown report showing expired warranties, 90 day warranties, and later warranty items.',
+      },
+    ],
+    sections: [
+      {
+        title: 'Keep service history attached to the asset',
+        body: [
+          'A mower repair, coop fix, gate adjustment, pump inspection, filter change, or generator service is most useful when it stays attached to the item or place it belongs to.',
+          'Homestead Keeper keeps maintenance notes, costs, reminders, photos, documents, and reports connected so the next repair starts with history instead of guesswork.',
+        ],
+      },
+      {
+        title: 'Plan recurring property care',
+        body: [
+          'Use reminders for oil changes, blade sharpening, fence walks, well checks, water filters, coop cleanouts, irrigation checks, seasonal inspections, and warranty dates.',
+          'Overdue work, snoozing, calendar views, and reports help keep small recurring jobs from becoming stressful surprises.',
+        ],
+      },
+      {
+        title: 'Review maintenance costs and warranties',
+        body: [
+          'Maintenance and cost reports help show what has been done, what is coming up, which items are becoming expensive, and what warranty deadlines need attention.',
+          'That makes the app useful for seasonal reviews, property handoffs, helper instructions, and long-term replacement planning.',
+        ],
+      },
+    ],
+    relatedFeatures: [
+      { title: 'Reminders and calendar', href: '/features/reminders', summary: 'Recurring maintenance, seasonal chores, overdue work, and calendar review.' },
+      { title: 'Reports', href: '/features/reports', summary: 'Maintenance, cost, warranty, handoff, inventory, and homestead summaries.' },
+      { title: 'Checklists workflow', href: '/workflows/checklists-for-items', summary: 'Attach repeatable checklist work to equipment, places, systems, and other items.' },
+    ],
+  },
+  {
+    slug: 'chicken-egg-tracker',
+    title: 'Chicken Egg Tracker and Flock Records App | Homestead Keeper',
+    eyebrow: 'Egg tracker',
+    h1: 'Track chicken eggs, flock care, feed, health notes, and coop work in one app.',
+    description:
+      'Use Homestead Keeper as a chicken egg tracker and flock record app for egg counts, production history, feed notes, care reminders, coop maintenance, breeding, and health records.',
+    intro:
+      'Homestead Keeper helps chicken keepers track egg counts and flock history while keeping feed inventory, coop maintenance, care reminders, health notes, and reports connected to the rest of the homestead.',
+    audience: ['Backyard chicken keepers', 'Small flock owners', 'Homestead egg producers', 'Families tracking flock care'],
+    keywords: ['chicken egg tracker', 'egg production tracker', 'chicken egg count app', 'chicken flock records', 'backyard chicken tracker'],
+    screenshots: [
+      {
+        src: 'assets/screenshots/animal-production.webp',
+        title: 'Egg production tracking',
+        body: 'Record egg counts and review totals, charts, uses, sales, and history.',
+        alt: 'Homestead Keeper animal production screen showing egg totals, a 14 day bar chart, and production history rows.',
+      },
+      {
+        src: 'assets/screenshots/animal-summary.webp',
+        title: 'Flock record',
+        body: 'Keep flock care, records, production, photos, health, and breeding notes together.',
+        alt: 'Homestead Keeper animal detail screen with summary, records, production, photos, care, pedigree, and breeding tabs.',
+      },
+    ],
+    sections: [
+      {
+        title: 'Log egg counts and production history',
+        body: [
+          'Record daily egg counts, production notes, uses, sales, storage, and flock observations while the details are still fresh.',
+          'Production history makes it easier to notice seasonal patterns, changes after a molt, feed changes, weather shifts, or health issues.',
+        ],
+      },
+      {
+        title: 'Connect eggs to flock care',
+        body: [
+          'Egg records are more useful when they live near care reminders, health notes, feed changes, coop work, breeding records, and photos.',
+          'That context helps explain changes in production without keeping a separate spreadsheet, notebook, and reminder app.',
+        ],
+      },
+      {
+        title: 'Manage chickens as part of the whole homestead',
+        body: [
+          'Feed inventory, bedding, medicine, coop maintenance, costs, reports, calendar work, and garden harvests can live in the same system as chicken records.',
+          'That makes Homestead Keeper a stronger fit for backyard homesteads than a single-purpose egg counter.',
+        ],
+      },
+    ],
+    relatedFeatures: [
+      { title: 'Animal records', href: '/features/animals', summary: 'Care, health, production, breeding, pedigree, photos, documents, and reports.' },
+      { title: 'Chicken keepers', href: '/use-cases/chicken-keepers', summary: 'Track flock records, egg production, care reminders, coop maintenance, and feed notes.' },
+      { title: 'Animal production workflow', href: '/workflows/animal-production', summary: 'See how production entries become trends and history.' },
+    ],
+  },
+  {
+    slug: 'garden-harvest-tracker',
+    title: 'Garden Harvest Tracker and Planting Log App | Homestead Keeper',
+    eyebrow: 'Harvest tracker',
+    h1: 'Track garden harvests, plantings, bed layouts, crop history, and seasonal garden work.',
+    description:
+      'Use Homestead Keeper as a garden harvest tracker and planting log for raised beds, crop placement, harvest totals, garden timelines, pest notes, soil work, and seasonal reports.',
+    intro:
+      'Homestead Keeper connects garden bed layouts, planting records, harvest totals, crop notes, reminders, timelines, and reports so each season becomes easier to review.',
+    audience: ['Homestead gardeners', 'Raised bed gardeners', 'Food preservation households', 'Orchard and berry growers'],
+    keywords: ['garden harvest tracker', 'garden planting log app', 'homestead garden app', 'garden bed layout app', 'vegetable harvest tracker'],
+    screenshots: [
+      {
+        src: 'assets/screenshots/garden-bed-layout.webp',
+        title: 'Garden bed map',
+        body: 'Plan raised beds and crop placement before planting day.',
+        alt: 'Homestead Keeper garden bed layout showing crops assigned to a grid and a prompt to log the layout as planting.',
+      },
+      {
+        src: 'assets/screenshots/garden-timeline.webp',
+        title: 'Garden timeline',
+        body: 'See planting, growing, harvest windows, frost dates, and today markers by crop.',
+        alt: 'Homestead Keeper garden timeline showing crops with seed start, growing, and harvest windows.',
+      },
+    ],
+    sections: [
+      {
+        title: 'Track what was planted where',
+        body: [
+          'Garden bed layouts help you map raised beds, plots, rows, and crop placement by season so planting plans stay understandable after the busy part of spring.',
+          'Planting records can capture crop, variety, date, location, notes, and care history for better rotation and planning later.',
+        ],
+      },
+      {
+        title: 'Turn harvest notes into useful totals',
+        body: [
+          'Harvest records help track crop, quantity, unit, date, and notes, making the harvest log more useful than a scattered notebook entry.',
+          'Over time, harvest totals help show what produced well, what underperformed, and what belongs in next year’s seed order or preservation plan.',
+        ],
+      },
+      {
+        title: 'Review the season, not just individual entries',
+        body: [
+          'Timelines, reminders, and reports help connect planting dates, pest pressure, soil amendments, treatments, harvests, costs, and seasonal work.',
+          'That gives homestead gardeners a clearer record of what happened and what to adjust next year.',
+        ],
+      },
+    ],
+    relatedFeatures: [
+      { title: 'Garden features', href: '/features/garden', summary: 'Garden bed layouts, planting records, harvests, timelines, and reports.' },
+      { title: 'Garden workflow', href: '/workflows/garden-layout-plantings', summary: 'See how garden layouts connect to planting records.' },
+      { title: 'Plant harvest workflow', href: '/workflows/plant-harvests', summary: 'Record plant harvests and review harvest totals from plants, gardens, and reports.' },
     ],
   },
 ];

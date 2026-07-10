@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import CTA from '../../components/CTA.astro';
 import InternalLinkCards from '../../components/InternalLinkCards.astro';
 import SectionHeader from '../../components/SectionHeader.astro';
+import ScreenshotGallery from '../../components/ScreenshotGallery.astro';
 import { useCases } from '../../data/useCases';
 import { site } from '../../data/site';
 
@@ -39,6 +40,18 @@ const jsonLd = {
     <h1>{useCase.h1}</h1>
     <p class="lede">{useCase.intro}</p>
   </section>
+
+  {useCase.screenshots && (
+    <section class="section" aria-labelledby="screenshots-title">
+      <SectionHeader
+        headingId="screenshots-title"
+        eyebrow="Screenshots"
+        title="See how this works in the app"
+        body="These product screens show the records, reminders, reports, and daily views behind this use case."
+      />
+      <ScreenshotGallery shots={useCase.screenshots} compact />
+    </section>
+  )}
 
   <section class="section" aria-labelledby="audience-title">
     <SectionHeader

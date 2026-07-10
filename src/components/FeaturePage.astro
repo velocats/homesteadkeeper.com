@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ScreenshotPlaceholder from './ScreenshotPlaceholder.astro';
+import AppScreenshot from './AppScreenshot.astro';
 import CTA from './CTA.astro';
 import InternalLinkCards from './InternalLinkCards.astro';
 import { featureLinks } from '../data/site';
@@ -13,7 +14,15 @@ interface Props {
   h1: string;
   intro: string;
   sections: { title: string; body: string[] }[];
-  screenshots: string[];
+  screenshots: Array<
+    | string
+    | {
+        src: string;
+        title: string;
+        body: string;
+        alt: string;
+      }
+  >;
 }
 
 const { title, description, path, eyebrow, h1, intro, sections, screenshots } = Astro.props;
@@ -37,7 +46,9 @@ const related = featureLinks.filter((feature) => feature.href !== path).slice(0,
       ))}
     </div>
     <aside class="sidebar-stack">
-      {screenshots.map((shot) => <ScreenshotPlaceholder label={shot} />)}
+      {screenshots.map((shot) => (
+        typeof shot === 'string' ? <ScreenshotPlaceholder label={shot} /> : <AppScreenshot {...shot} />
+      ))}
     </aside>
   </section>
 

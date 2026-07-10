@@ -13,8 +13,8 @@ import { calendarScreenshots, gardenScreenshots, homepageScreenshots, inventoryS
 import { useCases } from '../data/useCases';
 import { sitePath } from '../utils/paths';
 
-const title = 'Homestead Keeper | Homestead Management App for iPhone, iPad, and Mac';
-const description = 'Homestead Keeper is a homestead management and record keeping app for animals, chicken flocks, garden beds, equipment, inventory, pantry records, reminders, reports, and rural property care.';
+const title = 'Homestead Keeper | Homestead Management, Task Tracker, Inventory, Garden, and Animal Records App';
+const description = 'Homestead Keeper is a homestead management, task tracker, and record keeping app for chores, maintenance, animals, chickens, garden beds, inventory, pantry records, reminders, reports, and rural property care.';
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
@@ -125,7 +125,11 @@ const workflowPreviewScreenshots = [
     alt: 'Homestead Keeper Homestead Summary report showing health score, floor plan metrics, and activity by type.',
   },
 ];
-const homepageUseCases = useCases.slice(0, 4).map((useCase) => ({
+const homepageUseCaseSlugs = ['homestead-management-app', 'homestead-task-tracker', 'homestead-maintenance-app', 'chicken-egg-tracker', 'garden-harvest-tracker', 'pantry-inventory'];
+const homepageUseCases = homepageUseCaseSlugs
+  .map((slug) => useCases.find((useCase) => useCase.slug === slug))
+  .filter((useCase): useCase is (typeof useCases)[number] => Boolean(useCase))
+  .map((useCase) => ({
   title: useCase.eyebrow,
   href: `/use-cases/${useCase.slug}`,
   summary: useCase.intro,
@@ -136,11 +140,11 @@ const homepageUseCases = useCases.slice(0, 4).map((useCase) => ({
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero-copy">
       <p class="eyebrow">Homestead records for Apple devices</p>
-      <h1 id="hero-title">Spend less time organizing records and more time managing the work.</h1>
-      <p class="hero-lede">Homestead Keeper helps you track animals, garden beds, crops, equipment, inventory, Food & Pantry, reminders, calendar work, reports, and property records without a Homestead Keeper account.</p>
+      <h1 id="hero-title">Homestead management app for tasks, animals, gardens, inventory, and maintenance.</h1>
+      <p class="hero-lede">Homestead Keeper helps you track chores, animals, chicken flocks, garden beds, crops, equipment maintenance, inventory, Food & Pantry, reminders, calendar work, reports, and property records without a Homestead Keeper account.</p>
       <div class="button-row">
         <a class="button primary" href={sitePath('/features')}>Explore features</a>
-        <a class="button secondary" href={sitePath('/workflows')}>View workflows</a>
+        <a class="button secondary" href={sitePath('/use-cases/homestead-task-tracker')}>Track tasks</a>
       </div>
       <p class="microcopy">No account required. Local-first. Works across iPhone, iPad, and Mac with optional iCloud sync.</p>
     </div>
@@ -279,5 +283,5 @@ const homepageUseCases = useCases.slice(0, 4).map((useCase) => ({
     <a class="button primary" href={site.appStoreUrl}>Download on the App Store</a>
   </section>
 
-  <CTA title="Spend less time organizing records and more time managing the work." body="Track the animals, beds, equipment, supplies, places, calendar work, and reports that keep your homestead or rural property running." primaryLabel="Explore features" primaryHref="/features" secondaryLabel="Read FAQ" secondaryHref="/faq" />
+  <CTA title="Spend less time organizing records and more time managing the work." body="Track the animals, beds, equipment, supplies, chores, maintenance, places, calendar work, and reports that keep your homestead or rural property running." primaryLabel="Explore features" primaryHref="/features" secondaryLabel="Track tasks" secondaryHref="/use-cases/homestead-task-tracker" />
 </Layout>

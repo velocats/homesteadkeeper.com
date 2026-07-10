@@ -1,5 +1,6 @@
 ---
 import FeaturePage from '../../components/FeaturePage.astro';
+import { inventoryScreenshots } from '../../data/site';
 
 const sections = [
   {
@@ -46,5 +47,5 @@ const sections = [
   h1="Know what is on hand before you need it"
   intro="Homestead Keeper gives homesteaders a calm farm inventory tracking system for stocked items, low-stock alerts, expiration dates, storage locations, purchase notes, Home alerts, reports, and exports."
   sections={sections}
-  screenshots={['Inventory', 'Home alerts', 'Inventory Report'] }
+  screenshots={inventoryScreenshots}
 />

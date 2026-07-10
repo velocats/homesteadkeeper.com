@@ -1,5 +1,6 @@
 ---
 import FeaturePage from '../../components/FeaturePage.astro';
+import { calendarScreenshots } from '../../data/site';
 
 const sections = [
   {
@@ -34,12 +35,12 @@ const sections = [
 ---
 
 <FeaturePage
-  title="Reminders & Calendar | Homestead Keeper"
-  description="Create reminders on any asset, use recurring schedules, see a monthly calendar and agenda, snooze overdue chores, and export to Apple Calendar."
+  title="Homestead Task Tracker, Chore Reminders, and Calendar App | Homestead Keeper"
+  description="Use Homestead Keeper as a homestead task tracker for chores, recurring reminders, seasonal work, maintenance tasks, overdue alerts, calendar views, and Apple Calendar export."
   path="/features/reminders"
-  eyebrow="Reminders & Calendar"
-  h1="Put seasonal chores where you can see them"
-  intro="Track recurring homestead work with asset-based reminders, overdue alerts, calendar views, snoozing, seasonal reports, and Apple Calendar export."
+  eyebrow="Tasks, Reminders & Calendar"
+  h1="Homestead tasks, chore reminders, and seasonal work in one calendar"
+  intro="Track recurring homestead chores and maintenance tasks with asset-based reminders, overdue alerts, calendar views, snoozing, seasonal reports, and Apple Calendar export."
   sections={sections}
-  screenshots={['Calendar view', 'Reminder form']}
+  screenshots={calendarScreenshots}
 />
