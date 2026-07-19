@@ -129,8 +129,9 @@ ul, ol { margin: 0; padding: 0; }
 .hero-copy { display: grid; gap: 1.25rem; }
 .hero-lede { max-width: 62ch; color: rgba(255, 250, 240, 0.86); font-size: clamp(1.08rem, 1.65vw, 1.35rem); line-height: 1.55; }
 .microcopy { color: rgba(255, 250, 240, 0.72); font-size: 0.95rem; max-width: 58ch; }
-.hero .device-shell { max-height: 780px; }
-.hero .screenshot-frame { align-self: stretch; }
+.hero .device-shell { max-height: none; }
+.hero .screenshot-frame { align-self: center; }
+.hero .device-shell img { height: auto; object-fit: contain; }
 
 .page-hero { display: grid; gap: 1.1rem; padding-block: clamp(2.5rem, 6vw, 5rem) clamp(1rem, 3vw, 2rem); }
 .page-hero h1 { max-width: 15ch; }
