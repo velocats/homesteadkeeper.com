@@ -112,7 +112,7 @@ ul, ol { margin: 0; padding: 0; }
 
 .hero, .page-hero, .section, .split-section, .cta-band { width: min(1180px, 100%); margin-inline: auto; }
 .hero {
-  display: grid; grid-template-columns: minmax(0, 0.82fr) minmax(340px, 1.18fr); align-items: center;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center;
   gap: clamp(1.5rem, 4vw, 3rem);
   width: min(1240px, calc(100% - clamp(1rem, 4vw, 4rem)));
   margin-top: clamp(0.8rem, 2vw, 1.5rem);
