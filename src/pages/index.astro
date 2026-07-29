@@ -9,7 +9,9 @@ import ScreenshotGallery from '../components/ScreenshotGallery.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import ComparisonTable from '../components/ComparisonTable.astro';
 import InternalLinkCards from '../components/InternalLinkCards.astro';
+import TutorialCard from '../components/TutorialCard.astro';
 import { calendarScreenshots, gardenScreenshots, homepageScreenshots, inventoryScreenshots, pricingTiers, reportScreenshots, site, trustPoints } from '../data/site';
+import { featuredTutorialIds, tutorials } from '../data/tutorials';
 import { useCases } from '../data/useCases';
 import { sitePath } from '../utils/paths';
 
@@ -134,6 +136,9 @@ const homepageUseCases = homepageUseCaseSlugs
   href: `/use-cases/${useCase.slug}`,
   summary: useCase.intro,
 }));
+const featuredTutorials = featuredTutorialIds
+  .map((id) => tutorials.find((tutorial) => tutorial.id === id))
+  .filter((tutorial): tutorial is (typeof tutorials)[number] => Boolean(tutorial));
 ---
 
 <Layout title={title} description={description} path="/" image="/assets/screenshots/homestead-hub.webp" jsonLd={jsonLd}>
@@ -165,89 +170,13 @@ const homepageUseCases = homepageUseCaseSlugs
       headingId="video-tour-title"
       eyebrow="Video walkthroughs"
       title="See Homestead Keeper in action."
-      body="Start with the complete app walkthrough, then explore focused how-tos for checklists, garden layouts, the Garden Timeline Calendar, and the Breeding Calendar."
+      body="Start with these featured walkthroughs, then visit the tutorial library for every video."
     />
     <div class="video-grid">
-      <article class="video-card">
-        <div class="video-embed">
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/BrUu8FY-dzU"
-            title="Homestead Keeper app walkthrough"
-            loading="lazy"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe>
-        </div>
-        <div class="video-card-copy">
-          <h3>Homestead Keeper walkthrough</h3>
-          <p>A complete overview of the app and how its tools work together.</p>
-        </div>
-      </article>
-      <article class="video-card">
-        <div class="video-embed">
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/dC8ghhCS1EU"
-            title="Homestead Keeper garden layout overview"
-            loading="lazy"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe>
-        </div>
-        <div class="video-card-copy">
-          <h3>Garden layout overview</h3>
-          <p>See how to plan beds and keep garden layouts organized in Homestead Keeper.</p>
-        </div>
-      </article>
-      <article class="video-card">
-        <div class="video-embed">
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/_d8nW_cCRPk"
-            title="Homestead Keeper Garden Timeline Calendar how-to"
-            loading="lazy"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe>
-        </div>
-        <div class="video-card-copy">
-          <h3>Garden Timeline Calendar how-to</h3>
-          <p>Learn how to use the timeline calendar to follow garden activity and seasonal plans.</p>
-        </div>
-      </article>
-      <article class="video-card">
-        <div class="video-embed">
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/puz9x0UlWco"
-            title="Homestead Keeper Breeding Calendar how-to"
-            loading="lazy"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe>
-        </div>
-        <div class="video-card-copy">
-          <h3>Breeding Calendar how-to</h3>
-          <p>Learn how to organize breeding dates, milestones, and upcoming events in the calendar.</p>
-        </div>
-      </article>
-      <article class="video-card">
-        <div class="video-embed">
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/YXS0_ql1mM0"
-            title="Homestead Keeper checklists how-to"
-            loading="lazy"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe>
-        </div>
-        <div class="video-card-copy">
-          <h3>Checklists how-to</h3>
-          <p>Learn how to use checklists to organize repeatable work and keep homestead tasks on track.</p>
-        </div>
-      </article>
+      {featuredTutorials.map((tutorial) => <TutorialCard {...tutorial} />)}
+    </div>
+    <div class="button-row">
+      <a class="button primary" href={sitePath('/tutorials')}>View all video tutorials</a>
     </div>
   </section>
 

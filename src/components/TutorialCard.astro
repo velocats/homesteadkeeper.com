@@ -1,0 +1,29 @@
+---
+interface Props {
+  videoId: string;
+  title: string;
+  iframeTitle: string;
+  description: string;
+  category?: string;
+}
+
+const { videoId, title, iframeTitle, description, category } = Astro.props;
+---
+
+<article class="video-card">
+  <div class="video-embed">
+    <iframe
+      src={`https://www.youtube-nocookie.com/embed/${videoId}`}
+      title={iframeTitle}
+      loading="lazy"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
+  </div>
+  <div class="video-card-copy">
+    {category && <p class="video-category">{category}</p>}
+    <h3>{title}</h3>
+    <p>{description}</p>
+  </div>
+</article>

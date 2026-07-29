@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTA from '../components/CTA.astro';
+import TutorialCard from '../components/TutorialCard.astro';
+import { tutorials } from '../data/tutorials';
+import { sitePath } from '../utils/paths';
+
+const title = 'Homestead Keeper Video Tutorials and App Walkthroughs';
+const description = 'Watch Homestead Keeper video tutorials for checklists, garden layouts, the Garden Timeline Calendar, animal breeding, and a complete app walkthrough.';
+---
+
+<Layout title={title} description={description} path="/tutorials">
+  <section class="page-hero">
+    <p class="eyebrow">Video tutorials</p>
+    <h1>Learn Homestead Keeper at your own pace.</h1>
+    <p class="lede">Start with the complete app tour or jump into a focused how-to for checklists, gardens, calendars, and animal records.</p>
+    <div class="button-row">
+      <a class="button primary" href="#app-walkthrough">Start with the app tour</a>
+      <a class="button secondary" href={sitePath('/workflows')}>Browse written workflows</a>
+    </div>
+  </section>
+
+  <section class="section video-tour-section" aria-labelledby="tutorial-library-title">
+    <div class="section-header">
+      <p class="eyebrow">Tutorial library</p>
+      <h2 id="tutorial-library-title">Choose what you want to learn.</h2>
+      <p>Each short walkthrough shows a practical part of Homestead Keeper in action.</p>
+    </div>
+    <div class="video-grid">
+      {tutorials.map((tutorial) => (
+        <div id={tutorial.id} class="tutorial-anchor">
+          <TutorialCard {...tutorial} />
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <CTA
+    title="Prefer a step-by-step guide?"
+    body="The workflow library pairs screenshots with practical instructions for common homestead tasks."
+    primaryLabel="Explore workflows"
+    primaryHref="/workflows"
+    secondaryLabel="View all features"
+    secondaryHref="/features"
+  />
+</Layout>
