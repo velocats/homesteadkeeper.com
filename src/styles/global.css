@@ -54,6 +54,7 @@ ul, ol { margin: 0; padding: 0; }
 }
 .brand { display: inline-flex; align-items: center; gap: 0.7rem; color: var(--green); font-weight: 900; text-decoration: none; white-space: nowrap; }
 .brand img { width: 44px; height: 44px; border-radius: 13px; box-shadow: 0 8px 22px rgba(36, 63, 46, 0.16); }
+.nav-toggle { display: none; }
 .main-nav ul { display: flex; align-items: center; flex-wrap: wrap; justify-content: flex-end; gap: clamp(0.35rem, 1.5vw, 1rem); color: var(--green); font-size: 0.95rem; font-weight: 800; list-style: none; }
 .main-nav li { position: relative; }
 .main-nav a { padding: 0.45rem 0.65rem; border-radius: 999px; text-decoration: none; }
@@ -311,10 +312,60 @@ ul, ol { margin: 0; padding: 0; }
 }
 
 @media (max-width: 720px) {
-  .site-header { position: static; align-items: flex-start; flex-direction: column; }
-  .main-nav { justify-content: flex-start; }
-  .main-nav ul { justify-content: flex-start; }
-  .nav-appstore { width: 100%; }
+  .site-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.75rem 1rem;
+    padding-block: 0.65rem;
+  }
+  .brand { min-width: 0; }
+  .brand span { overflow: hidden; text-overflow: ellipsis; }
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    min-width: 5.6rem;
+    min-height: 2.75rem;
+    padding: 0.45rem 0.75rem;
+    border: 1px solid rgba(36, 63, 46, 0.24);
+    border-radius: 999px;
+    background: var(--paper);
+    color: var(--green);
+    font-weight: 900;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+  .nav-toggle-lines { display: grid; gap: 3px; width: 17px; }
+  .nav-toggle-lines span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    border-radius: 999px;
+    background: currentColor;
+    transition: transform 160ms ease, opacity 160ms ease;
+  }
+  .site-header[data-menu-open] .nav-toggle-lines span:first-child { transform: translateY(5px) rotate(45deg); }
+  .site-header[data-menu-open] .nav-toggle-lines span:nth-child(2) { opacity: 0; }
+  .site-header[data-menu-open] .nav-toggle-lines span:last-child { transform: translateY(-5px) rotate(-45deg); }
+  .main-nav, .nav-appstore { display: none; grid-column: 1 / -1; }
+  .site-header[data-menu-open] .main-nav { display: block; }
+  .site-header[data-menu-open] .nav-appstore { display: inline-flex; }
+  .main-nav ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.4rem;
+    padding-top: 0.25rem;
+  }
+  .main-nav a {
+    display: flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding: 0.55rem 0.75rem;
+    border-radius: 12px;
+  }
+  .nav-appstore { width: 100%; min-height: 2.9rem; }
   .nav-dropdown-menu {
     position: static;
     display: none;

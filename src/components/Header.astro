@@ -12,7 +12,17 @@ const activeHref = navItems
     <img src={assetPath('assets/homestead-keeper-logo.png')} alt="" width="44" height="44" />
     <span>{site.name}</span>
   </a>
-  <nav class="main-nav" aria-label="Main navigation">
+  <button
+    class="nav-toggle"
+    type="button"
+    aria-expanded="false"
+    aria-controls="main-navigation"
+    aria-label="Open menu"
+  >
+    <span class="nav-toggle-lines" aria-hidden="true"><span></span><span></span><span></span></span>
+    <span class="nav-toggle-label">Menu</span>
+  </button>
+  <nav class="main-nav" id="main-navigation" aria-label="Main navigation">
     <ul>
       {navItems.map((item) => {
         const active = item.href === activeHref;
@@ -22,3 +32,42 @@ const activeHref = navItems
   </nav>
   <a class="nav-appstore" href={sitePath(site.appStoreUrl)}>{site.appStoreLabel}</a>
 </header>
+
+<script is:inline>
+  (() => {
+    const header = document.querySelector('.site-header');
+    const toggle = header?.querySelector('.nav-toggle');
+    if (!header || !toggle) return;
+
+    const mobileQuery = window.matchMedia('(max-width: 720px)');
+
+    const setMenuOpen = (open) => {
+      header.toggleAttribute('data-menu-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      const label = toggle.querySelector('.nav-toggle-label');
+      if (label) label.textContent = open ? 'Close' : 'Menu';
+    };
+
+    toggle.addEventListener('click', () => {
+      setMenuOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    document.addEventListener('click', (event) => {
+      if (mobileQuery.matches && header.hasAttribute('data-menu-open') && !header.contains(event.target)) {
+        setMenuOpen(false);
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && header.hasAttribute('data-menu-open')) {
+        setMenuOpen(false);
+        toggle.focus();
+      }
+    });
+
+    mobileQuery.addEventListener('change', (event) => {
+      if (!event.matches) setMenuOpen(false);
+    });
+  })();
+</script>
