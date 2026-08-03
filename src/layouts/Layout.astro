@@ -10,10 +10,11 @@ interface Props {
   description: string;
   path?: string;
   image?: string;
-  jsonLd?: Record<string, unknown>;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  noindex?: boolean;
 }
 
-const { title, description, path = '/', image, jsonLd } = Astro.props;
+const { title, description, path = '/', image, jsonLd, noindex = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -23,7 +24,7 @@ const { title, description, path = '/', image, jsonLd } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#f7eddc" />
     <link rel="icon" type="image/png" href={assetPath('favicon.png')} />
-    <SEO title={title} description={description} path={path} image={image} jsonLd={jsonLd} />
+    <SEO title={title} description={description} path={path} image={image} jsonLd={jsonLd} noindex={noindex} />
   </head>
   <body>
     <a class="skip-link" href="#content">Skip to content</a>

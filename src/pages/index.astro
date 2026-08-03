@@ -10,28 +10,73 @@ import SectionHeader from '../components/SectionHeader.astro';
 import ComparisonTable from '../components/ComparisonTable.astro';
 import InternalLinkCards from '../components/InternalLinkCards.astro';
 import TutorialCard from '../components/TutorialCard.astro';
-import { calendarScreenshots, gardenScreenshots, homepageScreenshots, inventoryScreenshots, pricingTiers, reportScreenshots, site, trustPoints } from '../data/site';
+import { appStoreReviews, calendarScreenshots, gardenScreenshots, homepageScreenshots, inventoryScreenshots, pricingTiers, reportScreenshots, site, trustPoints } from '../data/site';
 import { featuredTutorialIds, tutorials } from '../data/tutorials';
 import { useCases } from '../data/useCases';
 import { sitePath } from '../utils/paths';
 
-const title = 'Homestead Keeper | Homestead Management, Task Tracker, Inventory, Garden, and Animal Records App';
+const title = 'Homestead Management App for Apple Devices | Homestead Keeper';
 const description = 'Homestead Keeper is a homestead management, task tracker, and record keeping app for chores, maintenance, animals, chickens, garden beds, inventory, pantry records, reminders, reports, and rural property care.';
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'SoftwareApplication',
-  name: site.name,
-  url: site.url,
-  downloadUrl: site.appStoreUrl,
-  applicationCategory: 'LifestyleApplication',
-  operatingSystem: 'iOS, iPadOS, macOS',
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'USD',
+const organizationId = `${site.url}/#organization`;
+const applicationId = `${site.url}/#application`;
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': organizationId,
+    name: site.name,
+    url: site.url,
+    logo: `${site.url}/assets/homestead-keeper-logo.png`,
+    email: site.supportEmail,
   },
-  description,
-};
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${site.url}/#website`,
+    name: site.name,
+    url: site.url,
+    publisher: { '@id': organizationId },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    '@id': applicationId,
+    name: site.name,
+    url: site.url,
+    image: `${site.url}/assets/screenshots/homestead-hub.webp`,
+    downloadUrl: site.appStoreUrl,
+    applicationCategory: 'LifestyleApplication',
+    operatingSystem: 'iOS, iPadOS, macOS',
+    publisher: { '@id': organizationId },
+    offers: [
+      { '@type': 'Offer', price: '0', priceCurrency: 'USD', name: 'Free' },
+      { '@type': 'Offer', price: '2.99', priceCurrency: 'USD', name: 'Pro monthly' },
+      { '@type': 'Offer', price: '19.99', priceCurrency: 'USD', name: 'Pro yearly' },
+      { '@type': 'Offer', price: '39.99', priceCurrency: 'USD', name: 'Pro lifetime' },
+    ],
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '5',
+      bestRating: '5',
+      worstRating: '1',
+      reviewCount: String(appStoreReviews.length),
+    },
+    review: appStoreReviews.map((review) => ({
+      '@type': 'Review',
+      name: review.title,
+      reviewBody: review.excerpt,
+      datePublished: new Date(review.date).toISOString().slice(0, 10),
+      author: { '@type': 'Person', name: review.reviewer },
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: String(review.rating),
+        bestRating: '5',
+        worstRating: '1',
+      },
+    })),
+    description,
+  },
+];
 const workflow = [
   'Check today’s chores, overdue reminders, and upcoming seasonal work.',
   'Log eggs, feed, watering, harvests, repairs, inspections, or pantry activity from Field Log actions.',
@@ -103,25 +148,25 @@ const audience = [
 ];
 const workflowPreviewScreenshots = [
   {
-    src: 'assets/workflows/map/Simulator Screenshot - iPad Air 13-inch (M3) - 2026-06-25 at 13.20.20.png',
+    src: 'assets/workflows/map/Simulator Screenshot - iPad Air 13-inch (M3) - 2026-06-25 at 13.20.20.webp',
     title: 'Map the homestead',
     body: 'See real places, systems, fields, buildings, and records in spatial context.',
     alt: 'Homestead Keeper map showing a satellite view of a homestead with labeled places and colored record markers.',
   },
   {
-    src: 'assets/workflows/today/Simulator Screenshot - iPad Air 13-inch (M3) - 2026-06-26 at 10.25.12.png',
+    src: 'assets/workflows/today/Simulator Screenshot - iPad Air 13-inch (M3) - 2026-06-26 at 10.25.12.webp',
     title: 'Review today',
     body: 'Check overdue work, today’s chores, recent activity, and what needs attention next.',
     alt: 'Homestead Keeper Today screen showing overdue tasks, today chores, field log shortcuts, recent reminders, and inventory alerts.',
   },
   {
-    src: 'assets/workflows/garden-layout-plantings/Simulator Screenshot - iPad Air 13-inch (M3) - 2026-06-24 at 15.45.13.png',
+    src: 'assets/workflows/garden-layout-plantings/Simulator Screenshot - iPad Air 13-inch (M3) - 2026-06-24 at 15.45.13.webp',
     title: 'Plan garden layouts',
     body: 'Place crops visually, connect layouts to planting records, and keep seasonal plans readable.',
     alt: 'Homestead Keeper garden layout screen showing crop placements in a raised bed grid.',
   },
   {
-    src: 'assets/workflows/reports/Simulator Screenshot - iPad Air 13-inch (M3) - 2026-06-26 at 10.08.32.png',
+    src: 'assets/workflows/reports/Simulator Screenshot - iPad Air 13-inch (M3) - 2026-06-26 at 10.08.32.webp',
     title: 'Run reports',
     body: 'Turn everyday records into summaries for health, costs, production, inventory, and maintenance.',
     alt: 'Homestead Keeper Homestead Summary report showing health score, floor plan metrics, and activity by type.',
@@ -163,6 +208,28 @@ const featuredTutorials = featuredTutorialIds
         <span>{body}</span>
       </article>
     ))}
+  </section>
+
+  <section class="section" aria-labelledby="reviews-title">
+    <SectionHeader
+      headingId="reviews-title"
+      eyebrow="App Store reviews"
+      title="Five stars from early Homestead Keeper users."
+      body="Recent verified feedback published on the Apple App Store. Reviewer handles are partially hidden for privacy."
+    />
+    <div class="review-grid">
+      {appStoreReviews.map((review) => (
+        <figure class="review-card">
+          <div class="review-stars" aria-label={`${review.rating} out of 5 stars`}>{'★'.repeat(review.rating)}</div>
+          <blockquote>“{review.excerpt}”</blockquote>
+          <figcaption>
+            <strong>{review.title}</strong>
+            <span>{review.reviewer} · {review.date}</span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+    <p class="review-source">Reviews from the U.S. Apple App Store. <a class="text-link" href={site.appStoreUrl}>View Homestead Keeper on the App Store</a>.</p>
   </section>
 
   <section class="section video-tour-section" aria-labelledby="video-tour-title">

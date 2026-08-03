@@ -6,7 +6,10 @@ export default defineConfig({
   trailingSlash: 'always',
   integrations: [
     sitemap({
-      filter: (page) => !page.endsWith('/features/supplies/'),
+      filter: (page) =>
+        !page.endsWith('/features/supplies/') &&
+        !page.endsWith('/support/thanks/') &&
+        !page.endsWith('/workflows/import-excel-csv/'),
     }),
   ],
 });

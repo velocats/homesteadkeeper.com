@@ -27,7 +27,7 @@ export interface UseCase {
 export const useCases: UseCase[] = [
   {
     slug: 'homestead-management-app',
-    title: 'Homestead Management App for iPhone, iPad, and Mac | Homestead Keeper',
+    title: 'Homestead Management App | Homestead Keeper',
     eyebrow: 'Homestead management',
     h1: 'A homestead management app for animals, gardens, inventory, property, and seasonal work.',
     description:
@@ -320,13 +320,13 @@ export const useCases: UseCase[] = [
     keywords: ['homestead task tracker', 'homestead chore app', 'homestead chores tracker', 'homestead reminder app', 'farm chore tracker'],
     screenshots: [
       {
-        src: 'assets/workflows/today/Simulator Screenshot - iPad Air 13-inch (M3) - 2026-06-26 at 10.25.12.png',
+        src: 'assets/workflows/today/Simulator Screenshot - iPad Air 13-inch (M3) - 2026-06-26 at 10.25.12.webp',
         title: 'Today task list',
         body: 'Review overdue chores, today’s work, field log actions, and inventory alerts.',
         alt: 'Homestead Keeper Today screen showing overdue tasks, today chores, field log shortcuts, recent reminders, and inventory alerts.',
       },
       {
-        src: 'assets/workflows/calendar/Simulator Screenshot - iPad Air 13-inch (M3) - 2026-06-26 at 10.21.42.png',
+        src: 'assets/workflows/calendar/Simulator Screenshot - iPad Air 13-inch (M3) - 2026-06-26 at 10.21.42.webp',
         title: 'Homestead calendar',
         body: 'See upcoming and overdue homestead tasks in calendar context.',
         alt: 'Homestead Keeper calendar month view showing upcoming and overdue homestead tasks.',
@@ -363,7 +363,7 @@ export const useCases: UseCase[] = [
   },
   {
     slug: 'homestead-maintenance-app',
-    title: 'Homestead Maintenance App for Equipment and Property | Homestead Keeper',
+    title: 'Homestead Maintenance App | Homestead Keeper',
     eyebrow: 'Maintenance',
     h1: 'Homestead maintenance records for equipment, property systems, coops, wells, and seasonal chores.',
     description:

@@ -3,6 +3,9 @@ import { assetPath } from '../utils/paths';
 interface Props { src?: string; alt?: string; caption?: string; loading?: 'lazy' | 'eager'; }
 const { src = 'assets/screenshots/homestead-hub.webp', alt = 'Homestead Keeper Homestead Hub showing featured garden, animals, property, inventory, and other homestead areas.', caption = 'Homestead Hub, the home base for your garden, animals, property, inventory, and records.', loading = 'lazy' } = Astro.props;
 const imageUrl = assetPath(src);
+const hasResponsiveVariant = src.endsWith('.webp') && (src.startsWith('assets/workflows/') || src.startsWith('assets/screenshots/macOS/'));
+const smallImageUrl = hasResponsiveVariant ? assetPath(src.replace(/\.webp$/, '-800.webp')) : undefined;
+const isMacScreenshot = src.startsWith('assets/screenshots/macOS/');
 const actionLabel = `Expand screenshot: ${caption ?? alt}`;
 ---
 <figure class="screenshot-frame">
@@ -14,7 +17,17 @@ const actionLabel = `Expand screenshot: ${caption ?? alt}`;
     data-lightbox-title={caption ?? alt}
     aria-label={actionLabel}
   >
-    <img src={imageUrl} alt={alt} loading={loading} />
+    <img
+      src={imageUrl}
+      srcset={smallImageUrl ? `${smallImageUrl} 800w, ${imageUrl} 1600w` : undefined}
+      sizes="(max-width: 720px) 100vw, 50vw"
+      width={isMacScreenshot ? 1280 : 1200}
+      height={isMacScreenshot ? 800 : 1600}
+      alt={alt}
+      loading={loading}
+      decoding="async"
+      fetchpriority={loading === 'eager' ? 'high' : 'auto'}
+    />
   </button>
   {caption && <figcaption>{caption} <span aria-hidden="true">Click to expand.</span></figcaption>}
 </figure>

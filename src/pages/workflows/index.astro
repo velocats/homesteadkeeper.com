@@ -12,7 +12,7 @@ const description = 'Learn Homestead Keeper with how-to workflows for adding ite
 const categories = ['Start Here', 'Plan and Grow', 'Manage Animals', 'Operate and Review'] as const;
 ---
 
-<Layout title={title} description={description} path="/workflows" image="/assets/workflows/global/Simulator Screenshot - iPad Air 13-inch (M3) - 2026-06-24 at 14.44.32.png">
+<Layout title={title} description={description} path="/workflows" image="/assets/workflows/global/Simulator Screenshot - iPad Air 13-inch (M3) - 2026-06-24 at 14.44.32.webp">
   <section class="page-hero">
     <p class="eyebrow">Workflows</p>
     <h1>Learn Homestead Keeper by doing real homestead work.</h1>
@@ -39,7 +39,16 @@ const categories = ['Start Here', 'Plan and Grow', 'Manage Animals', 'Operate an
         <div class="workflow-card-grid">
           {categoryWorkflows.map((workflow) => (
             <a class="workflow-card" href={sitePath(`/workflows/${workflow.slug}`)}>
-              <img src={sitePath(workflow.hero.src)} alt="" loading="lazy" />
+              <img
+                src={sitePath(workflow.hero.src)}
+                srcset={`${sitePath(workflow.hero.src.replace(/\.webp$/, '-800.webp'))} 800w, ${sitePath(workflow.hero.src)} 1600w`}
+                sizes="(max-width: 720px) 100vw, (max-width: 1020px) 50vw, 34vw"
+                width="1200"
+                height="900"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
               <span class="workflow-card-copy">
                 <span class="plan-name">{workflow.difficulty}</span>
                 <strong>{workflow.title}</strong>

@@ -28,6 +28,30 @@ export const trustPoints = [
   ['Works offline', 'Record work in the garden, barn, shop, or field and let sync catch up later.'],
 ] as const;
 
+export const appStoreReviews = [
+  {
+    title: 'Finally',
+    excerpt: 'Everything in one place and so far it works pretty well.',
+    rating: 5,
+    reviewer: 'M••••••',
+    date: 'July 31, 2026',
+  },
+  {
+    title: 'Well Organized App',
+    excerpt: 'This app allows me to track and organize these areas well. The app has a garden and orchard layout feature that is simple and flexible.',
+    rating: 5,
+    reviewer: 'A•••••••••••••',
+    date: 'July 23, 2026',
+  },
+  {
+    title: 'Everything I need!',
+    excerpt: 'This app is very well organized and is quite intuitive. The developer is highly responsive.',
+    rating: 5,
+    reviewer: 'L••••••',
+    date: 'July 21, 2026',
+  },
+] as const;
+
 export const managementAreas = [
   ['Garden Beds & Crops', 'Plan beds and plots, map crop placement, track planting dates, pest notes, watering, harvests, and seasonal garden records.'],
   ['Animals', 'Care reminders, health notes, egg counts, breeding, pedigree, production, weights, photos, and records for chickens, goats, rabbits, cattle, guardian animals, and more.'],
