@@ -4,7 +4,7 @@ import CTA from '../components/CTA.astro';
 import FeatureCard from '../components/FeatureCard.astro';
 import ScreenshotFrame from '../components/ScreenshotFrame.astro';
 import SectionHeader from '../components/SectionHeader.astro';
-import { site, trustPoints } from '../data/site';
+import { appStoreReviews, site, trustPoints } from '../data/site';
 import { sitePath } from '../utils/paths';
 
 const title = 'Homestead Management App for Apple Devices | Homestead Keeper';
@@ -20,6 +20,26 @@ const jsonLd = {
   applicationCategory: 'LifestyleApplication',
   operatingSystem: 'iOS, iPadOS, macOS',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', name: 'Free' },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '5',
+    bestRating: '5',
+    worstRating: '1',
+    reviewCount: String(appStoreReviews.length),
+  },
+  review: appStoreReviews.map((review) => ({
+    '@type': 'Review',
+    name: review.title,
+    reviewBody: review.excerpt,
+    datePublished: new Date(review.date).toISOString().slice(0, 10),
+    author: { '@type': 'Person', name: review.reviewer },
+    reviewRating: {
+      '@type': 'Rating',
+      ratingValue: String(review.rating),
+      bestRating: '5',
+      worstRating: '1',
+    },
+  })),
   description,
 };
 const highlights = [
@@ -51,6 +71,28 @@ const highlights = [
         <span>{body}</span>
       </article>
     ))}
+  </section>
+
+  <section class="section" aria-labelledby="reviews-title">
+    <SectionHeader
+      headingId="reviews-title"
+      eyebrow="App Store reviews"
+      title="Five stars from early Homestead Keeper users."
+      body="Recent reviews from the U.S. Apple App Store. Reviewer handles are partially hidden for privacy."
+    />
+    <div class="review-grid">
+      {appStoreReviews.map((review) => (
+        <figure class="review-card">
+          <div class="review-stars" aria-label={`${review.rating} out of 5 stars`}>{'★'.repeat(review.rating)}</div>
+          <blockquote>“{review.excerpt}”</blockquote>
+          <figcaption>
+            <strong>{review.title}</strong>
+            <span>{review.reviewer} · {review.date}</span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+    <p class="review-source">Reviews from the U.S. Apple App Store. <a class="text-link" href={site.appStoreUrl}>View Homestead Keeper on the App Store</a>.</p>
   </section>
 
   <section class="section home-summary" aria-labelledby="summary-title">
