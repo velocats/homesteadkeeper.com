@@ -3,7 +3,14 @@ import { navItems, site } from '../data/site';
 import { assetPath, sitePath } from '../utils/paths';
 const currentPath = Astro.url.pathname.replace(import.meta.env.BASE_URL, '/') || '/';
 const activeHref = navItems
-  .filter((item) => (item.href === '/' ? currentPath === '/' : currentPath === item.href || currentPath.startsWith(`${item.href}/`)))
+  .filter((item) => {
+    if (item.href === '/') return currentPath === '/';
+    if (item.href === '/more-info') {
+      return ['/more-info', '/features', '/use-cases', '/workflows', '/playbook']
+        .some((path) => currentPath === path || currentPath.startsWith(`${path}/`));
+    }
+    return currentPath === item.href || currentPath.startsWith(`${item.href}/`);
+  })
   .sort((a, b) => b.href.length - a.href.length)[0]?.href;
 ---
 

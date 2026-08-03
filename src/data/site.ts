@@ -11,10 +11,7 @@ export const site = {
 
 export const navItems = [
   { href: '/', label: 'Home' },
-  { href: '/features', label: 'Features' },
-  { href: '/use-cases', label: 'Use Cases' },
-  { href: '/features/macos', label: 'Mac' },
-  { href: '/workflows', label: 'Workflows' },
+  { href: '/more-info', label: 'More Info' },
   { href: '/tutorials', label: 'Tutorials' },
   { href: '/pricing', label: 'Pricing' },
   { href: '/faq', label: 'FAQ' },
