@@ -67,7 +67,10 @@ const jsonLd = {
 
 <Layout title={title} description={description} path="/planner" jsonLd={jsonLd}>
   <section class="page-hero">
-    <p class="eyebrow">Free printable</p>
+    <div class="hero-eyebrow-row">
+      <p class="eyebrow">Free printable</p>
+      <a class="mini-download" href={pdfHref} download data-planner-download>Download the free planner</a>
+    </div>
     <h1>The Homestead Keeper Planner</h1>
     <p class="lede">A year of planning for your whole homestead. Plan it on paper, keep it in the app.</p>
     <div class="button-row">
@@ -80,6 +83,16 @@ const jsonLd = {
   <section class="section" aria-labelledby="preview-title">
     <SectionHeader headingId="preview-title" eyebrow="A look inside" title="See a few pages." body="Click any page to expand it." />
     <ScreenshotGallery shots={previews} />
+  </section>
+
+  <section class="section" id="get-the-planner" aria-labelledby="download-title" style="text-align:center;">
+    <p class="eyebrow">Free download</p>
+    <h2 id="download-title">Download the planner.</h2>
+    <p class="lede">No sign-up and no email. It's a printable PDF, undated, so it works season after season. Print the whole thing or just the pages you need.</p>
+    <div class="button-row" style="justify-content:center;">
+      <a class="button primary" href={pdfHref} download data-planner-download>Download the free planner (PDF)</a>
+    </div>
+    <p class="microcopy">32 pages, letter size, prints at home.</p>
   </section>
 
   <section class="section">
@@ -101,16 +114,6 @@ const jsonLd = {
     <ul class="check-list">
       {templates.map((t) => <li>{t}</li>)}
     </ul>
-  </section>
-
-  <section class="section" id="get-the-planner" aria-labelledby="download-title" style="text-align:center;">
-    <p class="eyebrow">Free download</p>
-    <h2 id="download-title">Download the planner.</h2>
-    <p class="lede">No sign-up and no email. It's a printable PDF, undated, so it works season after season. Print the whole thing or just the pages you need.</p>
-    <div class="button-row" style="justify-content:center;">
-      <a class="button primary" href={pdfHref} download data-planner-download>Download the free planner (PDF)</a>
-    </div>
-    <p class="microcopy">32 pages, letter size, prints at home.</p>
   </section>
 
   <CTA
@@ -167,3 +170,34 @@ const jsonLd = {
     });
   });
 </script>
+
+<style>
+  .hero-eyebrow-row {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+  }
+  .hero-eyebrow-row .eyebrow {
+    margin: 0;
+  }
+  .mini-download {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    line-height: 1;
+    color: var(--paper);
+    background: var(--green);
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background 0.15s ease;
+  }
+  .mini-download:hover,
+  .mini-download:focus-visible {
+    background: var(--green-2);
+  }
+</style>
