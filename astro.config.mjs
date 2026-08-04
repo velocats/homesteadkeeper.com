@@ -9,7 +9,6 @@ export default defineConfig({
       filter: (page) =>
         !page.endsWith('/features/supplies/') &&
         !page.endsWith('/support/thanks/') &&
-        !page.endsWith('/planner/thanks/') &&
         !page.endsWith('/workflows/import-excel-csv/'),
     }),
   ],

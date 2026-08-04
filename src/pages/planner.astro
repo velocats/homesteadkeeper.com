@@ -6,13 +6,16 @@ import ScreenshotGallery from '../components/ScreenshotGallery.astro';
 import InternalLinkCards from '../components/InternalLinkCards.astro';
 import CTA from '../components/CTA.astro';
 import { site } from '../data/site';
+import { sitePath } from '../utils/paths';
 
 const title = 'Free Homestead Planner (Printable PDF) | Homestead Keeper';
 const description =
   'A free printable homestead planner with seasonal planning, pages for the garden, animals, orchard, and pantry, and reusable record templates. Plan on paper, keep it in the Homestead Keeper app.';
 
-const formAction = `https://formsubmit.co/${site.supportEmail}`;
-const nextUrl = `${site.url}/planner/thanks/`;
+// No email capture. The download is instant. A fire-and-forget beacon notifies us
+// (time + IP) on each download; it never blocks or delays the download.
+const pdfHref = sitePath('/planner/Homestead-Keeper-Planner.pdf');
+const notifyUrl = 'https://formsubmit.co/ajax/support@quiettoolsapps.com';
 
 const whyPlan: [string, string][] = [
   ['See the whole year', "Know what's coming before the season gets busy."],
@@ -68,9 +71,10 @@ const jsonLd = {
     <h1>The Homestead Keeper Planner</h1>
     <p class="lede">A year of planning for your whole homestead. Plan it on paper, keep it in the app.</p>
     <div class="button-row">
-      <a class="button primary" href="#get-the-planner">Get the free planner</a>
+      <a class="button primary" href={pdfHref} download data-planner-download>Download the free planner</a>
       <a class="button secondary" href={site.appStoreUrl}>{site.appStoreLabel}</a>
     </div>
+    <p class="microcopy">Free PDF. No sign-up, no email. Just download and print.</p>
   </section>
 
   <section class="section">
@@ -99,34 +103,14 @@ const jsonLd = {
     </ul>
   </section>
 
-  <section class="section" id="get-the-planner" aria-labelledby="download-title">
-    <div class="contact-panel">
-      <div class="contact-copy">
-        <p class="eyebrow">Free download</p>
-        <h2 id="download-title">Get the planner as a printable PDF.</h2>
-        <p>Tell us where to send it and the full planner is yours to print at home. Undated, so it works season after season.</p>
-        <p class="microcopy">We send the planner and the occasional homestead tip. No spam, and you can leave any time.</p>
-      </div>
-      <form class="support-form" action={formAction} method="POST">
-        <input type="hidden" name="_subject" value="Homestead Planner download" />
-        <input type="hidden" name="_template" value="table" />
-        <input type="hidden" name="_captcha" value="false" />
-        <input type="hidden" name="_next" value={nextUrl} />
-        <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="form-honey" aria-hidden="true" />
-        <div class="form-grid">
-          <label>
-            <span>First name optional</span>
-            <input name="name" type="text" autocomplete="given-name" />
-          </label>
-          <label>
-            <span>Email</span>
-            <input name="email" type="email" autocomplete="email" required />
-          </label>
-        </div>
-        <p class="fine-print">We send the planner to this address. Please do not include passwords or private records.</p>
-        <button class="button primary" type="submit">Get the free planner</button>
-      </form>
+  <section class="section" id="get-the-planner" aria-labelledby="download-title" style="text-align:center;">
+    <p class="eyebrow">Free download</p>
+    <h2 id="download-title">Download the planner.</h2>
+    <p class="lede">No sign-up and no email. It's a printable PDF, undated, so it works season after season. Print the whole thing or just the pages you need.</p>
+    <div class="button-row" style="justify-content:center;">
+      <a class="button primary" href={pdfHref} download data-planner-download>Download the free planner (PDF)</a>
     </div>
+    <p class="microcopy">32 pages, letter size, prints at home.</p>
   </section>
 
   <CTA
@@ -143,3 +127,43 @@ const jsonLd = {
     <InternalLinkCards links={appLinks} />
   </section>
 </Layout>
+
+<script define:vars={{ notifyUrl }}>
+  // Fire-and-forget download notification. Never blocks or delays the download.
+  const links = document.querySelectorAll('[data-planner-download]');
+  let sent = false;
+  links.forEach((el) => {
+    el.addEventListener('click', () => {
+      if (sent) return; // avoid double-sends from the two buttons in one visit
+      sent = true;
+      (async () => {
+        let ip = 'unavailable';
+        try {
+          const r = await fetch('https://api.ipify.org?format=json', { cache: 'no-store' });
+          if (r.ok) ip = (await r.json()).ip || 'unavailable';
+        } catch (e) { /* ignore */ }
+        const now = new Date();
+        const payload = {
+          _subject: 'Homestead Planner downloaded',
+          _template: 'table',
+          event: 'Planner PDF download',
+          ip_address: ip,
+          time_utc: now.toISOString(),
+          time_local: now.toString(),
+          page: location.href,
+          referrer: document.referrer || '(direct)',
+          user_agent: navigator.userAgent,
+        };
+        try {
+          await fetch(notifyUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body: JSON.stringify(payload),
+          });
+        } catch (e) { /* ignore */ }
+      })();
+      // The anchor has `download`, so the browser downloads and the page stays put,
+      // which lets the async beacon finish.
+    });
+  });
+</script>
