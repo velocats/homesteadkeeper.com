@@ -77,6 +77,11 @@ const jsonLd = {
     <p class="microcopy">Free PDF. No sign-up, no email. Just download and print.</p>
   </section>
 
+  <section class="section" aria-labelledby="preview-title">
+    <SectionHeader headingId="preview-title" eyebrow="A look inside" title="See a few pages." body="Click any page to expand it." />
+    <ScreenshotGallery shots={previews} />
+  </section>
+
   <section class="section">
     <SectionHeader eyebrow="Why plan" title="Plan once, and the season runs smoother." body="A little planning up front means less scrambling when the work piles up. Every page works with a pencil, and nothing here requires the app." />
     <div class="card-grid">
@@ -89,11 +94,6 @@ const jsonLd = {
     <div class="card-grid">
       {inside.map(([t, b]) => <FeatureCard title={t} body={b} />)}
     </div>
-  </section>
-
-  <section class="section" aria-labelledby="preview-title">
-    <SectionHeader headingId="preview-title" eyebrow="A look inside" title="See a few pages." body="Click any page to expand it." />
-    <ScreenshotGallery shots={previews} />
   </section>
 
   <section class="section">
