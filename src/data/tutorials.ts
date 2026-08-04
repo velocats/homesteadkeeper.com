@@ -39,6 +39,14 @@ export const tutorials = [
     description: 'Learn how to organize breeding dates, milestones, and upcoming events in the calendar.',
     category: 'Animals',
   },
+  {
+    id: 'animal-timeline',
+    videoId: 'kRVHwDDg-6w',
+    title: 'Animal Timeline how-to',
+    iframeTitle: 'Homestead Keeper Animal Timeline screen how-to',
+    description: 'See how the Animal Timeline brings an animal’s records, activity, and history together in one chronological view.',
+    category: 'Animals',
+  },
 ] as const;
 
 export const featuredTutorialIds = ['app-walkthrough', 'checklists', 'garden-layout'] as const;
