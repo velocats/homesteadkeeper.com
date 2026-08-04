@@ -200,4 +200,14 @@ const jsonLd = {
   .mini-download:focus-visible {
     background: var(--green-2);
   }
+  /* Tighten the gap under the hero and make the hero microcopy readable on cream. */
+  .page-hero {
+    padding-block-end: clamp(0.5rem, 2vw, 1rem);
+  }
+  .page-hero + .section {
+    padding-block-start: clamp(1rem, 2.5vw, 1.6rem);
+  }
+  .page-hero .microcopy {
+    color: var(--muted);
+  }
 </style>
