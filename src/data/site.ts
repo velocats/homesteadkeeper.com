@@ -12,6 +12,7 @@ export const site = {
 export const navItems = [
   { href: '/', label: 'Home' },
   { href: '/more-info', label: 'More Info' },
+  { href: '/planner', label: 'Free Planner' },
   { href: '/tutorials', label: 'Tutorials' },
   { href: '/pricing', label: 'Pricing' },
   { href: '/faq', label: 'FAQ' },

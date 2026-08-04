@@ -1,0 +1,31 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CTA from '../../components/CTA.astro';
+import { site } from '../../data/site';
+import { sitePath } from '../../utils/paths';
+
+const title = 'Your Planner is Ready | Homestead Keeper';
+const description = 'Download the free Homestead Keeper Planner.';
+const pdfHref = sitePath('/planner/Homestead-Keeper-Planner.pdf');
+---
+
+<Layout title={title} description={description} path="/planner/thanks" noindex>
+  <section class="page-hero narrow">
+    <p class="eyebrow">You're all set</p>
+    <h1>Your planner is ready.</h1>
+    <p class="lede">Thanks. Your download is below, and we sent a copy to your email so it's easy to find later. Print it at home, undated, so it works every year.</p>
+    <div class="button-row">
+      <a class="button primary" href={pdfHref} download>Download the planner (PDF)</a>
+      <a class="button secondary" href={site.appStoreUrl}>{site.appStoreLabel}</a>
+    </div>
+  </section>
+
+  <CTA
+    title="Now bring it into the app"
+    body="Set your frost dates once in Homestead Keeper and it schedules your plantings, keeps each animal's timeline, and reminds you what's due. The planner and the app use the same words, so nothing feels new."
+    primaryLabel={site.appStoreLabel}
+    primaryHref={site.appStoreUrl}
+    secondaryLabel="See the features"
+    secondaryHref="/features"
+  />
+</Layout>

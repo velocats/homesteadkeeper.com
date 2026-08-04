@@ -1,0 +1,145 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import ScreenshotGallery from '../components/ScreenshotGallery.astro';
+import InternalLinkCards from '../components/InternalLinkCards.astro';
+import CTA from '../components/CTA.astro';
+import { site } from '../data/site';
+
+const title = 'Free Homestead Planner (Printable PDF) | Homestead Keeper';
+const description =
+  'A free printable homestead planner with seasonal planning, pages for the garden, animals, orchard, and pantry, and reusable record templates. Plan on paper, keep it in the Homestead Keeper app.';
+
+const formAction = `https://formsubmit.co/${site.supportEmail}`;
+const nextUrl = `${site.url}/planner/thanks/`;
+
+const whyPlan: [string, string][] = [
+  ['See the whole year', "Know what's coming before the season gets busy."],
+  ['Nothing slips', 'Sows, sprays, breedings, and reviews all in one place.'],
+  ['Plan once', 'Set it up in an afternoon, follow it all year.'],
+  ['Grows with you', 'Fine on its own, better with the app.'],
+];
+
+const inside: [string, string][] = [
+  ['Seasonal planning', 'A year at a glance, a frost-date worksheet, and a reusable monthly page, all worked from your own frost dates.'],
+  ['A page for every hub', 'Garden, Animals, Orchard, Food & Pantry, Property, Equipment, Inventory, Emergency Prep, Bees, Off-grid, Forestry, Wildlife & Pests, and Weather & Seasons.'],
+  ['Reusable templates', 'Print as many as you need, one per animal, one per planting, one per hive, one per season.'],
+];
+
+const templates = [
+  'Individual Animal', 'Crop Planting', 'Orchard Planting', 'Breeding Record', 'Hive',
+  'Equipment and Asset', 'Pantry and Preservation', 'Inventory Count Sheet',
+  'Emergency Prep Checklist', 'Grow Season Overview',
+];
+
+const previews = [
+  { src: 'planner/preview/01-cover.png', alt: 'Cover of the Homestead Keeper Planner with the barn logo.', title: 'Cover', body: 'A year of planning for your whole homestead.' },
+  { src: 'planner/preview/03-homestead-year.png', alt: 'The Homestead Year page, walking through the seasons around your frost dates.', title: 'The Homestead Year', body: 'Season by season, worked from your frost dates.' },
+  { src: 'planner/preview/04-garden.png', alt: 'Garden hub page with a plantings table and a season summary box.', title: 'Garden', body: "Plan your Growing Areas and this season's plantings." },
+  { src: 'planner/preview/05-template-individual-animal.png', alt: 'The Individual Animal reusable template, with a timeline and a health and weigh-in log.', title: 'Individual Animal template', body: 'Print one per animal.' },
+  { src: 'planner/preview/06-take-it-further.png', alt: 'Closing page linking to the Homestead Keeper app.', title: 'Take it further', body: 'Every page maps straight to the app.' },
+];
+
+const appLinks = [
+  { title: 'All the features', href: '/features', summary: 'See what Homestead Keeper tracks across your whole place.' },
+  { title: 'Garden', href: '/features/garden', summary: 'Growing Areas, plantings, and garden timelines in the app.' },
+  { title: 'Animals', href: '/features/animals', summary: 'Timelines, breeding, production, and health records.' },
+  { title: 'Pricing', href: '/pricing', summary: 'Free to start, Pro when you want more.' },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: 'The Homestead Keeper Planner',
+  headline: 'Free printable homestead planner',
+  description,
+  isAccessibleForFree: true,
+  inLanguage: 'en',
+  encodingFormat: 'application/pdf',
+  url: `${site.url}/planner/`,
+  author: { '@type': 'Organization', name: site.name, url: site.url },
+};
+---
+
+<Layout title={title} description={description} path="/planner" jsonLd={jsonLd}>
+  <section class="page-hero">
+    <p class="eyebrow">Free printable</p>
+    <h1>The Homestead Keeper Planner</h1>
+    <p class="lede">A year of planning for your whole homestead. Plan it on paper, keep it in the app.</p>
+    <div class="button-row">
+      <a class="button primary" href="#get-the-planner">Get the free planner</a>
+      <a class="button secondary" href={site.appStoreUrl}>{site.appStoreLabel}</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <SectionHeader eyebrow="Why plan" title="Plan once, and the season runs smoother." body="A little planning up front means less scrambling when the work piles up. Every page works with a pencil, and nothing here requires the app." />
+    <div class="card-grid">
+      {whyPlan.map(([t, b]) => <FeatureCard title={t} body={b} />)}
+    </div>
+  </section>
+
+  <section class="section">
+    <SectionHeader eyebrow="What's inside" title="Thirty-two pages for the whole homestead." body="Seasonal planning, a page for every part of your place, and reusable templates you print as many times as you like. Undated, so it works every year." />
+    <div class="card-grid">
+      {inside.map(([t, b]) => <FeatureCard title={t} body={b} />)}
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="preview-title">
+    <SectionHeader headingId="preview-title" eyebrow="A look inside" title="See a few pages." body="Click any page to expand it." />
+    <ScreenshotGallery shots={previews} />
+  </section>
+
+  <section class="section">
+    <SectionHeader eyebrow="Reusable templates" title="Print as many as you need." body="Each template matches an add form in the app, so filling it in is the paper version of adding a record." />
+    <ul class="check-list">
+      {templates.map((t) => <li>{t}</li>)}
+    </ul>
+  </section>
+
+  <section class="section" id="get-the-planner" aria-labelledby="download-title">
+    <div class="contact-panel">
+      <div class="contact-copy">
+        <p class="eyebrow">Free download</p>
+        <h2 id="download-title">Get the planner as a printable PDF.</h2>
+        <p>Tell us where to send it and the full planner is yours to print at home. Undated, so it works season after season.</p>
+        <p class="microcopy">We send the planner and the occasional homestead tip. No spam, and you can leave any time.</p>
+      </div>
+      <form class="support-form" action={formAction} method="POST">
+        <input type="hidden" name="_subject" value="Homestead Planner download" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_next" value={nextUrl} />
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="form-honey" aria-hidden="true" />
+        <div class="form-grid">
+          <label>
+            <span>First name optional</span>
+            <input name="name" type="text" autocomplete="given-name" />
+          </label>
+          <label>
+            <span>Email</span>
+            <input name="email" type="email" autocomplete="email" required />
+          </label>
+        </div>
+        <p class="fine-print">We send the planner to this address. Please do not include passwords or private records.</p>
+        <button class="button primary" type="submit">Get the free planner</button>
+      </form>
+    </div>
+  </section>
+
+  <CTA
+    title="Take it further with Homestead Keeper"
+    body="Every page in the planner maps straight to the app, in the same words. Set your frost dates once and it schedules your plantings, keeps each animal's timeline, and reminds you what's due."
+    primaryLabel={site.appStoreLabel}
+    primaryHref={site.appStoreUrl}
+    secondaryLabel="See the features"
+    secondaryHref="/features"
+  />
+
+  <section class="section">
+    <SectionHeader eyebrow="More about the app" title="Keep planning in the app." />
+    <InternalLinkCards links={appLinks} />
+  </section>
+</Layout>
