@@ -1,5 +1,8 @@
 export const site = {
   name: 'Homestead Keeper',
+  appStoreName: 'Homestead Keeper Planner',
+  publisherName: 'Quiet Tools LLC',
+  publisherUrl: 'https://quiettoolsapps.com',
   tagline: 'Whole-homestead records on your Apple devices.',
   url: 'https://homesteadkeeper.com',
   supportEmail: 'support@homesteadkeeper.com',
@@ -18,6 +21,8 @@ export const navItems = [
   { href: '/faq', label: 'FAQ' },
   { href: '/support', label: 'Support' },
 ];
+
+export const pricingLastVerified = 'August 12, 2026';
 
 export const trustPoints = [
   ['No login', 'Start using Homestead Keeper without creating a Homestead Keeper web account.'],

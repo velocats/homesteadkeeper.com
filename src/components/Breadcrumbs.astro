@@ -1,0 +1,25 @@
+---
+import { getBreadcrumbs } from '../data/navigation';
+import { sitePath } from '../utils/paths';
+
+interface Props {
+  path: string;
+}
+
+const { path } = Astro.props;
+const items = getBreadcrumbs(path);
+---
+
+{items.length > 0 && (
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <ol>
+      {items.map((item, index) => (
+        <li>
+          {index === items.length - 1
+            ? <span aria-current="page">{item.label}</span>
+            : <a href={sitePath(item.href)}>{item.label}</a>}
+        </li>
+      ))}
+    </ol>
+  </nav>
+)}

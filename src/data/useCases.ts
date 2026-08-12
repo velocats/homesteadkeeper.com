@@ -6,6 +6,9 @@ export interface UseCase {
   description: string;
   intro: string;
   audience: string[];
+  chooseIf?: string[];
+  example?: { title: string; body: string };
+  limitation?: string;
   sections: Array<{
     title: string;
     body: string[];
@@ -35,6 +38,9 @@ export const useCases: UseCase[] = [
     intro:
       'Homestead Keeper helps bring the daily pieces of a homestead together: animal care, garden beds, orchard work, equipment maintenance, pantry inventory, property places, reminders, reports, and exports.',
     audience: ['Backyard homesteads', 'Small acreage properties', 'Hobby farms', 'Rural homeowners managing mixed records'],
+    chooseIf: ['Your animals, gardens, equipment, supplies, and property work overlap', 'You want records attached to real items and places', 'You prefer an Apple app without a separate web account'],
+    example: { title: 'A simple first setup', body: 'Create the main places you use, add no more than 20 important animals, beds, tools, systems, or supplies, then attach recurring work and Field Log entries to those records. Expand only after the daily review feels useful.' },
+    limitation: 'Homestead Keeper supports practical property and production records, but it is not enterprise farm ERP, payroll, tax, or regulatory-compliance software.',
     keywords: ['homestead management app', 'homestead record keeping app', 'homestead planner app', 'small acreage management app'],
     sections: [
       {
@@ -75,6 +81,9 @@ export const useCases: UseCase[] = [
     intro:
       'Homestead Keeper helps chicken keepers keep flock records, egg production, care reminders, coop maintenance, feed notes, and health history together on iPhone, iPad, and Mac.',
     audience: ['Backyard chicken keepers', 'Small flock owners', 'Egg producers', 'Homesteads with mixed animals'],
+    chooseIf: ['You want egg counts beside flock history', 'Feed, care, and coop work need one record system', 'You manage chickens as part of a larger homestead'],
+    example: { title: 'A practical flock setup', body: 'Start with one flock profile, a recurring care reminder, a daily egg-production entry, feed inventory, and a coop maintenance record. Add individual bird profiles only when bird-specific identification, health, breeding, or production history is useful.' },
+    limitation: 'The app stores observations and treatment history; it does not diagnose illness or replace advice from a qualified veterinarian.',
     keywords: ['chicken flock record keeping app', 'egg production tracker', 'chicken care reminders', 'backyard chicken app'],
     screenshots: [
       {
@@ -129,6 +138,9 @@ export const useCases: UseCase[] = [
     intro:
       'Homestead Keeper helps gardeners track raised beds, crop placement, planting dates, pest notes, soil work, harvests, reminders, and seasonal garden records.',
     audience: ['Backyard gardeners', 'Raised bed gardeners', 'Homestead gardeners', 'Orchard and berry growers'],
+    chooseIf: ['You want bed layouts connected to planting history', 'Harvest totals and seasonal notes matter for next year', 'Garden work needs to appear beside the rest of the homestead calendar'],
+    example: { title: 'Follow one crop through the season', body: 'Place a crop in a bed layout, create its planting record, log soil work or pest observations as they happen, record each harvest, and review the garden timeline and season report before planning the next rotation.' },
+    limitation: 'The app organizes plans and observations; planting dates, treatments, and crop recommendations still need to reflect your climate, labels, and qualified local guidance.',
     keywords: ['garden planning app', 'garden bed layout app', 'garden harvest tracker', 'planting record app'],
     screenshots: [
       {
@@ -183,6 +195,9 @@ export const useCases: UseCase[] = [
     intro:
       'Homestead Keeper is designed for small acreage and hobby farm record keeping, especially when animals, gardens, equipment, inventory, and seasonal property work all overlap.',
     audience: ['Hobby farms', 'Small acreage properties', 'Mixed homesteads', 'Rural homeowners with animals and gardens'],
+    chooseIf: ['You manage several kinds of homestead work', 'You need more structure than notes but less than farm-business software', 'Reports and seasonal history matter more than enterprise operations'],
+    example: { title: 'Organize by place first', body: 'Create the barn, garden, workshop, pantry, pasture, and equipment shed, then add the most important records inside those places. This keeps care, maintenance, inventory, and production history connected to the way the property is actually used.' },
+    limitation: 'Homestead Keeper can record costs and activity, but it does not replace accounting, payroll, tax, or regulated farm-management systems.',
     keywords: ['hobby farm management app', 'small farm record keeping app', 'homestead management app', 'small acreage record keeping'],
     sections: [
       {
@@ -223,6 +238,9 @@ export const useCases: UseCase[] = [
     intro:
       'Homestead Keeper helps rural homeowners and small acreage owners organize property systems, places, maintenance, equipment, inventory, and seasonal work.',
     audience: ['Rural homeowners', 'Small acreage owners', 'Off-grid properties', 'Properties with wells, pumps, gates, buildings, and equipment'],
+    chooseIf: ['Wells, pumps, gates, buildings, or equipment need service history', 'You organize work by real property locations', 'A caretaker or helper may need a clearer handoff'],
+    example: { title: 'Build a property-system record', body: 'Create the pump house as a place, add the well pump and filter as items, attach manuals or photos, record service history, and schedule the next inspection or filter change. The same pattern works for gates, generators, irrigation, and buildings.' },
+    limitation: 'Property records support planning and handoffs, but they are not inspections, insurance documentation, or proof of regulatory compliance unless the relevant authority accepts them.',
     keywords: ['rural property management app', 'equipment maintenance tracker', 'property maintenance app', 'small acreage management app'],
     sections: [
       {
@@ -263,6 +281,9 @@ export const useCases: UseCase[] = [
     intro:
       'Homestead Keeper helps track the supplies that matter around a homestead: feed, medicine, seeds, fuel, filters, pantry goods, canning supplies, emergency prep, and spare parts.',
     audience: ['Pantry managers', 'Food preservation households', 'Chicken and livestock keepers', 'Prepared rural homes'],
+    chooseIf: ['Supplies are stored across several locations', 'Low-stock and expiration review needs to be routine', 'Feed, pantry, maintenance, and emergency items should share one system'],
+    example: { title: 'Review inventory by location', body: 'Create pantry, freezer, barn, shop, and equipment storage places. Add quantities, units, thresholds, and expiration dates to the items that matter most, then review low-stock and expiring-soon results during a scheduled weekly or monthly check.' },
+    limitation: 'Inventory dates and notes do not override food, medicine, feed, or product safety instructions. Follow labels and qualified public-health or veterinary guidance.',
     keywords: ['pantry inventory app', 'homestead inventory app', 'feed inventory tracker', 'emergency supplies tracker'],
     screenshots: [
       {
@@ -317,6 +338,9 @@ export const useCases: UseCase[] = [
     intro:
       'Homestead Keeper keeps daily chores, overdue reminders, seasonal jobs, maintenance tasks, and inventory alerts visible beside the records they belong to.',
     audience: ['Homesteaders with recurring chores', 'Chicken keepers and animal owners', 'Gardeners with seasonal tasks', 'Rural properties with maintenance work'],
+    chooseIf: ['Daily chores and seasonal jobs appear in different notebooks', 'Tasks need to remain connected to the item or place involved', 'You want overdue work, reminders, and inventory alerts in one review'],
+    example: { title: 'Use three task rhythms', body: 'Put daily work in recurring reminders, seasonal work on dated or seasonal schedules, and unusual events in the Field Log. Review Today for immediate work and Calendar for the longer horizon instead of rebuilding one giant checklist.' },
+    limitation: 'Homestead Keeper is a personal record and reminder system; it does not provide workforce dispatch, payroll, or regulated task-compliance controls.',
     keywords: ['homestead task tracker', 'homestead chore app', 'homestead chores tracker', 'homestead reminder app', 'farm chore tracker'],
     screenshots: [
       {
@@ -371,6 +395,9 @@ export const useCases: UseCase[] = [
     intro:
       'Homestead Keeper helps rural property owners keep maintenance reminders, repairs, service logs, warranties, costs, documents, and property history connected to the equipment, buildings, and systems they belong to.',
     audience: ['Rural homeowners', 'Small acreage owners', 'Homesteads with equipment', 'Properties with wells, pumps, fences, buildings, and coops'],
+    chooseIf: ['Service history is scattered across receipts and notes', 'Recurring property checks are easy to miss', 'Costs, warranties, manuals, and maintenance should stay with each asset'],
+    example: { title: 'Track one asset completely', body: 'Add a mower or pump, attach its manual and purchase details, log the last service with cost and parts, then schedule the next inspection. Later reports can show overdue work, service history, costs, vendors, and warranty deadlines together.' },
+    limitation: 'Maintenance records do not replace manufacturer instructions, licensed inspections, or professional service where safety, warranty, or law requires them.',
     keywords: ['homestead maintenance app', 'homestead maintenance tracker', 'rural property maintenance app', 'equipment maintenance tracker', 'property maintenance records'],
     screenshots: [
       {
@@ -431,6 +458,9 @@ export const useCases: UseCase[] = [
     intro:
       'Homestead Keeper helps chicken keepers track egg counts and flock history while keeping feed inventory, coop maintenance, care reminders, health notes, and reports connected to the rest of the homestead.',
     audience: ['Backyard chicken keepers', 'Small flock owners', 'Homestead egg producers', 'Families tracking flock care'],
+    chooseIf: ['You want more context than a daily egg counter', 'Changes in production should be reviewable beside flock care', 'Feed, coop work, and costs belong with the egg history'],
+    example: { title: 'Create a useful production history', body: 'Record the daily count against the correct flock, then note meaningful changes such as feed, molt, weather, health observations, or housing. Review the chart over time without assuming that the record alone explains the cause of a change.' },
+    limitation: 'Production records can reveal patterns, but they do not diagnose animal health or establish why production changed.',
     keywords: ['chicken egg tracker', 'egg production tracker', 'chicken egg count app', 'chicken flock records', 'backyard chicken tracker'],
     screenshots: [
       {
@@ -485,6 +515,9 @@ export const useCases: UseCase[] = [
     intro:
       'Homestead Keeper connects garden bed layouts, planting records, harvest totals, crop notes, reminders, timelines, and reports so each season becomes easier to review.',
     audience: ['Homestead gardeners', 'Raised bed gardeners', 'Food preservation households', 'Orchard and berry growers'],
+    chooseIf: ['You want harvest totals connected to beds and crops', 'Seasonal comparisons matter for seed and preservation planning', 'Planting, garden work, and harvests need one history'],
+    example: { title: 'Connect plan, work, and outcome', body: 'Map the crop to a bed, save its planting date and variety, log important soil or pest observations, and record harvest quantity and unit each time. Use the season report to compare the plan with the recorded outcome.' },
+    limitation: 'Recorded yield is only as complete as the entries made. Use consistent units and document skipped or estimated harvests before comparing seasons.',
     keywords: ['garden harvest tracker', 'garden planting log app', 'homestead garden app', 'garden bed layout app', 'vegetable harvest tracker'],
     screenshots: [
       {

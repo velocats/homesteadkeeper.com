@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import CTA from '../components/CTA.astro';
 import InternalLinkCards from '../components/InternalLinkCards.astro';
+import { site } from '../data/site';
 
 const sections = [
   ['Start with what needs attention every week', 'Begin with the chores and records that already live in your head: feeding, watering, coop cleaning, equipment checks, harvest notes, medication follow-ups, and seasonal property work.'],
@@ -15,17 +16,42 @@ const sections = [
   ['Review Reports monthly or seasonally', 'Reports turn small records into useful summaries: Homestead Summary, Animal Care, Garden Season, Inventory, Production, Cost, Operations Maintenance, and Property Handoff.'],
   ['Try Cedar Ridge demo first if unsure', 'Cedar Ridge demo data gives you a safe sample homestead to explore before adding your own records. Free also supports up to 20 total items.'],
 ];
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  '@id': `${site.url}/playbook/#article`,
+  headline: 'How to set up a practical homestead record-keeping system',
+  description: 'A ten-step guide to organizing homestead places, animals, gardens, inventory, field notes, reminders, calendars, and reports.',
+  author: { '@id': `${site.url}/#organization` },
+  publisher: { '@id': `${site.url}/#organization` },
+  isPartOf: { '@id': `${site.url}/#website` },
+  mainEntityOfPage: `${site.url}/playbook/`,
+};
 ---
 
 <Layout
-  title="Playbook | Homestead Keeper"
-  description="Start simple with Homestead Keeper: name your homestead, add places, map garden beds, add animals and inventory, use Field Log entries, Calendar reviews, Reports, and Cedar Ridge demo data."
+  title="How to Build a Homestead Record-Keeping System | Homestead Keeper"
+  description="A practical ten-step guide to organizing homestead places, animals, gardens, inventory, field notes, reminders, calendars, and reports."
   path="/playbook"
+  jsonLd={jsonLd}
 >
   <section class="page-hero">
     <p class="eyebrow">Playbook</p>
-    <h1>Start simple: a practical Homestead Keeper setup guide</h1>
-    <p class="lede">Homestead Keeper works best when you begin with the records that reduce stress right away, then add detail as your homestead grows.</p>
+    <h1>How to build a practical homestead record-keeping system</h1>
+    <p class="lede">A useful homestead record system starts with the places, animals, beds, equipment, supplies, and recurring work you already manage. Begin with the records that reduce stress now, use quick field notes for unusual events, and add detail only when it improves a later decision, handoff, or seasonal review.</p>
+  </section>
+
+  <section class="section soft-panel" aria-labelledby="record-checklist-title">
+    <p class="eyebrow">Record checklist</p>
+    <h2 id="record-checklist-title">What a basic homestead record system should cover</h2>
+    <ul class="check-list">
+      <li>Real places: barns, coops, beds, shops, pantries, pastures, sheds, and property systems.</li>
+      <li>Managed items: animals or groups, crops, equipment, supplies, buildings, and infrastructure.</li>
+      <li>Time-sensitive work: daily chores, recurring care, maintenance, warranties, and seasonal jobs.</li>
+      <li>Event history: observations, treatments, repairs, harvests, production, purchases, and unusual events.</li>
+      <li>Review outputs: upcoming work, low stock, costs, production, maintenance, and caretaker handoff information.</li>
+    </ul>
+    <p class="fine-print">Keep only information you can maintain consistently and protect sensitive records when exporting or sharing them. Homestead records do not replace professional, legal, tax, veterinary, food-safety, or regulatory advice.</p>
   </section>
 
   <section class="split-section">

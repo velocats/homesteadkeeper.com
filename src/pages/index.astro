@@ -7,18 +7,20 @@ import SectionHeader from '../components/SectionHeader.astro';
 import { appStoreReviews, site, trustPoints } from '../data/site';
 import { sitePath } from '../utils/paths';
 
-const title = 'Homestead Management App for Apple Devices | Homestead Keeper';
+const title = 'Homestead Management and Record-Keeping App | Homestead Keeper';
 const description = 'Homestead Keeper keeps chores, animals, gardens, inventory, maintenance, reminders, and reports together on iPhone, iPad, and Mac.';
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
   '@id': `${site.url}/#application`,
-  name: site.name,
+  name: site.appStoreName,
+  alternateName: site.name,
   url: site.url,
   image: `${site.url}/assets/screenshots/homestead-hub.webp`,
   downloadUrl: site.appStoreUrl,
-  applicationCategory: 'LifestyleApplication',
+  applicationCategory: 'ProductivityApplication',
   operatingSystem: 'iOS, iPadOS, macOS',
+  publisher: { '@id': `${site.url}/#organization` },
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', name: 'Free' },
   aggregateRating: {
     '@type': 'AggregateRating',

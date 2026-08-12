@@ -57,11 +57,11 @@ const jsonLd = {
     <SectionHeader
       headingId="audience-title"
       eyebrow="Who it helps"
-      title="A practical fit for small-property record keeping"
-      body="Homestead Keeper is designed for real mixed-use homestead work, where animals, gardens, inventory, property, reminders, and reports often overlap."
+      title="Choose this setup if it matches your work"
+      body="Start with the use case that reflects the records and decisions you need to manage."
     />
     <div class="audience-grid">
-      {useCase.audience.map((item) => <span>{item}</span>)}
+      {(useCase.chooseIf ?? useCase.audience).map((item) => <span>{item}</span>)}
     </div>
   </section>
 
@@ -75,6 +75,20 @@ const jsonLd = {
       ))}
     </div>
     <aside class="sidebar-stack">
+      {useCase.example && (
+        <article class="info-card">
+          <p class="eyebrow">Example</p>
+          <h3>{useCase.example.title}</h3>
+          <p>{useCase.example.body}</p>
+        </article>
+      )}
+      {useCase.limitation && (
+        <article class="info-card">
+          <p class="eyebrow">Important limit</p>
+          <h3>What this record system does not replace</h3>
+          <p>{useCase.limitation}</p>
+        </article>
+      )}
       <article class="info-card">
         <p class="eyebrow">Apple devices</p>
         <h3>iPhone, iPad, and Mac</h3>

@@ -112,6 +112,18 @@ ul, ol { margin: 0; padding: 0; }
 }
 
 .hero, .page-hero, .section, .split-section, .cta-band { width: min(1180px, 100%); margin-inline: auto; }
+.breadcrumbs {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  padding: 1rem clamp(1rem, 4vw, 4rem) 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 0.45rem; list-style: none; }
+.breadcrumbs li { display: inline-flex; align-items: center; gap: 0.45rem; }
+.breadcrumbs li:not(:last-child)::after { content: '›'; color: var(--gold); font-weight: 900; }
+.breadcrumbs a { color: var(--green); font-weight: 800; }
+.breadcrumbs span[aria-current='page'] { font-weight: 700; }
 .hero {
   display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center;
   gap: clamp(1.5rem, 4vw, 3rem);

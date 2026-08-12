@@ -15,37 +15,20 @@ import { sitePath } from '../utils/paths';
 
 const title = 'More Info and Product Tour | Homestead Keeper';
 const description = 'Homestead Keeper is a homestead management, task tracker, and record keeping app for chores, maintenance, animals, chickens, garden beds, inventory, pantry records, reminders, reports, and rural property care.';
-const organizationId = `${site.url}/#organization`;
 const applicationId = `${site.url}/#application`;
 const jsonLd = [
   {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
-    '@id': organizationId,
-    name: site.name,
-    url: site.url,
-    logo: `${site.url}/assets/homestead-keeper-logo.png`,
-    email: site.supportEmail,
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    '@id': `${site.url}/#website`,
-    name: site.name,
-    url: site.url,
-    publisher: { '@id': organizationId },
-  },
-  {
-    '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     '@id': applicationId,
-    name: site.name,
+    name: site.appStoreName,
+    alternateName: site.name,
     url: site.url,
     image: `${site.url}/assets/screenshots/homestead-hub.webp`,
     downloadUrl: site.appStoreUrl,
-    applicationCategory: 'LifestyleApplication',
+    applicationCategory: 'ProductivityApplication',
     operatingSystem: 'iOS, iPadOS, macOS',
-    publisher: { '@id': organizationId },
+    publisher: { '@id': `${site.url}/#organization` },
     offers: [
       { '@type': 'Offer', price: '0', priceCurrency: 'USD', name: 'Free' },
       { '@type': 'Offer', price: '2.99', priceCurrency: 'USD', name: 'Pro monthly' },

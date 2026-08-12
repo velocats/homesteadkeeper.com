@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import CTA from '../components/CTA.astro';
 import PricingCard from '../components/PricingCard.astro';
 import SectionHeader from '../components/SectionHeader.astro';
-import { pricingTiers } from '../data/site';
+import { pricingLastVerified, pricingTiers } from '../data/site';
 
 const title = 'Pricing | Homestead Keeper';
 const description = 'Homestead Keeper pricing: Free includes up to 20 items. Pro is $2.99/month, $19.99/year, or $39.99 lifetime and unlocks unlimited items, PDF/CSV exports, backups, QR labels, documents, and advanced tools.';
@@ -22,6 +22,7 @@ const paidFeatures = [
     <p class="eyebrow">Pricing</p>
     <h1>Simple pricing for practical homestead records.</h1>
     <p class="lede">Start free with up to 20 total items. Upgrade to Pro when your homestead records grow.</p>
+    <p class="fine-print">U.S. App Store prices last verified {pricingLastVerified}. Regional prices and applicable taxes may vary in Apple’s store.</p>
   </section>
 
   <section class="section">
