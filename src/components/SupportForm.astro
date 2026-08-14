@@ -25,7 +25,12 @@ const nextUrl = `${site.url}/support/thanks/`;
     <form class="support-form" action={formAction} method="POST">
       <input type="hidden" name="_subject" value="Homestead Keeper support request" />
       <input type="hidden" name="_template" value="table" />
-      <input type="hidden" name="_captcha" value="false" />
+      <input
+        type="hidden"
+        name="_autoresponse"
+        value="We received your Homestead Keeper support request. Thanks for reaching out — we’ll review it and reply as soon as we can."
+      />
+      <input type="hidden" name="_captcha" value="true" />
       <input type="hidden" name="_next" value={nextUrl} />
       <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="form-honey" aria-hidden="true" />
 
