@@ -169,13 +169,19 @@ ul, ol { margin: 0; padding: 0; }
   padding-block: clamp(0.5rem, 2vw, 1.5rem);
 }
 .hero h1 { color: var(--green); }
+/* min-width: 0 overrides the grid item default of min-width: auto, which would
+   otherwise let a wide descendant (e.g. the button row) force this column --
+   and the whole grid track -- wider than the viewport on narrow screens. */
+.hero-copy, .hero .screenshot-frame { min-width: 0; }
 .hero-copy { display: grid; gap: 1.25rem; }
 .hero-lede { max-width: 46ch; color: var(--muted); font-size: var(--text-md); line-height: 1.6; }
 .microcopy { color: var(--muted); font-size: var(--text-sm); max-width: 58ch; }
-.hero .device-shell { max-height: none; }
 .hero .screenshot-frame {
   position: relative;
   align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: clamp(1.5rem, 4vw, 3rem);
 }
 .hero .screenshot-frame::before {
@@ -186,11 +192,20 @@ ul, ol { margin: 0; padding: 0; }
   border-radius: var(--radius-lg);
   background: linear-gradient(155deg, var(--sage-2), var(--cream-2) 70%);
 }
-.hero .device-shell {
+/* Shrink-wrap to the image's own scaled size (capped by max-height) instead of
+   stretching to fill the column -- an uncapped portrait screenshot here was
+   forcing this whole row far taller than the hero copy beside it. */
+.hero .device-shell.screenshot-trigger {
+  display: inline-block;
+  width: auto;
   border-color: var(--paper);
   box-shadow: var(--shadow-lg);
 }
-.hero .device-shell img { height: auto; object-fit: contain; }
+/* max-width uses a viewport unit, not a percentage, because a percentage here
+   would resolve against this same shrink-wrapped (width: auto) button --
+   that circular dependency was collapsing the image to a fraction of its
+   intended size. */
+.hero .device-shell img { display: block; width: auto; height: 480px; max-width: 88vw; object-fit: contain; }
 .hero .screenshot-frame figcaption { color: var(--muted); }
 
 .page-hero { display: grid; gap: 1.1rem; padding-block: clamp(2.5rem, 6vw, 5rem) clamp(1rem, 3vw, 2rem); }
@@ -201,7 +216,7 @@ ul, ol { margin: 0; padding: 0; }
   display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(280px, 1.1fr); align-items: center;
   gap: clamp(1.8rem, 5vw, 4rem); padding-block: clamp(2.3rem, 5vw, 4.8rem);
 }
-.split-section > div { display: grid; gap: 1rem; }
+.split-section > div { display: grid; gap: 1rem; min-width: 0; }
 .soft-panel { padding: clamp(1.35rem, 4vw, 3rem); border: 1px solid var(--line); border-radius: var(--radius-lg); background: rgba(255, 250, 240, 0.64); box-shadow: var(--shadow-sm); }
 .section-header { display: grid; gap: 0.85rem; }
 .section-header h2, .split-section h2 { max-width: 28ch; }
@@ -365,11 +380,11 @@ ul, ol { margin: 0; padding: 0; }
 .copyright { width: min(1180px, 100%); margin: 2rem auto 0; }
 
 @media (max-width: 1100px) {
-  .hero { grid-template-columns: 1fr; }
+  .hero { grid-template-columns: minmax(0, 1fr); }
 }
 
 @media (max-width: 1020px) {
-  .split-section { grid-template-columns: 1fr; }
+  .split-section { grid-template-columns: minmax(0, 1fr); }
   .card-grid, .feature-map, .pricing-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .card-grid.compact { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .audience-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -992,7 +1007,7 @@ html.lightbox-open body {
 .showcase-figure { grid-column: 2; grid-row: 1; }
 .showcase.reverse .showcase-copy { grid-column: 2; }
 .showcase.reverse .showcase-figure { grid-column: 1; }
-.showcase-copy { display: grid; gap: var(--space-3); max-width: 46ch; }
+.showcase-copy { display: grid; gap: var(--space-3); max-width: 46ch; min-width: 0; }
 .showcase-copy h2 { max-width: 22ch; }
 .showcase-copy p { color: var(--muted); }
 .showcase .app-screenshot,
@@ -1000,16 +1015,19 @@ html.lightbox-open body {
 .showcase-figure {
   margin: 0;
   display: grid;
+  justify-items: center;
   gap: 0.7rem;
-  /* Portrait phone screenshots are 3:4; uncapped they become absurdly tall. */
-  width: 100%;
+  min-width: 0;
   max-width: 540px;
   margin-inline: auto;
 }
 .showcase-figure.wide { max-width: 760px; }
+/* Shrink-wrap to the image's own scaled size (capped by max-height) rather than
+   stretching full-width -- an uncapped portrait screenshot otherwise forces the
+   row far taller than the short copy beside it, leaving large empty gaps above
+   and below the text. */
 .showcase-figure .screenshot-trigger {
-  display: block;
-  width: 100%;
+  display: inline-block;
   overflow: hidden;
   padding: 0;
   border: 1px solid var(--line);
@@ -1018,7 +1036,12 @@ html.lightbox-open body {
   box-shadow: var(--shadow-lg);
   cursor: zoom-in;
 }
-.showcase-figure img { width: 100%; height: auto; }
+/* max-width is an absolute cap (mirroring .showcase-figure's own 540px), not a
+   percentage -- a percentage here would resolve against the shrink-wrapped
+   (width: auto) trigger button, a circular dependency that collapses the
+   image to a fraction of its intended size. */
+.showcase-figure img { display: block; width: auto; height: 460px; max-width: min(540px, 88vw); object-fit: contain; }
+.showcase-figure.wide img { max-width: min(760px, 88vw); }
 .showcase-figure figcaption { color: var(--muted); font-size: var(--text-sm); }
 
 /* Breadth stated as plain text, not fourteen cards (VP2-4). */
@@ -1068,7 +1091,7 @@ html.lightbox-open body {
 }
 
 @media (max-width: 1020px) {
-  .showcase { grid-template-columns: 1fr; }
+  .showcase { grid-template-columns: minmax(0, 1fr); }
   .showcase-copy,
   .showcase.reverse .showcase-copy { grid-column: 1; grid-row: 1; }
   .showcase-figure,
