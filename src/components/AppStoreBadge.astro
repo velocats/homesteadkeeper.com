@@ -1,9 +1,13 @@
 ---
 // Apple's official "Download on the App Store" black badge, used unmodified per
 // Apple's marketing guidelines (https://developer.apple.com/app-store/marketing/guidelines/).
-// Native artwork is 119.66407 x 40; height controls the rendered size, width follows
-// the same ratio automatically.
-import { assetPath, sitePath } from '../utils/paths';
+// Inlined as SVG markup (rather than <img src="...svg">) because Safari rasterizes
+// SVG <img> sources at their CSS display size and then upscales that raster for
+// Retina screens, which is what produces blurry/pixelated badge text. Inlining
+// renders the artwork as true vector at any resolution.
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { sitePath } from '../utils/paths';
 import { site } from '../data/site';
 
 interface Props {
@@ -16,15 +20,23 @@ const { href = site.appStoreUrl, height = 40, class: className = '' } = Astro.pr
 const NATIVE_WIDTH = 119.66407;
 const NATIVE_HEIGHT = 40;
 const width = Math.round((NATIVE_WIDTH / NATIVE_HEIGHT) * height * 100) / 100;
+
+// Resolved from the project root (not import.meta.url) because the compiled
+// location of this component's own chunk moves around at build time.
+const svgPath = join(process.cwd(), 'public/assets/app-store-badge-black.svg');
+const rawSvg = readFileSync(svgPath, 'utf-8');
+// Strip the artwork's internal <title> (a filename, not useful copy) and its
+// original id/width/height attributes, replacing them with fresh ones sized by
+// this component's props -- the badge can appear multiple times per page, so
+// the source file's fixed id="livetype" can't be reused as-is.
+const svgMarkup = rawSvg
+  .replace(/<title>.*?<\/title>/s, '')
+  .replace('id="livetype"', '')
+  .replace(/width="[\d.]+"/, `width="${width}"`)
+  .replace(/height="[\d.]+"/, `height="${height}"`)
+  .replace('<svg ', '<svg role="img" aria-hidden="true" ');
 ---
 
 <a class:list={['app-store-badge', className]} href={sitePath(href)} aria-label={site.appStoreLabel}>
-  <img
-    src={assetPath('assets/app-store-badge-black.svg')}
-    alt="Download on the App Store"
-    width={width}
-    height={height}
-    loading="lazy"
-    decoding="async"
-  />
+  <Fragment set:html={svgMarkup} />
 </a>

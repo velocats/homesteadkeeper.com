@@ -138,9 +138,9 @@ ul, ol { margin: 0; padding: 0; }
 .app-store-badge:focus-visible {
   opacity: 0.82;
 }
-.app-store-badge img { display: block; height: auto; }
+.app-store-badge svg { display: block; }
 /* The badge's dark fill needs a visible edge against the dark green CTA band. */
-.cta-band .app-store-badge img {
+.cta-band .app-store-badge svg {
   border-radius: 6px;
   outline: 1px solid rgba(255, 250, 240, 0.28);
   outline-offset: -1px;
