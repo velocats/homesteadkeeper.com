@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import AppStoreBadge from '../components/AppStoreBadge.astro';
 import CTA from '../components/CTA.astro';
 import FeatureCard from '../components/FeatureCard.astro';
 import PricingCard from '../components/PricingCard.astro';
@@ -346,7 +347,7 @@ const homepageUseCases = homepageUseCaseSlugs
       <h2 id="app-store-title">Download Homestead Keeper on the App Store.</h2>
       <p class="lede">Available for iPhone, iPad, and Mac with local-first records and optional iCloud sync across your Apple devices.</p>
     </div>
-    <a class="button primary" href={site.appStoreUrl}>Download on the App Store</a>
+    <AppStoreBadge height={46} />
   </section>
 
   <CTA title="Spend less time organizing records and more time managing the work." body="Track the animals, beds, equipment, supplies, chores, maintenance, places, calendar work, and reports that keep your homestead or rural property running." primaryLabel="Explore features" primaryHref="/features" secondaryLabel="Track tasks" secondaryHref="/use-cases/homestead-task-tracker" />

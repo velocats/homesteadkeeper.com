@@ -1,6 +1,7 @@
 ---
 import { sitePath } from '../utils/paths';
 import { site } from '../data/site';
+import AppStoreBadge from './AppStoreBadge.astro';
 interface Props { title?: string; body?: string; primaryLabel?: string; primaryHref?: string; secondaryLabel?: string; secondaryHref?: string; }
 const {
   title = 'Ready to bring your records together?',
@@ -10,6 +11,7 @@ const {
   secondaryLabel = 'View features',
   secondaryHref = '/features',
 } = Astro.props;
+const primaryIsAppStore = primaryHref === site.appStoreUrl;
 ---
 <section class="cta-band" aria-labelledby="cta-title">
   <div>
@@ -18,7 +20,11 @@ const {
     <p>{body}</p>
   </div>
   <div class="button-row">
-    <a class="button primary" href={sitePath(primaryHref)}>{primaryLabel}</a>
+    {primaryIsAppStore ? (
+      <AppStoreBadge height={46} />
+    ) : (
+      <a class="button primary" href={sitePath(primaryHref)}>{primaryLabel}</a>
+    )}
     <a class="button secondary" href={sitePath(secondaryHref)}>{secondaryLabel}</a>
   </div>
 </section>

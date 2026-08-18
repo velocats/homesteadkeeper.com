@@ -1,6 +1,7 @@
 ---
 import { navItems, site } from '../data/site';
 import { assetPath, sitePath } from '../utils/paths';
+import AppStoreBadge from './AppStoreBadge.astro';
 const currentPath = Astro.url.pathname.replace(import.meta.env.BASE_URL, '/') || '/';
 const activeHref = navItems
   .filter((item) => {
@@ -41,7 +42,7 @@ const activeHref = navItems
       })}
     </ul>
   </nav>
-  <a class="nav-appstore" href={sitePath(site.appStoreUrl)}>{site.appStoreLabel}</a>
+  <AppStoreBadge class="nav-appstore" height={34} />
 </header>
 
 <script is:inline>

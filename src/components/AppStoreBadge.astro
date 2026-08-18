@@ -1,0 +1,30 @@
+---
+// Apple's official "Download on the App Store" black badge, used unmodified per
+// Apple's marketing guidelines (https://developer.apple.com/app-store/marketing/guidelines/).
+// Native artwork is 119.66407 x 40; height controls the rendered size, width follows
+// the same ratio automatically.
+import { assetPath, sitePath } from '../utils/paths';
+import { site } from '../data/site';
+
+interface Props {
+  href?: string;
+  height?: number;
+  class?: string;
+}
+
+const { href = site.appStoreUrl, height = 40, class: className = '' } = Astro.props;
+const NATIVE_WIDTH = 119.66407;
+const NATIVE_HEIGHT = 40;
+const width = Math.round((NATIVE_WIDTH / NATIVE_HEIGHT) * height * 100) / 100;
+---
+
+<a class:list={['app-store-badge', className]} href={sitePath(href)} aria-label={site.appStoreLabel}>
+  <img
+    src={assetPath('assets/app-store-badge-black.svg')}
+    alt="Download on the App Store"
+    width={width}
+    height={height}
+    loading="lazy"
+    decoding="async"
+  />
+</a>

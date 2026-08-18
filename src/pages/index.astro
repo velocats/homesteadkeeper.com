@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import AppStoreBadge from '../components/AppStoreBadge.astro';
 import CTA from '../components/CTA.astro';
 import ScreenshotFrame from '../components/ScreenshotFrame.astro';
 import SectionHeader from '../components/SectionHeader.astro';
@@ -72,7 +73,7 @@ const showcases = [
       <h1 id="hero-title">Records for the whole homestead.</h1>
       <p class="hero-lede">Keep animals, gardens, equipment, inventory, and property work in one place instead of scattered notes and spreadsheets — on iPhone, iPad, and Mac.</p>
       <div class="button-row">
-        <a class="button primary" href={site.appStoreUrl}>Download on the App Store</a>
+        <AppStoreBadge height={46} />
         <a class="button secondary" href={sitePath('/features')}>See how it works</a>
       </div>
       <p class="microcopy">Try it free. No account required. Local-first with optional iCloud sync.</p>

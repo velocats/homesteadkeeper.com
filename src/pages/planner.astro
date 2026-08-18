@@ -5,6 +5,7 @@ import FeatureCard from '../components/FeatureCard.astro';
 import ScreenshotGallery from '../components/ScreenshotGallery.astro';
 import InternalLinkCards from '../components/InternalLinkCards.astro';
 import CTA from '../components/CTA.astro';
+import AppStoreBadge from '../components/AppStoreBadge.astro';
 import { site } from '../data/site';
 import { sitePath } from '../utils/paths';
 
@@ -75,7 +76,7 @@ const jsonLd = {
     <p class="lede">A year of planning for your whole homestead. Plan it on paper, keep it in the app.</p>
     <div class="button-row">
       <a class="button primary" href={pdfHref} download data-planner-download>Download the free planner</a>
-      <a class="button secondary" href={site.appStoreUrl}>{site.appStoreLabel}</a>
+      <AppStoreBadge height={40} />
     </div>
     <p class="microcopy">Free PDF. No sign-up, no email. Just download and print.</p>
   </section>

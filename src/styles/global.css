@@ -124,20 +124,27 @@ ul, ol { margin: 0; padding: 0; }
 .nav-appstore {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  min-height: 2.55rem;
-  padding: 0.52rem 0.85rem;
-  border-radius: var(--radius-lg);
-  background: var(--green);
-  color: var(--paper);
-  font-size: var(--text-sm);
-  font-weight: var(--fw-semibold);
-  text-decoration: none;
-  white-space: nowrap;
-  box-shadow: var(--shadow-sm);
 }
-.nav-appstore:hover {
-  background: var(--clay-dark);
+
+/* Apple's official badge (AppStoreBadge.astro). The graphic is already a
+   self-contained black pill, so the link itself carries no chrome. */
+.app-store-badge {
+  display: inline-flex;
+  line-height: 0;
+  opacity: 1;
+  transition: opacity 0.15s ease;
+}
+.app-store-badge:hover,
+.app-store-badge:focus-visible {
+  opacity: 0.82;
+}
+.app-store-badge img { display: block; height: auto; }
+/* The badge's dark fill needs a visible edge against the site's dark green panels. */
+.hero .app-store-badge img,
+.cta-band .app-store-badge img {
+  border-radius: 6px;
+  outline: 1px solid rgba(255, 250, 240, 0.28);
+  outline-offset: -1px;
 }
 
 .hero, .page-hero, .section, .split-section, .cta-band { width: min(1180px, 100%); margin-inline: auto; }
@@ -153,24 +160,39 @@ ul, ol { margin: 0; padding: 0; }
 .breadcrumbs li:not(:last-child)::after { content: '›'; color: var(--gold); font-weight: var(--fw-semibold); }
 .breadcrumbs a { color: var(--green); font-weight: var(--fw-medium); }
 .breadcrumbs span[aria-current='page'] { font-weight: var(--fw-medium); }
+/* Light, open hero (no dark full-bleed panel): the product screenshot carries the
+   visual weight, text sits directly on the page background. */
 .hero {
-  display: grid; grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr); align-items: center;
-  gap: clamp(1.5rem, 4vw, 3rem);
-  width: min(1240px, calc(100% - clamp(1rem, 4vw, 4rem)));
-  margin-top: clamp(0.8rem, 2vw, 1.5rem);
-  padding: clamp(1.2rem, 3vw, 2.6rem);
-  border: 1px solid rgba(255, 250, 240, 0.15);
-  border-radius: var(--radius-lg);
-  background: var(--green);
+  display: grid; grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr); align-items: center;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  width: min(1180px, 100%);
+  margin-top: clamp(1.5rem, 4vw, 3rem);
+  padding-block: clamp(0.5rem, 2vw, 1.5rem);
 }
-.hero h1 { color: var(--paper); }
-.hero .eyebrow { color: #f4d393; }
+.hero h1 { color: var(--green); }
 .hero-copy { display: grid; gap: 1.25rem; }
-.hero-lede { max-width: 46ch; color: rgba(255, 250, 240, 0.88); font-size: var(--text-md); line-height: 1.6; }
-.microcopy { color: rgba(255, 250, 240, 0.72); font-size: var(--text-sm); max-width: 58ch; }
+.hero-lede { max-width: 46ch; color: var(--muted); font-size: var(--text-md); line-height: 1.6; }
+.microcopy { color: var(--muted); font-size: var(--text-sm); max-width: 58ch; }
 .hero .device-shell { max-height: none; }
-.hero .screenshot-frame { align-self: center; }
+.hero .screenshot-frame {
+  position: relative;
+  align-self: center;
+  padding: clamp(1.5rem, 4vw, 3rem);
+}
+.hero .screenshot-frame::before {
+  content: '';
+  position: absolute;
+  inset: clamp(0.5rem, 2vw, 1.5rem);
+  z-index: -1;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(155deg, var(--sage-2), var(--cream-2) 70%);
+}
+.hero .device-shell {
+  border-color: var(--paper);
+  box-shadow: var(--shadow-lg);
+}
 .hero .device-shell img { height: auto; object-fit: contain; }
+.hero .screenshot-frame figcaption { color: var(--muted); }
 
 .page-hero { display: grid; gap: 1.1rem; padding-block: clamp(2.5rem, 6vw, 5rem) clamp(1rem, 3vw, 2rem); }
 .page-hero h1 { max-width: 24ch; }
@@ -411,7 +433,7 @@ ul, ol { margin: 0; padding: 0; }
     padding: 0.55rem 0.75rem;
     border-radius: var(--radius-sm);
   }
-  .nav-appstore { width: 100%; min-height: 2.9rem; }
+  .nav-appstore { width: 100%; justify-content: center; padding-block: 0.4rem; }
   .nav-dropdown-menu {
     position: static;
     display: none;
