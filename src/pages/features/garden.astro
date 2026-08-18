@@ -35,12 +35,15 @@ const sections = [
 ---
 
 <FeaturePage
-  title="Garden Planning and Harvest Tracking App | Homestead Keeper"
-  description="Track garden bed layouts, crop placement, planting records, harvest totals, orchard records, soil amendments, pest notes, treatments, currently planted crops, and garden season reports."
+  title="Garden Bed Layouts and Planting Records | Homestead Keeper"
+  description="Map garden bed layouts and crop placement, then track planting records, harvest totals, soil work, pest notes, and garden season reports."
   path="/features/garden"
   eyebrow="Garden & Harvest"
   h1="Garden bed layouts and records that survive the season"
   intro="Plan garden beds, place crops by season, and keep planting, harvest, soil, pest, treatment, and yield records organized across raised beds, orchards, hives, and seasonal garden work."
   sections={sections}
+  guides={[
+    { title: 'How to build a homestead record-keeping system', href: '/playbook', summary: 'A ten-step setup guide for places, animals, gardens, inventory, reminders, and reports.' },
+  ]}
   screenshots={gardenScreenshots}
 />

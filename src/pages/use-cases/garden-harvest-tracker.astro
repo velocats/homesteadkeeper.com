@@ -1,0 +1,25 @@
+---
+// Retired: consolidated into /use-cases/gardeners/ (61% vocabulary overlap). GitHub Pages
+// cannot issue a 301, so this uses a canonical + noindex + instant meta refresh, matching
+// /features/supplies/.
+import { sitePath } from '../../utils/paths';
+import { site } from '../../data/site';
+
+const target = sitePath('/use-cases/gardeners');
+const canonical = `${site.url}/use-cases/gardeners/`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <meta name="robots" content="noindex, follow" />
+    <title>Moved to Gardeners | Homestead Keeper</title>
+    <link rel="canonical" href={canonical} />
+  </head>
+  <body>
+    <p>This page moved. <a href={target}>Continue to the Gardeners page.</a></p>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+import InternalLinkCards from '../components/InternalLinkCards.astro';
+import CTA from '../components/CTA.astro';
+---
+
+<Layout
+  title="Page Not Found | Homestead Keeper"
+  description="That page could not be found. Use these links to reach Homestead Keeper features, use cases, guides, tutorials, pricing, or support."
+  path="/404"
+  noindex={true}
+>
+  <section class="page-hero narrow">
+    <p class="eyebrow">404</p>
+    <h1>That page could not be found.</h1>
+    <p class="lede">The link may be out of date or mistyped. Everything below is a good place to pick up again.</p>
+  </section>
+
+  <section class="section">
+    <p class="eyebrow">Popular destinations</p>
+    <h2>Where would you like to go?</h2>
+    <InternalLinkCards links={[
+      { title: 'Features', href: '/features', summary: 'Animals, garden, equipment, inventory, reminders, reports, and exports.' },
+      { title: 'Use cases', href: '/use-cases', summary: 'Homestead management, maintenance, chicken flocks, gardens, pantry, and rural property.' },
+      { title: 'Guides', href: '/guides', summary: 'Practical guides to homestead record keeping, chicken records, and maintenance.' },
+      { title: 'Tutorials', href: '/tutorials', summary: 'Video walkthroughs of checklists, garden layouts, breeding, and the whole app.' },
+      { title: 'Pricing', href: '/pricing', summary: 'Free includes up to 20 items. Pro unlocks unlimited items, exports, and backups.' },
+      { title: 'Support', href: '/support', summary: 'Questions, bug reports, feature requests, and backup help.' },
+    ]} />
+  </section>
+
+  <CTA />
+</Layout>

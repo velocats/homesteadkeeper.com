@@ -1,5 +1,6 @@
 ---
 import FeaturePage from '../../components/FeaturePage.astro';
+import { reportScreenshots } from '../../data/site';
 
 const sections = [
   {
@@ -41,11 +42,15 @@ const sections = [
 
 <FeaturePage
   title="Homestead Reports and CSV Exports | Homestead Keeper"
-  description="Use Homestead Keeper reports for homestead summaries, animal care, garden season records, inventory, production, cost summaries, maintenance, property handoff, PDF exports, CSV exports, Apple Calendar export, and QR labels."
+  description="Homestead reports for summaries, animal care, garden seasons, inventory, production, costs, maintenance, and property handoff, with PDF and CSV export on Pro."
   path="/features/reports"
   eyebrow="Reports"
   h1="Turn everyday records into useful summaries"
   intro="Review homestead activity with local-first reports, PDF and CSV exports, property handoff records, animal care summaries, garden season records, inventory reports, production reports, cost summaries, Apple Calendar export, and QR labels."
   sections={sections}
-  screenshots={['Reports', 'Property Handoff', 'CSV Export'] }
+  guides={[
+    { title: 'How to keep equipment maintenance records', href: '/guides/equipment-maintenance-records', summary: 'What to log for each machine, and how to set service intervals you will actually follow.' },
+    { title: 'How to build a homestead record-keeping system', href: '/playbook', summary: 'A ten-step setup guide for places, animals, gardens, inventory, reminders, and reports.' },
+  ]}
+  screenshots={reportScreenshots}
 />

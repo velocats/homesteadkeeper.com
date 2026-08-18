@@ -1,0 +1,66 @@
+---
+import FeaturePage from '../../components/FeaturePage.astro';
+import { foodPreservationScreenshots } from '../../data/site';
+
+const sections = [
+  {
+    title: 'Records by batch, method, and date',
+    body: [
+      'Preserved food is easier to track by batch than by running total. Homestead Keeper lets you record canned goods, freezer food, dehydrated food, fermented batches, pantry items, and root cellar storage with quantities, storage locations, and dates.',
+      'That means you can answer the questions that actually come up in February: how many quarts of tomatoes are left, which shelf they are on, and which year they came from.',
+    ],
+  },
+  {
+    title: 'Connect stored food to the harvest it came from',
+    body: [
+      'Garden and orchard harvests can be recorded where they were grown, and production records support destinations such as stored, sold, used, fed, or discarded. So a heavy cucumber week can flow into the pickles that came out of it.',
+      'Over a few seasons that link is what tells you whether you planted enough of something or far too much.',
+    ],
+  },
+  {
+    title: 'Storage locations you actually use',
+    body: [
+      'Places let you organize storage the way your home is really laid out: pantry shelves, a chest freezer, the root cellar, a canning cupboard, or a second fridge in the shop. Records attach to those real locations rather than to one undifferentiated list.',
+    ],
+  },
+  {
+    title: 'Rotation, expirations, and low stock',
+    body: [
+      'Expiration and best-by dates surface on the Inventory report, which highlights what is expiring soon and what is running low. Reviewing that before a shopping trip or a canning weekend is how rotation actually happens.',
+      'Recurring reminders can carry seasonal preservation work as well: checking the cellar, rotating the freezer, testing lids, or emptying and cleaning a chest freezer.',
+    ],
+  },
+  {
+    title: 'Canning and preserving supplies',
+    body: [
+      'Jars, lids, rings, pectin, salt, vinegar, freezer bags, and vacuum-sealer rolls can be tracked as inventory so you find out you are short on lids before the produce is already picked.',
+    ],
+  },
+  {
+    title: 'Review and export',
+    body: [
+      'Inventory and production reports summarize what is stored and what was put up, and Pro adds PDF and CSV export if you want a printed pantry list for the cellar door or a spreadsheet copy at season end.',
+    ],
+  },
+  {
+    title: 'What this is not',
+    body: [
+      'Homestead Keeper records what you preserved and where it is stored. It does not provide canning recipes, processing times, altitude adjustments, or food-safety guidance. Follow tested, current preservation instructions from a reliable food-safety source.',
+    ],
+  },
+];
+---
+
+<FeaturePage
+  title="Food Preservation and Canning Records | Homestead Keeper"
+  description="Track canning batches, freezer inventory, dehydrated and fermented food, root cellar storage, jar counts, and storage dates alongside the harvests they came from."
+  path="/features/food-preservation"
+  eyebrow="Food preservation"
+  h1="Records for what you canned, froze, dried, and stored"
+  intro="Keep practical records for preserved food: canning batches, freezer and dehydrated goods, ferments, root cellar storage, storage locations, dates, rotation, and the canning supplies you need on hand."
+  sections={sections}
+  guides={[
+    { title: 'How to build a homestead record-keeping system', href: '/playbook', summary: 'A ten-step setup guide for places, animals, gardens, inventory, reminders, and reports.' },
+  ]}
+  screenshots={foodPreservationScreenshots}
+/>

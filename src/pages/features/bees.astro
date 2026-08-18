@@ -1,0 +1,64 @@
+---
+import FeaturePage from '../../components/FeaturePage.astro';
+import { beeScreenshots } from '../../data/site';
+
+const sections = [
+  {
+    title: 'A record for every hive',
+    body: [
+      'Each hive can be its own record, placed in the apiary or yard where it actually sits. Notes, photos, and history stay with that hive, so a colony you have watched for three seasons has a history you can read rather than a memory you hope is right.',
+    ],
+  },
+  {
+    title: 'Inspection notes',
+    body: [
+      'Record hive inspections as you work: what you saw, brood and stores, temperament, space, and anything you want to check on the next visit. Field Log entries are meant for fast capture at the hive, with detail added later.',
+      'Inspection history is the part beekeepers most often wish they had. A note that a colony was light on stores in September is only useful if you can find it in November.',
+    ],
+  },
+  {
+    title: 'Queen notes, splits, and swarms',
+    body: [
+      'Track queen status and notes, splits you have made, swarms caught or lost, and requeening. Because these events are dated records rather than loose notes, the timeline of a colony stays intact through changes.',
+    ],
+  },
+  {
+    title: 'Feeding and treatments',
+    body: [
+      'Log feeding and treatments with dates and notes, and use recurring reminders for follow-up work so a treatment window or a second feeding does not slip past. Homestead Keeper organizes what you did and when; it does not recommend treatments or dosages.',
+    ],
+  },
+  {
+    title: 'Honey harvests and production',
+    body: [
+      'Record honey harvests, wax, and other output with quantities and destinations such as stored, sold, used, or given away. Honey totals appear on the Homestead Production report next to eggs, milk, and garden harvests, so a hive year can be compared with the last one.',
+    ],
+  },
+  {
+    title: 'Apiary equipment and supplies',
+    body: [
+      'Boxes, frames, foundation, sugar, jars, and protective gear can be tracked as inventory with quantities and locations, which matters most in spring when several hives need the same equipment at once.',
+    ],
+  },
+  {
+    title: 'What this is not',
+    body: [
+      'Homestead Keeper is general homestead record software with beekeeping support, not a dedicated hive-management system, and it does not provide beekeeping, veterinary, or treatment advice. Bees are one of several areas you can turn on alongside animals, garden, orchard, equipment, and inventory.',
+    ],
+  },
+];
+---
+
+<FeaturePage
+  title="Beekeeping and Hive Inspection Records | Homestead Keeper"
+  description="Keep beekeeping records for hive inspections, queen notes, feeding, treatments, splits, swarms, honey harvests, and apiary equipment on iPhone, iPad, and Mac."
+  path="/features/bees"
+  eyebrow="Bees and hives"
+  h1="Hive inspection records, treatments, and honey harvests"
+  intro="Keep a readable history for each hive: inspection notes, queen status, feeding and treatments, splits and swarms, honey harvests, and the apiary equipment behind it all."
+  sections={sections}
+  guides={[
+    { title: 'How to build a homestead record-keeping system', href: '/playbook', summary: 'A ten-step setup guide for places, animals, gardens, inventory, reminders, and reports.' },
+  ]}
+  screenshots={beeScreenshots}
+/>

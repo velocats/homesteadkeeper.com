@@ -15,14 +15,16 @@ export function getStaticPaths() {
 }
 
 const { useCase } = Astro.props;
-const relatedUseCases = useCases
-  .filter((item) => item.slug !== useCase.slug)
-  .slice(0, 3)
-  .map((item) => ({
-    title: item.eyebrow,
-    href: `/use-cases/${item.slug}`,
-    summary: item.intro,
-  }));
+const relatedOrder = useCase.relatedSlugs ?? [];
+const relatedUseCases = (
+  relatedOrder.length
+    ? relatedOrder.map((slug) => useCases.find((item) => item.slug === slug)).filter((item): item is typeof useCases[number] => Boolean(item))
+    : useCases.filter((item) => item.slug !== useCase.slug).slice(0, 3)
+).map((item) => ({
+  title: item.eyebrow,
+  href: `/use-cases/${item.slug}`,
+  summary: item.intro,
+}));
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -57,7 +59,7 @@ const jsonLd = {
     <SectionHeader
       headingId="audience-title"
       eyebrow="Who it helps"
-      title="Choose this setup if it matches your work"
+      title={`Is this the right setup for ${useCase.eyebrow.toLowerCase()}?`}
       body="Start with the use case that reflects the records and decisions you need to manage."
     />
     <div class="audience-grid">
@@ -98,9 +100,16 @@ const jsonLd = {
   </section>
 
   <section class="section" aria-labelledby="related-features-title">
-    <SectionHeader headingId="related-features-title" eyebrow="Related features" title="Explore the tools behind this use case" />
+    <SectionHeader headingId="related-features-title" eyebrow="Related features" title={`Tools for ${useCase.eyebrow.toLowerCase()}`} />
     <InternalLinkCards links={useCase.relatedFeatures} />
   </section>
+
+  {useCase.guides && useCase.guides.length > 0 && (
+    <section class="section" aria-labelledby="uc-guides-title">
+      <SectionHeader headingId="uc-guides-title" eyebrow="Guides" title="Deciding what to record" body="Practical guides about which records are worth keeping." />
+      <InternalLinkCards links={useCase.guides} />
+    </section>
+  )}
 
   <section class="section" aria-labelledby="related-use-cases-title">
     <SectionHeader headingId="related-use-cases-title" eyebrow="Related use cases" title="Other ways to use Homestead Keeper" />

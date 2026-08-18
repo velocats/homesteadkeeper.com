@@ -1,0 +1,25 @@
+---
+// Retired: consolidated into /use-cases/chicken-keepers/ (63% vocabulary overlap; egg tracking
+// is a subset of flock records, not a separate intent). GitHub Pages cannot issue a 301, so
+// this uses a canonical + noindex + instant meta refresh, matching /features/supplies/.
+import { sitePath } from '../../utils/paths';
+import { site } from '../../data/site';
+
+const target = sitePath('/use-cases/chicken-keepers');
+const canonical = `${site.url}/use-cases/chicken-keepers/`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <meta name="robots" content="noindex, follow" />
+    <title>Moved to Chicken Keepers | Homestead Keeper</title>
+    <link rel="canonical" href={canonical} />
+  </head>
+  <body>
+    <p>This page moved. <a href={target}>Continue to the Chicken Keepers page.</a></p>
+  </body>
+</html>

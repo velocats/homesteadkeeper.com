@@ -11,10 +11,15 @@ interface Props {
   noindex?: boolean;
 }
 
-const { title, description, path = '/', image = '/assets/homestead-keeper-logo.png', jsonLd, noindex = false } = Astro.props;
+const { title, description, path = '/', image = '/assets/og-homestead-keeper.png', jsonLd, noindex = false } = Astro.props;
 const normalizedPath = path === '/' || /\.[^/]+$/.test(path) || path.endsWith('/') ? path : `${path}/`;
 const canonical = new URL(normalizedPath, site.url).toString();
 const imageUrl = new URL(image.startsWith('/') ? image.slice(1) : image, `${site.url}/`).toString();
+
+const isDefaultImage = image === '/assets/og-homestead-keeper.png';
+const imageAlt = isDefaultImage
+  ? 'Homestead Keeper — whole-homestead records for animals, garden, equipment, and inventory on iPhone, iPad, and Mac.'
+  : title;
 
 const breadcrumbLd = getBreadcrumbJsonLd(normalizedPath);
 const organizationId = `${site.url}/#organization`;
@@ -51,6 +56,12 @@ const entityGraph = {
       applicationCategory: 'ProductivityApplication',
       operatingSystem: 'iOS, iPadOS, macOS',
       publisher: { '@id': organizationId },
+      offers: [
+        { '@type': 'Offer', name: 'Free', price: '0', priceCurrency: 'USD', category: 'free' },
+        { '@type': 'Offer', name: 'Pro monthly', price: '2.99', priceCurrency: 'USD', category: 'subscription' },
+        { '@type': 'Offer', name: 'Pro yearly', price: '19.99', priceCurrency: 'USD', category: 'subscription' },
+        { '@type': 'Offer', name: 'Pro lifetime', price: '39.99', priceCurrency: 'USD', category: 'one-time purchase' },
+      ],
     },
   ],
 };
@@ -72,8 +83,12 @@ const jsonLdItems = [
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonical} />
 <meta property="og:image" content={imageUrl} />
+{isDefaultImage && <meta property="og:image:width" content="1200" />}
+{isDefaultImage && <meta property="og:image:height" content="630" />}
+<meta property="og:image:alt" content={imageAlt} />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={imageUrl} />
+<meta name="twitter:image:alt" content={imageAlt} />
 {jsonLdItems.length > 0 && <script type="application/ld+json" set:html={JSON.stringify(jsonLdItems.length === 1 ? jsonLdItems[0] : jsonLdItems)} />}

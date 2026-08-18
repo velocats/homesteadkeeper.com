@@ -14,11 +14,11 @@ export const site = {
 
 export const navItems = [
   { href: '/', label: 'Home' },
-  { href: '/more-info', label: 'More Info' },
+  { href: '/features', label: 'Features' },
+  { href: '/use-cases', label: 'Use Cases' },
+  { href: '/guides', label: 'Guides' },
   { href: '/planner', label: 'Free Planner' },
-  { href: '/tutorials', label: 'Tutorials' },
   { href: '/pricing', label: 'Pricing' },
-  { href: '/faq', label: 'FAQ' },
   { href: '/support', label: 'Support' },
 ];
 
@@ -123,17 +123,29 @@ export const faqs = [
   ['Is this a business accounting app?', 'No. Homestead Keeper can track useful costs and records, but it is not a replacement for accounting, tax, payroll, or farm business compliance software.'],
 ] as const;
 
-export const featureLinks = managementAreas.slice(0, 8).map(([title, summary]) => ({
-  title,
-  href: title === 'Inventory' ? '/features/inventory' : title === 'Animals' ? '/features/animals' : title.startsWith('Garden') ? '/features/garden' : '/features',
-  summary,
-}));
+// Each entry must point at a page that actually covers that topic. Never fall back to
+// the generic /features hub: that produced cards whose label did not match the destination.
+export const featureLinks = [
+  { title: 'Animal records', href: '/features/animals', summary: 'Profiles, groups, daily care, medical records, breeding, pedigree, production, and weights.' },
+  { title: 'Garden records', href: '/features/garden', summary: 'Bed layouts, crop placement, planting records, harvests, and garden season reports.' },
+  { title: 'Equipment maintenance', href: '/features/equipment', summary: 'Service history, repairs, fuel, parts, manuals, warranties, and maintenance reminders.' },
+  { title: 'Inventory and supplies', href: '/features/inventory', summary: 'Feed, seeds, medicine, fuel, filters, low stock, expirations, and storage locations.' },
+  { title: 'Food preservation', href: '/features/food-preservation', summary: 'Canning batches, freezer and dehydrated food, ferments, and root cellar storage.' },
+  { title: 'Beekeeping records', href: '/features/bees', summary: 'Hive inspections, queen notes, feeding, treatments, splits, swarms, and honey harvests.' },
+  { title: 'Reminders and chores', href: '/features/reminders', summary: 'One-time, recurring, and seasonal work with overdue alerts and calendar views.' },
+  { title: 'Reports and exports', href: '/features/reports', summary: 'Homestead, cost, production, inventory, maintenance, and handoff summaries with PDF/CSV export.' },
+  { title: 'QR codes and labels', href: '/features/qr-codes', summary: 'Open the right record from the field by scanning a label on a coop, pump, gate, or hive.' },
+];
 
 export const footerFeatureLinks = [
   { title: 'Animals', href: '/features/animals' },
   { title: 'Garden', href: '/features/garden' },
+  { title: 'Equipment', href: '/features/equipment' },
   { title: 'Inventory', href: '/features/inventory' },
+  { title: 'Food Preservation', href: '/features/food-preservation' },
+  { title: 'Bees', href: '/features/bees' },
   { title: 'Reports', href: '/features/reports' },
+  { title: 'QR Codes', href: '/features/qr-codes' },
 ];
 
 export const proFeatures = [
@@ -222,6 +234,47 @@ export const equipmentScreenshots = [
     title: 'Equipment records',
     body: 'Keep service, repair, inspection, fuel, cost, and photo records with each item.',
     alt: 'Equipment detail screen for a riding mower with Field Log service entry fields.',
+  },
+] as const;
+
+export const foodPreservationScreenshots = [
+  {
+    src: 'assets/screenshots/inventory-list.webp',
+    title: 'Stored food records',
+    body: 'Track dehydrated food, canned goods, and other stored items with quantity, location, status, and expiration.',
+    alt: 'Inventory list table showing item, category, quantity, location, status, and expiration columns including dehydrated food.',
+  },
+  {
+    src: 'assets/screenshots/report-inventory.webp',
+    title: 'Expiring and low stock',
+    body: 'Review what is running low and what is aging out of storage before it is wasted.',
+    alt: 'Inventory report showing overview counts, supply levels over time, low stock, expiring soon, and categories.',
+  },
+] as const;
+
+export const beeScreenshots = [
+  {
+    src: 'assets/screenshots/report-production.webp',
+    title: 'Honey and production totals',
+    body: 'Honey harvests appear alongside other homestead production totals and trends over time.',
+    alt: 'Homestead production report showing totals and trend charts for eggs, milk, honey, and garden harvests.',
+  },
+] as const;
+
+// No QR/label screenshots exist in the repo yet. These show the records a scanned
+// label opens; captions must not imply they depict the QR or label UI itself.
+export const qrCodeScreenshots = [
+  {
+    src: 'assets/screenshots/equipment-detail.webp',
+    title: 'The record a label opens',
+    body: 'Scanning a label on a mower, pump, or gate opens that item’s record so service can be logged on the spot.',
+    alt: 'Equipment detail screen for a riding mower with Field Log service entry fields.',
+  },
+  {
+    src: 'assets/screenshots/inventory-list.webp',
+    title: 'Supplies and storage locations',
+    body: 'Labelled bins and shelves open the inventory records for what is stored there.',
+    alt: 'Inventory list table showing item, category, quantity, location, status, and expiration columns.',
   },
 ] as const;
 

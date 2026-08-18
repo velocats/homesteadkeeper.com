@@ -1,10 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import CTA from '../components/CTA.astro';
-import FeatureCard from '../components/FeatureCard.astro';
 import ScreenshotFrame from '../components/ScreenshotFrame.astro';
 import SectionHeader from '../components/SectionHeader.astro';
-import { appStoreReviews, site, trustPoints } from '../data/site';
+import Showcase from '../components/Showcase.astro';
+import { appStoreReviews, managementAreas, site, trustPoints } from '../data/site';
 import { sitePath } from '../utils/paths';
 
 const title = 'Homestead Management and Record-Keeping App | Homestead Keeper';
@@ -22,32 +22,46 @@ const jsonLd = {
   operatingSystem: 'iOS, iPadOS, macOS',
   publisher: { '@id': `${site.url}/#organization` },
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', name: 'Free' },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '5',
-    bestRating: '5',
-    worstRating: '1',
-    reviewCount: String(appStoreReviews.length),
-  },
-  review: appStoreReviews.map((review) => ({
-    '@type': 'Review',
-    name: review.title,
-    reviewBody: review.excerpt,
-    datePublished: new Date(review.date).toISOString().slice(0, 10),
-    author: { '@type': 'Person', name: review.reviewer },
-    reviewRating: {
-      '@type': 'Rating',
-      ratingValue: String(review.rating),
-      bestRating: '5',
-      worstRating: '1',
-    },
-  })),
   description,
 };
-const highlights = [
-  ['Keep the whole homestead together', 'Track chores, animals, gardens, equipment, property, inventory, pantry records, and seasonal work in one app.'],
-  ['See what needs attention', 'Use Today, reminders, calendars, inventory alerts, and reports to keep daily work visible.'],
-  ['Own your records', 'No Homestead Keeper account is required. Work offline and optionally sync across your Apple devices with iCloud.'],
+// Each block leads with a real screen from the app rather than an icon and a claim.
+const showcases = [
+  {
+    heading: 'Know what needs attention today.',
+    body: [
+      'The Homestead Hub keeps the parts of the place you actually manage in one view, so a morning check does not mean opening four different lists.',
+      'Overdue work, upcoming reminders, and recent field notes surface first.',
+    ],
+    src: 'assets/screenshots/homestead-hub.webp',
+    alt: 'Homestead Keeper Homestead Hub showing featured Garden, Animals, Property, and Inventory cards plus Orchard, Bees, Equipment, Food & Pantry, Off-grid, Weather & Seasons, Forestry, and Emergency Prep.',
+    caption: 'Homestead Hub — the areas you manage, in one place.',
+    href: '/features',
+    linkLabel: 'See all features',
+  },
+  {
+    heading: 'See what is planted where.',
+    body: [
+      'Garden bed layouts map crops to real beds and paths by season, so next spring you know what grew where without relying on memory.',
+      'Layouts connect to planting records and harvest history for the same bed.',
+    ],
+    src: 'assets/screenshots/garden-bed-layout.webp',
+    alt: 'Garden bed layout showing a raised bed with beets, bell peppers, paths, Swiss chard, and radicchio assigned to grid cells.',
+    caption: 'Garden bed layout — crop placement by bed and season.',
+    href: '/features/garden',
+    linkLabel: 'Garden records and bed layouts',
+  },
+  {
+    heading: 'Find the maintenance history when something breaks.',
+    body: [
+      'Service, repair, and inspection records stay with the machine or system they belong to, and roll up into a maintenance overview with costs and overdue work.',
+      'That history is what turns a repair-or-replace decision into arithmetic.',
+    ],
+    src: 'assets/screenshots/report-maintenance.webp',
+    alt: 'Maintenance Overview report showing a health score, overview metrics, a logbook trend chart, upcoming care, and a watchlist.',
+    caption: 'Maintenance Overview — completed work, costs, and what is overdue.',
+    href: '/features/equipment',
+    linkLabel: 'Equipment maintenance records',
+  },
 ];
 ---
 
@@ -55,65 +69,57 @@ const highlights = [
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero-copy">
       <p class="eyebrow">Homestead records for Apple devices</p>
-      <h1 id="hero-title">Run your homestead without scattered notes and spreadsheets.</h1>
-      <p class="hero-lede">Homestead Keeper brings tasks, animals, gardens, inventory, maintenance, and property records together on iPhone, iPad, and Mac.</p>
+      <h1 id="hero-title">Records for the whole homestead.</h1>
+      <p class="hero-lede">Keep animals, gardens, equipment, inventory, and property work in one place instead of scattered notes and spreadsheets — on iPhone, iPad, and Mac.</p>
       <div class="button-row">
         <a class="button primary" href={site.appStoreUrl}>Download on the App Store</a>
-        <a class="button secondary" href={sitePath('/more-info')}>More Info</a>
+        <a class="button secondary" href={sitePath('/features')}>See how it works</a>
       </div>
       <p class="microcopy">Try it free. No account required. Local-first with optional iCloud sync.</p>
     </div>
     <ScreenshotFrame src="assets/screenshots/homestead-hub.webp" alt="Homestead Keeper Homestead Hub showing Garden, Animals, Property, Inventory, and More to Manage cards." caption="The major parts of your homestead in one calm place." loading="eager" />
   </section>
 
-  <section class="trust-strip" aria-label="Privacy and sync highlights">
-    {trustPoints.map(([title, body]) => (
-      <article>
-        <strong>{title}</strong>
-        <span>{body}</span>
-      </article>
-    ))}
+  <ul class="trust-line" aria-label="Privacy and sync highlights">
+    {trustPoints.map(([title]) => <li><strong>{title}</strong></li>)}
+  </ul>
+
+  {showcases.map((item, index) => <Showcase {...item} reverse={index % 2 === 1} />)}
+
+  <section class="section" aria-labelledby="areas-title">
+    <SectionHeader
+      headingId="areas-title"
+      eyebrow="One app"
+      title="Built for mixed work, not one crop or one animal."
+      body="Turn on the areas you actually use and hide the rest. Most homesteads need several of these at once, which is why they live in one app rather than five."
+    />
+    <ul class="area-list">
+      {managementAreas.map(([title]) => <li>{title}</li>)}
+    </ul>
   </section>
 
   <section class="section" aria-labelledby="reviews-title">
     <SectionHeader
       headingId="reviews-title"
       eyebrow="App Store reviews"
-      title="Five stars from early Homestead Keeper users."
+      title="What early users say."
       body="Recent reviews from the U.S. Apple App Store. Reviewer handles are partially hidden for privacy."
     />
-    <div class="review-grid">
+    <ul class="review-lines">
       {appStoreReviews.map((review) => (
-        <figure class="review-card">
-          <div class="review-stars" aria-label={`${review.rating} out of 5 stars`}>{'★'.repeat(review.rating)}</div>
+        <li>
+          <span class="review-stars" aria-label={`${review.rating} out of 5 stars`}>{'★'.repeat(review.rating)}</span>
           <blockquote>“{review.excerpt}”</blockquote>
-          <figcaption>
-            <strong>{review.title}</strong>
-            <span>{review.reviewer} · {review.date}</span>
-          </figcaption>
-        </figure>
+          <cite>{review.title} · {review.reviewer} · {review.date}</cite>
+        </li>
       ))}
-    </div>
+    </ul>
     <p class="review-source">Reviews from the U.S. Apple App Store. <a class="text-link" href={site.appStoreUrl}>View Homestead Keeper on the App Store</a>.</p>
   </section>
 
-  <section class="section home-summary" aria-labelledby="summary-title">
-    <SectionHeader
-      headingId="summary-title"
-      eyebrow="One app"
-      title="The short version."
-      body="Homestead Keeper is built for the mixed work of a backyard homestead, hobby farm, or rural property."
-    />
-    <div class="card-grid compact">
-      {highlights.map(([title, body]) => <FeatureCard title={title} body={body} />)}
-    </div>
-  </section>
-
   <CTA
-    title="Want screenshots, reviews, features, workflows, and tutorials?"
-    body="The detailed product tour now lives in one place, so the home page can stay simple."
-    primaryLabel="More Info"
-    primaryHref="/more-info"
+    title="Start with twenty records and see if it fits."
+    body="Free covers up to 20 items with reminders, calendar views, and field notes, plus a demo homestead to explore first. No account required."
     secondaryLabel="View pricing"
     secondaryHref="/pricing"
   />

@@ -5,8 +5,12 @@ const currentPath = Astro.url.pathname.replace(import.meta.env.BASE_URL, '/') ||
 const activeHref = navItems
   .filter((item) => {
     if (item.href === '/') return currentPath === '/';
-    if (item.href === '/more-info') {
-      return ['/more-info', '/features', '/use-cases', '/workflows', '/playbook']
+    if (item.href === '/features') {
+      return ['/features', '/more-info', '/workflows']
+        .some((path) => currentPath === path || currentPath.startsWith(`${path}/`));
+    }
+    if (item.href === '/guides') {
+      return ['/guides', '/playbook', '/tutorials']
         .some((path) => currentPath === path || currentPath.startsWith(`${path}/`));
     }
     return currentPath === item.href || currentPath.startsWith(`${item.href}/`);
@@ -16,7 +20,7 @@ const activeHref = navItems
 
 <header class="site-header">
   <a class="brand" href={sitePath('/')} aria-label="Homestead Keeper home">
-    <img src={assetPath('assets/homestead-keeper-logo.png')} alt="" width="44" height="44" />
+    <img src={assetPath('assets/homestead-keeper-logo-88.png')} alt="" width="44" height="44" />
     <span>{site.name}</span>
   </a>
   <button

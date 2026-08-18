@@ -1,0 +1,47 @@
+---
+import { assetPath, sitePath } from '../utils/paths';
+
+interface Props {
+  heading: string;
+  body: string[];
+  src: string;
+  alt: string;
+  caption?: string;
+  /** Optional link to the feature page this screen belongs to. */
+  href?: string;
+  linkLabel?: string;
+  /** Places the copy on the right and the screenshot on the left. */
+  reverse?: boolean;
+  /** For landscape (Mac) screenshots, which can take more width. */
+  wide?: boolean;
+  loading?: 'lazy' | 'eager';
+}
+
+const { heading, body, src, alt, caption, href, linkLabel, reverse = false, wide = false, loading = 'lazy' } = Astro.props;
+const imageUrl = assetPath(src);
+---
+
+<section class:list={['showcase', reverse && 'reverse']}>
+  <div class="showcase-copy">
+    <h2>{heading}</h2>
+    {body.map((paragraph) => <p>{paragraph}</p>)}
+    {href && (
+      <p>
+        <a class="text-link" href={sitePath(href)}>{linkLabel ?? 'Learn more'}</a>
+      </p>
+    )}
+  </div>
+  <figure class:list={['showcase-figure', wide && 'wide']}>
+    <button
+      class="screenshot-trigger"
+      type="button"
+      data-lightbox-src={imageUrl}
+      data-lightbox-alt={alt}
+      data-lightbox-title={caption ?? alt}
+      aria-label={`Expand screenshot: ${caption ?? alt}`}
+    >
+      <img src={imageUrl} alt={alt} width="1200" height="1600" loading={loading} decoding="async" />
+    </button>
+    {caption && <figcaption>{caption}</figcaption>}
+  </figure>
+</section>

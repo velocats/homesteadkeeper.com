@@ -1,5 +1,6 @@
 ---
 import FeaturePage from '../../components/FeaturePage.astro';
+import { qrCodeScreenshots } from '../../data/site';
 
 const sections = [
   {
@@ -34,12 +35,16 @@ const sections = [
 ---
 
 <FeaturePage
-  title="QR Codes & Labels | Homestead Keeper"
+  title="QR Code Labels for Equipment and Places | Homestead Keeper"
   description="Use QR codes and printable labels to open Homestead Keeper asset records for coops, pumps, gates, equipment, hives, raised beds, and rural property systems."
   path="/features/qr-codes"
   eyebrow="QR Codes"
   h1="Open the right record from the field"
   intro="Give every asset a unique QR code, scan from Home or Assets, print labels with Pro, and keep records reachable offline."
   sections={sections}
-  screenshots={['QR code on asset detail', 'Label sheet', 'Scanning in field']}
+  guides={[
+    { title: 'How to keep equipment maintenance records', href: '/guides/equipment-maintenance-records', summary: 'What to log for each machine, and how to set service intervals you will actually follow.' },
+    { title: 'How to build a homestead maintenance checklist', href: '/guides/homestead-maintenance-checklist', summary: 'Turn scattered seasonal jobs into a checklist organized by place, season, and system.' },
+  ]}
+  screenshots={qrCodeScreenshots}
 />

@@ -7,6 +7,8 @@ const footerLinks = [
   ['More Info', '/more-info'],
   ['Features', '/features'],
   ['Use Cases', '/use-cases'],
+  ['Guides', '/guides'],
+  ['Record-Keeping Playbook', '/playbook'],
   ['Workflows', '/workflows'],
   ['Tutorials', '/tutorials'],
   ['Pricing', '/pricing'],
@@ -16,20 +18,25 @@ const footerLinks = [
   ['Support', '/support'],
 ];
 const featureLinks = [
+  ['Animals', '/features/animals'],
+  ['Garden', '/features/garden'],
+  ['Equipment', '/features/equipment'],
+  ['Inventory', '/features/inventory'],
+  ['Food Preservation', '/features/food-preservation'],
+  ['Bees', '/features/bees'],
+  ['Reminders', '/features/reminders'],
+  ['Reports', '/features/reports'],
+  ['QR Codes', '/features/qr-codes'],
+  ['Mac App', '/features/macos'],
+];
+const useCaseLinks = [
   ['Homestead Management', '/use-cases/homestead-management-app'],
   ['Task Tracker', '/use-cases/homestead-task-tracker'],
   ['Maintenance App', '/use-cases/homestead-maintenance-app'],
   ['Chicken Keepers', '/use-cases/chicken-keepers'],
-  ['Egg Tracker', '/use-cases/chicken-egg-tracker'],
   ['Gardeners', '/use-cases/gardeners'],
-  ['Harvest Tracker', '/use-cases/garden-harvest-tracker'],
-  ['Hobby Farms', '/use-cases/hobby-farms'],
   ['Rural Property', '/use-cases/rural-property-owners'],
   ['Pantry Inventory', '/use-cases/pantry-inventory'],
-  ['Garden Beds', '/features/garden'],
-  ['Animals', '/features/animals'],
-  ['Inventory', '/features/inventory'],
-  ['Mac App', '/features/macos'],
 ];
 ---
 
@@ -37,7 +44,7 @@ const featureLinks = [
   <div class="footer-grid">
     <section aria-label="About Homestead Keeper">
       <a class="brand footer-brand" href={sitePath('/')}>
-        <img src={assetPath('assets/homestead-keeper-logo.png')} alt="" width="40" height="40" />
+        <img src={assetPath('assets/homestead-keeper-logo-88.png')} alt="" width="40" height="40" />
         <span>{site.name}</span>
       </a>
       <p>{site.tagline}</p>
@@ -50,10 +57,16 @@ const featureLinks = [
         {footerLinks.map(([label, href]) => <a href={sitePath(href)}>{label}</a>)}
       </div>
     </nav>
+    <nav aria-labelledby="footer-features-title">
+      <h2 id="footer-features-title">Features</h2>
+      <div class="footer-link-list">
+        {featureLinks.map(([label, href]) => <a href={sitePath(href)}>{label}</a>)}
+      </div>
+    </nav>
     <nav aria-labelledby="footer-tracks-title">
       <h2 id="footer-tracks-title">Use cases</h2>
       <div class="footer-link-list">
-        {featureLinks.map(([label, href]) => <a href={sitePath(href)}>{label}</a>)}
+        {useCaseLinks.map(([label, href]) => <a href={sitePath(href)}>{label}</a>)}
       </div>
     </nav>
     <section aria-labelledby="footer-contact-title">

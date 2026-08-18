@@ -1,0 +1,69 @@
+---
+import FeaturePage from '../../components/FeaturePage.astro';
+import { equipmentScreenshots } from '../../data/site';
+
+const sections = [
+  {
+    title: 'One record per machine',
+    body: [
+      'Every tractor, mower, chainsaw, tiller, generator, pump, trailer, and hand tool can have its own record with make, model, serial number, purchase date, cost, vendor, and the place it lives. Manuals, receipts, and photos attach to the record instead of sitting in a drawer or a phone camera roll.',
+      'Because equipment records live beside your animals, beds, buildings, and property systems, a repair on the barn pump sits in the same history as the barn itself rather than in a separate app.',
+    ],
+  },
+  {
+    title: 'Service and repair history',
+    body: [
+      'Log oil changes, filter replacements, blade sharpening, belt and chain work, tire pressure, greasing, winterizing, and repairs as they happen. Each entry can carry the date, cost, vendor, parts used, hours or mileage, time spent, and notes about what you actually found.',
+      'Field Log entries are built for logging work while your hands are still dirty. Add the detail that matters now and fill in receipts, photos, or costs later.',
+    ],
+  },
+  {
+    title: 'Maintenance reminders and service intervals',
+    body: [
+      'Recurring reminders turn service intervals into work you will actually see: a seasonal mower service, an annual generator test, a chainsaw chain check before firewood season, or a filter change every so many months.',
+      'Completed reminders become history rather than disappearing, so the record of a service interval and the proof you followed it are the same thing.',
+    ],
+  },
+  {
+    title: 'Parts, fuel, and supplies on hand',
+    body: [
+      'Filters, belts, blades, spark plugs, bar oil, hydraulic fluid, and fuel can be tracked as inventory with quantities, storage locations, and low-stock visibility, so a Saturday repair does not stall on a missing part.',
+      'Linking parts to the machines that use them makes it clearer what is worth keeping on the shelf.',
+    ],
+  },
+  {
+    title: 'Warranties and costs',
+    body: [
+      'Record warranty end dates and review them on the Warranty Countdown report, which separates expired coverage from what expires soon and what expires later. Knowing a mower is still covered changes whether you fix it yourself.',
+      'The Cost Summary report totals repairs, service spending, and tracked item value so a repair-or-replace conversation can start from your own numbers instead of a guess.',
+    ],
+  },
+  {
+    title: 'Find the record at the machine',
+    body: [
+      'Printable QR labels let you scan a tag on a mower, pump, generator, or gate and open its record where the work is happening. That removes the step most likely to break a maintenance habit: finding the right record before you can log anything.',
+    ],
+  },
+  {
+    title: 'What this is not',
+    body: [
+      'Homestead Keeper keeps practical maintenance records for a homestead, small farm, or rural property. It is not fleet-management software, a dealership service system, or accounting and depreciation software.',
+    ],
+  },
+];
+---
+
+<FeaturePage
+  title="Equipment Maintenance Records and Service Log | Homestead Keeper"
+  description="Keep equipment maintenance records for tractors, mowers, chainsaws, and pumps: service history, repairs, parts, warranties, costs, and reminders."
+  path="/features/equipment"
+  eyebrow="Equipment"
+  h1="Equipment maintenance records that hold up over years"
+  intro="Track service history, repairs, parts, fuel, warranties, and costs for every machine and tool on the place, with recurring reminders so maintenance intervals stay visible instead of remembered."
+  sections={sections}
+  guides={[
+    { title: 'How to keep equipment maintenance records', href: '/guides/equipment-maintenance-records', summary: 'What to log for each machine, and how to set service intervals you will actually follow.' },
+    { title: 'How to build a homestead maintenance checklist', href: '/guides/homestead-maintenance-checklist', summary: 'Turn scattered seasonal jobs into a checklist organized by place, season, and system.' },
+  ]}
+  screenshots={equipmentScreenshots}
+/>

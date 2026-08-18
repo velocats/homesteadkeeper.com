@@ -3,13 +3,44 @@ import Layout from '../layouts/Layout.astro';
 import CTA from '../components/CTA.astro';
 import TutorialCard from '../components/TutorialCard.astro';
 import { tutorials } from '../data/tutorials';
+import InternalLinkCards from '../components/InternalLinkCards.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import { site } from '../data/site';
 import { sitePath } from '../utils/paths';
 
 const title = 'Homestead Keeper Video Tutorials and App Walkthroughs';
 const description = 'Watch Homestead Keeper video tutorials for checklists, garden layouts, garden and animal timelines, animal breeding, and a complete app walkthrough.';
+
+// P1-7: six real videos were embedded here with no video structured data.
+// Each entry describes a video that is genuinely embedded on this page.
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    '@id': `${site.url}/tutorials/#tutorial-list`,
+    name: 'Homestead Keeper video tutorials',
+    itemListElement: tutorials.map((tutorial, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: { '@id': `${site.url}/tutorials/#video-${tutorial.id}` },
+    })),
+  },
+  ...tutorials.map((tutorial) => ({
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    '@id': `${site.url}/tutorials/#video-${tutorial.id}`,
+    name: tutorial.title,
+    description: tutorial.description,
+    embedUrl: `https://www.youtube-nocookie.com/embed/${tutorial.videoId}`,
+    contentUrl: `https://www.youtube.com/watch?v=${tutorial.videoId}`,
+    thumbnailUrl: `https://i.ytimg.com/vi/${tutorial.videoId}/hqdefault.jpg`,
+    publisher: { '@id': `${site.url}/#organization` },
+    isPartOf: { '@id': `${site.url}/#website` },
+  })),
+];
 ---
 
-<Layout title={title} description={description} path="/tutorials">
+<Layout title={title} description={description} path="/tutorials" jsonLd={jsonLd}>
   <section class="page-hero">
     <p class="eyebrow">Video tutorials</p>
     <h1>Learn Homestead Keeper at your own pace.</h1>
@@ -33,6 +64,20 @@ const description = 'Watch Homestead Keeper video tutorials for checklists, gard
         </div>
       ))}
     </div>
+  </section>
+
+  <section class="section" aria-labelledby="tutorial-guides-title">
+    <SectionHeader
+      headingId="tutorial-guides-title"
+      eyebrow="Read next"
+      title="Guides that go with these videos"
+      body="Written guides covering what to record and how to organize it, alongside the walkthroughs above."
+    />
+    <InternalLinkCards links={[
+      { title: 'How to build a homestead maintenance checklist', href: '/guides/homestead-maintenance-checklist', summary: 'Turn scattered seasonal jobs into a checklist organized by place, season, and system.' },
+      { title: 'What records should you keep for chickens?', href: '/guides/what-records-to-keep-for-chickens', summary: 'The six chicken record types worth keeping, and how much detail each one needs.' },
+      { title: 'How to build a homestead record-keeping system', href: '/playbook', summary: 'A ten-step setup guide for places, animals, gardens, inventory, reminders, and reports.' },
+    ]} />
   </section>
 
   <CTA

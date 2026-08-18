@@ -1,0 +1,75 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CTA from '../../components/CTA.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import InternalLinkCards from '../../components/InternalLinkCards.astro';
+import { guides } from '../../data/guides';
+import { site } from '../../data/site';
+
+const title = 'Homestead Record-Keeping Guides | Homestead Keeper';
+const description =
+  'Practical guides to homestead record keeping: animal health, garden and food preservation records, equipment maintenance, property handoffs, and homestead expenses.';
+
+const guideLinks = guides.map((guide) => ({
+  title: guide.h1,
+  href: `/guides/${guide.slug}`,
+  summary: guide.answer,
+}));
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': `${site.url}/guides/#collection`,
+  name: 'Homestead record-keeping guides',
+  description,
+  url: `${site.url}/guides/`,
+  isPartOf: { '@id': `${site.url}/#website` },
+  publisher: { '@id': `${site.url}/#organization` },
+  hasPart: guides.map((guide) => ({
+    '@type': 'Article',
+    '@id': `${site.url}/guides/${guide.slug}/#article`,
+    headline: guide.h1,
+    description: guide.description,
+    url: `${site.url}/guides/${guide.slug}/`,
+  })),
+};
+---
+
+<Layout title={title} description={description} path="/guides" jsonLd={jsonLd}>
+  <section class="page-hero narrow">
+    <p class="eyebrow">Guides</p>
+    <h1>Practical guides to homestead records</h1>
+    <p class="lede">
+      Short, specific guides about the records that are actually worth keeping on a homestead, written for people
+      deciding what to track rather than people looking for software. Each one is honest about where it stops.
+    </p>
+  </section>
+
+  <section class="section" aria-labelledby="guide-list-title">
+    <SectionHeader
+      headingId="guide-list-title"
+      eyebrow="Start here"
+      title="Guides"
+      body="Each guide answers its question up front, then explains how much detail is worth keeping."
+    />
+    <InternalLinkCards links={guideLinks} />
+  </section>
+
+  <section class="section soft-panel" aria-labelledby="setup-title">
+    <p class="eyebrow">Setting up</p>
+    <h2 id="setup-title">Building a record system from scratch</h2>
+    <p>
+      If you are starting with no records at all, begin with the setup playbook. It walks through naming your places,
+      choosing which areas to turn on, and picking the first twenty records that are worth keeping.
+    </p>
+    <InternalLinkCards links={[
+      { title: 'How to build a homestead record-keeping system', href: '/playbook', summary: 'A ten-step setup guide covering places, animals, gardens, inventory, field notes, reminders, and reports.' },
+      { title: 'Free printable homestead planner', href: '/planner', summary: 'A printable PDF planner with seasonal pages and reusable record templates if you would rather start on paper.' },
+    ]} />
+  </section>
+
+  <CTA
+    title="Ready to put these records somewhere?"
+    body="Homestead Keeper keeps animal, garden, equipment, inventory, and maintenance records together on iPhone, iPad, and Mac. Start free with up to 20 items."
+  />
+</Layout>

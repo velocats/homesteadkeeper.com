@@ -153,7 +153,7 @@ const workflowPreviewScreenshots = [
     alt: 'Homestead Keeper Homestead Summary report showing health score, floor plan metrics, and activity by type.',
   },
 ];
-const homepageUseCaseSlugs = ['homestead-management-app', 'homestead-task-tracker', 'homestead-maintenance-app', 'chicken-egg-tracker', 'garden-harvest-tracker', 'pantry-inventory'];
+const homepageUseCaseSlugs = ['homestead-management-app', 'homestead-task-tracker', 'homestead-maintenance-app', 'chicken-keepers', 'gardeners', 'pantry-inventory'];
 const homepageUseCases = homepageUseCaseSlugs
   .map((slug) => useCases.find((useCase) => useCase.slug === slug))
   .filter((useCase): useCase is (typeof useCases)[number] => Boolean(useCase))

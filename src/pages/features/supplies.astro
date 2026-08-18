@@ -1,18 +1,25 @@
 ---
+// Legacy URL retained for links and search results that still point at /features/supplies/.
+// It permanently points visitors and crawlers at /features/inventory/, which replaced it.
+// GitHub Pages cannot issue a 301, so this uses a canonical + noindex + instant meta refresh.
 import { sitePath } from '../../utils/paths';
+import { site } from '../../data/site';
 
 const target = sitePath('/features/inventory');
+const canonical = `${site.url}/features/inventory/`;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="refresh" content={`0; url=${target}`} />
-    <title>Inventory | Homestead Keeper</title>
-    <link rel="canonical" href={target} />
+    <meta name="robots" content="noindex, follow" />
+    <title>Moved to Homestead and Pantry Inventory | Homestead Keeper</title>
+    <link rel="canonical" href={canonical} />
   </head>
   <body>
-    <p><a href={target}>Continue to Inventory.</a></p>
+    <p>This page moved. <a href={target}>Continue to Homestead and Pantry Inventory.</a></p>
   </body>
 </html>

@@ -1,43 +1,73 @@
-# Astro Starter Kit: Minimal
+# Homestead Keeper — marketing site
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Static [Astro](https://astro.build) site for **Homestead Keeper**, a local-first homestead
+organization app for iPhone, iPad, and Mac. Built and deployed to GitHub Pages by
+`.github/workflows/deploy.yml` on every push to `main`.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- Production: <https://homesteadkeeper.com>
+- App Store: <https://apps.apple.com/us/app/homestead-keeper-planner/id6778182157>
+- Publisher: Quiet Tools LLC
 
-## 🚀 Project Structure
+## Commands
 
-Inside of your Astro project, you'll see the following folders and files:
+| Command | Action |
+| :--- | :--- |
+| `npm install` | Install dependencies (Node ≥ 22.12) |
+| `npm run dev` | Dev server at `localhost:4321` |
+| `npm run build` | Build to `./dist/` |
+| `npm run preview` | Preview the built output locally |
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## Content architecture
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Copy lives in data files, not in templates. To add or edit content, edit the data file —
+the page templates and metadata handling are shared.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+| File | Drives |
+| :--- | :--- |
+| `src/data/site.ts` | Site metadata, nav, pricing, FAQs, feature/screenshot sets, footer links |
+| `src/data/useCases.ts` | `/use-cases/[slug]/` — audience-oriented landing pages |
+| `src/data/workflows.ts` | `/workflows/[slug]/` — in-app task walkthroughs |
+| `src/data/guides.ts` | `/guides/[slug]/` — informational articles |
+| `src/data/tutorials.ts` | `/tutorials/` — YouTube walkthroughs |
+| `src/data/navigation.ts` | Breadcrumb labels and `BreadcrumbList` JSON-LD |
 
-Any static assets, like images, can be placed in the `public/` directory.
+Feature pages (`src/pages/features/*.astro`) each pass content to the shared
+`FeaturePage.astro` component rather than defining their own layout.
 
-## 🧞 Commands
+## SEO conventions
 
-All commands are run from the root of the project, from a terminal:
+Read `SEO_AUDIT.md` before making structural changes. The important invariants:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+- **All metadata flows through `src/components/SEO.astro`.** Pass `title`, `description`,
+  and `path` to `Layout`, and the page inherits an absolute self-canonical, Open Graph,
+  Twitter card, and the site-wide `Organization` / `WebSite` / `SoftwareApplication`
+  JSON-LD graph. Never hand-write these tags in a page.
+- **`trailingSlash: 'always'`.** Always link internal paths with a trailing slash, and
+  route links through `sitePath()` from `src/utils/paths.ts`.
+- **Add breadcrumb labels** in `src/data/navigation.ts` for every new route segment.
+- **One `<h1>` per page.**
+- **Every page needs at least one contextual inbound link.** Two pages were previously
+  orphaned; check the link graph after adding a route.
+- **Never change an indexed URL without preserving the old one.** GitHub Pages cannot
+  issue a 301, so retired URLs keep a stub with an absolute canonical, `noindex, follow`,
+  and a meta refresh — see `src/pages/features/supplies.astro`.
+- **Utility pages** that should not be indexed get `noindex={true}` *and* a `filter`
+  entry in `astro.config.mjs`.
+- **Structured data must match visible page content.** Do not add schema for content that
+  is not on the page.
 
-## 👀 Want to learn more?
+## Assets
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- `public/assets/screenshots/` — product screenshots (`.webp`), including `macOS/`
+- `public/assets/workflows/` — per-workflow screenshot sets
+- `public/assets/og-homestead-keeper.png` — 1200×630 default social card
+- `public/assets/homestead-keeper-logo-88.png` — header/footer logo (use this, **not** the
+  1024×1024 original, which is reserved for the `Organization` schema `logo` field)
+- `public/planner/` — the free printable planner PDF and preview images
+
+## Related documents
+
+- `SEO_AUDIT.md` — SEO audit, keyword/intent map, implementation log, and the
+  Visual Design & Brand Audit (proposed, not implemented)
+- `docs/AEO-AUDIT-2026-08-12.md` — earlier answer-engine/citation readiness audit
+- `planner-handoff/` — source content and build script for the printable planner
