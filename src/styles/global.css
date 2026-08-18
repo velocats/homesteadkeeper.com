@@ -198,6 +198,11 @@ ul, ol { margin: 0; padding: 0; }
 .hero .device-shell.screenshot-trigger {
   display: inline-block;
   width: auto;
+  /* Without this, .device-shell's overflow: hidden (needed to clip the image
+     to the rounded bezel) disables the flex item's normal min-content floor,
+     letting the flex layout shrink this button narrower than the image inside
+     it -- clipping off the right edge of the screenshot. */
+  flex-shrink: 0;
   border-color: var(--paper);
   box-shadow: var(--shadow-lg);
 }
