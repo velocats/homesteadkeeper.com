@@ -139,8 +139,7 @@ ul, ol { margin: 0; padding: 0; }
   opacity: 0.82;
 }
 .app-store-badge img { display: block; height: auto; }
-/* The badge's dark fill needs a visible edge against the site's dark green panels. */
-.hero .app-store-badge img,
+/* The badge's dark fill needs a visible edge against the dark green CTA band. */
 .cta-band .app-store-badge img {
   border-radius: 6px;
   outline: 1px solid rgba(255, 250, 240, 0.28);
@@ -234,11 +233,12 @@ ul, ol { margin: 0; padding: 0; }
 .button { display: inline-flex; align-items: center; justify-content: center; min-height: 3rem; padding: 0.72rem 1.1rem; border: 1px solid transparent; border-radius: var(--radius-lg); font-weight: var(--fw-semibold); text-decoration: none; }
 .button.primary { background: var(--green); color: var(--paper); }
 .button.primary:hover { background: var(--green-2); }
-/* On the dark green hero and CTA band the primary button must invert to stay legible. */
-.hero .button.primary, .cta-band .button.primary { background: var(--paper); color: var(--green); }
-.hero .button.primary:hover, .cta-band .button.primary:hover { background: var(--cream-2); }
+/* On the dark green CTA band the primary button must invert to stay legible. */
+.cta-band .button.primary { background: var(--paper); color: var(--green); }
+.cta-band .button.primary:hover { background: var(--cream-2); }
 .button.secondary { border-color: rgba(255, 250, 240, 0.32); background: rgba(255, 250, 240, 0.12); color: var(--paper); }
-.page-hero .button.secondary, .section .button.secondary, .cta-band .button.secondary { border-color: var(--line); background: var(--paper); color: var(--green); }
+.hero .button.secondary, .page-hero .button.secondary, .section .button.secondary, .cta-band .button.secondary { border-color: var(--line); background: var(--paper); color: var(--green); }
+.hero .button.secondary:hover { background: var(--cream-2); }
 .text-link { color: var(--clay-dark); font-weight: var(--fw-semibold); }
 
 .card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
@@ -448,7 +448,6 @@ ul, ol { margin: 0; padding: 0; }
   .nav-dropdown:focus-within .nav-dropdown-menu {
     display: grid;
   }
-  .hero { border-radius: var(--radius-md); }
   .card-grid, .card-grid.compact, .feature-map, .pricing-grid, .stacked-cards, .timeline, .footer-grid, .audience-grid, .feature-group-grid { grid-template-columns: 1fr; }
   .timeline li { min-height: auto; }
   .cta-band, .app-store-band { align-items: flex-start; flex-direction: column; }
@@ -1081,9 +1080,6 @@ html.lightbox-open body {
   .showcase-figure .screenshot-trigger {
     border-radius: var(--radius-md);
   }
-  .hero .screenshot-frame {
-    width: calc(100% + 2 * clamp(1.2rem, 3vw, 2.6rem));
-    margin-inline: calc(-1 * clamp(1.2rem, 3vw, 2.6rem));
-  }
+  .hero .screenshot-frame { padding: 1.2rem; }
   .hero .device-shell { border-radius: var(--radius-md); }
 }
