@@ -98,6 +98,7 @@ export const guides: Guide[] = [
     limitation:
       'This guide is about record keeping, not poultry health. It does not provide veterinary advice, diagnoses, treatment or dosage recommendations, or food-safety guidance. Consult a veterinarian or your state extension service for those.',
     related: [
+      { title: 'Free printable egg production log', href: '/planner/egg-production-log', summary: 'Print a one-week flock log and see a completed example.' },
       { title: 'Animal records', href: '/features/animals', summary: 'Profiles, groups, daily care, medical records, breeding, pedigree, production, and weights.' },
       { title: 'Chicken flock records', href: '/use-cases/chicken-keepers', summary: 'Flock records, egg tracking, care reminders, and coop work in one place.' },
       { title: 'Build a record system', href: '/playbook', summary: 'A ten-step guide to setting up homestead records that you will actually keep.' },
@@ -180,6 +181,7 @@ export const guides: Guide[] = [
     limitation:
       'This guide covers record keeping. It is not a maintenance manual and does not replace the service intervals, procedures, or safety instructions in your equipment documentation.',
     related: [
+      { title: 'Free printable equipment maintenance log', href: '/planner/equipment-maintenance-log', summary: 'Print a service-history sheet and see a completed mower example.' },
       { title: 'Equipment maintenance', href: '/features/equipment', summary: 'Service history, repairs, fuel, parts, manuals, warranties, and maintenance reminders.' },
       { title: 'Homestead maintenance app', href: '/use-cases/homestead-maintenance-app', summary: 'Maintenance records across equipment, property systems, coops, and wells.' },
       { title: 'Build a maintenance checklist', href: '/guides/homestead-maintenance-checklist', summary: 'Turn scattered seasonal jobs into a checklist you will finish.' },
@@ -263,6 +265,7 @@ export const guides: Guide[] = [
       description: 'A walkthrough of building repeatable checklists and attaching them to the equipment, places, and systems they belong to.',
     },
     related: [
+      { title: 'Free printable seasonal maintenance checklist', href: '/planner/homestead-maintenance-checklist', summary: 'Print a place-based checklist and see a completed property example.' },
       { title: 'Reminders and chores', href: '/features/reminders', summary: 'One-time, recurring, and seasonal work with overdue alerts and calendar views.' },
       { title: 'Homestead maintenance app', href: '/use-cases/homestead-maintenance-app', summary: 'Maintenance records across equipment, property systems, coops, and wells.' },
       { title: 'Equipment maintenance', href: '/features/equipment', summary: 'Service history, repairs, parts, warranties, and maintenance reminders.' },
@@ -406,6 +409,7 @@ export const guides: Guide[] = [
     limitation:
       'This guide organizes garden planning and record keeping. It does not provide planting-date, climate-zone, or pest-treatment recommendations — those depend on your local conditions and are best confirmed with your local extension service.',
     related: [
+      { title: 'Free garden planting and harvest log', href: '/planner/garden-planting-harvest-log/', summary: 'Print a blank crop record and see a completed example with consistent harvest units.' },
       { title: 'Garden records', href: '/features/garden', summary: 'Bed layouts, crop placement, planting records, harvests, and garden season reports.' },
       { title: 'Garden planning and harvest tracking', href: '/use-cases/gardeners', summary: 'Bed layouts, planting records, and harvest history in one place.' },
       { title: 'Food preservation records', href: '/features/food-preservation', summary: 'Track what you canned, froze, dried, and stored, connected to the harvests they came from.' },
@@ -553,6 +557,7 @@ export const guides: Guide[] = [
     limitation:
       'This guide is about what to record and organize. It does not cover legal documents, insurance requirements, or estate planning, which should involve a qualified professional if they apply to your situation.',
     related: [
+      { title: 'Free farm sitter handoff checklist', href: '/planner/farm-sitter-handoff-checklist/', summary: 'Print a two-page caretaker handoff and see a completed weekend example.' },
       { title: 'Reports and exports', href: '/features/reports', summary: 'Homestead, cost, production, inventory, maintenance, and handoff summaries with PDF and CSV export.' },
       { title: 'Build a record system', href: '/playbook', summary: 'A ten-step guide to setting up homestead records that you will actually keep.' },
       { title: 'Rural property records', href: '/use-cases/rural-property-owners', summary: 'Property, equipment, places, and seasonal work records for rural homes.' },

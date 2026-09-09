@@ -1,7 +1,10 @@
+// Original publication timestamps verified against each public YouTube watch page
+// on 2026-09-09. Keep these stable when editing tutorial descriptions.
 export const tutorials = [
   {
     id: 'app-walkthrough',
     videoId: 'BrUu8FY-dzU',
+    uploadDate: '2026-07-23T14:00:10-07:00',
     title: 'Homestead Keeper walkthrough',
     iframeTitle: 'Homestead Keeper app walkthrough',
     description: 'A complete overview of the app and how its tools work together.',
@@ -10,6 +13,7 @@ export const tutorials = [
   {
     id: 'checklists',
     videoId: 'YXS0_ql1mM0',
+    uploadDate: '2026-07-29T11:19:48-07:00',
     title: 'Checklists how-to',
     iframeTitle: 'Homestead Keeper checklists how-to',
     description: 'Learn how to use checklists to organize repeatable work and keep homestead tasks on track.',
@@ -18,6 +22,7 @@ export const tutorials = [
   {
     id: 'garden-layout',
     videoId: 'dC8ghhCS1EU',
+    uploadDate: '2026-07-23T15:18:37-07:00',
     title: 'Garden layout overview',
     iframeTitle: 'Homestead Keeper garden layout overview',
     description: 'See how to plan beds and keep garden layouts organized in Homestead Keeper.',
@@ -26,6 +31,7 @@ export const tutorials = [
   {
     id: 'garden-timeline',
     videoId: '_d8nW_cCRPk',
+    uploadDate: '2026-07-24T10:10:56-07:00',
     title: 'Garden Timeline Calendar how-to',
     iframeTitle: 'Homestead Keeper Garden Timeline Calendar how-to',
     description: 'Learn how to use the timeline calendar to follow garden activity and seasonal plans.',
@@ -34,6 +40,7 @@ export const tutorials = [
   {
     id: 'breeding-calendar',
     videoId: 'puz9x0UlWco',
+    uploadDate: '2026-07-24T15:00:57-07:00',
     title: 'Breeding Calendar how-to',
     iframeTitle: 'Homestead Keeper Breeding Calendar how-to',
     description: 'Learn how to organize breeding dates, milestones, and upcoming events in the calendar.',
@@ -42,6 +49,7 @@ export const tutorials = [
   {
     id: 'animal-timeline',
     videoId: 'kRVHwDDg-6w',
+    uploadDate: '2026-08-04T10:02:35-07:00',
     title: 'Animal Timeline how-to',
     iframeTitle: 'Homestead Keeper Animal Timeline screen how-to',
     description: 'See how the Animal Timeline brings an animal’s records, activity, and history together in one chronological view.',

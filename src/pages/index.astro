@@ -5,6 +5,7 @@ import CTA from '../components/CTA.astro';
 import ScreenshotFrame from '../components/ScreenshotFrame.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import Showcase from '../components/Showcase.astro';
+import InternalLinkCards from '../components/InternalLinkCards.astro';
 import { appStoreReviews, managementAreas, site, trustPoints } from '../data/site';
 import { sitePath } from '../utils/paths';
 
@@ -70,8 +71,8 @@ const showcases = [
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero-copy">
       <p class="eyebrow">Homestead records for Apple devices</p>
-      <h1 id="hero-title">One place for everything your homestead needs.</h1>
-      <p class="hero-lede">Track animals, gardens, equipment, inventory, and property work without scattered notes and spreadsheets — on iPhone, iPad, and Mac.</p>
+      <h1 id="hero-title">A homestead management app for animals, gardens, and daily work.</h1>
+      <p class="hero-lede">Keep records, plan seasonal chores, and track equipment and supplies on iPhone, iPad, and Mac—even when you’re offline.</p>
       <div class="button-row">
         <AppStoreBadge height={46} />
         <a class="button secondary" href={sitePath('/features')}>See how it works</a>
@@ -84,6 +85,15 @@ const showcases = [
   <ul class="trust-line" aria-label="Privacy and sync highlights">
     {trustPoints.map(([title]) => <li><strong>{title}</strong></li>)}
   </ul>
+
+  <section class="section" aria-labelledby="find-your-fit-title">
+    <SectionHeader headingId="find-your-fit-title" title="Start with the work you do every day." />
+    <InternalLinkCards links={[
+      { title: 'Chicken records and egg tracking', href: '/use-cases/chicken-keepers/', summary: 'Keep egg counts, feed notes, flock history, and coop care together.' },
+      { title: 'Garden planning and harvest records', href: '/use-cases/gardeners/', summary: 'Connect bed layouts to planting dates, harvests, and next season’s plans.' },
+      { title: 'Homestead chores and reminders', href: '/use-cases/homestead-task-tracker/', summary: 'See daily chores, recurring work, and overdue tasks beside the records they belong to.' },
+    ]} />
+  </section>
 
   {showcases.map((item, index) => <Showcase {...item} reverse={index % 2 === 1} />)}
 

@@ -6,6 +6,7 @@ import InternalLinkCards from '../../components/InternalLinkCards.astro';
 import TutorialCard from '../../components/TutorialCard.astro';
 import { guides } from '../../data/guides';
 import { site } from '../../data/site';
+import { tutorials } from '../../data/tutorials';
 
 export function getStaticPaths() {
   return guides.map((guide) => ({
@@ -15,6 +16,7 @@ export function getStaticPaths() {
 }
 
 const { guide } = Astro.props;
+const tutorial = tutorials.find((item) => item.videoId === guide.video?.videoId);
 const url = `${site.url}/guides/${guide.slug}/`;
 
 const otherGuides = guides
@@ -41,7 +43,7 @@ const articleLd: Record<string, unknown> = {
 
 // VideoObject is only emitted when a real embedded video is present on the page.
 const jsonLd: Record<string, unknown>[] = [articleLd];
-if (guide.video) {
+if (guide.video && tutorial) {
   jsonLd.push({
     '@context': 'https://schema.org',
     '@type': 'VideoObject',
@@ -49,7 +51,7 @@ if (guide.video) {
     name: guide.video.title,
     description: guide.video.description,
     embedUrl: `https://www.youtube-nocookie.com/embed/${guide.video.videoId}`,
-    contentUrl: `https://www.youtube.com/watch?v=${guide.video.videoId}`,
+    uploadDate: tutorial.uploadDate,
     thumbnailUrl: `https://i.ytimg.com/vi/${guide.video.videoId}/hqdefault.jpg`,
     publisher: { '@id': `${site.url}/#organization` },
   });

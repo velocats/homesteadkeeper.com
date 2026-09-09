@@ -4,6 +4,7 @@ import CTA from '../components/CTA.astro';
 import PricingCard from '../components/PricingCard.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import { pricingLastVerified, pricingTiers } from '../data/site';
+import { sitePath } from '../utils/paths';
 
 const title = 'Homestead Keeper Pricing | Free and Pro Plans';
 const description = 'Homestead Keeper pricing: Free includes up to 20 items. Pro is $2.99/month, $19.99/year, or $39.99 lifetime and unlocks unlimited items, PDF/CSV exports, backups, QR labels, documents, and advanced tools.';
@@ -49,6 +50,11 @@ const paidFeatures = [
       <h3>Data stays safe.</h3>
       <p>If a subscription lapses, Homestead Keeper does not delete or hide your existing records. Paid actions such as additional items over the Free limit, exports, backups, QR labels, and imports require Pro again.</p>
     </div>
+  </section>
+
+  <section class="section narrow">
+    <h2>Choosing between homestead apps?</h2>
+    <p><a class="text-link" href={sitePath('/compare/homestead-planner/')}>Compare Homestead Keeper with Homestead Planner</a> for devices, free limits, pricing, helper access, and exports.</p>
   </section>
 
   <CTA primaryLabel="View features" primaryHref="/features" secondaryLabel="Read FAQ" secondaryHref="/faq" />

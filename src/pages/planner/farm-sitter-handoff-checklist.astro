@@ -1,0 +1,108 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import InternalLinkCards from '../../components/InternalLinkCards.astro';
+import { site } from '../../data/site';
+
+const title = 'Free Printable Farm Sitter Instructions Checklist | Homestead Keeper';
+const description = 'Print a free farm-sitter handoff checklist for daily routines, animal care, property systems, contacts, current issues, supplies, and record locations.';
+const routineRows = Array.from({ length: 7 }, (_, index) => ({ row: index + 1 }));
+const issueRows = Array.from({ length: 4 }, (_, index) => ({ row: index + 1 }));
+const exampleRoutines = [
+  ['7:00 a.m.', 'Chicken coop', 'Open pop door; refill feeder and waterer', 'Feed bin in coop; spare waterer in barn'],
+  ['7:30 a.m.', 'Goat paddock', 'Hay, fresh water, and visual check of both goats', 'Hay stall; amounts marked on feed scoop'],
+  ['Dusk', 'Chicken coop', 'Confirm all 11 hens are inside; close and latch pop door', 'Call primary contact if a bird is missing'],
+  ['Evening', 'Greenhouse', 'Check soil moisture; water only if note on bench says due', 'Hose at north wall'],
+];
+const exampleIssues = [
+  ['South pasture gate', 'Latch sticks after rain', 'Lift gate slightly while closing; confirm latch catches'],
+  ['Hen: Hazel, red leg band', 'Finishing observation period', 'Check behavior at morning visit; note changes and call owner'],
+  ['Well-house shelf', 'Two filters remain', 'Tell owner if the last spare is used'],
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: 'Farm Sitter Handoff Checklist',
+  description,
+  isAccessibleForFree: true,
+  inLanguage: 'en',
+  url: `${site.url}/planner/farm-sitter-handoff-checklist/`,
+  author: { '@id': `${site.url}/#organization` },
+};
+---
+
+<Layout title={title} description={description} path="/planner/farm-sitter-handoff-checklist/" jsonLd={jsonLd}>
+  <section class="page-hero narrow no-print">
+    <p class="eyebrow">Free printable handoff</p>
+    <h1>Farm sitter instructions checklist</h1>
+    <p class="lede">Give a caretaker the daily routine, places, contacts, current issues, and record locations they need while you are away.</p>
+    <div class="button-row"><button class="button primary" type="button" data-print-checklist>Print the blank checklist</button><a class="button secondary" href="#completed-example">See a completed example</a></div>
+    <p class="microcopy">No sign-up. Two letter-size pages. Store the completed copy securely and leave passwords, alarm codes, and financial information out.</p>
+  </section>
+
+  <div class="print-pages">
+    <section class="print-sheet" aria-labelledby="blank-title">
+      <header class="sheet-header"><div><p class="sheet-kicker">Homestead Keeper printable</p><h2 id="blank-title">Farm Sitter Handoff Checklist</h2></div><p>Prepared: <span class="write-line"></span></p></header>
+      <div class="field-grid"><p>Property: <span class="write-line wide"></span></p><p>Away from: <span class="write-line"></span></p><p>Return: <span class="write-line"></span></p><p>Primary contact: <span class="write-line wide"></span></p><p>Phone: <span class="write-line"></span></p><p>Backup contact: <span class="write-line wide"></span></p></div>
+      <h3>Daily and timed routines</h3>
+      <div class="table-wrap sheet-table-wrap routine-table"><table><thead><tr><th scope="col">#</th><th scope="col">Time / frequency</th><th scope="col">Place, animal, or group</th><th scope="col">What to do</th><th scope="col">Supplies / what to check</th></tr></thead><tbody>{routineRows.map((row) => <tr><td>{row.row}</td><td></td><td></td><td></td><td></td></tr>)}</tbody></table></div>
+      <h3>Key contacts</h3>
+      <div class="contact-grid"><p>Veterinarian: <span></span></p><p>Phone: <span></span></p><p>Trusted neighbor / helper: <span></span></p><p>Phone: <span></span></p><p>Equipment / utility contact: <span></span></p><p>Phone: <span></span></p></div>
+      <footer class="sheet-footer">Page 1 of 2 · homesteadkeeper.com</footer>
+    </section>
+
+    <section class="print-sheet second-page" aria-labelledby="property-title">
+      <header class="sheet-header"><div><p class="sheet-kicker">Farm sitter handoff</p><h2 id="property-title">Property notes and current issues</h2></div><p>Property: <span class="write-line"></span></p></header>
+      <h3>Where important things are</h3>
+      <div class="location-grid"><p>Water shutoff / well controls: <span></span></p><p>Breaker panel: <span></span></p><p>Feed and hay: <span></span></p><p>Animal-care supplies: <span></span></p><p>Tools and spare parts: <span></span></p><p>Fire extinguishers: <span></span></p><p>First-aid supplies: <span></span></p><p>Trash / compost / manure routine: <span></span></p></div>
+      <h3>Current issues and special observations</h3>
+      <div class="table-wrap sheet-table-wrap issue-table"><table><thead><tr><th scope="col">#</th><th scope="col">Animal, place, or system</th><th scope="col">What is happening</th><th scope="col">What the sitter should do</th></tr></thead><tbody>{issueRows.map((row) => <tr><td>{row.row}</td><td></td><td></td><td></td></tr>)}</tbody></table></div>
+      <div class="notes-grid"><p><strong>Where detailed records and instructions live</strong><span></span><span></span></p><p><strong>What requires a call before acting</strong><span></span><span></span></p><p><strong>Other notes</strong><span></span><span></span></p></div>
+      <p class="safety-note"><strong>Emergency:</strong> Call emergency services for immediate danger. Follow written veterinary and equipment instructions; do not improvise medical treatment or hazardous repairs.</p>
+      <footer class="sheet-footer">Page 2 of 2 · homesteadkeeper.com</footer>
+    </section>
+  </div>
+
+  <section class="section no-print" id="completed-example" aria-labelledby="example-title">
+    <p class="eyebrow">Completed example</p><h2 id="example-title">A short handoff for a weekend away</h2>
+    <p>This fictional example shows how specific instructions reduce guesswork. Names, phone numbers, and access details are omitted. A real handoff should use current contacts and instructions for the actual property.</p>
+    <h3>Example routines</h3>
+    <div class="table-wrap example-table"><table><thead><tr><th scope="col">Time</th><th scope="col">Place / group</th><th scope="col">What to do</th><th scope="col">Supplies / check</th></tr></thead><tbody>{exampleRoutines.map((row) => <tr>{row.map((cell, index) => index === 0 ? <th scope="row">{cell}</th> : <td>{cell}</td>)}</tr>)}</tbody></table></div>
+    <h3>Example current issues</h3>
+    <div class="table-wrap example-table"><table><thead><tr><th scope="col">Animal, place, or system</th><th scope="col">What is happening</th><th scope="col">What to do</th></tr></thead><tbody>{exampleIssues.map((row) => <tr>{row.map((cell, index) => index === 0 ? <th scope="row">{cell}</th> : <td>{cell}</td>)}</tr>)}</tbody></table></div>
+  </section>
+
+  <section class="section soft-panel no-print" aria-labelledby="next-title">
+    <h2 id="next-title">Keep the handoff current</h2><p>Homestead Keeper’s records, recurring work, and Property Handoff report can turn current property information into a fresh caretaker summary before each trip.</p>
+    <InternalLinkCards links={[
+      { title: 'What belongs in a homestead handoff binder?', href: '/guides/what-belongs-in-a-homestead-handoff-binder/', summary: 'Cover locations, routines, contacts, current issues, and where detailed records live.' },
+      { title: 'Reports and property handoff', href: '/features/reports/', summary: 'See the app’s summaries, PDF reports, CSV exports, and Property Handoff report.' },
+      { title: 'Rural property records', href: '/use-cases/rural-property-owners/', summary: 'Connect places, equipment, infrastructure, inventory, and seasonal work.' },
+    ]} />
+  </section>
+</Layout>
+
+<script>document.querySelector('[data-print-checklist]')?.addEventListener('click', () => window.print());</script>
+
+<style>
+  .print-pages { display: grid; gap: 2rem; }
+  .print-sheet { width: min(100% - 2rem, 8.5in); margin: 1rem auto; padding: clamp(1.1rem, 3vw, 1.7rem); color: #243122; background: #fffdf8; border: 1px solid var(--line); box-shadow: var(--shadow-sm); }
+  .sheet-header, .field-grid { display: flex; align-items: end; justify-content: space-between; gap: 0.7rem; flex-wrap: wrap; }
+  .sheet-header h2 { margin: 0; font-size: clamp(1.35rem, 3.5vw, 1.9rem); }
+  .sheet-kicker { margin: 0 0 0.15rem; color: var(--green); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+  .write-line { display: inline-block; min-width: 5.5rem; height: 1.1rem; border-bottom: 1px solid currentColor; vertical-align: bottom; }.write-line.wide { min-width: 9rem; }
+  .print-sheet h3 { margin: 0.65rem 0 0.3rem; font-size: 0.9rem; }
+  .sheet-table-wrap { border-color: #79826d; box-shadow: none; background: white; }.sheet-table-wrap table, .example-table table { min-width: 700px; font-size: 0.76rem; }
+  .sheet-table-wrap th, .sheet-table-wrap td { height: 1.75rem; border-color: #aeb5a6; color: #243122; }.sheet-table-wrap thead th { background: #e9eedf; }
+  .contact-grid, .location-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 0.4rem 1rem; }.contact-grid p, .location-grid p { margin: 0; }.contact-grid span, .location-grid span { display: block; height: 1rem; border-bottom: 1px solid #aeb5a6; }
+  .notes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; margin-top: 0.6rem; }.notes-grid p { margin: 0; }.notes-grid span { display: block; height: 1rem; border-bottom: 1px solid #aeb5a6; }
+  .safety-note { margin-top: 0.65rem; padding: 0.5rem; border: 1px solid #aeb5a6; font-size: 0.72rem; }.sheet-footer { margin-top: 0.5rem; color: #687062; font-size: 0.7rem; text-align: center; }.example-table { margin-block: 0.5rem 1.4rem; }
+  @media (max-width: 760px) { .sheet-header { align-items: start; flex-direction: column; }.print-sheet { width: calc(100% - 1rem); padding: 1rem; }.notes-grid { grid-template-columns: 1fr; } }
+  @media print {
+    @page { size: letter portrait; margin: 0.3in; }
+    :global(body) { background: white; }:global(.site-header), :global(.site-footer), :global(.breadcrumbs), :global(.screenshot-lightbox), .no-print { display: none !important; }
+    .print-pages { display: block; }.print-sheet { width: 100%; min-height: 10.35in; margin: 0; padding: 0; border: 0; box-shadow: none; break-after: page; }.print-sheet:last-child { break-after: auto; }
+    .sheet-table-wrap { overflow: visible; }.sheet-table-wrap table { min-width: 0; table-layout: fixed; font-size: 7pt; }.sheet-table-wrap th, .sheet-table-wrap td { height: 0.3in; padding: 0.035in; }
+    .routine-table th:nth-child(1), .issue-table th:nth-child(1) { width: 5%; }.routine-table th:nth-child(2) { width: 15%; }.routine-table th:nth-child(3) { width: 20%; }.routine-table th:nth-child(4) { width: 30%; }.issue-table th:nth-child(2) { width: 24%; }.issue-table th:nth-child(3) { width: 31%; }
+  }
+</style>

@@ -1,0 +1,79 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CTA from '../../components/CTA.astro';
+import AppScreenshot from '../../components/AppScreenshot.astro';
+import InternalLinkCards from '../../components/InternalLinkCards.astro';
+import { homesteadPlannerComparison as comparison } from '../../data/comparisons';
+import { sitePath } from '../../utils/paths';
+
+const title = 'Homestead Keeper vs Homestead Planner: Features & Pricing';
+const description = 'Compare Homestead Keeper and Homestead Planner: devices, offline records, free limits, pricing, garden tools, helpers, and exports. Find the fit for your homestead.';
+---
+
+<Layout title={title} description={description} path="/compare/homestead-planner/">
+  <section class="page-hero narrow">
+    <p class="eyebrow">Compare homestead apps</p>
+    <h1>Homestead Keeper vs Homestead Planner</h1>
+    <p class="lede">Both help organize a small homestead. Your choice depends on where you keep records, how you plan your property, and who needs access.</p>
+    <p class="fine-print">Published by Quiet Tools LLC, the maker of Homestead Keeper. Public product information reviewed {comparison.reviewed}. This is a documented feature comparison, not a hands-on test of Homestead Planner.</p>
+  </section>
+
+  <section class="split-section soft-panel" aria-label="Which app fits your work">
+    <article>
+      <h2>Consider Homestead Keeper for records on Apple devices.</h2>
+      <p>Keep animal, garden, equipment, and supply records with you in the barn or field. Work offline, then use optional iCloud sync to review the same records on your iPad or Mac.</p>
+      <p>A lifetime Pro option is available if you prefer a one-time purchase. <a class="text-link" href={sitePath('/pricing/')}>See the current plans and free limits.</a></p>
+    </article>
+    <article>
+      <h2>Consider Homestead Planner for helper access.</h2>
+      <p>Its advertised Pro tools include separate helper logins and satellite property planning. Those may matter if coordinating a farm sitter or drawing property changes is central to your work.</p>
+      <p><a class="text-link" href="https://homesteadplanner.net/">Explore Homestead Planner’s product details.</a></p>
+    </article>
+  </section>
+
+  <section class="section" aria-labelledby="comparison-title">
+    <h2 id="comparison-title">Compare the details that affect your daily work.</h2>
+    <p>Prices below are advertised dollar prices on the linked product pages. Homestead Keeper prices refer to the U.S. App Store. Regional prices, taxes, and offers may vary; confirm the price before purchasing.</p>
+    <div class="table-wrap" role="region" aria-label="Homestead app comparison, scroll horizontally on small screens" tabindex="0">
+      <table>
+        <caption>Publicly documented features and plans, reviewed {comparison.reviewed}</caption>
+        <thead><tr><th scope="col">What matters</th><th scope="col">Homestead Keeper</th><th scope="col">Homestead Planner</th></tr></thead>
+        <tbody>{comparison.rows.map(([label, keeper, planner]) => <tr><th scope="row">{label}</th><td>{keeper}</td><td>{planner}</td></tr>)}</tbody>
+      </table>
+    </div>
+    <p class="fine-print">An unconfirmed feature is not necessarily unavailable. Ask the developer about any requirement that determines your choice. Optional iCloud sync should not be assumed to provide separate helper accounts.</p>
+  </section>
+
+  <section class="section" aria-labelledby="records-title">
+    <h2 id="records-title">See the records you would use in Homestead Keeper.</h2>
+    <p>These demonstration screens show garden planning and animal production. Try a bed or flock from your own homestead to see whether the workflow fits.</p>
+    <div class="comparison-screens">
+      <AppScreenshot src="assets/screenshots/garden-bed-layout.webp" alt="Homestead Keeper garden bed grid with crops assigned to growing spaces." title="Garden bed layouts" body="Connect crop placement with planting and harvest records." />
+      <AppScreenshot src="assets/screenshots/animal-production.webp" alt="Homestead Keeper animal production records and history." title="Animal production" body="Keep production entries with the animal or flock they belong to." />
+    </div>
+    <InternalLinkCards links={[
+      { title: 'Chicken records and egg tracking', href: '/use-cases/chicken-keepers/', summary: 'Explore flock records, production, and recurring care.' },
+      { title: 'Garden records', href: '/use-cases/gardeners/', summary: 'Follow a bed from planning through harvest.' },
+      { title: 'Reports and exports', href: '/features/reports/', summary: 'See which records you can review and export with Pro.' },
+    ]} />
+  </section>
+
+  <section class="section narrow" aria-labelledby="try-title">
+    <h2 id="try-title">Try the same small job before committing.</h2>
+    <p>Add a flock, record an egg count, and schedule a recurring chore. Then try finding last week’s entry. If you need a helper, offline access, or a particular export format, test that requirement before moving your full records.</p>
+    <p>Neither app needs to win every category. Choose the one that makes your routine easier to maintain.</p>
+  </section>
+
+  <section class="section narrow" aria-labelledby="sources-title">
+    <h2 id="sources-title">Sources and corrections</h2>
+    <p>This comparison uses the public descriptions below. Features and prices can change. <a class="text-link" href={sitePath('/support/')}>Send a correction</a> with a source so we can review it.</p>
+    <ul>{comparison.sources.map((source) => <li><a class="text-link" href={source.href.startsWith('/') ? sitePath(source.href) : source.href}>{source.title}</a></li>)}</ul>
+  </section>
+
+  <CTA title="Try Homestead Keeper with your own records." body="Start free with up to 20 items, or explore the demo homestead first." primaryLabel="View pricing" primaryHref="/pricing/" secondaryLabel="Explore features" secondaryHref="/features/" />
+</Layout>
+
+<style>
+  .comparison-screens { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; max-width: 760px; margin: 1.5rem auto 2rem; }
+  @media (max-width: 600px) { .comparison-screens { grid-template-columns: 1fr; max-width: 380px; } }
+</style>

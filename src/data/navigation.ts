@@ -2,10 +2,15 @@ import { site } from './site';
 
 export const breadcrumbLabels: Record<string, string> = {
   about: 'About',
+  'homestead-planner': 'Homestead Planner Comparison',
   faq: 'FAQ',
   features: 'Features',
   guides: 'Guides',
   equipment: 'Equipment',
+  'egg-production-log': 'Egg Production Log',
+  'equipment-maintenance-log': 'Equipment Maintenance Log',
+  'garden-planting-harvest-log': 'Garden Planting and Harvest Log',
+  'farm-sitter-handoff-checklist': 'Farm Sitter Handoff Checklist',
   bees: 'Bees',
   'food-preservation': 'Food Preservation',
   'what-records-to-keep-for-chickens': 'Chicken Records',
@@ -72,7 +77,8 @@ export function getBreadcrumbs(path: string): BreadcrumbItem[] {
     ...segments.map((segment, index) => ({
       label: breadcrumbLabels[segment] ?? segment.replaceAll('-', ' '),
       href: `/${segments.slice(0, index + 1).join('/')}/`,
-    })),
+    // /compare/ is a route grouping, not a standalone page.
+    })).filter((item) => item.href !== '/compare/'),
   ];
 }
 

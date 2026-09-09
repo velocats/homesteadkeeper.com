@@ -1,0 +1,126 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import InternalLinkCards from '../../components/InternalLinkCards.astro';
+import { site } from '../../data/site';
+
+const title = 'Free Printable Homestead Maintenance Checklist | Homestead Keeper';
+const description = 'Print a free seasonal homestead maintenance checklist organized by place and system. Includes space for frequency, last completed date, next due date, and notes.';
+const blankRows = Array.from({ length: 10 }, (_, index) => ({ row: index + 1 }));
+const exampleRows = [
+  ['Barn', 'Gutters', 'Clear leaves and check downspouts', 'Fall', 'Yearly', 'Oct 12, 2025', 'Oct 2026', 'North downspout needs a longer extension'],
+  ['Pump house', 'Water filters', 'Inspect and replace sediment filter', 'Spring / fall', '6 months', 'Apr 08, 2026', 'Oct 2026', 'Keep two replacement filters on shelf'],
+  ['Chicken coop', 'Building and run', 'Deep clean; inspect hardware cloth and latches', 'Spring', 'Yearly', 'Mar 29, 2026', 'Mar 2027', 'Replace one loose staple near east corner'],
+  ['Equipment shed', 'Generator', 'Run test and review fuel condition', 'Fall', 'Yearly', 'Sep 20, 2025', 'Sep 2026', 'Follow manual before service or testing'],
+  ['South pasture', 'Gate and fence', 'Walk fence; check hinge, latch, and low wire', 'Spring / fall', '6 months', 'Apr 15, 2026', 'Oct 2026', 'Gate still sags after rain'],
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: 'Seasonal Homestead Maintenance Checklist',
+  description,
+  isAccessibleForFree: true,
+  inLanguage: 'en',
+  url: `${site.url}/planner/homestead-maintenance-checklist/`,
+  author: { '@id': `${site.url}/#organization` },
+};
+---
+
+<Layout title={title} description={description} path="/planner/homestead-maintenance-checklist/" jsonLd={jsonLd}>
+  <section class="page-hero narrow no-print">
+    <p class="eyebrow">Free printable checklist</p>
+    <h1>Seasonal homestead maintenance checklist</h1>
+    <p class="lede">Build the list from your own property. Organize work by place, assign a season, and record what should come back around.</p>
+    <div class="button-row">
+      <button class="button primary" type="button" data-print-checklist>Print the blank checklist</button>
+      <a class="button secondary" href="#completed-example">See a completed example</a>
+    </div>
+    <p class="microcopy">No sign-up. Prints on one letter-size page in landscape orientation.</p>
+  </section>
+
+  <section class="print-sheet" aria-labelledby="blank-checklist-title">
+    <header class="sheet-header">
+      <div><p class="sheet-kicker">Homestead Keeper printable</p><h2 id="blank-checklist-title">Seasonal Homestead Maintenance Checklist</h2></div>
+      <p>Season / year: <span class="write-line"></span></p>
+    </header>
+    <div class="property-fields">
+      <p>Homestead or property: <span class="write-line wide"></span></p>
+      <p>Walkthrough date: <span class="write-line"></span></p>
+      <p>Next review: <span class="write-line"></span></p>
+    </div>
+    <div class="table-wrap sheet-table-wrap">
+      <table>
+        <thead><tr><th scope="col">Done</th><th scope="col">Place</th><th scope="col">System / item</th><th scope="col">Task</th><th scope="col">Season</th><th scope="col">Frequency</th><th scope="col">Last done</th><th scope="col">Next due</th><th scope="col">Notes / follow-up</th></tr></thead>
+        <tbody>{blankRows.map((row) => <tr><td><span class="checkbox" aria-hidden="true"></span><span class="row-number">{row.row}</span></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>)}</tbody>
+      </table>
+    </div>
+    <div class="notes"><p><strong>Parts, supplies, professional help, or permits to arrange</strong></p><span></span><span></span></div>
+    <footer class="sheet-footer">homesteadkeeper.com · Start with the places you actually maintain.</footer>
+  </section>
+
+  <section class="section no-print" id="completed-example" aria-labelledby="example-title">
+    <p class="eyebrow">Completed example</p>
+    <h2 id="example-title">A checklist built from a real walk around the property</h2>
+    <p>The example groups work by the place where it happens and records unresolved observations. It is intentionally short. Add a task only when it belongs on your property and you can give it a realistic season or frequency.</p>
+    <div class="table-wrap example-table-wrap">
+      <table>
+        <thead><tr><th scope="col">Place</th><th scope="col">System / item</th><th scope="col">Task</th><th scope="col">Season</th><th scope="col">Frequency</th><th scope="col">Last done</th><th scope="col">Next due</th><th scope="col">Notes / follow-up</th></tr></thead>
+        <tbody>{exampleRows.map((row) => <tr>{row.map((cell, index) => index === 0 ? <th scope="row">{cell}</th> : <td>{cell}</td>)}</tr>)}</tbody>
+      </table>
+    </div>
+    <h3>Use this sheet without creating permanent guilt</h3>
+    <ul class="check-list">
+      <li>Walk the property before writing the list.</li>
+      <li>Group the work by place so one trip covers related tasks.</li>
+      <li>Use seasonal windows when an exact date would be artificial.</li>
+      <li>Write down deferred work, parts to order, and the next item to inspect.</li>
+      <li>Follow equipment manuals and local requirements; use qualified help where the work calls for it.</li>
+    </ul>
+  </section>
+
+  <section class="section soft-panel no-print" aria-labelledby="next-title">
+    <h2 id="next-title">Turn the finished sheet into a repeating system</h2>
+    <p>Homestead Keeper can attach checklists and reminders to the equipment, places, and systems they maintain. Completed work stays in history instead of disappearing with the old paper list.</p>
+    <InternalLinkCards links={[
+      { title: 'How to build a homestead maintenance checklist', href: '/guides/homestead-maintenance-checklist/', summary: 'Walk the property, organize by place, and choose a realistic season and frequency.' },
+      { title: 'Reminders and seasonal work', href: '/features/reminders/', summary: 'See recurring work, overdue tasks, calendar views, and seasonal reports.' },
+      { title: 'See the checklist workflow', href: '/workflows/checklists-for-items/', summary: 'Follow the in-app steps for attaching repeatable work to an item.' },
+    ]} />
+  </section>
+</Layout>
+
+<script>
+  document.querySelector('[data-print-checklist]')?.addEventListener('click', () => window.print());
+</script>
+
+<style>
+  .print-sheet { width: min(100% - 2rem, 11in); margin: 1rem auto 3rem; padding: clamp(1.25rem, 4vw, 2.25rem); color: #243122; background: #fffdf8; border: 1px solid var(--line); box-shadow: var(--shadow-sm); }
+  .sheet-header, .property-fields { display: flex; align-items: end; justify-content: space-between; gap: 1rem; }
+  .sheet-header h2 { margin: 0; font-size: clamp(1.45rem, 3.8vw, 2.1rem); }
+  .sheet-kicker { margin: 0 0 0.2rem; color: var(--green); font-size: 0.75rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+  .write-line { display: inline-block; min-width: 7rem; height: 1.2rem; border-bottom: 1px solid currentColor; vertical-align: bottom; }
+  .write-line.wide { min-width: 12rem; }
+  .sheet-table-wrap { margin-top: 1.1rem; border-color: #79826d; box-shadow: none; background: white; }
+  .sheet-table-wrap table, .example-table-wrap table { min-width: 1000px; font-size: 0.79rem; }
+  .sheet-table-wrap th, .sheet-table-wrap td { height: 2.4rem; border-color: #aeb5a6; color: #243122; }
+  .sheet-table-wrap thead th { background: #e9eedf; }
+  .checkbox { display: inline-block; width: 0.9rem; height: 0.9rem; margin-right: 0.35rem; border: 1px solid #79826d; vertical-align: middle; }
+  .row-number { color: #7b8176; font-size: 0.7rem; }
+  .notes { margin-top: 0.8rem; }
+  .notes p { margin-bottom: 0.3rem; }
+  .notes span { display: block; height: 1.25rem; border-bottom: 1px solid #aeb5a6; }
+  .sheet-footer { margin-top: 0.7rem; color: #687062; font-size: 0.75rem; text-align: center; }
+  .example-table-wrap { margin-block: 1.25rem 2rem; }
+  @media (max-width: 760px) { .sheet-header, .property-fields { align-items: start; flex-direction: column; } .print-sheet { width: calc(100% - 1rem); padding: 1rem; } }
+  @media print {
+    @page { size: letter landscape; margin: 0.25in; }
+    :global(body) { background: white; }
+    :global(.site-header), :global(.site-footer), :global(.breadcrumbs), :global(.screenshot-lightbox), .no-print { display: none !important; }
+    .print-sheet { width: 100%; margin: 0; padding: 0; border: 0; box-shadow: none; }
+    .sheet-table-wrap { overflow: visible; }
+    .sheet-table-wrap table { min-width: 0; table-layout: fixed; font-size: 6.8pt; }
+    .sheet-table-wrap th, .sheet-table-wrap td { height: 0.41in; padding: 0.04in; }
+    .sheet-table-wrap th:nth-child(1) { width: 6%; } .sheet-table-wrap th:nth-child(2) { width: 10%; } .sheet-table-wrap th:nth-child(3) { width: 11%; } .sheet-table-wrap th:nth-child(4) { width: 20%; } .sheet-table-wrap th:nth-child(5) { width: 8%; } .sheet-table-wrap th:nth-child(6) { width: 9%; } .sheet-table-wrap th:nth-child(7), .sheet-table-wrap th:nth-child(8) { width: 9%; } .sheet-table-wrap th:nth-child(9) { width: 18%; }
+    .notes span { height: 0.2in; }
+  }
+</style>

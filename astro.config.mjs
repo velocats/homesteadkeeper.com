@@ -6,7 +6,8 @@ export default defineConfig({
   trailingSlash: 'always',
   integrations: [
     sitemap({
-      lastmod: new Date(),
+      // Omit lastmod until genuine per-page significant-update dates are tracked.
+      // A rebuild alone must not tell crawlers that every page changed.
       filter: (page) =>
         !page.endsWith('/404/') &&
         !page.endsWith('/404.html') &&

@@ -1,0 +1,130 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import InternalLinkCards from '../../components/InternalLinkCards.astro';
+import { site } from '../../data/site';
+
+const title = 'Free Printable Equipment Maintenance Log | Homestead Keeper';
+const description = 'Print a free equipment maintenance log for tractors, mowers, generators, pumps, and tools. Record service dates, hours, work, parts, costs, and the next service.';
+const blankRows = Array.from({ length: 8 }, (_, index) => ({ row: index + 1 }));
+const exampleRows = [
+  ['Mar 18, 2026', '246.3', 'Annual service before mowing season', 'Oil 10W-30; filter 492932S', '$31.48', 'Owner', 'Check belt tension after 10 hours'],
+  ['Apr 02, 2026', '251.7', 'Sharpened blades; cleaned deck', 'No new parts', '$0.00', 'Owner', 'Inspect blades in July'],
+  ['May 14, 2026', '263.1', 'Replaced cracked deck belt', 'Belt 954-04060C', '$42.99', 'Owner', 'Watch right idler pulley'],
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: 'Equipment Maintenance Log',
+  description,
+  isAccessibleForFree: true,
+  inLanguage: 'en',
+  url: `${site.url}/planner/equipment-maintenance-log/`,
+  author: { '@id': `${site.url}/#organization` },
+};
+---
+
+<Layout title={title} description={description} path="/planner/equipment-maintenance-log/" jsonLd={jsonLd}>
+  <section class="page-hero narrow no-print">
+    <p class="eyebrow">Free printable record</p>
+    <h1>Equipment maintenance log</h1>
+    <p class="lede">Give one machine a durable service history. Record what happened, what it cost, and what still needs attention.</p>
+    <div class="button-row">
+      <button class="button primary" type="button" data-print-log>Print the blank log</button>
+      <a class="button secondary" href="#completed-example">See a completed example</a>
+    </div>
+    <p class="microcopy">No sign-up. Prints on one letter-size page in landscape orientation.</p>
+  </section>
+
+  <section class="print-sheet" aria-labelledby="blank-log-title">
+    <header class="sheet-header">
+      <div><p class="sheet-kicker">Homestead Keeper printable</p><h2 id="blank-log-title">Equipment Maintenance Log</h2></div>
+      <p>Record started: <span class="write-line"></span></p>
+    </header>
+    <div class="equipment-fields">
+      <p>Equipment: <span class="write-line wide"></span></p>
+      <p>Make / model: <span class="write-line wide"></span></p>
+      <p>Serial number: <span class="write-line wide"></span></p>
+    </div>
+    <div class="equipment-fields secondary-fields">
+      <p>Stored at: <span class="write-line wide"></span></p>
+      <p>Warranty ends: <span class="write-line"></span></p>
+      <p>Manual / parts source: <span class="write-line wide"></span></p>
+    </div>
+    <div class="table-wrap sheet-table-wrap">
+      <table>
+        <thead><tr><th scope="col">Date</th><th scope="col">Hours / miles</th><th scope="col">Service or repair</th><th scope="col">Parts / fluids</th><th scope="col">Cost</th><th scope="col">Done by</th><th scope="col">Next service / watch item</th></tr></thead>
+        <tbody>{blankRows.map((row) => <tr><td><span class="row-number">{row.row}</span></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>)}</tbody>
+      </table>
+    </div>
+    <div class="notes"><p><strong>Current condition, unresolved problems, or parts to order</strong></p><span></span><span></span></div>
+    <footer class="sheet-footer">homesteadkeeper.com · Record what you found, not only what you finished.</footer>
+  </section>
+
+  <section class="section no-print" id="completed-example" aria-labelledby="example-title">
+    <p class="eyebrow">Completed example</p>
+    <h2 id="example-title">A mower history you can use later</h2>
+    <p>This example keeps routine service, a repair, part numbers, costs, and unresolved observations in one place. The belt replacement is more useful because the entry also says to watch the idler pulley.</p>
+    <div class="table-wrap example-table-wrap">
+      <table>
+        <thead><tr><th scope="col">Date</th><th scope="col">Hours</th><th scope="col">Service or repair</th><th scope="col">Parts / fluids</th><th scope="col">Cost</th><th scope="col">Done by</th><th scope="col">Next service / watch item</th></tr></thead>
+        <tbody>{exampleRows.map((row) => <tr>{row.map((cell, index) => index === 0 ? <th scope="row">{cell}</th> : <td>{cell}</td>)}</tr>)}</tbody>
+        <tfoot><tr><th scope="row" colspan="4">Recorded cost</th><td>$74.47</td><td colspan="2">Labor performed by owner</td></tr></tfoot>
+      </table>
+    </div>
+    <h3>Make each entry answer the next question</h3>
+    <ul class="check-list">
+      <li>Include hours or mileage when the machine tracks them.</li>
+      <li>Write part numbers before throwing away the packaging.</li>
+      <li>Separate parts cost from paid labor when a shop does the work.</li>
+      <li>Record anything deferred or worth watching at the next service.</li>
+      <li>Follow the safety procedures and intervals in the machine’s manual.</li>
+    </ul>
+  </section>
+
+  <section class="section soft-panel no-print" aria-labelledby="next-title">
+    <h2 id="next-title">Keep the manual, reminders, and history together</h2>
+    <p>Homestead Keeper keeps service and repair entries with the machine. Pro can also attach documents, export records, and create QR labels where supported.</p>
+    <InternalLinkCards links={[
+      { title: 'How to keep equipment maintenance records', href: '/guides/equipment-maintenance-records/', summary: 'Choose useful fields and set intervals you will actually follow.' },
+      { title: 'Equipment records in Homestead Keeper', href: '/features/equipment/', summary: 'See service history, parts, warranties, reminders, costs, and reports.' },
+      { title: 'Download the full planner', href: '/planner/', summary: 'Get 32 printable pages for equipment, animals, gardens, food storage, and seasonal work.' },
+    ]} />
+  </section>
+</Layout>
+
+<script>
+  document.querySelector('[data-print-log]')?.addEventListener('click', () => window.print());
+</script>
+
+<style>
+  .print-sheet { width: min(100% - 2rem, 11in); margin: 1rem auto 3rem; padding: clamp(1.25rem, 4vw, 2.25rem); color: #243122; background: #fffdf8; border: 1px solid var(--line); box-shadow: var(--shadow-sm); }
+  .sheet-header, .equipment-fields { display: flex; align-items: end; justify-content: space-between; gap: 1rem; }
+  .sheet-header h2 { margin: 0; font-size: clamp(1.5rem, 4vw, 2.2rem); }
+  .sheet-kicker { margin: 0 0 0.2rem; color: var(--green); font-size: 0.75rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+  .write-line { display: inline-block; min-width: 7rem; height: 1.2rem; border-bottom: 1px solid currentColor; vertical-align: bottom; }
+  .write-line.wide { min-width: 11rem; }
+  .secondary-fields { margin-top: 0.25rem; }
+  .sheet-table-wrap { margin-top: 1.1rem; border-color: #79826d; box-shadow: none; background: white; }
+  .sheet-table-wrap table, .example-table-wrap table { min-width: 900px; font-size: 0.84rem; }
+  .sheet-table-wrap th, .sheet-table-wrap td { height: 2.7rem; border-color: #aeb5a6; color: #243122; }
+  .sheet-table-wrap thead th { background: #e9eedf; }
+  .row-number { color: #7b8176; font-size: 0.75rem; }
+  .notes { margin-top: 0.8rem; }
+  .notes p { margin-bottom: 0.3rem; }
+  .notes span { display: block; height: 1.4rem; border-bottom: 1px solid #aeb5a6; }
+  .sheet-footer { margin-top: 0.75rem; color: #687062; font-size: 0.75rem; text-align: center; }
+  .example-table-wrap { margin-block: 1.25rem 2rem; }
+  @media (max-width: 760px) { .sheet-header, .equipment-fields { align-items: start; flex-direction: column; } .print-sheet { width: calc(100% - 1rem); padding: 1rem; } }
+  @media print {
+    @page { size: letter landscape; margin: 0.3in; }
+    :global(body) { background: white; }
+    :global(.site-header), :global(.site-footer), :global(.breadcrumbs), :global(.screenshot-lightbox), .no-print { display: none !important; }
+    .print-sheet { width: 100%; margin: 0; padding: 0; border: 0; box-shadow: none; }
+    .sheet-table-wrap { overflow: visible; }
+    .sheet-table-wrap table { min-width: 0; table-layout: fixed; font-size: 7.5pt; }
+    .sheet-table-wrap th, .sheet-table-wrap td { height: 0.48in; padding: 0.06in; }
+    .sheet-table-wrap th:nth-child(1) { width: 9%; } .sheet-table-wrap th:nth-child(2) { width: 9%; } .sheet-table-wrap th:nth-child(3) { width: 20%; } .sheet-table-wrap th:nth-child(4) { width: 17%; } .sheet-table-wrap th:nth-child(5) { width: 8%; } .sheet-table-wrap th:nth-child(6) { width: 10%; } .sheet-table-wrap th:nth-child(7) { width: 27%; }
+    .notes span { height: 0.26in; }
+  }
+</style>

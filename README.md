@@ -67,6 +67,8 @@ Read `SEO_AUDIT.md` before making structural changes. The important invariants:
 
 ## Related documents
 
+- [Competitive SEO plan — September 9, 2026](docs/SEO-COMPETITIVE-PLAN-2026-09-09.md) —
+  Homestead Planner comparison, verified findings, prioritized backlog, and 90-day plan
 - `SEO_AUDIT.md` — SEO audit, keyword/intent map, implementation log, and the
   Visual Design & Brand Audit (proposed, not implemented)
 - `docs/AEO-AUDIT-2026-08-12.md` — earlier answer-engine/citation readiness audit

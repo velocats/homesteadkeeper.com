@@ -1,0 +1,131 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import InternalLinkCards from '../../components/InternalLinkCards.astro';
+import { site } from '../../data/site';
+import { sitePath } from '../../utils/paths';
+
+const title = 'Free Printable Egg Production Log | Homestead Keeper';
+const description = 'Print a free weekly chicken egg production log with space for flock count, eggs collected, damaged eggs, feed notes, weather, and observations. Includes a completed example.';
+const blankRows = Array.from({ length: 7 }, (_, index) => ({ day: index + 1 }));
+const exampleRows = [
+  ['Mon', '12', '9', '0', 'Layer pellets; water refilled', 'Clear, 68°F', 'Normal morning collection'],
+  ['Tue', '12', '8', '1', 'Layer pellets', 'Cloudy, 62°F', 'One thin shell'],
+  ['Wed', '12', '10', '0', 'Layer pellets; oyster shell', 'Clear, 71°F', ''],
+  ['Thu', '12', '7', '0', 'Layer pellets', 'Rain, 55°F', 'Two hens stayed in coop'],
+  ['Fri', '12', '9', '0', 'Layer pellets', 'Clear, 65°F', ''],
+  ['Sat', '12', '11', '0', 'Layer pellets; scraps', 'Clear, 73°F', 'Highest day this week'],
+  ['Sun', '12', '8', '0', 'Layer pellets', 'Windy, 60°F', ''],
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: 'Weekly Egg Production Log',
+  description,
+  isAccessibleForFree: true,
+  inLanguage: 'en',
+  url: `${site.url}/planner/egg-production-log/`,
+  author: { '@id': `${site.url}/#organization` },
+};
+---
+
+<Layout title={title} description={description} path="/planner/egg-production-log/" jsonLd={jsonLd}>
+  <section class="page-hero narrow no-print">
+    <p class="eyebrow">Free printable record</p>
+    <h1>Weekly egg production log</h1>
+    <p class="lede">Track one flock for one week. The sheet keeps the count simple while leaving enough room to explain an unusual day.</p>
+    <div class="button-row">
+      <button class="button primary" type="button" data-print-log>Print the blank log</button>
+      <a class="button secondary" href="#completed-example">See a completed example</a>
+    </div>
+    <p class="microcopy">No sign-up. Prints on one letter-size page in portrait orientation.</p>
+  </section>
+
+  <section class="print-sheet" aria-labelledby="blank-log-title">
+    <header class="sheet-header">
+      <div><p class="sheet-kicker">Homestead Keeper printable</p><h2 id="blank-log-title">Weekly Egg Production Log</h2></div>
+      <p>Week of: <span class="write-line"></span></p>
+    </header>
+    <div class="flock-fields">
+      <p>Flock or coop: <span class="write-line wide"></span></p>
+      <p>Breed or group: <span class="write-line wide"></span></p>
+    </div>
+    <div class="table-wrap sheet-table-wrap">
+      <table>
+        <thead><tr><th scope="col">Date</th><th scope="col">Hens</th><th scope="col">Eggs</th><th scope="col">Damaged</th><th scope="col">Feed / care</th><th scope="col">Weather</th><th scope="col">Notes</th></tr></thead>
+        <tbody>{blankRows.map((row) => <tr><td><span class="row-number">{row.day}</span></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>)}</tbody>
+        <tfoot><tr><th scope="row">Weekly total</th><td></td><td></td><td></td><td colspan="3">Average eggs per day: __________________</td></tr></tfoot>
+      </table>
+    </div>
+    <div class="weekly-notes">
+      <p><strong>Anything worth watching next week?</strong></p>
+      <span></span><span></span>
+    </div>
+    <footer class="sheet-footer">homesteadkeeper.com · Track the pattern, not perfection.</footer>
+  </section>
+
+  <section class="section no-print" id="completed-example" aria-labelledby="example-title">
+    <p class="eyebrow">Completed example</p>
+    <h2 id="example-title">What a useful week looks like</h2>
+    <p>The example records enough context to explain a change without turning every collection into paperwork. The flock produced 62 usable eggs, or 8.9 per day. Thursday’s dip happened alongside rain and more time in the coop; one week alone does not establish a cause.</p>
+    <div class="table-wrap example-table-wrap">
+      <table>
+        <thead><tr><th scope="col">Day</th><th scope="col">Hens</th><th scope="col">Eggs</th><th scope="col">Damaged</th><th scope="col">Feed / care</th><th scope="col">Weather</th><th scope="col">Notes</th></tr></thead>
+        <tbody>{exampleRows.map((row) => <tr>{row.map((cell, index) => index === 0 ? <th scope="row">{cell}</th> : <td>{cell}</td>)}</tr>)}</tbody>
+      </table>
+    </div>
+    <h3>Keep the record sustainable</h3>
+    <ul class="check-list">
+      <li>Count usable and damaged eggs separately.</li>
+      <li>Record flock size when birds are added, sold, or lost.</li>
+      <li>Add weather, feed, molt, illness, or predator stress only when it may explain a change.</li>
+      <li>Review several weeks before treating a single low day as a trend.</li>
+    </ul>
+  </section>
+
+  <section class="section soft-panel no-print" aria-labelledby="next-title">
+    <h2 id="next-title">Continue the record beyond one sheet</h2>
+    <p>Homestead Keeper stores egg counts with the flock and rolls entries into production history. You can also keep feed, health notes, recurring care, and coop maintenance connected to the same group.</p>
+    <InternalLinkCards links={[
+      { title: 'What chicken records should you keep?', href: '/guides/what-records-to-keep-for-chickens/', summary: 'Choose the six record types that answer useful questions later.' },
+      { title: 'Chicken records in Homestead Keeper', href: '/use-cases/chicken-keepers/', summary: 'See flock records, egg production, care reminders, and coop work in the app.' },
+      { title: 'Download the full planner', href: '/planner/', summary: 'Get 32 printable pages for animals, gardens, equipment, food storage, and seasonal work.' },
+    ]} />
+  </section>
+</Layout>
+
+<script>
+  document.querySelector('[data-print-log]')?.addEventListener('click', () => window.print());
+</script>
+
+<style>
+  .print-sheet { width: min(100% - 2rem, 8.5in); margin: 1rem auto 3rem; padding: clamp(1.25rem, 4vw, 2.25rem); color: #243122; background: #fffdf8; border: 1px solid var(--line); box-shadow: var(--shadow-sm); }
+  .sheet-header, .flock-fields { display: flex; align-items: end; justify-content: space-between; gap: 1rem; }
+  .sheet-header h2 { margin: 0; font-size: clamp(1.5rem, 4vw, 2.2rem); }
+  .sheet-kicker { margin: 0 0 0.2rem; color: var(--green); font-size: 0.75rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+  .write-line { display: inline-block; min-width: 8rem; height: 1.2rem; border-bottom: 1px solid currentColor; vertical-align: bottom; }
+  .write-line.wide { min-width: 12rem; }
+  .sheet-table-wrap { margin-top: 1.25rem; border-color: #79826d; box-shadow: none; background: white; }
+  .sheet-table-wrap table, .example-table-wrap table { min-width: 760px; font-size: 0.88rem; }
+  .sheet-table-wrap th, .sheet-table-wrap td { height: 3.1rem; border-color: #aeb5a6; color: #243122; }
+  .sheet-table-wrap thead th { background: #e9eedf; }
+  .row-number { color: #7b8176; font-size: 0.75rem; }
+  .weekly-notes { margin-top: 1rem; }
+  .weekly-notes p { margin-bottom: 0.4rem; }
+  .weekly-notes span { display: block; height: 1.7rem; border-bottom: 1px solid #aeb5a6; }
+  .sheet-footer { margin-top: 1rem; color: #687062; font-size: 0.75rem; text-align: center; }
+  .example-table-wrap { margin-block: 1.25rem 2rem; }
+  @media (max-width: 720px) { .sheet-header, .flock-fields { align-items: start; flex-direction: column; } .print-sheet { width: calc(100% - 1rem); padding: 1rem; } }
+  @media print {
+    @page { size: letter portrait; margin: 0.35in; }
+    :global(body) { background: white; }
+    :global(.site-header), :global(.site-footer), :global(.breadcrumbs), :global(.screenshot-lightbox), .no-print { display: none !important; }
+    .print-sheet { width: 100%; margin: 0; padding: 0; border: 0; box-shadow: none; }
+    .sheet-table-wrap { overflow: visible; }
+    .sheet-table-wrap table { min-width: 0; table-layout: fixed; font-size: 8pt; }
+    .sheet-table-wrap th, .sheet-table-wrap td { height: 0.65in; padding: 0.08in; }
+    .sheet-table-wrap th:nth-child(1) { width: 8%; } .sheet-table-wrap th:nth-child(2), .sheet-table-wrap th:nth-child(3), .sheet-table-wrap th:nth-child(4) { width: 8%; }
+    .sheet-table-wrap th:nth-child(5) { width: 21%; } .sheet-table-wrap th:nth-child(6) { width: 15%; } .sheet-table-wrap th:nth-child(7) { width: 32%; }
+    .weekly-notes span { height: 0.35in; }
+  }
+</style>

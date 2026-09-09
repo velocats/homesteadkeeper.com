@@ -32,7 +32,7 @@ const jsonLd = [
     name: tutorial.title,
     description: tutorial.description,
     embedUrl: `https://www.youtube-nocookie.com/embed/${tutorial.videoId}`,
-    contentUrl: `https://www.youtube.com/watch?v=${tutorial.videoId}`,
+    uploadDate: tutorial.uploadDate,
     thumbnailUrl: `https://i.ytimg.com/vi/${tutorial.videoId}/hqdefault.jpg`,
     publisher: { '@id': `${site.url}/#organization` },
     isPartOf: { '@id': `${site.url}/#website` },
