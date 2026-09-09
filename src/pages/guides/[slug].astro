@@ -35,8 +35,9 @@ const articleLd: Record<string, unknown> = {
   description: guide.description,
   url,
   mainEntityOfPage: url,
-  author: { '@id': `${site.url}/#organization` },
+  author: { '@id': `${site.url}/about/#support-team` },
   publisher: { '@id': `${site.url}/#organization` },
+  dateModified: site.guideReviewDate,
   isPartOf: { '@id': `${site.url}/#website` },
   about: guide.keywords,
 };
@@ -63,6 +64,7 @@ if (guide.video && tutorial) {
     <p class="eyebrow">{guide.eyebrow}</p>
     <h1>{guide.h1}</h1>
     <p class="lede">{guide.intro}</p>
+    <p class="guide-byline">By <a href="/about/#support-team">{site.editorialTeamName}</a> · {site.editorialLocation} · Reviewed <time datetime={site.guideReviewDate}>{site.guideReviewDateLabel}</time></p>
   </section>
 
   <section class="section soft-panel" aria-labelledby="short-answer-title">
@@ -138,3 +140,14 @@ if (guide.video && tutorial) {
     body="Homestead Keeper brings animal, garden, equipment, inventory, and maintenance records together on iPhone, iPad, and Mac. Start free with up to 20 items."
   />
 </Layout>
+
+<style>
+  .guide-byline {
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+  .guide-byline a {
+    color: var(--green);
+    font-weight: var(--fw-semibold);
+  }
+</style>

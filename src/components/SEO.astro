@@ -25,6 +25,7 @@ const breadcrumbLd = getBreadcrumbJsonLd(normalizedPath);
 const organizationId = `${site.url}/#organization`;
 const websiteId = `${site.url}/#website`;
 const applicationId = `${site.url}/#application`;
+const editorialTeamId = `${site.url}/about/#support-team`;
 const entityGraph = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -44,6 +45,18 @@ const entityGraph = {
       name: site.name,
       url: site.url,
       publisher: { '@id': organizationId },
+    },
+    {
+      '@type': 'Organization',
+      '@id': editorialTeamId,
+      name: site.editorialTeamName,
+      url: `${site.url}/about/#support-team`,
+      parentOrganization: { '@id': organizationId },
+      address: {
+        '@type': 'PostalAddress',
+        addressRegion: 'Colorado',
+        addressCountry: 'US',
+      },
     },
     {
       '@type': 'SoftwareApplication',
