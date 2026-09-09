@@ -3,8 +3,12 @@ import { assetPath } from '../utils/paths';
 interface Props { src?: string; alt?: string; caption?: string; loading?: 'lazy' | 'eager'; }
 const { src = 'assets/screenshots/homestead-hub.webp', alt = 'Homestead Keeper Homestead Hub showing featured garden, animals, property, inventory, and other homestead areas.', caption = 'Homestead Hub, the home base for your garden, animals, property, inventory, and records.', loading = 'lazy' } = Astro.props;
 const imageUrl = assetPath(src);
-const hasResponsiveVariant = src.endsWith('.webp') && (src.startsWith('assets/workflows/') || src.startsWith('assets/screenshots/macOS/'));
+const isHomepageHero = src === 'assets/screenshots/homestead-hub.webp';
+const hasResponsiveVariant = src.endsWith('.webp') && (src.startsWith('assets/workflows/') || src.startsWith('assets/screenshots/macOS/') || isHomepageHero);
 const smallImageUrl = hasResponsiveVariant ? assetPath(src.replace(/\.webp$/, '-800.webp')) : undefined;
+const responsiveSrcset = isHomepageHero
+  ? [480, 800, 1200].map((width) => `${assetPath(src.replace(/\.webp$/, `-${width}.webp`))} ${width}w`).concat(`${imageUrl} 2048w`).join(', ')
+  : smallImageUrl ? `${smallImageUrl} 800w, ${imageUrl} 1600w` : undefined;
 const isMacScreenshot = src.startsWith('assets/screenshots/macOS/');
 const actionLabel = `Expand screenshot: ${caption ?? alt}`;
 ---
@@ -19,10 +23,10 @@ const actionLabel = `Expand screenshot: ${caption ?? alt}`;
   >
     <img
       src={imageUrl}
-      srcset={smallImageUrl ? `${smallImageUrl} 800w, ${imageUrl} 1600w` : undefined}
-      sizes="(max-width: 720px) 100vw, 50vw"
-      width={isMacScreenshot ? 1280 : 1200}
-      height={isMacScreenshot ? 800 : 1600}
+      srcset={responsiveSrcset}
+      sizes="(max-width: 1020px) calc(100vw - 2rem), min(50vw, 540px)"
+      width={isMacScreenshot ? 1280 : isHomepageHero ? 2048 : 1200}
+      height={isMacScreenshot ? 800 : isHomepageHero ? 2732 : 1600}
       alt={alt}
       loading={loading}
       decoding="async"
