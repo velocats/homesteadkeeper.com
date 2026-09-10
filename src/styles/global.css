@@ -21,9 +21,9 @@
 
   /* Surfaces. Cards stay lighter than the canvas, not darker: Steep's darker
      "mist" layer reads muddy over cream. */
-  --canvas: #fbf4e7;      /* Level 0 - page background */
+  --canvas: #f5ecda;      /* Level 0 - page background */
   --surface: #fffaf0;     /* Level 1 - cards, flat and quiet */
-  --surface-2: #f6efe1;   /* Level 2 - alternating section bands, footer wash */
+  --surface-2: #efe5d2;   /* Level 2 - alternating bands, deeper than the canvas */
 
   /* Ink. Steep runs one dark surface for headings, filled buttons, and nav.
      Here that role is a darkened brand green: near-black in value, still ours. */
@@ -31,7 +31,7 @@
   --ink-2: #2b3b2f;       /* hover lift on the filled pill only */
 
   /* Text. Warm neutrals -- Steep's system is deliberately near-achromatic. */
-  --muted: #6f6a60;       /* body, links, footer copy */
+  --muted: #656057;       /* body, links, footer copy. AA on all four surfaces */
   --muted-2: #948d81;     /* captions, tags, separators. Never body copy: ~2.7:1 */
   --line: #e4ddcd;        /* hairline -- inputs and table rules only */
 
@@ -74,15 +74,24 @@
   --fw-medium: 450;
   --fw-semibold: 600;
 
-  /* Shadows (2 steps). Replaces 22 near-identical soft glows. */
-  --shadow-sm: 0 1px 3px rgba(29, 42, 32, 0.08);
-  --shadow-lg: 0 8px 24px rgba(29, 42, 32, 0.10);
-  --shadow: var(--shadow-lg);
+  /* Elevation. Steep gives content cards none at all -- only floating product
+     artifacts (the app screenshots) and true overlays are lifted off the page,
+     and even then at 10% opacity behind a hairline ring. */
+  --shadow-artifact:
+    0 0 0 1px rgba(29, 42, 32, 0.05),
+    0 20px 25px -5px rgba(0, 0, 0, 0.10),
+    0 8px 10px -6px rgba(0, 0, 0, 0.10);
+  --shadow-overlay: 0 0 0 1px rgba(29, 42, 32, 0.05), 0 24px 48px -12px rgba(0, 0, 0, 0.24);
+  --shadow-sm: var(--shadow-artifact);
+  --shadow-lg: var(--shadow-artifact);
+  --shadow: var(--shadow-artifact);
 
-  /* Radii (3 steps). Replaces 13 values. */
-  --radius-sm: 8px;
+  /* Radii. Steep's two structural radii are 24px on content cards and a full
+     pill on every button; 16px covers inputs and small chips, 12px images. */
+  --radius-sm: 12px;
   --radius-md: 16px;
-  --radius-lg: 28px;
+  --radius-lg: 24px;
+  --radius-pill: 9999px;
 
   /* Spacing scale (6 steps). */
   --space-1: 0.25rem;
@@ -131,11 +140,11 @@ ul, ol { margin: 0; padding: 0; }
   display: flex; align-items: center; justify-content: space-between; gap: 1rem;
   padding-block: 0.85rem;
   border-bottom: 1px solid rgba(228, 221, 205, 0.8);
-  background: rgba(251, 244, 231, 0.92);
+  background: rgba(245, 236, 218, 0.92);
   backdrop-filter: blur(18px);
 }
 .brand { display: inline-flex; align-items: center; gap: 0.7rem; color: var(--green); font-weight: var(--fw-semibold); text-decoration: none; white-space: nowrap; }
-.brand img { width: 44px; height: 44px; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); }
+.brand img { width: 44px; height: 44px; border-radius: var(--radius-sm); }
 .nav-toggle { display: none; }
 .main-nav ul { display: flex; align-items: center; flex-wrap: wrap; justify-content: flex-end; gap: clamp(0.35rem, 1.5vw, 1rem); color: var(--green); font-size: var(--text-sm); font-weight: var(--fw-medium); list-style: none; }
 .main-nav li { position: relative; }
@@ -199,9 +208,9 @@ ul, ol { margin: 0; padding: 0; }
   outline-offset: -1px;
 }
 
-.hero, .page-hero, .section, .split-section, .cta-band { width: min(1180px, 100%); margin-inline: auto; }
+.hero, .page-hero, .section, .split-section, .cta-band { width: min(1200px, 100%); margin-inline: auto; }
 .breadcrumbs {
-  width: min(1180px, 100%);
+  width: min(1200px, 100%);
   margin: 0 auto;
   padding: 1rem clamp(1rem, 4vw, 4rem) 0;
   color: var(--muted);
@@ -217,7 +226,7 @@ ul, ol { margin: 0; padding: 0; }
 .hero {
   display: grid; grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr); align-items: center;
   gap: clamp(2rem, 5vw, 4.5rem);
-  width: min(1180px, 100%);
+  width: min(1200px, 100%);
   margin-top: clamp(1.5rem, 4vw, 3rem);
   padding-block: clamp(0.5rem, 2vw, 1.5rem);
 }
@@ -269,13 +278,13 @@ ul, ol { margin: 0; padding: 0; }
 .page-hero { display: grid; gap: 1.1rem; padding-block: clamp(2.5rem, 6vw, 5rem) clamp(1rem, 3vw, 2rem); }
 .page-hero h1 { max-width: 24ch; }
 .page-hero.narrow h1 { max-width: 20ch; }
-.section { display: grid; gap: clamp(1.4rem, 3vw, 2.2rem); padding-block: clamp(2.3rem, 5vw, 4.8rem); }
+.section { display: grid; gap: clamp(1.4rem, 3vw, 2.2rem); padding-block: clamp(3rem, 6vw, 5rem); }
 .split-section {
   display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(280px, 1.1fr); align-items: center;
   gap: clamp(1.8rem, 5vw, 4rem); padding-block: clamp(2.3rem, 5vw, 4.8rem);
 }
 .split-section > div { display: grid; gap: 1rem; min-width: 0; }
-.soft-panel { padding: clamp(1.35rem, 4vw, 3rem); border: 1px solid var(--line); border-radius: var(--radius-lg); background: rgba(255, 250, 240, 0.64); box-shadow: var(--shadow-sm); }
+.soft-panel { padding: clamp(1.35rem, 4vw, 3rem); border-radius: var(--radius-lg); background: rgba(255, 250, 240, 0.64); }
 .section-header { display: grid; gap: 0.85rem; }
 .section-header h2, .split-section h2 { max-width: 28ch; }
 .lede, .split-section p, .card p, .pricing-card p, .faq-item p, .cta-band p { max-width: 68ch; color: var(--muted); }
@@ -285,10 +294,8 @@ ul, ol { margin: 0; padding: 0; }
 .video-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1rem, 2.5vw, 1.5rem); }
 .video-card {
   overflow: hidden;
-  border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: rgba(255, 250, 240, 0.82);
-  box-shadow: var(--shadow);
 }
 .video-embed {
   overflow: hidden;
@@ -303,7 +310,9 @@ ul, ol { margin: 0; padding: 0; }
 .tutorial-anchor .video-card { height: 100%; }
 
 .button-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.85rem; }
-.button { display: inline-flex; align-items: center; justify-content: center; min-height: 3rem; padding: 0.72rem 1.1rem; border: 1px solid transparent; border-radius: var(--radius-lg); font-weight: var(--fw-semibold); text-decoration: none; }
+/* Pill geometry is shared by the filled and ghost variants so they read as a
+   matched pair on the same baseline. Weight stays normal -- Steep never bolds. */
+.button { display: inline-flex; align-items: center; justify-content: center; min-height: 3rem; padding: 0.72rem 1.25rem; border: 1px solid transparent; border-radius: var(--radius-pill); font-weight: var(--fw-normal); text-decoration: none; }
 .button.primary { background: var(--green); color: var(--paper); }
 .button.primary:hover { background: var(--green-2); }
 /* On the dark green CTA band the primary button must invert to stay legible. */
@@ -316,8 +325,10 @@ ul, ol { margin: 0; padding: 0; }
 
 .card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
 .card-grid.compact { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+/* The workhorse card: flat, soft, quiet. Steep gives content cards no border
+   and no shadow -- only floating screenshot artifacts earn elevation. */
 .card, .feature-card, .pricing-card, .map-card, .callout-card, .faq-item {
-  border: 1px solid var(--line); border-radius: var(--radius-md); background: rgba(255, 250, 240, 0.82); box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-lg); background: var(--surface);
 }
 .card, .feature-card, .pricing-card, .map-card, .callout-card { display: grid; gap: 0.8rem; padding: 1.1rem; }
 .feature-card p { font-size: var(--text-sm); }
@@ -326,18 +337,22 @@ ul, ol { margin: 0; padding: 0; }
 .callout-card h3 { font-size: var(--text-lg); }
 
 .screenshot-frame { margin: 0; display: grid; gap: 0.8rem; }
-.device-shell { overflow: hidden; border: 10px solid rgba(255, 250, 240, 0.72); border-radius: var(--radius-lg); background: var(--paper); box-shadow: var(--shadow-sm); max-height: 680px; }
+/* Floating product artifact. The hairline ring inside --shadow-artifact
+   replaces the old 10px paper bezel. */
+.device-shell { overflow: hidden; border-radius: 20px; background: var(--surface); box-shadow: var(--shadow-artifact); max-height: 680px; }
 .device-shell img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
 .screenshot-frame figcaption { color: rgba(255, 250, 240, 0.72); font-size: var(--text-sm); text-align: center; }
 .split-section .screenshot-frame figcaption { color: var(--muted); }
 
 .timeline { counter-reset: step; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 0.8rem; list-style: none; }
-.timeline li { counter-increment: step; position: relative; min-height: 10rem; padding: 3.1rem 1rem 1rem; border: 1px solid var(--line); border-radius: var(--radius-md); background: rgba(255, 250, 240, 0.82); color: var(--muted); font-weight: var(--fw-medium); box-shadow: var(--shadow-sm); }
+.timeline li { counter-increment: step; position: relative; min-height: 10rem; padding: 3.1rem 1rem 1rem; border-radius: var(--radius-md); background: rgba(255, 250, 240, 0.82); color: var(--muted); font-weight: var(--fw-medium); }
 .timeline li::before { content: counter(step); position: absolute; top: 1rem; left: 1rem; display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: var(--radius-lg); background: var(--green); color: var(--paper); font-weight: var(--fw-semibold); }
 
 .pricing-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; align-items: stretch; }
 .pricing-card { padding: 1.35rem; }
-.pricing-card.highlighted { border-color: rgba(121, 50, 35, 0.35); background: var(--sage-2); }
+/* Emphasis without a second accent surface: the ring is the only outline in
+   the system, so the recommended plan reads as chosen rather than tinted. */
+.pricing-card.highlighted { background: var(--surface); box-shadow: inset 0 0 0 1.5px var(--ink); }
 .plan-name { color: var(--clay-dark); font-weight: var(--fw-semibold); text-transform: uppercase; letter-spacing: 0.09em; font-size: var(--text-xs); }
 .check-list { display: grid; gap: 0.55rem; list-style: none; }
 .check-list li { position: relative; padding-left: 1.45rem; color: var(--muted); }
@@ -374,10 +389,8 @@ ul, ol { margin: 0; padding: 0; }
   align-content: start;
   gap: 0.85rem;
   padding: 1.1rem;
-  border: 1px solid var(--line);
   border-radius: var(--radius-md);
   background: rgba(255, 250, 240, 0.82);
-  box-shadow: var(--shadow-sm);
 }
 .feature-group h3 {
   font-size: var(--text-lg);
@@ -419,10 +432,8 @@ ul, ol { margin: 0; padding: 0; }
   justify-content: space-between;
   gap: 1.25rem;
   padding: clamp(1.25rem, 3vw, 2rem);
-  border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: rgba(255, 250, 240, 0.76);
-  box-shadow: var(--shadow-sm);
 }
 .app-store-band h2 {
   max-width: 28ch;
@@ -432,13 +443,13 @@ ul, ol { margin: 0; padding: 0; }
 /* The footer is secondary matter and sits at Steep's caption step, not body.
    This also keeps the five columns inside their tracks: at the 17px body size
    the last column's links overflowed the page by 2px. */
-.footer-grid { display: grid; grid-template-columns: minmax(240px, 1.4fr) repeat(4, minmax(140px, 1fr)); gap: 1.75rem 1.5rem; width: min(1180px, 100%); margin-inline: auto; font-size: var(--text-sm); }
+.footer-grid { display: grid; grid-template-columns: minmax(240px, 1.4fr) repeat(4, minmax(140px, 1fr)); gap: 1.75rem 1.5rem; width: min(1200px, 100%); margin-inline: auto; font-size: var(--text-sm); }
 .footer-grid section, .footer-grid nav, .footer-link-list { display: grid; align-content: start; gap: 0.6rem; }
 .footer-grid h2 { font: inherit; color: var(--green); font-weight: var(--fw-semibold); }
 .footer-grid p, .copyright, .fine-print { color: var(--muted); font-size: var(--text-sm); }
 .footer-grid a { color: var(--green); font-weight: var(--fw-medium); text-decoration: none; }
 .footer-brand img { width: 40px; height: 40px; }
-.copyright { width: min(1180px, 100%); margin: 2rem auto 0; }
+.copyright { width: min(1200px, 100%); margin: 2rem auto 0; }
 
 @media (max-width: 1100px) {
   .hero { grid-template-columns: minmax(0, 1fr); }
@@ -544,9 +555,9 @@ ul, ol { margin: 0; padding: 0; }
 .feature-rows > .showcase:not(:last-child) { border-bottom: 1px solid var(--line); }
 .feature-row-text-only { max-width: 66ch; margin-inline: auto; }
 .sidebar-stack { display: grid; gap: 1rem; align-content: start; }
-.info-card, .placeholder-card { display: grid; gap: 0.7rem; padding: 1.1rem; border: 1px solid var(--line); border-radius: var(--radius-md); background: rgba(255, 250, 240, 0.82); box-shadow: var(--shadow-sm); }
+.info-card, .placeholder-card { display: grid; gap: 0.7rem; padding: 1.1rem; border-radius: var(--radius-lg); background: var(--surface); }
 .link-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
-.link-card { display: grid; gap: 0.5rem; padding: 1.1rem; border: 1px solid var(--line); border-radius: var(--radius-md); background: rgba(255, 250, 240, 0.82); color: var(--ink); text-decoration: none; box-shadow: var(--shadow-sm); }
+.link-card { display: grid; gap: 0.5rem; padding: 1.1rem; border-radius: var(--radius-lg); background: var(--surface); color: var(--ink); text-decoration: none; }
 .link-card span { color: var(--green); font-weight: var(--fw-semibold); font-size: var(--text-md); }
 .link-card p, .info-card p, .placeholder-card p { color: var(--muted); }
 @media (max-width: 1020px) { .link-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -571,10 +582,8 @@ ul, ol { margin: 0; padding: 0; }
   gap: 0.8rem;
   margin: 0;
   padding: clamp(1.1rem, 2vw, 1.4rem);
-  border: 1px solid var(--line);
   border-radius: var(--radius-md);
   background: rgba(255, 250, 240, 0.84);
-  box-shadow: var(--shadow-sm);
 }
 .review-stars {
   color: var(--clay-dark);
@@ -602,14 +611,12 @@ ul, ol { margin: 0; padding: 0; }
   display: grid;
   gap: 0.35rem;
   padding: 1rem;
-  border: 1px solid var(--line);
   border-radius: var(--radius-md);
   background: rgba(255, 250, 240, 0.78);
-  box-shadow: var(--shadow-sm);
 }
 .trust-strip strong { color: var(--green); font-weight: var(--fw-semibold); }
 .trust-strip span { color: var(--muted); font-size: var(--text-sm); line-height: 1.45; }
-.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius-md); background: rgba(255, 250, 240, 0.82); box-shadow: var(--shadow-sm); }
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface); }
 table { width: 100%; border-collapse: collapse; min-width: 720px; }
 caption { padding: 1rem; color: var(--muted); text-align: left; font-weight: var(--fw-medium); }
 th, td { padding: 0.9rem 1rem; border-top: 1px solid var(--line); text-align: left; vertical-align: top; }
@@ -625,10 +632,8 @@ td { color: var(--muted); }
   gap: clamp(1.25rem, 4vw, 3rem);
   align-items: start;
   padding: clamp(1.2rem, 4vw, 2rem);
-  border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: rgba(255, 250, 240, 0.76);
-  box-shadow: var(--shadow-sm);
 }
 .contact-copy,
 .support-form {
@@ -688,17 +693,14 @@ td { color: var(--muted); }
 .workflow-card {
   display: grid;
   overflow: hidden;
-  border: 1px solid var(--line);
   border-radius: var(--radius-md);
   background: rgba(255, 250, 240, 0.84);
   color: var(--ink);
   text-decoration: none;
-  box-shadow: var(--shadow-sm);
   transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
 }
 .workflow-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(121, 50, 35, 0.34);
   box-shadow: var(--shadow-sm);
 }
 .workflow-card img {
@@ -731,7 +733,6 @@ td { color: var(--muted); }
 }
 .workflow-meta span {
   padding: 0.35rem 0.7rem;
-  border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: rgba(255, 250, 240, 0.72);
   color: var(--green);
@@ -747,10 +748,8 @@ td { color: var(--muted); }
   gap: clamp(1rem, 3vw, 2rem);
   align-items: center;
   padding: clamp(1rem, 3vw, 1.5rem);
-  border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: rgba(255, 250, 240, 0.68);
-  box-shadow: var(--shadow-sm);
 }
 .workflow-step:nth-child(even) {
   background: var(--surface-2);
@@ -787,16 +786,14 @@ td { color: var(--muted); }
 .app-screenshot > a {
   display: block;
   overflow: hidden;
-  border: 1px solid rgba(228, 221, 205, 0.95);
   border-radius: var(--radius-md);
-  background: var(--paper);
-  box-shadow: var(--shadow-sm);
+  background: var(--surface);
+  box-shadow: var(--shadow-artifact);
   text-decoration: none;
   transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 .app-screenshot > a:hover {
   transform: translateY(-3px);
-  border-color: rgba(121, 50, 35, 0.34);
   box-shadow: var(--shadow-sm);
 }
 .app-screenshot img {
@@ -888,15 +885,13 @@ button.screenshot-trigger {
   overflow: hidden;
   gap: 0;
   align-self: start;
-  border: 1px solid rgba(228, 221, 205, 0.95);
   border-radius: var(--radius-lg);
-  background: rgba(255, 250, 240, 0.84);
-  box-shadow: var(--shadow-sm);
+  background: var(--surface);
+  box-shadow: var(--shadow-artifact);
   transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 .app-screenshot:hover {
   transform: translateY(-3px);
-  border-color: rgba(121, 50, 35, 0.34);
   box-shadow: var(--shadow-sm);
 }
 .app-screenshot .screenshot-trigger {
@@ -978,7 +973,7 @@ html.lightbox-open body {
   display: grid;
   gap: 0.75rem;
   width: fit-content;
-  max-width: min(1180px, 100%);
+  max-width: min(1200px, 100%);
   max-height: min(92vh, 1100px);
   padding: clamp(0.7rem, 1.6vw, 1rem);
   border: 1px solid rgba(255, 250, 240, 0.24);
@@ -1091,10 +1086,9 @@ html.lightbox-open body {
   display: inline-block;
   overflow: hidden;
   padding: 0;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  background: var(--paper);
-  box-shadow: var(--shadow-lg);
+  border-radius: 20px;
+  background: var(--surface);
+  box-shadow: var(--shadow-artifact);
   cursor: zoom-in;
 }
 /* max-width is an absolute cap (mirroring .showcase-figure's own 540px), not a
