@@ -153,8 +153,8 @@ const groups = [
 
 <style>
   .feature-details {
-    border: 1px solid var(--color-border, #e2e8f0);
-    border-radius: var(--radius-md, 8px);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
     overflow: hidden;
   }
   .feature-details summary {
@@ -163,34 +163,34 @@ const groups = [
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--space-3, 0.75rem);
-    padding: var(--space-4, 1.5rem);
-    background: var(--color-surface-alt, #f8fafc);
+    gap: var(--space-3);
+    padding: var(--space-4);
+    background: var(--surface);
     user-select: none;
   }
   .feature-details summary::-webkit-details-marker {
     display: none;
   }
   .feature-details summary:hover {
-    background: var(--color-surface-hover, #f1f5f9);
+    background: var(--surface-2);
   }
   .feature-details-label {
-    font-size: var(--text-xl, 1.25rem);
+    font-size: var(--text-lg);
     font-weight: 600;
-    color: var(--color-heading, inherit);
+    color: var(--ink);
   }
   .feature-details-toggle {
     flex-shrink: 0;
     width: 1.5rem;
     height: 1.5rem;
-    border: 1px solid var(--color-border, #e2e8f0);
+    border: 1px solid var(--line);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 0.75rem;
-    color: var(--color-muted, #64748b);
-    background: white;
+    color: var(--muted);
+    background: var(--surface);
   }
   .feature-details-toggle::after {
     content: '▸';
@@ -199,10 +199,10 @@ const groups = [
     content: '▾';
   }
   .feature-details-body {
-    padding: var(--space-4, 1.5rem);
+    padding: var(--space-4);
   }
   .feature-details-intro {
-    color: var(--color-muted, #64748b);
+    color: var(--muted);
     margin-bottom: var(--space-4);
   }
 </style>

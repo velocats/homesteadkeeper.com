@@ -243,7 +243,51 @@ Everything else is class-driven from the single stylesheet, which is why this is
    scrolls under it. The footer loses its top rule and its links go muted. The mobile
    menu button picks up the pill geometry. Ghost buttons lose their filled background so
    the filled/ghost pair reads as Steep intends.
-6. **Audit pass.** Grep for the retired tokens; check every page renders.
+6. ~~**Audit pass.** Grep for the retired tokens; check every page renders.~~
+   **Done 2026-09-10.** The audit found three real defects, two of them live regressions
+   introduced by this refresh:
+
+   - **Nine pages referenced tokens deleted in step 4.** `src/pages/planner.astro`, the
+     five `src/pages/planner/*.astro` sheets and `src/pages/guides/[slug].astro` carry
+     their own `<style>` blocks using `--green`, `--green-2` and `--paper`. With those
+     tokens gone the declarations became invalid at computed-value time, so
+     `.mini-download` on the planner page was rendering with a transparent background
+     instead of a filled one. My earlier inventory of scoped styles missed these because
+     it globbed `src/pages/*.astro` without recursing. All nine now use live tokens.
+   - **`.row-number` on three planner sheets measured 4.00:1** against a hard-coded
+     `#7b8176`. Now `--muted`.
+   - **`features.astro` referenced five tokens that have never existed** in this
+     codebase — `--color-border`, `--color-surface-alt`, `--color-surface-hover`,
+     `--color-muted`, `--color-heading` — so its cool Tailwind-slate fallbacks
+     (`#e2e8f0`, `#64748b`, …) had always been live on a warm cream site. Pre-existing,
+     not caused by this work, but squarely a colour-audit finding. Repointed at real
+     tokens.
+
+   Also made card surfaces opaque. Several carried translucent paper fills
+   (`rgba(255,250,240,0.64–0.92)`) that let the canvas bleed through; on the deepened
+   canvas those read washed out, and Steep's surfaces are flat and opaque. Fills on dark
+   grounds keep their alpha.
+
+   **Verification.** A DOM walker computed the effective composited background for every
+   text-bearing element and flagged anything under WCAG AA (4.5:1, or 3:1 for large
+   text). Zero failures across home, pricing, features, a feature detail page, a guide, a
+   use case, a workflow, a comparison, support, about, FAQ, tutorials, playbook, a
+   planner sheet, and 404 — at both 1280px and 375px. Zero horizontal overflow on all of
+   them. 65 pages build; the font preload resolves and the file serves as
+   `font/woff2` at 48,536 bytes.
+
+   **SEO invariants held.** The complete `.astro` diff across all six steps is two lines
+   of `<head>`: the `theme-color` value and the font preload link. No markup, copy,
+   route, heading level, internal link, or JSON-LD changed. All 61 content pages still
+   carry exactly one `<h1>`; the four pages with none are the pre-existing noindex
+   redirect stubs, which never used the layout.
+
+   **Known follow-up, not done.** `.workflow-meta span` chips keep an opaque surface fill.
+   Steep would make these ghost tags — no background, no border, typographic weight only.
+   That is a visible design change rather than an audit fix, so it is left for a decision
+   rather than folded into a cleanup pass. The planner print sheets also keep their own
+   green-tinted document palette (`#243122` ink, `#e9eedf` table heads); they are
+   printable artifacts rather than site chrome, and both measure well above AA.
 
 Steps 1–3 are independently shippable and reversible. Do not start step 4 before step 3
 is reviewed — the borderless cards are the change most likely to need a second opinion.
