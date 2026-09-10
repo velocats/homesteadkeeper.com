@@ -39,6 +39,12 @@ jobs:
       - name: Build with Astro
         run: npm run build
 
+      # Catches the failure mode a green build hides: an undefined custom
+      # property silently invalidates its whole declaration. See the header of
+      # the script for the two bugs that motivated it.
+      - name: Audit CSS
+        run: npm run audit:css
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:

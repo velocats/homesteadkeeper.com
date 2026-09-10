@@ -1,3 +1,12 @@
+> [!IMPORTANT]
+> **Superseded on 2026-09-10 by [DESIGN-REFRESH-ELEVENLABS-2026-09-10.md](DESIGN-REFRESH-ELEVENLABS-2026-09-10.md).**
+> The design described below is no longer what the site looks like. The Steep
+> adaptation shipped in full (six steps, all six committed), and was then
+> replaced: its warm canvas never resolved satisfactorily, and it tolerated the
+> card grids the current system removes. This document is kept because its
+> measurements and its record of what broke are still useful history — but do
+> not build against it.
+
 # Design refresh plan — "Steep" editorial system
 
 **Date:** 2026-09-10
