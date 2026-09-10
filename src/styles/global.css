@@ -127,18 +127,21 @@ ul, ol { margin: 0; padding: 0; }
   position: sticky; top: 0; z-index: 20;
   display: flex; align-items: center; justify-content: space-between; gap: 1rem;
   padding-block: 0.85rem;
-  border-bottom: 1px solid rgba(228, 221, 205, 0.8);
-  background: rgba(245, 236, 218, 0.92);
-  backdrop-filter: blur(18px);
+  /* Steep's top bar carries no background, no rule and no shadow. It stays
+     sticky, so it needs an opaque ground to sit on as content scrolls under --
+     the canvas colour itself, with nothing drawn on top of it. */
+  background: var(--canvas);
 }
 .brand { display: inline-flex; align-items: center; gap: 0.7rem; color: var(--ink); font-weight: var(--fw-semibold); text-decoration: none; white-space: nowrap; }
 .brand img { width: 44px; height: 44px; border-radius: var(--radius-sm); }
 .nav-toggle { display: none; }
-.main-nav ul { display: flex; align-items: center; flex-wrap: wrap; justify-content: flex-end; gap: clamp(0.35rem, 1.5vw, 1rem); color: var(--ink); font-size: var(--text-sm); font-weight: var(--fw-medium); list-style: none; }
+.main-nav ul { display: flex; align-items: center; flex-wrap: wrap; justify-content: flex-end; gap: clamp(0.35rem, 1.5vw, 1rem); color: var(--muted); font-size: var(--text-sm); font-weight: var(--fw-normal); list-style: none; }
 .main-nav li { position: relative; }
-.main-nav a { padding: 0.45rem 0.65rem; border-radius: var(--radius-lg); text-decoration: none; }
-.main-nav a:hover, .main-nav a[aria-current="page"] { background: var(--surface-2); }
-.main-nav a[aria-current="page"] { box-shadow: inset 0 0 0 2px rgba(29, 42, 32, 0.22); }
+/* The current page is marked by ink against muted siblings -- no fill, no ring.
+   Steep's nav groups without visual weight. */
+.main-nav a { padding: 0.45rem 0.25rem; text-decoration: none; }
+.main-nav a:hover { color: var(--ink); text-decoration: underline; text-decoration-color: var(--muted-2); }
+.main-nav a[aria-current="page"] { color: var(--ink); font-weight: var(--fw-medium); }
 .nav-dropdown-menu {
   position: absolute;
   top: 100%;
@@ -300,9 +303,9 @@ ul, ol { margin: 0; padding: 0; }
 /* On the dark green CTA band the primary button must invert to stay legible. */
 .cta-band .button.primary { background: var(--surface); color: var(--ink); }
 .cta-band .button.primary:hover { background: var(--surface-2); }
-.button.secondary { border-color: rgba(255, 250, 240, 0.32); background: rgba(255, 250, 240, 0.12); color: var(--surface); }
-.hero .button.secondary, .page-hero .button.secondary, .section .button.secondary, .cta-band .button.secondary { border-color: var(--line); background: var(--surface); color: var(--ink); }
-.hero .button.secondary:hover { background: var(--surface-2); }
+.button.secondary { border-color: rgba(255, 250, 240, 0.45); background: transparent; color: var(--surface); }
+.hero .button.secondary, .page-hero .button.secondary, .section .button.secondary { border-color: var(--ink); background: transparent; color: var(--ink); }
+.hero .button.secondary:hover, .page-hero .button.secondary:hover, .section .button.secondary:hover { background: var(--surface); }
 /* The arrow suffix is the link affordance; the underline appears on hover.
    Prose links inside body copy keep their underline at rest. */
 .text-link { color: var(--ink); font-weight: var(--fw-normal); text-decoration: none; }
@@ -422,13 +425,13 @@ ul, ol { margin: 0; padding: 0; }
   gap: 1.25rem;
   padding: clamp(1.25rem, 3vw, 2rem);
   border-radius: var(--radius-lg);
-  background: rgba(255, 250, 240, 0.76);
+  background: var(--surface);
 }
 .app-store-band h2 {
   max-width: 28ch;
 }
 
-.site-footer { margin-top: 2rem; padding-block: 3rem 1.2rem; border-top: 1px solid var(--line); background: var(--surface-2); }
+.site-footer { margin-top: 2rem; padding-block: 3rem 1.2rem; background: var(--surface-2); }
 /* The footer is secondary matter and sits at Steep's caption step, not body.
    This also keeps the five columns inside their tracks: at the 17px body size
    the last column's links overflowed the page by 2px. */
@@ -436,7 +439,8 @@ ul, ol { margin: 0; padding: 0; }
 .footer-grid section, .footer-grid nav, .footer-link-list { display: grid; align-content: start; gap: 0.6rem; }
 .footer-grid h2 { font: inherit; color: var(--ink); font-weight: var(--fw-semibold); }
 .footer-grid p, .copyright, .fine-print { color: var(--muted); font-size: var(--text-sm); }
-.footer-grid a { color: var(--ink); font-weight: var(--fw-medium); text-decoration: none; }
+.footer-grid a { color: var(--muted); font-weight: var(--fw-normal); text-decoration: none; }
+.footer-grid a:hover { color: var(--ink); text-decoration: underline; text-decoration-color: var(--muted-2); }
 .footer-brand img { width: 40px; height: 40px; }
 .copyright { width: min(1200px, 100%); margin: 2rem auto 0; }
 
@@ -473,11 +477,11 @@ ul, ol { margin: 0; padding: 0; }
     min-width: 5.6rem;
     min-height: 2.75rem;
     padding: 0.45rem 0.75rem;
-    border: 1px solid rgba(29, 42, 32, 0.24);
-    border-radius: var(--radius-lg);
-    background: var(--surface);
+    border: 1px solid var(--ink);
+    border-radius: var(--radius-pill);
+    background: transparent;
     color: var(--ink);
-    font-weight: var(--fw-semibold);
+    font-weight: var(--fw-normal);
     cursor: pointer;
     touch-action: manipulation;
   }

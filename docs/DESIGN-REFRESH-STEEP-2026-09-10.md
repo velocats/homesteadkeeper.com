@@ -236,7 +236,13 @@ Everything else is class-driven from the single stylesheet, which is why this is
 
    Prose link underlines also drop from tinted clay to `--muted-2`, and `.text-link`
    becomes ink with an arrow suffix and no underline at rest, per the reference.
-5. **Header, footer, CTA band.**
+5. ~~**Header, footer, CTA band.**~~ **Done 2026-09-10.** The header loses its rule, its
+   backdrop blur, and the filled pill on the active nav item; the current page is now
+   marked by ink against muted siblings, which is how Steep's nav groups without visual
+   weight. It keeps an opaque `--canvas` ground because it stays sticky and content
+   scrolls under it. The footer loses its top rule and its links go muted. The mobile
+   menu button picks up the pill geometry. Ghost buttons lose their filled background so
+   the filled/ghost pair reads as Steep intends.
 6. **Audit pass.** Grep for the retired tokens; check every page renders.
 
 Steps 1–3 are independently shippable and reversible. Do not start step 4 before step 3
