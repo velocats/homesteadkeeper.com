@@ -2,9 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import AppStoreBadge from '../components/AppStoreBadge.astro';
 import CTA from '../components/CTA.astro';
-import ScreenshotFrame from '../components/ScreenshotFrame.astro';
 import SectionHeader from '../components/SectionHeader.astro';
-import Showcase from '../components/Showcase.astro';
+import FeaturePanel from '../components/FeaturePanel.astro';
 import InternalLinkCards from '../components/InternalLinkCards.astro';
 import { appStoreReviews, managementAreas, site, trustPoints } from '../data/site';
 import { sitePath } from '../utils/paths';
@@ -29,6 +28,7 @@ const jsonLd = {
 // Each block leads with a real screen from the app rather than an icon and a claim.
 const showcases = [
   {
+    tabLabel: 'Homestead Hub',
     heading: 'Know what needs attention today.',
     body: [
       'The Homestead Hub keeps the parts of the place you actually manage in one view, so a morning check does not mean opening four different lists.',
@@ -41,6 +41,7 @@ const showcases = [
     linkLabel: 'See all features',
   },
   {
+    tabLabel: 'Garden layouts',
     heading: 'See what is planted where.',
     body: [
       'Garden bed layouts map crops to real beds and paths by season, so next spring you know what grew where without relying on memory.',
@@ -53,6 +54,7 @@ const showcases = [
     linkLabel: 'Garden records and bed layouts',
   },
   {
+    tabLabel: 'Maintenance',
     heading: 'Find the maintenance history when something breaks.',
     body: [
       'Service, repair, and inspection records stay with the machine or system they belong to, and roll up into a maintenance overview with costs and overdue work.',
@@ -72,15 +74,18 @@ const showcases = [
     <div class="hero-copy">
       <p class="eyebrow">Homestead records for Apple devices</p>
       <h1 id="hero-title">A homestead management app for animals, gardens, and daily work.</h1>
-      <p class="hero-lede">Keep records, plan seasonal chores, and track equipment and supplies on iPhone, iPad, and Mac—even when you’re offline.</p>
       <div class="button-row">
         <AppStoreBadge height={46} />
         <a class="button secondary" href={sitePath('/features')}>See how it works</a>
       </div>
       <p class="microcopy">Try it free. No account required. Local-first with optional iCloud sync.</p>
     </div>
-    <ScreenshotFrame src="assets/screenshots/homestead-hub.webp" alt="Homestead Keeper Homestead Hub showing Garden, Animals, Property, Inventory, and More to Manage cards." caption="The major parts of your homestead in one calm place." loading="eager" />
+    <div class="hero-aside">
+      <p class="hero-lede">Keep records, plan seasonal chores, and track equipment and supplies on iPhone, iPad, and Mac—even when you’re offline.</p>
+    </div>
   </section>
+
+  <FeaturePanel screens={showcases} />
 
   <ul class="trust-line" aria-label="Privacy and sync highlights">
     {trustPoints.map(([title]) => <li><strong>{title}</strong></li>)}
@@ -94,8 +99,6 @@ const showcases = [
       { title: 'Homestead chores and reminders', href: '/use-cases/homestead-task-tracker/', summary: 'See daily chores, recurring work, and overdue tasks beside the records they belong to.' },
     ]} />
   </section>
-
-  {showcases.map((item, index) => <Showcase {...item} reverse={index % 2 === 1} />)}
 
   <section class="section" aria-labelledby="areas-title">
     <SectionHeader

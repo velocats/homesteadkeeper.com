@@ -1,0 +1,132 @@
+---
+/**
+ * The flagship feature block: one large rounded panel spanning the content
+ * width, with tab pills switching between product screens. Replaces the three
+ * alternating screenshot-beside-prose slabs the homepage used to stack.
+ *
+ * Progressive enhancement: every pane is rendered visible. The inline script
+ * hides the inactive ones on load, so without JS the page degrades to the
+ * stacked layout rather than to a blank panel, and every heading and paragraph
+ * stays in the DOM either way.
+ */
+import { assetPath, sitePath } from '../utils/paths';
+
+interface Screen {
+  tabLabel: string;
+  heading: string;
+  body: string[];
+  src: string;
+  alt: string;
+  caption?: string;
+  href?: string;
+  linkLabel?: string;
+}
+
+interface Props {
+  screens: Screen[];
+  headingId?: string;
+}
+
+const { screens, headingId } = Astro.props;
+const hubSrc = 'assets/screenshots/homestead-hub.webp';
+const srcsetFor = (src: string) =>
+  src === hubSrc
+    ? [480, 800, 1200]
+        .map((w) => `${assetPath(src.replace(/\.webp$/, `-${w}.webp`))} ${w}w`)
+        .concat(`${assetPath(src)} 2048w`)
+        .join(', ')
+    : undefined;
+---
+
+<section class="feature-panel" aria-labelledby={headingId} data-feature-panel>
+  <div class="feature-tabs" role="tablist" aria-label="Product screens">
+    {screens.map((screen, i) => (
+      <button
+        class="feature-tab"
+        type="button"
+        role="tab"
+        id={`feature-tab-${i}`}
+        aria-controls={`feature-pane-${i}`}
+        aria-selected={i === 0 ? 'true' : 'false'}
+      >
+        {screen.tabLabel}
+      </button>
+    ))}
+  </div>
+
+  {screens.map((screen, i) => (
+    <div
+      class="feature-pane"
+      role="tabpanel"
+      id={`feature-pane-${i}`}
+      aria-labelledby={`feature-tab-${i}`}
+      tabindex="0"
+    >
+      <figure class="feature-shot">
+        <button
+          class="screenshot-trigger"
+          type="button"
+          data-lightbox-src={assetPath(screen.src)}
+          data-lightbox-alt={screen.alt}
+          data-lightbox-title={screen.caption ?? screen.alt}
+          aria-label={`Expand screenshot: ${screen.caption ?? screen.alt}`}
+        >
+          <img
+            src={assetPath(screen.src)}
+            srcset={srcsetFor(screen.src)}
+            sizes={srcsetFor(screen.src) ? '(max-width: 900px) calc(100vw - 5rem), min(45vw, 460px)' : undefined}
+            alt={screen.alt}
+            width={screen.src === hubSrc ? 2048 : 1200}
+            height={screen.src === hubSrc ? 2732 : 1600}
+            loading={i === 0 ? 'eager' : 'lazy'}
+            decoding="async"
+          />
+        </button>
+      </figure>
+      <div class="feature-pane-copy">
+        <h2>{screen.heading}</h2>
+        {screen.body.map((p) => <p>{p}</p>)}
+        {screen.href && (
+          <p><a class="text-link" href={sitePath(screen.href)}>{screen.linkLabel ?? 'Learn more'}</a></p>
+        )}
+      </div>
+    </div>
+  ))}
+</section>
+
+<script is:inline>
+  (() => {
+    for (const panel of document.querySelectorAll('[data-feature-panel]')) {
+      const tabs = [...panel.querySelectorAll('[role="tab"]')];
+      const panes = [...panel.querySelectorAll('[role="tabpanel"]')];
+      if (tabs.length !== panes.length || !tabs.length) continue;
+
+      const select = (index, focus) => {
+        tabs.forEach((tab, i) => {
+          const active = i === index;
+          tab.setAttribute('aria-selected', String(active));
+          tab.tabIndex = active ? 0 : -1;
+          panes[i].hidden = !active;
+        });
+        if (focus) tabs[index].focus();
+      };
+
+      tabs.forEach((tab, i) => {
+        tab.addEventListener('click', () => select(i, false));
+        tab.addEventListener('keydown', (event) => {
+          const step = event.key === 'ArrowRight' ? 1 : event.key === 'ArrowLeft' ? -1 : 0;
+          if (step) {
+            event.preventDefault();
+            select((i + step + tabs.length) % tabs.length, true);
+          } else if (event.key === 'Home' || event.key === 'End') {
+            event.preventDefault();
+            select(event.key === 'Home' ? 0 : tabs.length - 1, true);
+          }
+        });
+      });
+
+      panel.classList.add('is-tabbed');
+      select(0, false);
+    }
+  })();
+</script>

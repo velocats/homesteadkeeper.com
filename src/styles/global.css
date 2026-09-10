@@ -39,6 +39,10 @@
   --muted-3: #a59f97;     /* ash   - decorative */
   --line: #ebe8e4;        /* stone hairline - the primary separation device */
 
+  /* The page gutter. Sections inset their content by this; anything that paints
+     a background has to subtract it so its edge lines up with the text above. */
+  --gutter: clamp(1rem, 4vw, 4rem);
+
   /* One family across the whole system. The display voice is the weight, not
      a second typeface. */
   --font-display: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -124,7 +128,7 @@ ul, ol { margin: 0; padding: 0; }
 .skip-link { position: absolute; left: 1rem; top: 1rem; z-index: 99; transform: translateY(-160%); padding: 0.7rem 1rem; border-radius: var(--radius-lg); background: var(--ink); color: var(--canvas); font-weight: var(--fw-medium); }
 .skip-link:focus { transform: translateY(0); }
 
-.site-header, .site-footer, main > section { padding-inline: clamp(1rem, 4vw, 4rem); }
+.site-header, .site-footer, main > section { padding-inline: var(--gutter); }
 .site-header {
   position: sticky; top: 0; z-index: 20;
   display: flex; align-items: center; justify-content: space-between; gap: 1rem;
@@ -217,8 +221,8 @@ ul, ol { margin: 0; padding: 0; }
 /* Light, open hero (no dark full-bleed panel): the product screenshot carries the
    visual weight, text sits directly on the page background. */
 .hero {
-  display: grid; grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr); align-items: center;
-  gap: clamp(2rem, 5vw, 4.5rem);
+  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); align-items: start;
+  gap: clamp(1.5rem, 5vw, 4rem);
   width: min(1280px, 100%);
   margin-top: clamp(1.5rem, 4vw, 3rem);
   padding-block: clamp(0.5rem, 2vw, 1.5rem);
@@ -334,6 +338,106 @@ ul, ol { margin: 0; padding: 0; }
    from the surface step, not from a colour. */
 .callout-card { background: var(--surface-2); border-radius: var(--radius-xl); padding: clamp(1.5rem, 4vw, 2rem); }
 .callout-card h3 { font-size: var(--text-lg); }
+
+/* ---- Flagship feature panel -------------------------------------------
+   The single large rounded plate that carries the product screens, with tab
+   pills switching between them. One major visual per section, in a container
+   rather than a run of alternating slabs. */
+.feature-panel {
+  /* Subtract the gutter so the plate's edge aligns with the hero copy above it
+     rather than running to the viewport edge. */
+  width: min(calc(1280px - 2 * var(--gutter)), calc(100% - 2 * var(--gutter)));
+  margin: clamp(var(--space-4), 3vw, var(--space-6)) auto clamp(var(--space-6), 8vw, var(--space-8));
+  padding: clamp(var(--space-4), 3vw, var(--space-5));
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+}
+.feature-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: clamp(var(--space-4), 3vw, var(--space-5));
+}
+/* Tab pills sit on the panel as eggshell chips: the active one is marked by a
+   leading ink dot and ink type, not by a fill. */
+.feature-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.25rem;
+  padding: 0.35rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--canvas);
+  color: var(--muted);
+  font: inherit;
+  font-size: var(--text-sm);
+  cursor: pointer;
+}
+.feature-tab::before {
+  content: '';
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: var(--radius-pill);
+  background: var(--muted-3);
+}
+.feature-tab[aria-selected='true'] { color: var(--ink); }
+.feature-tab[aria-selected='true']::before { background: var(--ink); }
+.feature-tab:hover { color: var(--ink); }
+
+.feature-pane {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(var(--space-4), 4vw, var(--space-6));
+}
+/* Without JS every pane stays visible, so they need separating from each
+   other; once the script takes over only one is ever shown. */
+.feature-pane + .feature-pane { margin-top: var(--space-5); padding-top: var(--space-5); border-top: 1px solid var(--line); }
+.feature-panel.is-tabbed .feature-pane + .feature-pane { margin-top: 0; padding-top: 0; border-top: 0; }
+.feature-pane:focus-visible { outline: 3px solid var(--ink); outline-offset: 6px; border-radius: var(--radius-md); }
+/* An author `display` beats the UA sheet's [hidden] rule, so a grid pane stays
+   laid out even once the script hides it. This has to be stated explicitly. */
+.feature-pane[hidden] { display: none; }
+
+.feature-shot { margin: 0; display: flex; justify-content: center; }
+.feature-shot .screenshot-trigger {
+  display: inline-block;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-lg);
+  background: var(--canvas);
+  box-shadow: var(--shadow-artifact);
+  cursor: zoom-in;
+}
+.feature-shot img { display: block; width: auto; max-width: 100%; max-height: 460px; object-fit: contain; }
+.feature-pane-copy { display: grid; gap: var(--space-3); align-content: center; }
+.feature-pane-copy h2 { max-width: 22ch; }
+.feature-pane-copy p { max-width: 54ch; color: var(--muted); }
+
+@media (max-width: 900px) {
+  .feature-pane { grid-template-columns: 1fr; }
+  .feature-shot img { max-height: 380px; }
+}
+
+/* ---- Asymmetric hero ---------------------------------------------------
+   Headline and actions left, description offset to the right. The hero no
+   longer carries a screenshot: the panel below leads with the same one. */
+.hero-aside { align-self: start; padding-top: clamp(0.25rem, 2vw, 1.25rem); }
+/* Stacked, the description belongs directly under the headline rather than
+   after the buttons. `display: contents` lifts the copy block's children into
+   the hero grid so the two columns can be interleaved by order alone -- no
+   duplicated markup, and the source order stays correct for assistive tech. */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; gap: 1.25rem; }
+  .hero-copy { display: contents; }
+  .hero-copy .eyebrow { order: 1; }
+  .hero-copy h1 { order: 2; }
+  .hero-aside { order: 3; padding-top: 0; }
+  .hero-copy .button-row { order: 4; }
+  .hero-copy .microcopy { order: 5; }
+}
 
 .screenshot-frame { margin: 0; display: grid; gap: 0.8rem; }
 /* Floating product artifact. The hairline ring inside --shadow-artifact
