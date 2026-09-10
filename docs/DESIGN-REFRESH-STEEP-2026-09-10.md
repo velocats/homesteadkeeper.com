@@ -62,9 +62,9 @@ All of this lives in the `:root` block of [global.css](../src/styles/global.css)
 
 | Token | Current | Proposed | Steep role |
 | :--- | :--- | :--- | :--- |
-| `--canvas` (was `--cream`) | `#fbf4e7` | `#f5ecda` | Level 0 — Canvas (deepened in step 3) |
-| `--surface` (was `--paper`) | `#fffaf0` | `#fffaf0` *(unchanged)* | Level 1 — Card Mist (flat, borderless) |
-| `--surface-2` (was `--cream-2`) | `#f2e5cf` | `#efe5d2` | Level 2 — Section Fog (alternating bands) |
+| `--canvas` (was `--cream`) | `#fbf4e7` | `#f2efe7` | Level 0 — Canvas |
+| `--surface` (was `--paper`) | `#fffaf0` | `#fdfcf9` | Level 1 — Card Mist (flat, borderless) |
+| `--surface-2` (was `--cream-2`) | `#f2e5cf` | `#e7e2d7` | Level 2 — Section Fog (alternating bands) |
 | `--ink` | `#263027` | `#1d2a20` | Ink Black — headings, filled pill, nav, footer band |
 | `--muted` | `#66705f` | `#656057` | Slate Gray — body, links, footer copy |
 | `--muted-2` *(new)* | — | `#948d81` | Ash Gray — tertiary labels, tags, captions |
@@ -336,3 +336,33 @@ only performance-relevant change is one added font file, mitigated by preload + 
 - *`.callout-card` usage.* Five occurrences, across `about`, `privacy`, `pricing`,
   `workflows/index`, and `workflows/import-excel-csv` — one per page, so the "one accent
   card per page" rule already holds. Re-check after any new page lands.
+
+
+---
+
+## 7. Follow-up: lowering the canvas chroma (2026-09-10)
+
+The step 3 canvas, `#f5ecda`, was chosen purely to solve the borderless-card contrast
+problem and never evaluated as a colour. At 57% saturation it is far too much chroma to
+carry a full-page field — a warm hue that looks right on a small swatch reads as manila
+across a whole screen.
+
+The whole ramp moves to the same hue family at roughly 30% saturation:
+
+| Token | Was | Now |
+| :--- | :--- | :--- |
+| `--surface` | `#fffaf0` | `#fdfcf9` |
+| `--canvas` | `#f5ecda` | `#f2efe7` |
+| `--surface-2` | `#efe5d2` | `#e7e2d7` |
+
+This costs nothing structurally and improves two things measurably. Card-to-canvas
+separation goes from 1.128:1 to 1.120:1 (unchanged in practice) while band-to-canvas
+separation improves from 1.065:1 to 1.124:1, so the alternating sections read better than
+they did. `--ink` sits at 13.0:1 and `--muted` at 5.43:1 on the canvas, 4.83:1 on the band
+— all still AA.
+
+The unplanned benefit: with the canvas neutral, the `--accent-wash` peach finally has room
+to behave like an accent. Against the old tan it was one warm surface among several.
+
+The warmth now lives in the hue rather than in the saturation, which is the correct place
+for it on a page this size.

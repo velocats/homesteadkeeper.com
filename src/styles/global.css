@@ -19,10 +19,12 @@
      in that system, not by the colour they happen to be. ---- */
 
   /* Surfaces. Cards stay lighter than the canvas, not darker: Steep's darker
-     "mist" layer reads muddy over cream. */
-  --canvas: #f5ecda;      /* Level 0 - page background */
-  --surface: #fffaf0;     /* Level 1 - cards, flat and quiet */
-  --surface-2: #efe5d2;   /* Level 2 - alternating bands, deeper than the canvas */
+     "mist" layer reads muddy over cream. Chroma is kept low (~30% saturation)
+     -- a warm hue that works on a small swatch reads as manila across a whole
+     page, so the warmth lives in the hue, not in the saturation. */
+  --canvas: #f2efe7;      /* Level 0 - page background */
+  --surface: #fdfcf9;     /* Level 1 - cards, flat and quiet */
+  --surface-2: #e7e2d7;   /* Level 2 - alternating bands, deeper than the canvas */
 
   /* Ink. Steep runs one dark surface for headings, filled buttons, and nav.
      Here that role is a darkened brand green: near-black in value, still ours. */
@@ -195,7 +197,7 @@ ul, ol { margin: 0; padding: 0; }
 /* The badge's dark fill needs a visible edge against the dark green CTA band. */
 .cta-band .app-store-badge svg {
   border-radius: 6px;
-  outline: 1px solid rgba(255, 250, 240, 0.28);
+  outline: 1px solid rgba(253, 252, 249, 0.28);
   outline-offset: -1px;
 }
 
@@ -303,7 +305,7 @@ ul, ol { margin: 0; padding: 0; }
 /* On the dark green CTA band the primary button must invert to stay legible. */
 .cta-band .button.primary { background: var(--surface); color: var(--ink); }
 .cta-band .button.primary:hover { background: var(--surface-2); }
-.button.secondary { border-color: rgba(255, 250, 240, 0.45); background: transparent; color: var(--surface); }
+.button.secondary { border-color: rgba(253, 252, 249, 0.45); background: transparent; color: var(--surface); }
 .hero .button.secondary, .page-hero .button.secondary, .section .button.secondary { border-color: var(--ink); background: transparent; color: var(--ink); }
 .hero .button.secondary:hover, .page-hero .button.secondary:hover, .section .button.secondary:hover { background: var(--surface); }
 /* The arrow suffix is the link affordance; the underline appears on hover.
@@ -333,7 +335,7 @@ ul, ol { margin: 0; padding: 0; }
    replaces the old 10px paper bezel. */
 .device-shell { overflow: hidden; border-radius: 20px; background: var(--surface); box-shadow: var(--shadow-artifact); max-height: 680px; }
 .device-shell img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
-.screenshot-frame figcaption { color: rgba(255, 250, 240, 0.72); font-size: var(--text-sm); text-align: center; }
+.screenshot-frame figcaption { color: rgba(253, 252, 249, 0.72); font-size: var(--text-sm); text-align: center; }
 .split-section .screenshot-frame figcaption { color: var(--muted); }
 
 .timeline { counter-reset: step; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 0.8rem; list-style: none; }
@@ -416,8 +418,8 @@ ul, ol { margin: 0; padding: 0; }
 
 .cta-band { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; margin-block: clamp(2rem, 5vw, 4rem); padding: clamp(1.4rem, 4vw, 2.6rem); border-radius: var(--radius-lg); background: var(--ink); color: var(--surface); }
 .cta-band h2 { color: var(--surface); }
-.cta-band p { color: rgba(255, 250, 240, 0.78); }
-.cta-band .eyebrow { color: rgba(255, 250, 240, 0.62); }
+.cta-band p { color: rgba(253, 252, 249, 0.78); }
+.cta-band .eyebrow { color: rgba(253, 252, 249, 0.62); }
 .app-store-band {
   display: flex;
   align-items: center;
@@ -969,9 +971,9 @@ html.lightbox-open body {
   max-width: min(1200px, 100%);
   max-height: min(92vh, 1100px);
   padding: clamp(0.7rem, 1.6vw, 1rem);
-  border: 1px solid rgba(255, 250, 240, 0.24);
+  border: 1px solid rgba(253, 252, 249, 0.24);
   border-radius: var(--radius-lg);
-  background: rgba(255, 250, 240, 0.95);
+  background: rgba(253, 252, 249, 0.95);
   box-shadow: var(--shadow-lg);
 }
 .lightbox-panel img {
@@ -1000,7 +1002,7 @@ html.lightbox-open body {
   place-items: center;
   width: 2.5rem;
   height: 2.5rem;
-  border: 1px solid rgba(255, 250, 240, 0.55);
+  border: 1px solid rgba(253, 252, 249, 0.55);
   border-radius: var(--radius-lg);
   background: var(--ink);
   color: var(--surface);
