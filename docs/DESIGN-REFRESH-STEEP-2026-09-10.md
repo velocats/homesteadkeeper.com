@@ -215,7 +215,27 @@ Everything else is class-driven from the single stylesheet, which is why this is
    its `border-width` — the recommended plan silently stopped looking recommended. It
    now carries a 1.5px inset `--ink` ring, the plan's non-accent option, which keeps the
    one-accent-card-per-page budget free for step 4.
-4. **Color sweep.** Retire green/sage/gold, place the single accent card per page.
+4. ~~**Color sweep.** Retire green/sage/gold, place the single accent card per page.~~
+   **Done 2026-09-10.** All nine legacy aliases are gone and the sheet references only
+   role-named tokens. `.callout-card` is now the Accent Peach Card — `--accent-wash`
+   ground, `--accent-ink` type — and it is the single chromatic surface on any page that
+   carries one. The tinted sage-to-cream wash behind the hero screenshot is removed;
+   Steep floats artifacts on bare canvas.
+
+   **The eyebrow question, resolved against this plan.** The table above sent the small
+   uppercase labels to `--muted-2`. I put them on `--muted` instead. `--muted-2` is
+   3.01:1 — fine for the separator glyphs it now exclusively serves, but these labels
+   are functional (section names, plan names, workflow categories), and shipping
+   meaningful text below AA to match a reference is the wrong trade. `--muted` is 5.32:1
+   on the canvas and still recedes; the letter-spacing is what makes them read as tags.
+
+   **One documented exception to the accent-ink rule.** `--accent-ink` appears on
+   `:focus-visible` outlines as well as on accent surfaces. A focus ring is neither body
+   text nor a surface, and a warm 8.37:1 ring is materially better for keyboard users
+   than a neutral one. Every other accent-ink use is on `--accent-wash`.
+
+   Prose link underlines also drop from tinted clay to `--muted-2`, and `.text-link`
+   becomes ink with an arrow suffix and no underline at rest, per the reference.
 5. **Header, footer, CTA band.**
 6. **Audit pass.** Grep for the retired tokens; check every page renders.
 
