@@ -33,16 +33,17 @@ These are Homestead Keeper colors, not a literal export of MindMarket's tokens.
 | --- | --- | --- |
 | Canvas / `--canvas` | `#F5F1E4` | Main cream page background |
 | Surface / `--surface` | `#FFFDF7` | Product stages, navigation, inputs |
-| Soft green / `--surface-2` | `#E5EDD9` | One broad supporting section or callout |
+| Warm field / `--surface-2` | `#E9E2D0` | Broad supporting sections and callouts |
 | Ink / `--ink` | `#2C2E2A` | Headings and body text |
 | Secondary ink / `--muted` | `#555B50` | Descriptions, captions, navigation |
 | Garden green / `--brand` | `#315C3B` | Custom primary buttons, links, selected controls |
 | Green hover / `--brand-hover` | `#25472D` | Primary action hover state |
-| Leaf / `--accent` | `#A7CF78` | Small decorative shapes and highlighted surfaces |
+| Screenshot stage / `--stage` | `#EFE6CF` | Warm frame behind the primary product image |
+| Alternate stage / `--stage-alt` | `#F1EAD9` | Subtle alternating product-image frame |
 | Divider / `--line` | `#D8D9CB` | Decorative section rules |
 | Control border / `--control-border` | `#767C6D` | Input and outlined-control boundaries |
 
-Aim for approximately 80% cream and pale neutral surfaces, 15% soft green, and 5% stronger green emphasis. Use dark ink on leaf backgrounds; reserve white text for deep green. Keep Apple's official App Store badge unchanged. Recheck every actual text/background and control pairing during implementation; do not inherit the reference's light gray text assumptions.
+Aim for approximately 90% cream and pale neutral surfaces and 10% green emphasis. Use green for actions and the deep footer rather than large pale-green fields. Keep Apple's official App Store badge unchanged. Recheck every actual text/background and control pairing during implementation; do not inherit the reference's light gray text assumptions.
 
 Keep the existing self-hosted Inter font. Increase display weight from 300 to 500 and use a responsive H1 around 40–72px, line-height 1.06, tracking -0.035em. Use H2 at 30–44px with 1.15 line-height; body at 17–18px with 1.6 line-height; labels and captions at least 14px. Long prose should remain around 65 characters wide. A 144px reference-style headline would overpower this product's longer, informative copy.
 

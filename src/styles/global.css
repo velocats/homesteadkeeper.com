@@ -14,7 +14,7 @@
   /* MindMarket-inspired warmth, adapted to Homestead Keeper's garden identity. */
   --canvas: #f5f1e4;
   --surface: #fffdf7;
-  --surface-2: #e5edd9;
+  --surface-2: #e9e2d0;
   --ink: #2c2e2a;
   --ink-2: #555b50;
   --muted: #555b50;
@@ -24,7 +24,8 @@
   --control-border: #767c6d;
   --brand: #315c3b;
   --brand-hover: #25472d;
-  --accent: #a7cf78;
+  --stage: #efe6cf;
+  --stage-alt: #f1ead9;
 
   /* The page gutter. Sections inset their content by this; anything that paints
      a background has to subtract it so its edge lines up with the text above. */
@@ -684,7 +685,8 @@ ul, ol { margin: 0; padding: 0; }
   margin: 0;
   padding: clamp(1.5rem, 4vw, 3rem);
   border-radius: 2rem;
-  background: var(--accent);
+  border: 1px solid rgba(49, 92, 59, 0.18);
+  background: var(--stage);
 }
 .hero-product::before {
   content: '';
@@ -731,9 +733,10 @@ ul, ol { margin: 0; padding: 0; }
   max-width: 590px;
   padding: clamp(1.25rem, 3vw, 2.5rem);
   border-radius: 2rem;
-  background: var(--surface-2);
+  border: 1px solid rgba(49, 92, 59, 0.16);
+  background: var(--surface);
 }
-.showcase.reverse .showcase-figure { background: var(--accent); }
+.showcase.reverse .showcase-figure { background: var(--stage-alt); }
 .showcase-figure .screenshot-trigger { border: 0; background: var(--surface); }
 .showcase-copy p { font-size: 1.0625rem; line-height: 1.65; }
 
@@ -758,9 +761,16 @@ ul, ol { margin: 0; padding: 0; }
 .cta-band { border-radius: 2rem; background: var(--brand); }
 .cta-band .button.secondary { border-color: rgba(255, 253, 247, 0.58); color: var(--surface); }
 .cta-band .button.secondary:hover { background: rgba(255, 253, 247, 0.12); }
-.site-footer { background: var(--surface-2); }
+.site-footer { background: var(--brand); }
+.site-footer .brand,
+.site-footer .footer-grid h2 { color: var(--surface); }
+.site-footer .footer-grid p,
+.site-footer .footer-grid a,
+.site-footer .copyright,
+.site-footer .fine-print { color: rgba(255, 253, 247, 0.8); }
+.site-footer .footer-grid a:hover { color: var(--surface); }
+.site-footer a:focus-visible { outline-color: var(--surface); }
 .footer-grid { width: min(1200px, 100%); }
-.footer-grid a:hover { color: var(--brand); }
 
 @media (max-width: 1020px) {
   .hero { grid-template-columns: 1fr; }
@@ -1420,9 +1430,10 @@ html.lightbox-open body {
   max-width: 590px;
   padding: clamp(1.25rem, 3vw, 2.5rem);
   border-radius: 2rem;
-  background: var(--surface-2);
+  border: 1px solid rgba(49, 92, 59, 0.16);
+  background: var(--surface);
 }
-.home-workflows .showcase.reverse .showcase-figure { background: var(--accent); }
+.home-workflows .showcase.reverse .showcase-figure { background: var(--stage-alt); }
 .home-workflows .showcase:first-child .showcase-figure { max-width: 520px; }
 .home-workflows .showcase:first-child .showcase-figure img { height: 390px; }
 
