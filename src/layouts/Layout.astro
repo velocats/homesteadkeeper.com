@@ -23,8 +23,15 @@ const { title, description, path = '/', image, jsonLd, noindex = false } = Astro
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f7eddc" />
+    <meta name="theme-color" content="#fbf4e7" />
     <link rel="icon" type="image/png" href={assetPath('favicon.png')} />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href={assetPath('fonts/source-serif-4-latin-400.woff2')}
+      crossorigin
+    />
     <SEO title={title} description={description} path={path} image={image} jsonLd={jsonLd} noindex={noindex} />
   </head>
   <body>
