@@ -3,10 +3,10 @@ import Layout from '../layouts/Layout.astro';
 import AppStoreBadge from '../components/AppStoreBadge.astro';
 import CTA from '../components/CTA.astro';
 import SectionHeader from '../components/SectionHeader.astro';
-import FeaturePanel from '../components/FeaturePanel.astro';
+import Showcase from '../components/Showcase.astro';
 import InternalLinkCards from '../components/InternalLinkCards.astro';
 import { appStoreReviews, managementAreas, site, trustPoints } from '../data/site';
-import { sitePath } from '../utils/paths';
+import { assetPath, sitePath } from '../utils/paths';
 
 const title = 'Homestead Management and Record-Keeping App | Homestead Keeper';
 const description = 'Homestead Keeper keeps chores, animals, gardens, inventory, maintenance, reminders, and reports together on iPhone, iPad, and Mac.';
@@ -73,25 +73,66 @@ const showcases = [
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero-copy">
       <p class="eyebrow">Homestead records for Apple devices</p>
-      <h1 id="hero-title">A homestead management app for animals, gardens, and daily work.</h1>
+      <h1 id="hero-title">Keep your homestead in good order.</h1>
+      <p class="hero-lede">One homestead management app for animals, gardens, chores, equipment, and supplies—on iPhone, iPad, and Mac.</p>
       <div class="button-row">
         <AppStoreBadge height={46} />
         <a class="button secondary" href={sitePath('/features')}>See how it works</a>
       </div>
       <p class="microcopy">Try it free. No account required. Local-first with optional iCloud sync.</p>
     </div>
-    <div class="hero-aside">
-      <p class="hero-lede">Keep records, plan seasonal chores, and track equipment and supplies on iPhone, iPad, and Mac—even when you’re offline.</p>
-    </div>
+    <figure class="hero-product">
+      <button
+        class="screenshot-trigger"
+        type="button"
+        data-lightbox-src={assetPath('assets/screenshots/homestead-hub.webp')}
+        data-lightbox-alt={showcases[0].alt}
+        data-lightbox-title={showcases[0].caption}
+        aria-label={`Expand screenshot: ${showcases[0].caption}`}
+      >
+        <img
+          src={assetPath('assets/screenshots/homestead-hub-800.webp')}
+          srcset={`${assetPath('assets/screenshots/homestead-hub-480.webp')} 480w, ${assetPath('assets/screenshots/homestead-hub-800.webp')} 800w, ${assetPath('assets/screenshots/homestead-hub-1200.webp')} 1200w`}
+          sizes="(max-width: 900px) calc(100vw - 4rem), min(42vw, 500px)"
+          alt={showcases[0].alt}
+          width="800"
+          height="1067"
+          loading="eager"
+          decoding="async"
+        />
+      </button>
+      <figcaption>Today’s work and every part of the place, together.</figcaption>
+    </figure>
   </section>
-
-  <FeaturePanel screens={showcases} />
 
   <ul class="trust-line" aria-label="Privacy and sync highlights">
     {trustPoints.map(([title]) => <li><strong>{title}</strong></li>)}
   </ul>
 
-  <section class="section" aria-labelledby="find-your-fit-title">
+  <section class="workflow-intro section" aria-labelledby="workflow-title">
+    <SectionHeader
+      headingId="workflow-title"
+      eyebrow="Built for the work"
+      title="A clearer record of what happened, what is next, and where everything belongs."
+    />
+  </section>
+
+  <div class="home-workflows">
+    {showcases.map((screen, index) => (
+      <Showcase
+        heading={screen.heading}
+        body={screen.body}
+        src={screen.src}
+        alt={screen.alt}
+        caption={screen.caption}
+        href={screen.href}
+        linkLabel={screen.linkLabel}
+        reverse={index % 2 === 1}
+      />
+    ))}
+  </div>
+
+  <section class="section fit-section" aria-labelledby="find-your-fit-title">
     <SectionHeader headingId="find-your-fit-title" title="Start with the work you do every day." />
     <InternalLinkCards links={[
       { title: 'Chicken records and egg tracking', href: '/use-cases/chicken-keepers/', summary: 'Keep egg counts, feed notes, flock history, and coop care together.' },
@@ -100,7 +141,7 @@ const showcases = [
     ]} />
   </section>
 
-  <section class="section" aria-labelledby="areas-title">
+  <section class="section areas-section" aria-labelledby="areas-title">
     <SectionHeader
       headingId="areas-title"
       eyebrow="One app"
@@ -112,7 +153,7 @@ const showcases = [
     </ul>
   </section>
 
-  <section class="section" aria-labelledby="reviews-title">
+  <section class="section reviews-section" aria-labelledby="reviews-title">
     <SectionHeader
       headingId="reviews-title"
       eyebrow="App Store reviews"

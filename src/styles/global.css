@@ -1,6 +1,4 @@
-/* Inter is the body face the ElevenLabs system names, and its variable weight
-   axis also carries the whisper-weight 300 display headlines. One file covers
-   300/400/500, which is the whole system. */
+/* Inter carries both the friendly display voice and the practical UI text. */
 @font-face {
   font-family: 'Inter';
   font-style: normal;
@@ -13,31 +11,20 @@
 }
 
 :root {
-  /* ---- The ElevenLabs design system: eggshell paper, black ink, whisper-
-     weight display type, and hairline rules instead of card grids. See
-     docs/DESIGN-REFRESH-ELEVENLABS-2026-09-10.md for the mapping and the
-     measurements. Tokens are named by the role they fill, not the colour. ---- */
-
-  /* Surfaces stack eggshell -> taupe -> stone, each a step DARKER than the
-     canvas. Never pure white and never a cool gray: the warmth is what makes
-     the canvas read as paper rather than as screen. */
-  --canvas: #fdfcfc;      /* Eggshell  - base page background */
-  --surface: #f5f3f1;     /* Taupe     - panels and section bands */
-  --surface-2: #ebe8e4;   /* Stone     - small plates, deeper band */
-
-  /* Ink. Pure black is the system's only dark surface: headings, filled pills,
-     inverted bands. */
-  --ink: #000000;
-  --ink-2: #44403b;
-
-  /* Text. Graphite carries body copy at 8.4:1 even on stone. Smoke clears AA
-     on the eggshell canvas only (4.71:1) -- inside a taupe or stone panel it
-     drops to 4.36 and 3.95, so secondary text in panels uses graphite. Ash is
-     decorative: separators and rules, never text. */
-  --muted: #44403b;       /* graphite */
-  --muted-2: #777169;     /* smoke - canvas only */
-  --muted-3: #a59f97;     /* ash   - decorative */
-  --line: #ebe8e4;        /* stone hairline - the primary separation device */
+  /* MindMarket-inspired warmth, adapted to Homestead Keeper's garden identity. */
+  --canvas: #f5f1e4;
+  --surface: #fffdf7;
+  --surface-2: #e5edd9;
+  --ink: #2c2e2a;
+  --ink-2: #555b50;
+  --muted: #555b50;
+  --muted-2: #687061;
+  --muted-3: #919989;
+  --line: #d8d9cb;
+  --control-border: #767c6d;
+  --brand: #315c3b;
+  --brand-hover: #25472d;
+  --accent: #a7cf78;
 
   /* The page gutter. Sections inset their content by this; anything that paints
      a background has to subtract it so its edge lines up with the text above. */
@@ -54,12 +41,12 @@
   --text-base: 1rem;                           /* 16px */
   --text-md: 1.25rem;                          /* 20px */
   --text-lg: 1.5rem;                           /* 24px */
-  --text-xl: clamp(1.75rem, 3vw, 2.25rem);     /* 28 -> 36px */
-  --text-2xl: clamp(2.25rem, 4.5vw, 3rem);     /* 36 -> 48px */
+  --text-xl: clamp(1.875rem, 3.5vw, 2.75rem);  /* 30 -> 44px */
+  --text-2xl: clamp(2.5rem, 6vw, 4.5rem);      /* 40 -> 72px */
 
   /* Weights. Nothing in the system goes past 500 except the wordmark. The
      whisper-weight 300 display is the signature; bolding it destroys it. */
-  --fw-light: 300;
+  --fw-light: 500;
   --fw-normal: 400;
   --fw-medium: 500;
   --fw-semibold: 500;
@@ -68,9 +55,8 @@
      blurs. No blurred drop shadows anywhere -- separation comes from hairlines
      and from the taupe/stone surface steps. */
   --shadow-artifact:
-    rgba(0, 0, 0, 0.4) 0 0 1px 0,
-    rgba(0, 0, 0, 0.04) 0 1px 1px 0,
-    rgba(0, 0, 0, 0.04) 0 2px 4px 0;
+    rgba(44, 46, 42, 0.12) 0 0 0 1px,
+    rgba(49, 92, 59, 0.12) 0 18px 42px -24px;
   --shadow-overlay: rgba(0, 0, 0, 0.4) 0 0 1px 0, rgba(0, 0, 0, 0.16) 0 12px 32px -8px;
   --shadow-sm: var(--shadow-artifact);
   --shadow-lg: var(--shadow-artifact);
@@ -105,23 +91,19 @@ body {
   min-width: 320px;
   background: var(--canvas);
 }
-/* Body is Inter 400 at 16px/1.5 with a touch of positive tracking -- the
-   opposite direction to the display tracking, which is deliberate. */
-body, button, input, select, textarea { font: var(--text-base)/1.5 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0.01em; }
+body, button, input, select, textarea { font: var(--text-base)/1.6 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; }
 main { overflow-x: clip; }
 h1, h2, h3 { margin: 0; color: var(--ink); text-wrap: balance; letter-spacing: normal; }
-/* Display headlines are carved by weight 300 and tight negative tracking.
-   Never bold these -- the whisper weight is the whole idea. */
-h1, h2 { font-family: var(--font-display); font-weight: var(--fw-light); letter-spacing: -0.02em; }
-h1 { max-width: 24ch; font-size: var(--text-2xl); line-height: 1.08; }
-h2 { max-width: 30ch; font-size: var(--text-xl); line-height: 1.17; }
+h1, h2 { font-family: var(--font-display); font-weight: var(--fw-light); letter-spacing: -0.035em; }
+h1 { max-width: 18ch; font-size: var(--text-2xl); line-height: 1.06; }
+h2 { max-width: 30ch; font-size: var(--text-xl); line-height: 1.15; }
 /* At 24px and below, Inter 500 takes over -- no display weights in this range. */
 h3 { font-size: var(--text-lg); font-weight: var(--fw-medium); line-height: 1.25; letter-spacing: -0.01em; }
 p { margin: 0; }
 a { color: inherit; text-decoration-color: var(--muted-2); text-decoration-thickness: 0.08em; text-underline-offset: 0.22em; }
 a:hover { text-decoration-color: currentColor; }
 /* The system is achromatic, so the focus ring is ink. 20.5:1 on the canvas. */
-a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: var(--radius-sm); }
+a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; border-radius: var(--radius-sm); }
 img { display: block; max-width: 100%; height: auto; }
 ul, ol { margin: 0; padding: 0; }
 
@@ -645,6 +627,178 @@ ul, ol { margin: 0; padding: 0; }
   .device-shell { max-height: none; border-width: 0; border-radius: var(--radius-md); }
   .video-grid { grid-template-columns: 1fr; }
   .video-card { border-radius: var(--radius-md); }
+}
+
+/* ---------------------------------------------------------------------------
+   2026 MindMarket-inspired refresh: warm field-guide surfaces, garden green
+   actions, confident type, and product screens presented as practical proof.
+   --------------------------------------------------------------------------- */
+.site-header {
+  top: 0.75rem;
+  width: min(1200px, calc(100% - 2rem));
+  margin: 0.75rem auto 0;
+  padding: 0.65rem 0.8rem 0.65rem 1rem;
+  border: 1px solid rgba(49, 92, 59, 0.12);
+  border-radius: 1.25rem;
+  background: rgba(255, 253, 247, 0.96);
+  box-shadow: 0 12px 36px -28px rgba(44, 46, 42, 0.45);
+  backdrop-filter: blur(12px);
+}
+.brand img { border-radius: 0.75rem; }
+.main-nav a:hover { color: var(--brand); }
+.main-nav a[aria-current="page"] { color: var(--brand); }
+
+.hero, .page-hero, .section, .split-section, .cta-band { width: min(1200px, 100%); }
+.hero {
+  grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
+  margin-top: clamp(1.5rem, 4vw, 3.5rem);
+  padding-block: clamp(2rem, 6vw, 5rem);
+}
+.hero-copy { gap: 1.35rem; }
+.hero-copy h1 { max-width: 11ch; }
+.hero-lede { max-width: 44ch; font-size: clamp(1.05rem, 1.5vw, 1.25rem); line-height: 1.6; }
+.eyebrow { color: var(--brand); font-weight: var(--fw-semibold); letter-spacing: 0.09em; }
+.microcopy { color: var(--muted); }
+.button.primary { background: var(--brand); }
+.button.primary:hover { background: var(--brand-hover); }
+.hero .button.secondary,
+.page-hero .button.secondary,
+.section .button.secondary {
+  border-color: var(--control-border);
+  background: transparent;
+  color: var(--brand);
+}
+.hero .button.secondary:hover,
+.page-hero .button.secondary:hover,
+.section .button.secondary:hover { background: var(--surface-2); }
+.text-link { color: var(--brand); font-weight: var(--fw-medium); }
+
+.hero-product {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+  margin: 0;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border-radius: 2rem;
+  background: var(--accent);
+}
+.hero-product::before {
+  content: '';
+  position: absolute;
+  width: 4.5rem;
+  height: 4.5rem;
+  right: clamp(0.75rem, 3vw, 2rem);
+  top: clamp(0.75rem, 3vw, 2rem);
+  border: 1px solid rgba(44, 46, 42, 0.25);
+  border-radius: 50%;
+}
+.hero-product .screenshot-trigger {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  display: inline-block;
+  padding: 0;
+  border: 0;
+  border-radius: 1.25rem;
+  background: var(--surface);
+  box-shadow: 0 26px 50px -30px rgba(24, 48, 30, 0.65);
+  cursor: zoom-in;
+}
+.hero-product img { width: auto; height: min(520px, 60vw); max-width: 100%; object-fit: contain; }
+.hero-product figcaption { color: var(--ink); font-size: var(--text-sm); font-weight: var(--fw-medium); text-align: center; }
+
+.trust-line {
+  width: min(1200px, calc(100% - 2 * var(--gutter)));
+  margin-top: 0;
+  padding-block: 1.1rem;
+  border-block: 1px solid var(--line);
+}
+.trust-line li::before { content: '✓'; margin-right: 0.35rem; color: var(--brand); }
+.workflow-intro { padding-bottom: 0; }
+.home-workflows {
+  width: min(1200px, 100%);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.home-workflows .showcase { min-height: 40rem; border-bottom: 1px solid var(--line); }
+.home-workflows .showcase:last-child { border-bottom: 0; }
+.showcase-figure {
+  width: 100%;
+  max-width: 590px;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  border-radius: 2rem;
+  background: var(--surface-2);
+}
+.showcase.reverse .showcase-figure { background: var(--accent); }
+.showcase-figure .screenshot-trigger { border: 0; background: var(--surface); }
+.showcase-copy p { font-size: 1.0625rem; line-height: 1.65; }
+
+.areas-section {
+  width: min(1200px, calc(100% - 2 * var(--gutter)));
+  margin-block: clamp(2rem, 6vw, 5rem);
+  padding: clamp(2rem, 6vw, 5rem);
+  border-radius: 2rem;
+  background: var(--surface-2);
+}
+.area-list { gap: 0.65rem 1.65rem; }
+.area-list li:not(:last-child)::after { color: var(--brand); }
+.reviews-section { grid-template-columns: minmax(220px, 0.65fr) minmax(0, 1.35fr); align-items: start; }
+.reviews-section .section-header { position: sticky; top: 7rem; }
+.reviews-section .review-lines,
+.reviews-section .review-source { grid-column: 2; }
+.review-lines { gap: 0; max-width: none; }
+.review-lines li { gap: 0.65rem; padding: 1.75rem 0; border-top: 1px solid var(--line); }
+.review-lines blockquote { font-size: clamp(1.2rem, 2vw, 1.55rem); line-height: 1.45; }
+.review-lines .review-stars { color: var(--brand); }
+
+.cta-band { border-radius: 2rem; background: var(--brand); }
+.cta-band .button.secondary { border-color: rgba(255, 253, 247, 0.58); color: var(--surface); }
+.cta-band .button.secondary:hover { background: rgba(255, 253, 247, 0.12); }
+.site-footer { background: var(--surface-2); }
+.footer-grid { width: min(1200px, 100%); }
+.footer-grid a:hover { color: var(--brand); }
+
+@media (max-width: 1020px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-copy h1 { max-width: 13ch; }
+  .hero-product { width: min(680px, 100%); margin-inline: auto; }
+  .hero-product img { height: min(540px, 90vw); }
+  .home-workflows .showcase { min-height: auto; }
+  .reviews-section { grid-template-columns: 1fr; }
+  .reviews-section .section-header { position: static; }
+  .reviews-section .review-lines,
+  .reviews-section .review-source { grid-column: 1; }
+}
+
+@media (max-width: 720px) {
+  :root { --gutter: 1.25rem; }
+  .site-header {
+    top: 0.5rem;
+    width: calc(100% - 1rem);
+    margin-top: 0.5rem;
+    padding: 0.6rem 0.65rem 0.6rem 0.8rem;
+    border-radius: 1rem;
+  }
+  .brand img { width: 40px; height: 40px; }
+  .main-nav ul { padding: 0.6rem 0 0.25rem; border-top: 1px solid var(--line); }
+  .main-nav a[aria-current="page"] { background: var(--surface-2); }
+  .hero { gap: 2rem; padding-block: 2.5rem 2rem; }
+  .hero-copy { display: grid; }
+  .hero-product { padding: 1.25rem; border-radius: 1.5rem; }
+  .hero-product::before { display: none; }
+  .hero-product img { height: auto; max-height: 500px; }
+  .trust-line { gap: 0.65rem 1.3rem; }
+  .workflow-intro { padding-top: 3.5rem; }
+  .showcase { gap: 1.5rem; padding-block: 2.75rem; }
+  .showcase-figure { padding: 1rem; border-radius: 1.5rem; }
+  .showcase-figure img { width: 100%; height: auto; max-height: 500px; }
+  .areas-section { width: calc(100% - 2rem); margin-block: 2rem; padding: 2rem 1.25rem; border-radius: 1.5rem; }
+  .area-list { font-size: 1rem; }
+  .cta-band { width: calc(100% - 2rem); border-radius: 1.5rem; }
 }
 
 .copy-block { display: grid; gap: 0.8rem; padding-block: 1.2rem; border-bottom: 1px solid var(--line); }
@@ -1257,4 +1411,30 @@ html.lightbox-open body {
   }
   .hero .screenshot-frame { padding: 1.2rem; }
   .hero .device-shell { border-radius: var(--radius-md); }
+}
+
+/* Keep the homepage workflow stages authoritative after the shared legacy
+   Showcase rules above. Other pages retain their denser screenshot treatment. */
+.home-workflows .showcase-figure {
+  width: 100%;
+  max-width: 590px;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  border-radius: 2rem;
+  background: var(--surface-2);
+}
+.home-workflows .showcase.reverse .showcase-figure { background: var(--accent); }
+.home-workflows .showcase:first-child .showcase-figure { max-width: 520px; }
+.home-workflows .showcase:first-child .showcase-figure img { height: 390px; }
+
+@media (max-width: 720px) {
+  .home-workflows .showcase-figure {
+    padding: 1rem;
+    border-radius: 1.5rem;
+  }
+  .home-workflows .showcase-figure img,
+  .home-workflows .showcase:first-child .showcase-figure img {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+  }
 }
