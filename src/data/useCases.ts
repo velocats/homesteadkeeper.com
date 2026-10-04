@@ -253,6 +253,7 @@ export const useCases: UseCase[] = [
         body: [
           'Organize records by real places such as the barn, coop, garden, workshop, pump house, pantry, pasture, or equipment shed.',
           'Map views help show where work, records, systems, and places live on the property.',
+          'Trace your property line, draw pastures and fence lines, and see your acreage and feet of fence right on the map.',
         ],
       },
       {

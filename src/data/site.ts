@@ -61,10 +61,10 @@ export const appStoreReviews = [
 
 export const managementAreas = [
   ['Garden Beds & Crops', 'Plan beds and plots, map crop placement, track planting dates, pest notes, watering, harvests, and seasonal garden records.'],
-  ['Animals', 'Care reminders, health notes, egg counts, breeding, pedigree, production, weights, photos, and records for chickens, goats, rabbits, cattle, guardian animals, and more.'],
+  ['Animals', 'Herds and flocks, care reminders, health notes, egg counts, breeding, pedigree, production, weights, photos, and records for chickens, goats, rabbits, cattle, guardian animals, and more.'],
   ['Calendar', 'See overdue work, day/week/month views, harvest windows, animal care, planting dates, service reminders, and seasonal chores in one place.'],
   ['Equipment & Workshop', 'Log repairs, maintenance, fuel, parts, manuals, service history, warranty notes, and tool records.'],
-  ['Property, Fences & Water', 'Keep records for gates, fences, wells, pumps, irrigation, buildings, roads, storm damage, and property repairs.'],
+  ['Property, Fences & Water', 'Map your property line, pastures, and fence lines, and keep records for gates, fences, wells, pumps, irrigation, buildings, roads, storm damage, and property repairs.'],
   ['Inventory', 'Track feed, medicine, seeds, fuel, filters, bedding, pantry goods, canning supplies, spare parts, and emergency supplies.'],
   ['Food & Pantry', 'Track canned goods, freezer food, dehydrated food, fermented batches, pantry items, root cellar storage, and stored harvests.'],
   ['Orchard', 'Track fruit trees, berries, vines, pruning, sprays, harvests, seasonal timing, and long-term perennial care.'],
@@ -117,6 +117,8 @@ export const faqs = [
   ['Is Homestead Keeper for farms or backyard homesteads?', 'It is built for serious backyard homesteaders, small property owners, hobby farms, rural homeowners, gardeners, chicken keepers, and mixed-use homesteads. It is not trying to be enterprise farm ERP.'],
   ['Can I plan garden beds?', 'Yes. Garden bed layouts help you map beds, plots, crop placement, seasonal layouts, planting records, and harvest history.'],
   ['Can I track chickens and egg counts?', 'Yes. Animal records can cover chickens and other animals, including care reminders, production records such as egg counts, health notes, photos, and history.'],
+  ['Can I keep animals together in a herd or flock?', 'Yes. Put individual animals in a named herd, flock, or group, then view one herd at a time from the Animals screen. Each herd keeps sold and past animals separate from current members.'],
+  ['Can I map my property line, pastures, and fences?', 'Yes. Trace your property line on the satellite map to see the acreage, or enter the figure from your deed or survey. You can also draw pastures and fence lines, or walk them with your iPhone using GPS. Property boundaries are included in the Free plan.'],
   ['Can I track equipment maintenance?', 'Yes. Homestead Keeper can keep repair logs, maintenance reminders, service history, parts, fuel, manuals, and warranty notes.'],
   ['Can I track inventory and pantry storage?', 'Yes. Inventory and Food & Pantry tools can cover feed, seeds, medicine, bedding, filters, fuel, canned goods, freezer food, pantry items, canning supplies, spare parts, and emergency supplies.'],
   ['What is included in the Free plan?', 'Free includes up to 20 total items plus core record keeping, reminders, calendar views, Field Log entries, and the Cedar Ridge demo homestead.'],
@@ -127,10 +129,20 @@ export const faqs = [
   ['Is this a business accounting app?', 'No. Homestead Keeper can track useful costs and records, but it is not a replacement for accounting, tax, payroll, or farm business compliance software.'],
 ] as const;
 
+// Announcement cards shown on the home and features pages. Keep each to a heading and
+// a sentence or two, and link to the page that covers the feature in more depth.
+export const newFeatures = [
+  { title: 'Herds and flocks', href: '/features/animals', body: 'Keep animals together in a named herd, flock, or group, like “Waylon’s Does.” Each herd lists its members with sold and past animals kept separate, and a Herd menu on the Animals screen shows one herd at a time.' },
+  { title: 'Property boundaries', href: '/workflows/map-usage', body: 'Trace your property line on the satellite map by tapping its corners and see the acreage. If you know the figure from your deed or survey, enter it and the app shows it everywhere. Included in the Free plan.' },
+  { title: 'Pastures and fence lines', href: '/workflows/map-usage', body: 'Draw pastures and other named areas, each in its own color with its own acreage, and draw fence lines to see how many feet of fence you have. Link them to a Place or a Fence or Gate item to see the numbers there too.' },
+  { title: 'Walk the Line', href: '/workflows/map-usage', body: 'Walk a fence or boundary with your iPhone and drop corners from GPS as you go, or let the app add a point every 25, 50, or 100 feet. Location is used only while you are walking a line.' },
+  { title: 'A map in your Property Handoff', href: '/features/reports', body: 'The Property Handoff report now includes a map of your land with a table of areas and fence lengths.' },
+] as const;
+
 // Each entry must point at a page that actually covers that topic. Never fall back to
 // the generic /features hub: that produced cards whose label did not match the destination.
 export const featureLinks = [
-  { title: 'Animal records', href: '/features/animals', summary: 'Profiles, groups, daily care, medical records, breeding, pedigree, production, and weights.' },
+  { title: 'Animal records', href: '/features/animals', summary: 'Profiles, herds and groups, daily care, medical records, breeding, pedigree, production, and weights.' },
   { title: 'Garden records', href: '/features/garden', summary: 'Bed layouts, crop placement, planting records, harvests, and garden season reports.' },
   { title: 'Equipment maintenance', href: '/features/equipment', summary: 'Service history, repairs, fuel, parts, manuals, warranties, and maintenance reminders.' },
   { title: 'Inventory and supplies', href: '/features/inventory', summary: 'Feed, seeds, medicine, fuel, filters, low stock, expirations, and storage locations.' },

@@ -7,7 +7,7 @@ import ScreenshotGallery from '../components/ScreenshotGallery.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import InternalLinkCards from '../components/InternalLinkCards.astro';
 import SectionHeader from '../components/SectionHeader.astro';
-import { coreFeatures, featureLinks, managementAreas } from '../data/site';
+import { coreFeatures, featureLinks, managementAreas, newFeatures } from '../data/site';
 import { sitePath } from '../utils/paths';
 
 const title = 'Homestead Management App Features | Homestead Keeper';
@@ -48,10 +48,10 @@ const curatedScreenshots = [
 
 const groups = [
   ['Garden beds, crops, and seeds', ['Visual bed and plot layouts', 'Seasonal crop placement', 'Crops and varieties', 'Seed starts and planting dates', 'Harvest logs and yields', 'Planting schedules and seasonal timing']],
-  ['Animals', ['Animal profiles and groups', 'Care reminders', 'Health notes', 'Breeding and pedigree', 'Production records', 'Weights, photos, and documents']],
+  ['Animals', ['Animal profiles and groups', 'Herds and flocks', 'Care reminders', 'Health notes', 'Breeding and pedigree', 'Production records', 'Weights, photos, and documents']],
   ['Calendar and reminders', ['Day, week, and month views', 'Overdue work', 'Recurring chores', 'Seasonal tasks', 'Animal care follow-ups', 'Maintenance and harvest windows']],
   ['Equipment and maintenance', ['Repairs', 'Service reminders', 'Parts and filters', 'Fuel notes', 'Manuals and warranties', 'Maintenance history']],
-  ['Property systems', ['Places', 'Fences and gates', 'Wells and pumps', 'Irrigation and water systems', 'Buildings and storage', 'Storm damage and repairs']],
+  ['Property systems', ['Places', 'Property boundaries and acreage', 'Pastures and fence lines', 'Fences and gates', 'Wells and pumps', 'Irrigation and water systems', 'Buildings and storage', 'Storm damage and repairs']],
   ['Food & Pantry', ['Canned goods', 'Frozen food', 'Dehydrated food', 'Fermented batches', 'Pantry items', 'Root cellar storage']],
   ['Inventory', ['Feed and hay', 'Medicine and vaccines', 'Seeds and soil inputs', 'Fuel and filters', 'Pantry and preservation supplies', 'Thresholds and expiration dates']],
   ['Orchard', ['Fruit trees and berries', 'Pruning and spray notes', 'Fertilizing reminders', 'Harvest history', 'Seasonal care', 'Long-term perennial records']],
@@ -67,6 +67,19 @@ const groups = [
     <p class="eyebrow">Features</p>
     <h1>A whole-homestead app, not another single-purpose tracker.</h1>
     <p class="lede">Homestead Keeper brings garden, animals, property, inventory, chores, calendar, and reports together in one local-first Apple app.</p>
+  </section>
+
+  <section class="section" aria-labelledby="new-features-title">
+    <SectionHeader
+      headingId="new-features-title"
+      eyebrow="New in Homestead Keeper"
+      title="Herds, property boundaries, and more."
+      body="Herds and property boundaries both started as requests from people using the app. Thank you for the ideas, and keep them coming."
+    />
+    <div class="card-grid">
+      {newFeatures.map((feature) => <FeatureCard title={feature.title} body={feature.body} href={feature.href} />)}
+    </div>
+    <p><a class="text-link" href={sitePath('/support')}>Send a feature request</a></p>
   </section>
 
   <section class="section">

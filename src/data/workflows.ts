@@ -396,7 +396,7 @@ export const workflows: WorkflowGuide[] = [
     title: 'Map Usage',
     shortTitle: 'Map',
     category: 'Start Here',
-    summary: 'Use the map to see places, systems, and homestead records in real-world context.',
+    summary: 'Use the map to see places and records in real-world context, and to map your property line, pastures, and fence lines.',
     outcome: 'Move from a flat list of records to a spatial view of the property.',
     difficulty: 'Beginner',
     hero: {
@@ -446,8 +446,20 @@ export const workflows: WorkflowGuide[] = [
           alt: 'Map screen with a manage places popover listing homestead places and statuses.',
         },
       },
+      {
+        title: 'Trace your property line',
+        body: 'Tap the corners of your property on the satellite map to draw its boundary and see the acreage. If you know the acreage from your deed or survey, enter it and the app shows that figure everywhere instead of the map’s estimate. Property boundaries are included in the Free plan.',
+      },
+      {
+        title: 'Draw pastures and fence lines',
+        body: 'Draw pastures and other named areas, each in its own color with its own acreage, and draw fence lines to see how many feet of fence you have. Link a pasture to a Place, or a fence line to a Fence or Gate item, and the acreage or fence length shows on that page.',
+      },
+      {
+        title: 'Walk the line',
+        body: 'Walk a fence or boundary with your iPhone and drop corners from GPS as you go, or let the app add a point every 25, 50, or 100 feet. Location is used only while you are walking a line.',
+      },
     ],
-    unlocks: ['Spatial record context', 'Faster place lookup', 'Clearer property handoff information'],
+    unlocks: ['Spatial record context', 'Faster place lookup', 'Acreage and fence lengths', 'Clearer property handoff information'],
   },
   {
     slug: 'reports-demonstration',

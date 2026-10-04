@@ -5,7 +5,8 @@ import CTA from '../components/CTA.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import Showcase from '../components/Showcase.astro';
 import InternalLinkCards from '../components/InternalLinkCards.astro';
-import { appStoreReviews, managementAreas, site, trustPoints } from '../data/site';
+import FeatureCard from '../components/FeatureCard.astro';
+import { appStoreReviews, managementAreas, newFeatures, site, trustPoints } from '../data/site';
 import { assetPath, sitePath } from '../utils/paths';
 
 const title = 'Homestead Management and Record-Keeping App | Homestead Keeper';
@@ -108,6 +109,19 @@ const showcases = [
   <ul class="trust-line" aria-label="Privacy and sync highlights">
     {trustPoints.map(([title]) => <li><strong>{title}</strong></li>)}
   </ul>
+
+  <section class="section" aria-labelledby="new-features-title">
+    <SectionHeader
+      headingId="new-features-title"
+      eyebrow="New in Homestead Keeper"
+      title="Herds, property boundaries, and more."
+      body="Herds and property boundaries both started as requests from people using the app. Thank you for the ideas, and keep them coming."
+    />
+    <div class="card-grid">
+      {newFeatures.map((feature) => <FeatureCard title={feature.title} body={feature.body} href={feature.href} />)}
+    </div>
+    <p><a class="text-link" href={sitePath('/support')}>Send a feature request</a></p>
+  </section>
 
   <section class="workflow-intro section" aria-labelledby="workflow-title">
     <SectionHeader

@@ -9,7 +9,7 @@ export const homesteadPlannerComparison = {
     ['Free plan', 'Up to 20 items, reminders, calendar, Field Log entries, and demo data.', '3 animal groups, 1 garden, 5 active tasks, unlimited journal entries, and produce logging.'],
     ['Paid options', pricingTiers.find((tier) => tier.name === 'Pro')!.price, '$9/month or $79/year.'],
     ['Animals and production', 'Animal histories, care, breeding, feed costs, and production records.', 'Animal records, produce logs, and group-level financial tracking.'],
-    ['Garden and property', 'Garden and orchard layouts, planting and harvest history, plus places and map records.', 'Garden canvas and companion planting; satellite property-layout planner with Pro.'],
+    ['Garden and property', 'Garden and orchard layouts, planting and harvest history, plus places, property boundaries, pastures, and fence lines on the map.', 'Garden canvas and companion planting; satellite property-layout planner with Pro.'],
     ['Sharing and helpers', 'Documented sync uses your Apple ID. Check with support if separate helper accounts are essential.', 'Pro includes helper logins for chores and journal updates.'],
     ['Exports', 'Pro includes PDF and CSV exports, plus backup and restore tools.', 'Export formats are not confirmed in the public pages reviewed.'],
   ],
