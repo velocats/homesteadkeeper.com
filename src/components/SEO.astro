@@ -18,7 +18,7 @@ const imageUrl = new URL(image.startsWith('/') ? image.slice(1) : image, `${site
 
 const isDefaultImage = image === '/assets/og-homestead-keeper.png';
 const imageAlt = isDefaultImage
-  ? 'Homestead Keeper — whole-homestead records for animals, garden, equipment, and inventory on iPhone, iPad, and Mac.'
+  ? 'Homestead Keeper: whole-homestead records for animals, garden, equipment, and inventory on iPhone, iPad, and Mac.'
   : title;
 
 const breadcrumbLd = getBreadcrumbJsonLd(normalizedPath);

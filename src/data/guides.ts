@@ -322,7 +322,7 @@ export const guides: Guide[] = [
       {
         title: 'Vaccinations and preventive care belong on the same timeline',
         body: [
-          'Vaccination dates, dewormings, and routine vet visits are easy to lose track of across a herd or flock. Recording them alongside treatments — not in a separate system — is what makes it possible to see an animal\'s full health history in one place.',
+          'Vaccination dates, dewormings, and routine vet visits are easy to lose track of across a herd or flock. Recording them alongside treatments, not in a separate system, is what makes it possible to see an animal\'s full health history in one place.',
         ],
       },
       {
@@ -388,7 +388,7 @@ export const guides: Guide[] = [
       {
         title: '4. Harvest totals',
         body: [
-          'Record crop, quantity, unit, and date for each harvest. Consistent units matter more than precise ones — deciding once that tomatoes are recorded in pounds, not "a basket," is what makes next year\'s total comparable to this year\'s.',
+          'Record crop, quantity, unit, and date for each harvest. Consistent units matter more than precise ones. Deciding once that tomatoes are recorded in pounds, not "a basket," is what makes next year\'s total comparable to this year\'s.',
           'Harvest totals are the record that tells you whether a crop is worth the bed space it takes, which is a harder judgment to make from memory than it seems.',
         ],
       },
@@ -407,7 +407,7 @@ export const guides: Guide[] = [
       },
     ],
     limitation:
-      'This guide organizes garden planning and record keeping. It does not provide planting-date, climate-zone, or pest-treatment recommendations — those depend on your local conditions and are best confirmed with your local extension service.',
+      'This guide organizes garden planning and record keeping. It does not provide planting-date, climate-zone, or pest-treatment recommendations. Those depend on your local conditions and are best confirmed with your local extension service.',
     related: [
       { title: 'Free garden planting and harvest log', href: '/planner/garden-planting-harvest-log/', summary: 'Print a blank crop record and see a completed example with consistent harvest units.' },
       { title: 'Garden records', href: '/features/garden', summary: 'Bed layouts, crop placement, planting records, harvests, and garden season reports.' },
@@ -543,13 +543,13 @@ export const guides: Guide[] = [
       {
         title: 'Keeping it current is the real problem',
         body: [
-          'A binder written once and never touched again is accurate for about a month. The sections that change — what is in progress, current counts, upcoming dates — need a source that updates itself, or the binder becomes actively misleading rather than simply outdated.',
+          'A binder written once and never touched again is accurate for about a month. The sections that change (what is in progress, current counts, upcoming dates) need a source that updates itself, or the binder becomes actively misleading rather than simply outdated.',
         ],
       },
       {
         title: 'Where Homestead Keeper fits',
         body: [
-          'The Property Handoff report pulls current information directly from your records — animals, gardens, equipment, inventory, and upcoming reminders — into one summary, so the sections that go stale fastest are generated from live records instead of retyped by hand.',
+          'The Property Handoff report pulls current information directly from your records (animals, gardens, equipment, inventory, and upcoming reminders) into one summary, so the sections that go stale fastest are generated from live records instead of retyped by hand.',
           'It complements a written binder rather than replacing the human judgment of what a specific caretaker needs to know.',
         ],
       },
@@ -585,7 +585,7 @@ export const guides: Guide[] = [
       {
         title: 'Log the expense where the thing lives',
         body: [
-          'Feed cost belongs with the flock. A repair cost belongs with the machine. A seed order belongs with the bed or the garden. Recording cost data next to the record it concerns, instead of in one long undifferentiated transaction list, is what makes it usable later — you do not have to remember what a line item was for.',
+          'Feed cost belongs with the flock. A repair cost belongs with the machine. A seed order belongs with the bed or the garden. Recording cost data next to the record it concerns, instead of in one long undifferentiated transaction list, is what makes it usable later. You do not have to remember what a line item was for.',
         ],
       },
       {
@@ -651,7 +651,7 @@ export const guides: Guide[] = [
       'How to track maintenance for wells, pumps, gates, fences, and buildings, organized by system and place instead of one long to-do list.',
     eyebrow: 'Guide',
     answer:
-      'Give every property system — well, septic, generator, gates, fencing, roofing — its own record with service history and the next expected date, organized by the place it lives, not by task. That structure is what makes fifteen years of scattered repairs into a usable history.',
+      'Give every property system (well, septic, generator, gates, fencing, roofing) its own record with service history and the next expected date, organized by the place it lives, not by task. That structure is what makes fifteen years of scattered repairs into a usable history.',
     intro:
       'Property infrastructure fails quietly and expensively: a well pump that has never had a filter change, a generator no one has started since the last outage, a gate hinge that has been "on the list" for two summers. Most of this is preventable with a record system built around real property systems, not a running notebook.',
     sections: [
@@ -680,13 +680,13 @@ export const guides: Guide[] = [
       {
         title: 'Fences, gates, and access are easy to under-record',
         body: [
-          'A sagging gate or a fence line down in one spot rarely gets logged because it feels too minor for a maintenance record. But a place-based record of recurring problem spots — the gate that always needs adjustment, the fence section prone to washouts — reveals a pattern that a single repair does not.',
+          'A sagging gate or a fence line down in one spot rarely gets logged because it feels too minor for a maintenance record. But a place-based record of recurring problem spots, like the gate that always needs adjustment or the fence section prone to washouts, reveals a pattern that a single repair does not.',
         ],
       },
       {
         title: 'Use places, not just equipment, as the organizing unit',
         body: [
-          'Not every property system is a discrete machine. A pump house, a barn roof, or a driveway culvert is a place with maintenance needs of its own. Recording by real property location — the pump house, not just "the pump" — keeps related work findable together.',
+          'Not every property system is a discrete machine. A pump house, a barn roof, or a driveway culvert is a place with maintenance needs of its own. Recording by real property location (the pump house, not just "the pump") keeps related work findable together.',
         ],
       },
       {
@@ -721,9 +721,9 @@ export const guides: Guide[] = [
       'Why homestead spreadsheets tend to break down, what to look for in a replacement, and how to migrate records without losing history.',
     eyebrow: 'Guide',
     answer:
-      'Spreadsheets work well for one flat list, and break down once records need to connect to each other — an animal to its treatments, a machine to its service history, a bed to its harvests. If your spreadsheet has grown extra tabs to work around that, it is usually time to move to something built for connected records.',
+      'Spreadsheets work well for one flat list, and break down once records need to connect to each other: an animal to its treatments, a machine to its service history, a bed to its harvests. If your spreadsheet has grown extra tabs to work around that, it is usually time to move to something built for connected records.',
     intro:
-      'Almost every homestead record system starts as a spreadsheet, and for a while that is the right call — it is flexible, free, and familiar. The trouble shows up later: a second tab for animals, a third for treatments, a lookup formula linking them that breaks when a row gets inserted in the wrong place.',
+      'Almost every homestead record system starts as a spreadsheet, and for a while that is the right call. It is flexible, free, and familiar. The trouble shows up later: a second tab for animals, a third for treatments, a lookup formula linking them that breaks when a row gets inserted in the wrong place.',
     sections: [
       {
         title: 'Signs a spreadsheet has stopped working',
@@ -741,7 +741,7 @@ export const guides: Guide[] = [
       {
         title: 'What to look for in a replacement',
         body: [
-          'The core question is whether records can attach to the thing they belong to — an animal, a bed, a machine, a place — without manual lookups holding it together. A treatment record that lives with the animal, not in a separate sheet joined by an ID column, is the structural difference that actually matters.',
+          'The core question is whether records can attach to the thing they belong to (an animal, a bed, a machine, a place) without manual lookups holding it together. A treatment record that lives with the animal, not in a separate sheet joined by an ID column, is the structural difference that actually matters.',
           'Offline entry matters as much as structure. A system that requires a signal or a laptop to log a repair standing at the tractor gets used less than a spreadsheet on a phone, even a clunky one.',
         ],
       },
@@ -755,7 +755,7 @@ export const guides: Guide[] = [
       {
         title: 'What you give up, honestly',
         body: [
-          'A spreadsheet is infinitely customizable in a way purpose-built software is not. If your tracking needs are genuinely unusual, a well-built spreadsheet may still be the better tool. Most homestead record needs, though, are common enough — care, production, maintenance, inventory — that they are worth solving once in software built for them.',
+          'A spreadsheet is infinitely customizable in a way purpose-built software is not. If your tracking needs are genuinely unusual, a well-built spreadsheet may still be the better tool. Most homestead record needs, though, are common enough (care, production, maintenance, inventory) that they are worth solving once in software built for them.',
         ],
       },
       {

@@ -85,7 +85,7 @@ export const useCases: UseCase[] = [
       {
         title: 'A fit for hobby farms, not just backyard homesteads',
         body: [
-          'The same structure works whether "homestead" means a quarter-acre with chickens or several acres with mixed livestock, pasture, and equipment — organize by the barn, garden, workshop, pantry, or pasture you actually use, then attach records to those places.',
+          'The same structure works whether "homestead" means a quarter-acre with chickens or several acres with mixed livestock, pasture, and equipment. Organize by the barn, garden, workshop, pantry, or pasture you actually use, then attach records to those places.',
           'It stays short of enterprise farm software: useful for planning, care, maintenance, and seasonal review, not for payroll, tax, or regulated farm-business operations.',
         ],
       },
@@ -130,7 +130,7 @@ export const useCases: UseCase[] = [
         body: [
           'Log egg counts, production notes, flock checks, feed changes, and daily observations while the details are fresh.',
           'Production history helps you notice seasonal patterns, compare output over time, and keep useful records without rebuilding the story from memory.',
-          'Production records can reveal patterns, but they do not diagnose animal health or establish why production changed — treat a dip as a prompt to look closer, not a conclusion.',
+          'Production records can reveal patterns, but they do not diagnose animal health or establish why production changed. Treat a dip as a prompt to look closer, not a conclusion.',
         ],
       },
       {
@@ -195,7 +195,7 @@ export const useCases: UseCase[] = [
         body: [
           'Track crop, variety, planting date, location, care notes, treatments, and harvest totals in the same app.',
           'Over time, these records help answer practical questions: what grew well, which bed produced, what should rotate, and what is worth planting again.',
-          'Recorded yield is only as complete as the entries made — use consistent units and note skipped or estimated harvests before comparing one season to another.',
+          'Recorded yield is only as complete as the entries made. Use consistent units and note skipped or estimated harvests before comparing one season to another.',
         ],
       },
       {
