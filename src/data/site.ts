@@ -342,6 +342,13 @@ export const reportScreenshots = [
   },
 ] as const;
 
+export const handoffReportScreenshot = {
+  src: 'assets/screenshots/report-handoff-boundaries.webp',
+  title: 'Property Handoff map',
+  body: 'A map of the land with a table of areas, acreage, and fence lengths.',
+  alt: 'Land and Boundaries section of the Property Handoff report with a satellite map of the property line, pastures, and fence line, and a table listing each one with its size and linked record.',
+} as const;
+
 export const allProductScreenshots = [
   ...homepageScreenshots,
   ...animalScreenshots,

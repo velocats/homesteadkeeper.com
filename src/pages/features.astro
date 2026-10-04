@@ -27,6 +27,12 @@ const curatedScreenshots = [
     alt: 'Garden timeline showing crops like Pea, Lettuce, and Broccoli with seed start, growing, and harvest windows.',
   },
   {
+    src: 'assets/workflows/map/boundaries-property-line.webp',
+    title: 'Property boundaries',
+    body: 'Property line, pastures, and fence lines on the satellite map, with acreage.',
+    alt: 'Satellite map of the Cedar Ridge demo homestead with a yellow property line labeled about 34.8 acres, two blue pastures, and a red fence line.',
+  },
+  {
     src: 'assets/screenshots/calendar-week.webp',
     title: 'Breeding calendar',
     body: 'Calendar month view for breeding milestones, follow-ups, and animal care events.',
@@ -104,7 +110,7 @@ const groups = [
   </section>
 
   <section class="section" aria-labelledby="screenshots-title">
-    <SectionHeader headingId="screenshots-title" eyebrow="Screenshots" title="A look at the real app." body="Click any screenshot to expand it. These show bed layouts, calendar views, garden timelines, inventory, and more." />
+    <SectionHeader headingId="screenshots-title" eyebrow="Screenshots" title="A look at the real app." body="Click any screenshot to expand it. These show bed layouts, property boundaries, calendar views, garden timelines, inventory, and more." />
     <ScreenshotGallery shots={curatedScreenshots} />
     <p style="margin-top: var(--space-4); text-align: center;">
       <a class="button secondary" href={sitePath('/features/macos')}>View Mac screenshots</a>

@@ -449,14 +449,52 @@ export const workflows: WorkflowGuide[] = [
       {
         title: 'Trace your property line',
         body: 'Tap the corners of your property on the satellite map to draw its boundary and see the acreage. If you know the acreage from your deed or survey, enter it and the app shows that figure everywhere instead of the map’s estimate. Property boundaries are included in the Free plan.',
+        shot: {
+          src: map('boundaries-property-line.webp'),
+          title: 'Property line on the map',
+          body: 'The property line, two pastures, and a fence line on the demo homestead.',
+          alt: 'Satellite map of the Cedar Ridge demo homestead with a yellow property line labeled about 34.8 acres, two blue pastures, and a red fence line along the north edge.',
+        },
       },
       {
-        title: 'Draw pastures and fence lines',
-        body: 'Draw pastures and other named areas, each in its own color with its own acreage, and draw fence lines to see how many feet of fence you have. Link a pasture to a Place, or a fence line to a Fence or Gate item, and the acreage or fence length shows on that page.',
+        title: 'Draw pastures and other areas',
+        body: 'Draw pastures and other named areas, each in its own color with its own acreage. Link a pasture to a Place and its acreage shows on that Place’s page.',
+        shot: {
+          src: map('boundaries-pasture.webp'),
+          title: 'Pasture card',
+          body: 'Tap an area to see its name, kind, and acreage.',
+          alt: 'Map with a blue pasture outline and a card for North Pasture showing Pasture, about 2.06 acres, and an Edit button.',
+        },
+      },
+      {
+        title: 'Draw fence lines',
+        body: 'Draw fence lines to see how many feet of fence you have. Link a fence line to a Fence or Gate item to keep the two together.',
+        shot: {
+          src: map('boundaries-fence-line.webp'),
+          title: 'Fence line card',
+          body: 'Each fence line shows its length and the item it is linked to.',
+          alt: 'Map with a red fence line and a card showing Fence Line, 411 feet, linked to the Sample Fence item.',
+        },
+      },
+      {
+        title: 'See fence length on the item',
+        body: 'Once a fence line is linked, the Fence or Gate item shows how many feet of fence it covers.',
+        shot: {
+          src: map('boundaries-fence-length.webp'),
+          title: 'Fence length on an item',
+          body: 'The linked fence length appears on the item’s summary.',
+          alt: 'Sample Fence item summary showing Fence / Gate and 411 ft of fence from the map.',
+        },
       },
       {
         title: 'Walk the line',
         body: 'Walk a fence or boundary with your iPhone and drop corners from GPS as you go, or let the app add a point every 25, 50, or 100 feet. Location is used only while you are walking a line.',
+        shot: {
+          src: map('boundaries-walk-the-line.webp'),
+          title: 'Walking a fence line',
+          body: 'Drop points as you walk, or let the app add them automatically.',
+          alt: 'Satellite map while walking a fence line, with a panel showing the fence length, GPS accuracy, an Every 50 ft auto option, Drop Point Here, Stop Walking, and Finish buttons.',
+        },
       },
     ],
     unlocks: ['Spatial record context', 'Faster place lookup', 'Acreage and fence lengths', 'Clearer property handoff information'],
