@@ -688,16 +688,6 @@ ul, ol { margin: 0; padding: 0; }
   border: 1px solid rgba(49, 92, 59, 0.18);
   background: var(--stage);
 }
-.hero-product::before {
-  content: '';
-  position: absolute;
-  width: 4.5rem;
-  height: 4.5rem;
-  right: clamp(0.75rem, 3vw, 2rem);
-  top: clamp(0.75rem, 3vw, 2rem);
-  border: 1px solid rgba(44, 46, 42, 0.25);
-  border-radius: 50%;
-}
 .hero-product .screenshot-trigger {
   position: relative;
   z-index: 1;
@@ -799,7 +789,6 @@ ul, ol { margin: 0; padding: 0; }
   .hero { gap: 2rem; padding-block: 2.5rem 2rem; }
   .hero-copy { display: grid; }
   .hero-product { padding: 1.25rem; border-radius: 1.5rem; }
-  .hero-product::before { display: none; }
   .hero-product img { height: auto; max-height: 500px; }
   .trust-line { gap: 0.65rem 1.3rem; }
   .workflow-intro { padding-top: 3.5rem; }
