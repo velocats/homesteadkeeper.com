@@ -1449,3 +1449,9 @@ html.lightbox-open body {
     max-height: 500px;
   }
 }
+
+/* Keep tablet navigation clear of the brand and fit footer columns. */
+@media (min-width: 721px) and (max-width: 1100px) {
+  .site-header .brand { flex-shrink: 0; }
+  .footer-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
