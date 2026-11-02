@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import PrintableAction from '../../components/PrintableAction.astro';
 import InternalLinkCards from '../../components/InternalLinkCards.astro';
 import { site } from '../../data/site';
+import { sitePath } from '../../utils/paths';
 
 const title = 'Free Printable Farm Sitter Instructions Checklist | Homestead Keeper';
 const description = 'Print a free farm-sitter handoff checklist for daily routines, animal care, property systems, contacts, current issues, supplies, and record locations.';
@@ -37,7 +38,8 @@ const jsonLd = {
     <p class="eyebrow">Free printable handoff</p>
     <h1>Farm sitter instructions checklist</h1>
     <p class="lede">Give a caretaker the daily routine, places, contacts, current issues, and record locations they need while you are away.</p>
-    <div class="button-row"><PrintableAction name="Farm Sitter Handoff Checklist" action="print" label="Print the blank checklist" /><a class="button secondary" href="#completed-example">See a completed example</a></div>
+    <div class="button-row"><PrintableAction name="Farm Sitter Handoff Checklist" action="download" href={sitePath('/planner/farm-sitter-handoff-checklist.pdf')} label="Download PDF" />
+      <PrintableAction class="button secondary" name="Farm Sitter Handoff Checklist" action="print" label="Print the blank checklist" /><a class="button secondary" href="#completed-example">See a completed example</a></div>
     <p class="microcopy">No sign-up. Two letter-size pages. Store the completed copy securely and leave passwords, alarm codes, and financial information out.</p>
   </section>
 

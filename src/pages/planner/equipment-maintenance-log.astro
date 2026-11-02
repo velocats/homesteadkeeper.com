@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import PrintableAction from '../../components/PrintableAction.astro';
 import InternalLinkCards from '../../components/InternalLinkCards.astro';
 import { site } from '../../data/site';
+import { sitePath } from '../../utils/paths';
 
 const title = 'Free Printable Equipment Maintenance Log | Homestead Keeper';
 const description = 'Print a free equipment maintenance log for tractors, mowers, generators, pumps, and tools. Record service dates, hours, work, parts, costs, and the next service.';
@@ -31,7 +32,8 @@ const jsonLd = {
     <h1>Equipment maintenance log</h1>
     <p class="lede">Give one machine a durable service history. Record what happened, what it cost, and what still needs attention.</p>
     <div class="button-row">
-      <PrintableAction name="Equipment Maintenance Log" action="print" label="Print the blank log" />
+      <PrintableAction name="Equipment Maintenance Log" action="download" href={sitePath('/planner/equipment-maintenance-log.pdf')} label="Download PDF" />
+      <PrintableAction class="button secondary" name="Equipment Maintenance Log" action="print" label="Print the blank log" />
       <a class="button secondary" href="#completed-example">See a completed example</a>
     </div>
     <p class="microcopy">No sign-up. Prints on one letter-size page in landscape orientation.</p>

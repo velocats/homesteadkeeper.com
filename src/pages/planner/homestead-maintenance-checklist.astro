@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import PrintableAction from '../../components/PrintableAction.astro';
 import InternalLinkCards from '../../components/InternalLinkCards.astro';
 import { site } from '../../data/site';
+import { sitePath } from '../../utils/paths';
 
 const title = 'Free Printable Homestead Maintenance Checklist | Homestead Keeper';
 const description = 'Print a free seasonal homestead maintenance checklist organized by place and system. Includes space for frequency, last completed date, next due date, and notes.';
@@ -33,7 +34,8 @@ const jsonLd = {
     <h1>Seasonal homestead maintenance checklist</h1>
     <p class="lede">Build the list from your own property. Organize work by place, assign a season, and record what should come back around.</p>
     <div class="button-row">
-      <PrintableAction name="Seasonal Homestead Maintenance Checklist" action="print" label="Print the blank checklist" />
+      <PrintableAction name="Seasonal Homestead Maintenance Checklist" action="download" href={sitePath('/planner/homestead-maintenance-checklist.pdf')} label="Download PDF" />
+      <PrintableAction class="button secondary" name="Seasonal Homestead Maintenance Checklist" action="print" label="Print the blank checklist" />
       <a class="button secondary" href="#completed-example">See a completed example</a>
     </div>
     <p class="microcopy">No sign-up. Prints on one letter-size page in landscape orientation.</p>

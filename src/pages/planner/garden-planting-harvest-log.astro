@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import PrintableAction from '../../components/PrintableAction.astro';
 import InternalLinkCards from '../../components/InternalLinkCards.astro';
 import { site } from '../../data/site';
+import { sitePath } from '../../utils/paths';
 
 const title = 'Free Printable Garden Planting and Harvest Log | Homestead Keeper';
 const description = 'Print a free garden planting and harvest log for crop, variety, bed, seed source, planting dates, care notes, harvest quantities, and an end-of-season review.';
@@ -39,7 +40,8 @@ const jsonLd = {
     <h1>Garden planting and harvest log</h1>
     <p class="lede">Keep one crop or variety on each sheet. Record where it grew, when it went in, the care notes worth remembering, and what it produced.</p>
     <div class="button-row">
-      <PrintableAction name="Garden Planting and Harvest Log" action="print" label="Print the blank log" />
+      <PrintableAction name="Garden Planting and Harvest Log" action="download" href={sitePath('/planner/garden-planting-harvest-log.pdf')} label="Download PDF" />
+      <PrintableAction class="button secondary" name="Garden Planting and Harvest Log" action="print" label="Print the blank log" />
       <a class="button secondary" href="#completed-example">See a completed example</a>
     </div>
     <p class="microcopy">No sign-up. Prints on one letter-size page in landscape orientation.</p>

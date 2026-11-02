@@ -38,9 +38,11 @@ const attributes = { class: className, 'data-printable-name': name, 'data-printa
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         keepalive: true,
         body: JSON.stringify({
-          _subject: `${name} ${action === 'download' ? 'downloaded' : 'print requested'}`,
+          _subject: `${name} ${action === 'download' ? 'downloaded' : 'printed'}`,
           _template: 'table',
-          event: action === 'download' ? 'Planner PDF download' : 'Printable print request',
+          event: action === 'download' ? 'Printable PDF download' : 'Printable print request',
+          action,
+          ...(action === 'print' ? { note: 'Print button clicked; the browser cannot confirm completed printing.' } : {}),
           printable: name,
           ip_address: ip,
           time_utc: now.toISOString(),

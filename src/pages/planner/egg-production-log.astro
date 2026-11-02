@@ -36,7 +36,8 @@ const jsonLd = {
     <h1>Weekly egg production log</h1>
     <p class="lede">Track one flock for one week. The sheet keeps the count simple while leaving enough room to explain an unusual day.</p>
     <div class="button-row">
-      <PrintableAction name="Weekly Egg Production Log" action="print" label="Print the blank log" />
+      <PrintableAction name="Weekly Egg Production Log" action="download" href={sitePath('/planner/egg-production-log.pdf')} label="Download PDF" />
+      <PrintableAction class="button secondary" name="Weekly Egg Production Log" action="print" label="Print the blank log" />
       <a class="button secondary" href="#completed-example">See a completed example</a>
     </div>
     <p class="microcopy">No sign-up. Prints on one letter-size page in portrait orientation.</p>
