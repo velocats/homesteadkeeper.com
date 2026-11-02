@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import PrintableAction from '../../components/PrintableAction.astro';
 import InternalLinkCards from '../../components/InternalLinkCards.astro';
 import { site } from '../../data/site';
 
@@ -36,7 +37,7 @@ const jsonLd = {
     <p class="eyebrow">Free printable handoff</p>
     <h1>Farm sitter instructions checklist</h1>
     <p class="lede">Give a caretaker the daily routine, places, contacts, current issues, and record locations they need while you are away.</p>
-    <div class="button-row"><button class="button primary" type="button" data-print-checklist>Print the blank checklist</button><a class="button secondary" href="#completed-example">See a completed example</a></div>
+    <div class="button-row"><PrintableAction name="Farm Sitter Handoff Checklist" action="print" label="Print the blank checklist" /><a class="button secondary" href="#completed-example">See a completed example</a></div>
     <p class="microcopy">No sign-up. Two letter-size pages. Store the completed copy securely and leave passwords, alarm codes, and financial information out.</p>
   </section>
 
@@ -81,8 +82,6 @@ const jsonLd = {
     ]} />
   </section>
 </Layout>
-
-<script>document.querySelector('[data-print-checklist]')?.addEventListener('click', () => window.print());</script>
 
 <style>
   .print-pages { display: grid; gap: 2rem; }

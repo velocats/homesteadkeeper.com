@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import PrintableAction from '../../components/PrintableAction.astro';
 import InternalLinkCards from '../../components/InternalLinkCards.astro';
 import { site } from '../../data/site';
 
@@ -32,7 +33,7 @@ const jsonLd = {
     <h1>Seasonal homestead maintenance checklist</h1>
     <p class="lede">Build the list from your own property. Organize work by place, assign a season, and record what should come back around.</p>
     <div class="button-row">
-      <button class="button primary" type="button" data-print-checklist>Print the blank checklist</button>
+      <PrintableAction name="Seasonal Homestead Maintenance Checklist" action="print" label="Print the blank checklist" />
       <a class="button secondary" href="#completed-example">See a completed example</a>
     </div>
     <p class="microcopy">No sign-up. Prints on one letter-size page in landscape orientation.</p>
@@ -88,10 +89,6 @@ const jsonLd = {
     ]} />
   </section>
 </Layout>
-
-<script>
-  document.querySelector('[data-print-checklist]')?.addEventListener('click', () => window.print());
-</script>
 
 <style>
   .print-sheet { width: min(100% - 2rem, 11in); margin: 1rem auto 3rem; padding: clamp(1.25rem, 4vw, 2.25rem); color: #243122; background: #fffdf8; border: 1px solid var(--line); box-shadow: var(--shadow-sm); }

@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import PrintableAction from '../../components/PrintableAction.astro';
 import InternalLinkCards from '../../components/InternalLinkCards.astro';
 import { site } from '../../data/site';
 import { sitePath } from '../../utils/paths';
@@ -35,7 +36,7 @@ const jsonLd = {
     <h1>Weekly egg production log</h1>
     <p class="lede">Track one flock for one week. The sheet keeps the count simple while leaving enough room to explain an unusual day.</p>
     <div class="button-row">
-      <button class="button primary" type="button" data-print-log>Print the blank log</button>
+      <PrintableAction name="Weekly Egg Production Log" action="print" label="Print the blank log" />
       <a class="button secondary" href="#completed-example">See a completed example</a>
     </div>
     <p class="microcopy">No sign-up. Prints on one letter-size page in portrait orientation.</p>
@@ -93,10 +94,6 @@ const jsonLd = {
     ]} />
   </section>
 </Layout>
-
-<script>
-  document.querySelector('[data-print-log]')?.addEventListener('click', () => window.print());
-</script>
 
 <style>
   .print-sheet { width: min(100% - 2rem, 8.5in); margin: 1rem auto 3rem; padding: clamp(1.25rem, 4vw, 2.25rem); color: #243122; background: #fffdf8; border: 1px solid var(--line); box-shadow: var(--shadow-sm); }

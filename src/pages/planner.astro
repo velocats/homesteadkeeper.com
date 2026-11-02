@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import PrintableAction from '../components/PrintableAction.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import FeatureCard from '../components/FeatureCard.astro';
 import ScreenshotGallery from '../components/ScreenshotGallery.astro';
@@ -13,10 +14,8 @@ const title = 'Free Homestead Planner (Printable PDF) | Homestead Keeper';
 const description =
   'A free printable homestead planner with seasonal planning, pages for the garden, animals, orchard, and pantry, and reusable record templates. Plan on paper, keep it in the Homestead Keeper app.';
 
-// No email capture. The download is instant. A fire-and-forget beacon notifies us
-// (time + IP) on each download; it never blocks or delays the download.
+// Downloads remain instant and do not require email capture.
 const pdfHref = sitePath('/planner/Homestead-Keeper-Planner.pdf');
-const notifyUrl = 'https://formsubmit.co/ajax/support@quiettoolsapps.com';
 
 const whyPlan: [string, string][] = [
   ['See the whole year', "Know what's coming before the season gets busy."],
@@ -70,26 +69,22 @@ const jsonLd = {
   <section class="page-hero">
     <div class="hero-eyebrow-row">
       <p class="eyebrow">Free printable</p>
-      <a class="mini-download" href={pdfHref} download data-planner-download>Download the free planner</a>
+      <PrintableAction class="mini-download" href={pdfHref} name="Homestead Planner" action="download" label="Download the free planner" />
     </div>
     <h1>The Homestead Keeper Planner</h1>
     <p class="lede">A year of planning for your whole homestead. Plan it on paper, keep it in the app.</p>
     <div class="button-row">
-      <a class="button primary" href={pdfHref} download data-planner-download>Download the free planner</a>
+      <PrintableAction href={pdfHref} name="Homestead Planner" action="download" label="Download the free planner" />
+      <a class="button secondary" href="#focused-logs">Browse 5 free logs &amp; checklists</a>
       <AppStoreBadge height={40} />
     </div>
     <p class="microcopy">Free PDF. No sign-up, no email. Just download and print.</p>
   </section>
 
-  <section class="section" aria-labelledby="preview-title">
-    <SectionHeader headingId="preview-title" eyebrow="A look inside" title="See a few pages." body="Click any page to expand it." />
-    <ScreenshotGallery shots={previews} />
-  </section>
-
-  <section class="section soft-panel" aria-labelledby="egg-log-title">
+  <section class="section soft-panel" id="focused-logs" aria-labelledby="focused-logs-title">
     <p class="eyebrow">Start with one useful record</p>
-    <h2 id="egg-log-title">Print a focused log and start today.</h2>
-    <p>Each free sheet includes a blank record and a completed example, so you can see how much detail is useful before filling in your own.</p>
+    <h2 id="focused-logs-title">Free focused logs &amp; checklists</h2>
+    <p>Need just one sheet? Choose a log or checklist below. Each includes a blank record and a completed example, so you can see how much detail is useful before filling in your own.</p>
     <InternalLinkCards links={[
       { title: 'Weekly egg production log', href: '/planner/egg-production-log/', summary: 'Track flock size, usable and damaged eggs, care, weather, and useful observations.' },
       { title: 'Equipment maintenance log', href: '/planner/equipment-maintenance-log/', summary: 'Record service dates, hours, parts, costs, and the next thing to inspect.' },
@@ -99,12 +94,17 @@ const jsonLd = {
     ]} />
   </section>
 
+  <section class="section" aria-labelledby="preview-title">
+    <SectionHeader headingId="preview-title" eyebrow="A look inside" title="See a few pages." body="Click any page to expand it." />
+    <ScreenshotGallery shots={previews} />
+  </section>
+
   <section class="section" id="get-the-planner" aria-labelledby="download-title" style="text-align:center;">
     <p class="eyebrow">Free download</p>
     <h2 id="download-title">Download the planner.</h2>
     <p class="lede">No sign-up and no email. It's a printable PDF, undated, so it works season after season. Print the whole thing or just the pages you need.</p>
     <div class="button-row" style="justify-content:center;">
-      <a class="button primary" href={pdfHref} download data-planner-download>Download the free planner (PDF)</a>
+      <PrintableAction href={pdfHref} name="Homestead Planner" action="download" label="Download the free planner (PDF)" />
     </div>
     <p class="microcopy">32 pages, letter size, prints at home.</p>
   </section>
@@ -145,47 +145,10 @@ const jsonLd = {
   </section>
 </Layout>
 
-<script define:vars={{ notifyUrl }}>
-  // Fire-and-forget download notification. Never blocks or delays the download.
-  const links = document.querySelectorAll('[data-planner-download]');
-  let sent = false;
-  links.forEach((el) => {
-    el.addEventListener('click', () => {
-      if (sent) return; // avoid double-sends from the two buttons in one visit
-      sent = true;
-      (async () => {
-        let ip = 'unavailable';
-        try {
-          const r = await fetch('https://api.ipify.org?format=json', { cache: 'no-store' });
-          if (r.ok) ip = (await r.json()).ip || 'unavailable';
-        } catch (e) { /* ignore */ }
-        const now = new Date();
-        const payload = {
-          _subject: 'Homestead Planner downloaded',
-          _template: 'table',
-          event: 'Planner PDF download',
-          ip_address: ip,
-          time_utc: now.toISOString(),
-          time_local: now.toString(),
-          page: location.href,
-          referrer: document.referrer || '(direct)',
-          user_agent: navigator.userAgent,
-        };
-        try {
-          await fetch(notifyUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-            body: JSON.stringify(payload),
-          });
-        } catch (e) { /* ignore */ }
-      })();
-      // The anchor has `download`, so the browser downloads and the page stays put,
-      // which lets the async beacon finish.
-    });
-  });
-</script>
-
 <style>
+  #focused-logs {
+    scroll-margin-top: 7rem;
+  }
   .hero-eyebrow-row {
     display: flex;
     align-items: center;
@@ -195,7 +158,7 @@ const jsonLd = {
   .hero-eyebrow-row .eyebrow {
     margin: 0;
   }
-  .mini-download {
+  :global(.mini-download) {
     display: inline-flex;
     align-items: center;
     font-size: 0.7rem;
@@ -210,8 +173,8 @@ const jsonLd = {
     text-decoration: none;
     transition: background 0.15s ease;
   }
-  .mini-download:hover,
-  .mini-download:focus-visible {
+  :global(.mini-download:hover),
+  :global(.mini-download:focus-visible) {
     background: var(--ink-2);
   }
   /* Tighten the gap under the hero and make the hero microcopy readable on cream. */

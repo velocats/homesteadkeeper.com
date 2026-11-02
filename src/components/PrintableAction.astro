@@ -1,0 +1,69 @@
+---
+interface Props {
+  name: string;
+  action: 'download' | 'print';
+  label: string;
+  href?: string;
+  class?: string;
+}
+
+const { name, action, label, href, class: className = 'button primary' } = Astro.props;
+const attributes = { class: className, 'data-printable-name': name, 'data-printable-action': action };
+---
+
+{action === 'download' ? (
+  <a {...attributes} href={href} download>{label}</a>
+) : (
+  <button {...attributes} type="button">{label}</button>
+)}
+
+<script>
+  // One notification per sheet/action per visit, even with multiple buttons.
+  const sent = new Set<string>();
+
+  async function notify(name: string, action: string) {
+    let ip = 'unavailable';
+    try {
+      const response = await fetch('https://api.ipify.org?format=json', {
+        cache: 'no-store',
+        signal: AbortSignal.timeout(3000),
+      });
+      if (response.ok) ip = (await response.json()).ip || 'unavailable';
+    } catch { /* Notification still sends if IP lookup fails. */ }
+
+    const now = new Date();
+    try {
+      await fetch('https://formsubmit.co/ajax/support@quiettoolsapps.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        keepalive: true,
+        body: JSON.stringify({
+          _subject: `${name} ${action === 'download' ? 'downloaded' : 'print requested'}`,
+          _template: 'table',
+          event: action === 'download' ? 'Planner PDF download' : 'Printable print request',
+          printable: name,
+          ip_address: ip,
+          time_utc: now.toISOString(),
+          time_local: now.toString(),
+          page: location.href,
+          referrer: document.referrer || '(direct)',
+          user_agent: navigator.userAgent,
+        }),
+      });
+    } catch { /* Email failures must never interrupt printing or downloading. */ }
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-printable-action]').forEach((element) => {
+    element.addEventListener('click', () => {
+      const { printableName: name, printableAction: action } = element.dataset;
+      if (!name || !action) return;
+      const key = `${action}:${name}`;
+      if (!sent.has(key)) {
+        sent.add(key);
+        void notify(name, action);
+      }
+      // Start the notification without waiting for the network or delaying the dialog.
+      if (action === 'print') window.print();
+    });
+  });
+</script>

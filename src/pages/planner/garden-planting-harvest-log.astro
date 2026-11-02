@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import PrintableAction from '../../components/PrintableAction.astro';
 import InternalLinkCards from '../../components/InternalLinkCards.astro';
 import { site } from '../../data/site';
 
@@ -38,7 +39,7 @@ const jsonLd = {
     <h1>Garden planting and harvest log</h1>
     <p class="lede">Keep one crop or variety on each sheet. Record where it grew, when it went in, the care notes worth remembering, and what it produced.</p>
     <div class="button-row">
-      <button class="button primary" type="button" data-print-log>Print the blank log</button>
+      <PrintableAction name="Garden Planting and Harvest Log" action="print" label="Print the blank log" />
       <a class="button secondary" href="#completed-example">See a completed example</a>
     </div>
     <p class="microcopy">No sign-up. Prints on one letter-size page in landscape orientation.</p>
@@ -89,8 +90,6 @@ const jsonLd = {
     ]} />
   </section>
 </Layout>
-
-<script>document.querySelector('[data-print-log]')?.addEventListener('click', () => window.print());</script>
 
 <style>
   .print-sheet { width: min(100% - 2rem, 11in); margin: 1rem auto 3rem; padding: clamp(1.15rem, 3vw, 2rem); color: #243122; background: #fffdf8; border: 1px solid var(--line); box-shadow: var(--shadow-sm); }
